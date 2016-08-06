@@ -1,7 +1,7 @@
 template(name='profile')
     .ui.container
         .ui.segment
-            // div Your Name
+            +atForm
             div
                 .ui.left.icon.input
                     i.user.icon
@@ -13,12 +13,12 @@ template(name='profile')
                 .ui.left.icon.small.input
                     i.add.green.icon
                     input#addtag(type='text' autofocus='' placeholder='Add tag')
-            // .ui.header Your Company
-            // .ui.left.icon.input
-            //     i.building.icon
-            //     input#company(type='text' value=user.company)
-            // div Your Tags
-            // div Matched People
+            .ui.header Your Company
+            .ui.left.icon.input
+                i.building.icon
+                input#company(type='text' value=user.company)
+            div Your Tags
+            div Matched People
             .ui.header Matched People
             each matchedUsersList
                 .ui.list

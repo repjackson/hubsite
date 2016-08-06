@@ -1,19 +1,28 @@
 template(name='nav')
-    img.ui.medium.image.header-brand(src='http://impacthubboulder.com/wp-content/uploads/2016/03/Impact_Hub_Boulder_logo.png')
-    .ui.borderless.menu
-        // a.ui.header.item(href='/' class="{{isActivePath '/'}}")
-        a.item(href='/people' class="{{isActivePath '/people'}}")
-            i.users.icon
-            |People
-        a.item(href='/conversations' class="{{isActivePath '/conversations'}}")
-            i.comments.icon
-            | Conversations
-        a.item(href='/events' class="{{isActivePath '/events'}}")
-            i.calendar.icon
-            | Events
-        a.item(href='/wins' class="{{isActivePath '/wins'}}")
-            i.thumbs.up.icon
-            | Wins/Challenges
+    .ui.container
+        .ui.menu
+            .ui.container
+                a.item(href='/about' class="{{isActivePath '/about'}}")
+                    i.info.icon
+                    |About
+                a.item(href='/people' class="{{isActivePath '/people'}}")
+                    i.users.icon
+                    |People
+                a.item(href='/conversations' class="{{isActivePath '/conversations'}}")
+                    i.comments.icon
+                    | Conversations
+                a.item(href='/events' class="{{isActivePath '/events'}}")
+                    i.calendar.icon
+                    | Events
+                a.item(href='/wins' class="{{isActivePath '/wins'}}")
+                    i.thumbs.up.icon
+                    | Wins/Challenges
+
+
+template(name='top_nav')
+    .ui.inverted.menu
+        a.ui.header.item(href='/' class="{{isActivePath '/'}}")
+            img(src='http://impacthubboulder.com/wp-content/uploads/2016/03/Impact_Hub_Boulder_logo.png')
         .right.menu
             +atNavButton
             if currentUser
@@ -24,9 +33,3 @@ template(name='nav')
                     i.mail.icon
                     | Messages (#{user.unreadcount})
                     // | Messages
-
-
-template(name='top_nav')
-    .ui.inverted.menu
-        .right.menu
-            .ui.item Member Login

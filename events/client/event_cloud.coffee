@@ -1,7 +1,7 @@
-@selectedEventTags = new ReactiveArray []
+@selected_event_tags = new ReactiveArray []
 
 Template.event_cloud.onCreated ->
-    @autorun -> Meteor.subscribe('event_tags', selectedEventTags.array())
+    @autorun -> Meteor.subscribe('event_tags', selected_event_tags.array())
 
 Template.event_cloud.helpers
     globaltags: ->
@@ -18,13 +18,13 @@ Template.event_cloud.helpers
             when @index <= 50 then 'tiny'
         return buttonClass
 
-    selectedEventTags: -> selectedEventTags.list()
+    selected_event_tags: -> selected_event_tags.list()
 
     user: -> Meteor.user()
 
 
 
 Template.event_cloud.events
-    'click .selecttag': -> selectedEventTags.push @name
-    'click .unselecttag': -> selectedEventTags.remove @valueOf()
-    'click #cleartags': -> selectedEventTags.clear()
+    'click .selecttag': -> selected_event_tags.push @name
+    'click .unselecttag': -> selected_event_tags.remove @valueOf()
+    'click #cleartags': -> selected_event_tags.clear()
