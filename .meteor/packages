@@ -4,30 +4,35 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-base@1.0.4             # Packages every Meteor app needs to have
-mongo@1.1.10                   # The database Meteor supports right now
-session@1.1.6                 # Client-side reactive dictionary for your app
-tracker@1.1.0                 # Meteor's client-side reactive programming library
+meteor-base             # Packages every Meteor app needs to have
+mongo                   # The database Meteor supports right now
+blaze-html-templates    # Compile .html files into Meteor Blaze views
+session                 # Client-side reactive dictionary for your app
+tracker                 # Meteor's client-side reactive programming library
 
 
-coffeescript@1.2.3
+coffeescript
 mquandalle:jade
-random@1.0.10
+random
 manuel:reactivearray
 meteorhacks:aggregate
-jquery@1.11.9
+jquery
 babrahams:constellation
 mquandalle:stylus
-mobile-experience@1.0.4
-
-
+accounts-password
 semantic:ui
 flemay:less-autoprefixer
-blaze-html-templates@1.0.4
+kadira:flow-router
+kadira:blaze-layout
+uzumaxy:prevent-backspace
+useraccounts:semantic-ui
+useraccounts:flow-routing
+zimme:active-route
+mobile-experience
+standard-minifiers
 dburles:collection-helpers
-service-configuration@1.0.10
-iandouglas:accounts-ui-semantic-ui
-accounts-password@1.2.12
-matb33:collection-hooks
 momentjs:moment
 mizzao:autocomplete
+drewy:datetimepicker
+matb33:collection-hooks
+mizzao:user-status

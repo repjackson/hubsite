@@ -1,90 +1,167 @@
-Meteor.publish null, ->
-    if @userId
-        return Meteor.users.find({ _id: @userId }, fields:
-            tags: 1
-            cloud: 1
-            list: 1)
-    return
+Events.allow
+    update: (userId, doc, fieldNames, modifier) -> doc.hostId is Meteor.userId()
+    remove: (userId, doc)-> doc.hostId is userId
 
-Meteor.publish 'people', () ->
-    if @userId
-        Meteor.users.find {},
-            fields:
-                username: 1
-                tags: 1
-    else
-        []
+Conversations.allow
+    update: (userId, doc, fieldNames, modifier) -> doc.authorId is Meteor.userId()
+    remove: (userId, doc)-> doc.authorId is userId
+
+
+Meteor.publish 'wins', ->
+    Docs.find tags: $in: ['impact hub', 'boulder', 'win']
+
+Meteor.publish 'challenges', ->
+    Docs.find tags: $in: ['impact hub', 'boulder', 'challenges']
 
 
 Meteor.publish 'person', (id)->
     Meteor.users.find id,
         fields:
             tags: 1
+            profile: 1
             username: 1
 
+Meteor.publish 'usernames', ->
+    Meteor.users.find {},
+        fields:
+            username: 1
 
-Meteor.publish 'doc', (id)-> Docs.find id
+Meteor.publish 'me', ->
+    Meteor.users.find @userId,
+        fields:
+            tags: 1
+            profile: 1
+            username: 1
+
+Meteor.publish 'sent_messages', ->
+    Messages.find
+        authorId: @userId
+
+
+Meteor.publish 'conversationMessages', (conversationId) ->
+    Messages.find
+        conversationId: conversationId
+
+
+Meteor.publish 'eventMessages', (eventId) ->
+    Messages.find
+        eventId: eventId
+
+Meteor.publish 'received_messages', ->
+    Messages.find
+        recipientId: @userId
 
 
 
-Meteor.publish 'tags', (selected_tags)->
+Meteor.publish 'people', (selectedtags=[])->
     self = @
     match = {}
-    if selected_tags.length > 0 then match.tags = $all: selected_tags
+    if selectedtags.length > 0 then match.tags = $all: selectedtags
 
-    cloud = Docs.aggregate [
+    Meteor.users.find match,
+        fields:
+            tags: 1
+            profile: 1
+            username: 1
+
+Meteor.publish 'conversations', (selectedtags)->
+    self = @
+    match = {}
+    if selectedtags and selectedtags.length > 0 then match.tags = $all: selectedtags
+
+    Conversations.find match,
+        fields:
+            tags: 1
+            authorId: 1
+            participantIds: 1
+
+Meteor.publish 'events', (selectedtags)->
+    self = @
+    match = {}
+    if selectedtags and selectedtags.length > 0 then match.tags = $all: selectedtags
+
+    Events.find match,
+        fields:
+            tags: 1
+            attendeeIds: 1
+            hostId: 1
+            datearray: 1
+            dateTime: 1
+
+
+Meteor.publish 'people_tags', (selectedtags)->
+    self = @
+    match = {}
+    if selectedtags?.length > 0 then match.tags = $all: selectedtags
+    match._id = $ne: @userId
+
+    tagCloud = Meteor.users.aggregate [
         { $match: match }
-        { $project: tags: 1 }
-        { $unwind: '$tags' }
-        { $group: _id: '$tags', count: $sum: 1 }
-        { $match: _id: $nin: selected_tags }
+        { $project: "tags": 1 }
+        { $unwind: "$tags" }
+        { $group: _id: "$tags", count: $sum: 1 }
+        { $match: _id: $nin: selectedtags }
         { $sort: count: -1, _id: 1 }
         { $limit: 50 }
         { $project: _id: 0, name: '$_id', count: 1 }
         ]
-    # console.log 'cloud, ', cloud
-    cloud.forEach (tag, i) ->
-        self.added 'tags', Random.id(),
+
+    tagCloud.forEach (tag, i) ->
+        self.added 'people_tags', Random.id(),
             name: tag.name
             count: tag.count
             index: i
 
     self.ready()
-    
 
 
-Meteor.publish 'docs', (selected_tags)->
+Meteor.publish 'conversation_tags', (selectedtags)->
+    self = @
     match = {}
-    if selected_tags.length > 0 then match.tags = $all: selected_tags
+    if selectedtags.length > 0 then match.tags = $all: selectedtags
+    # match.authorId = $ne: @userId
 
-    Docs.find match,
-        sort:
-            tag_count: 1
-            timestamp: -1
-        limit: 10
+    tagCloud = Conversations.aggregate [
+        { $match: match }
+        { $project: "tags": 1 }
+        { $unwind: "$tags" }
+        { $group: _id: "$tags", count: $sum: 1 }
+        { $match: _id: $nin: selectedtags }
+        { $sort: count: -1, _id: 1 }
+        { $limit: 50 }
+        { $project: _id: 0, name: '$_id', count: 1 }
+        ]
 
+    tagCloud.forEach (tag, i) ->
+        self.added 'conversation_tags', Random.id(),
+            name: tag.name
+            count: tag.count
+            index: i
 
+    self.ready()
 
-Docs.allow
-    insert: (userId, doc)-> doc.author_id is Meteor.userId()
-    update: (userId, doc)-> doc.author_id is Meteor.userId()
-    remove: (userId, doc)-> doc.author_id is Meteor.userId()
+Meteor.publish 'event_tags', (selectedtags)->
+    self = @
+    match = {}
+    if selectedtags.length > 0 then match.tags = $all: selectedtags
+    # match.authorId = $ne: @userId
 
+    tagCloud = Events.aggregate [
+        { $match: match }
+        { $project: "tags": 1 }
+        { $unwind: "$tags" }
+        { $group: _id: "$tags", count: $sum: 1 }
+        { $match: _id: $nin: selectedtags }
+        { $sort: count: -1, _id: 1 }
+        { $limit: 50 }
+        { $project: _id: 0, name: '$_id', count: 1 }
+        ]
 
-Meteor.methods
-    generate_person_cloud: (uid)->
-        cloud = Docs.aggregate [
-            { $match: authorId: Meteor.userId() }
-            { $project: tags: 1 }
-            { $unwind: '$tags' }
-            { $group: _id: '$tags', count: $sum: 1 }
-            { $sort: count: -1, _id: 1 }
-            { $limit: 100 }
-            { $project: _id: 0, name: '$_id', count: 1 }
-            ]
-            
-        list = (tag.name for tag in cloud)
-        Meteor.users.update Meteor.userId(),
-            $set:
-                cloud: cloud
-                list: list
+    tagCloud.forEach (tag, i) ->
+        self.added 'event_tags', Random.id(),
+            name: tag.name
+            count: tag.count
+            index: i
+
+    self.ready()
+
