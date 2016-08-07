@@ -1,13 +1,13 @@
 template(name='nav')
-    .ui.container
-        .ui.menu
+    .ui.container.red-nav-bar
+        .ui.red.inverted.large.menu
             .ui.container
                 a.item(href='/about' class="{{isActivePath '/about'}}")
                     i.info.icon
                     |About
                 a.item(href='/people' class="{{isActivePath '/people'}}")
                     i.users.icon
-                    |People
+                    |Members
                 // a.item(href='/conversations' class="{{isActivePath '/conversations'}}")
                 //     i.comments.icon
                 //     | Conversations
@@ -17,6 +17,9 @@ template(name='nav')
                 a.item(href='/partners' class="{{isActivePath '/partners'}}")
                     // i.calendar.icon
                     | Partners
+                a.item(href='/become_member' class="{{isActivePath '/become_member'}}")
+                    // i.calendar.icon
+                    | Become A Member
                 a.item(href='/rent' class="{{isActivePath '/rent'}}")
                     // i.calendar.icon
                     | Rent Our Space
@@ -27,15 +30,17 @@ template(name='nav')
 
 template(name='top_nav')
     .ui.inverted.menu
-        a.ui.header.item(href='/' class="{{isActivePath '/'}}")
-            img(src='http://impacthubboulder.com/wp-content/uploads/2016/03/Impact_Hub_Boulder_logo.png')
         .right.menu
-            +atNavButton
+            // +atNavButton
+            +loginButtons
             if currentUser
                 a.item(href='/profile' class="{{isActivePath '/profile'}}")
                     i.user.icon
-                    | Profile (#{currentUser.username})
+                    | Profile
+                    // | Profile (#{currentUser.profile.name})
                 a.item(href='/messages' class="{{isActivePath '/messages'}}")
                     i.mail.icon
                     | Messages (#{currentUser.unreadcount})
                     // | Messages
+    a.header-logo(href='/' class="{{isActivePath '/'}}")
+        img.ui.medium.image(src='http://impacthubboulder.com/wp-content/uploads/2016/03/Impact_Hub_Boulder_logo.png')

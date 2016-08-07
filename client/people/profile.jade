@@ -1,24 +1,30 @@
 template(name='profile')
     .ui.container
         .ui.segment
-            +atForm
-            div
-                .ui.left.icon.input
-                    i.user.icon
-                    input#username(type='text' value=user.username)
-                each user.tags
-                    .ui.basic.compact.button.tag
-                        i.remove.icon
-                        |#{this}
-                .ui.left.icon.small.input
-                    i.add.green.icon
-                    input#addtag(type='text' autofocus='' placeholder='Add tag')
-            .ui.header Your Company
-            .ui.left.icon.input
-                i.building.icon
-                input#company(type='text' value=user.company)
-            div Your Tags
-            div Matched People
+            .ui.form
+                .field
+                    label Your Name
+                    .ui.left.icon.input
+                        i.user.icon
+                        input#username(type='text' value=currentUser.profile.name)
+                .field
+                    label Tags
+                    each currentUser.tags
+                        .ui.basic.button.tag
+                            i.remove.icon
+                            |#{this}
+                    .ui.left.icon.small.input
+                        i.add.green.icon
+                        input#addtag(type='text' autofocus='' placeholder='Add tag')
+                .field
+                    label Your Company
+                    .ui.left.icon.input
+                        i.building.icon
+                        input#company(type='text' value=currentUser.profile.company)
+            .ui.grid
+                .ui.four.wide.column
+                    +atForm
+        .ui.segment
             .ui.header Matched People
             each matchedUsersList
                 .ui.list

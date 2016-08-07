@@ -1,5 +1,5 @@
 Template.people.onCreated ->
-    @autorun -> Meteor.subscribe('people', selectedtags.array())
+    @autorun -> Meteor.subscribe('people', selected_people_tags.array())
     # @autorun -> Meteor.subscribe('me')
 
 Template.people.helpers
@@ -16,7 +16,7 @@ Template.person.onCreated ->
 Template.person.helpers
     isUser: -> @_id is Meteor.userId()
 
-    tagClass: -> if @valueOf() in selectedtags.array() then 'active' else 'basic'
+    tag_class: -> if @valueOf() in selected_people_tags.array() then 'red' else 'basic'
 
     matchedtags: -> _.intersection @tags, Meteor.user().tags
 
@@ -25,7 +25,7 @@ Template.person.helpers
 
 Template.person.events
     'click .tag': ->
-        if @valueOf() in selectedtags.array() then selectedtags.remove @valueOf() else selectedtags.push @valueOf()
+        if @valueOf() in selected_people_tags.array() then selected_people_tags.remove @valueOf() else selected_people_tags.push @valueOf()
 
     # 'click .converseWithUser': ->
     #     intersection = _.intersection @tags, Meteor.user().tags

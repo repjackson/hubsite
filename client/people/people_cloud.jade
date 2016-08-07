@@ -1,12 +1,12 @@
 template(name='cloud')
     .ui.center.aligned.segment
         .ui.header Browse Hub Members
-        if selectedtags
-            #cleartags.ui.active.big.compact.icon.button
+        if selected_people_tags
+            #cleartags.ui.red.big.compact.icon.button
                 i.remove.icon
-        if selectedtags
-            each selectedtags
-                a.ui.active.big.compact.button.unselecttag
+        if selected_people_tags
+            each selected_people_tags
+                a.ui.red.big.compact.button.unselecttag
                     strong #{this}
         each globaltags
             .ui.compact.basic.button.selecttag(class=globaltagClass) #{this.name}

@@ -104,6 +104,16 @@ Template.profile.events
                             $('#username').val(Meteor.user().username)
                         else
                             alert "Updated username to #{username}."
+    
+    'keydown #company': (e,t)->
+        e.preventDefault
+        if e.which is 13
+            company = $('#company').val().trim()
+            if company.length > 0
+                Meteor.users.update Meteor.userId(),
+                    $set: "profile.company": company
+                , (err, res)->
+                    swal "Company updated to #{company}"
 
     'click .tag': ->
         tag = @valueOf()
