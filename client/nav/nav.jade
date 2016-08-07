@@ -8,15 +8,21 @@ template(name='nav')
                 a.item(href='/people' class="{{isActivePath '/people'}}")
                     i.users.icon
                     |People
-                a.item(href='/conversations' class="{{isActivePath '/conversations'}}")
-                    i.comments.icon
-                    | Conversations
+                // a.item(href='/conversations' class="{{isActivePath '/conversations'}}")
+                //     i.comments.icon
+                //     | Conversations
                 a.item(href='/events' class="{{isActivePath '/events'}}")
                     i.calendar.icon
                     | Events
-                a.item(href='/wins' class="{{isActivePath '/wins'}}")
-                    i.thumbs.up.icon
-                    | Wins/Challenges
+                a.item(href='/partners' class="{{isActivePath '/partners'}}")
+                    // i.calendar.icon
+                    | Partners
+                a.item(href='/rent' class="{{isActivePath '/rent'}}")
+                    // i.calendar.icon
+                    | Rent Our Space
+                // a.item(href='/wins' class="{{isActivePath '/wins'}}")
+                //     i.thumbs.up.icon
+                //     | Wins/Challenges
 
 
 template(name='top_nav')
@@ -28,8 +34,8 @@ template(name='top_nav')
             if currentUser
                 a.item(href='/profile' class="{{isActivePath '/profile'}}")
                     i.user.icon
-                    | Profile (#{user.username})
+                    | Profile (#{currentUser.username})
                 a.item(href='/messages' class="{{isActivePath '/messages'}}")
                     i.mail.icon
-                    | Messages (#{user.unreadcount})
+                    | Messages (#{currentUser.unreadcount})
                     // | Messages

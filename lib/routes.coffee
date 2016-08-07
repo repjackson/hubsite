@@ -14,10 +14,6 @@ FlowRouter.route '/profile', action: (params) ->
         nav: 'nav'
         main: 'profile'
 
-FlowRouter.route '/about', action: (params) ->
-    BlazeLayout.render 'layout',
-        nav: 'nav'
-        main: 'about'
 
 FlowRouter.route '/people', action: (params) ->
     BlazeLayout.render 'layout',
@@ -66,3 +62,23 @@ signInRequired.route '/events/edit/:event_id', action: (params) ->
 signInRequired.route '/events/view/:event_id', action: (params) ->
     BlazeLayout.render 'layout',
         main: 'view_event'
+
+
+
+
+# Pages
+
+FlowRouter.route '/partners', action: (params) ->
+    BlazeLayout.render 'layout',
+        nav: 'nav'
+        main: 'partners'
+
+FlowRouter.route '/rent', action: (params) ->
+    BlazeLayout.render 'layout',
+        nav: 'nav'
+        main: 'rent'
+
+FlowRouter.route '/about', action: (params) ->
+    BlazeLayout.render 'layout',
+        nav: 'nav'
+        main: 'about'
