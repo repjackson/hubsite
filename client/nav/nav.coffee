@@ -66,3 +66,5 @@ Template.nav.events
                 if searchTerm is ''
                     selectedTags.pop()
 
+Template.top_nav.events
+    'click #logout': -> AccountsTemplates.logout()

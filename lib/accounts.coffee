@@ -1,8 +1,8 @@
 
 AccountsTemplates.configure
     defaultLayout: 'layout'
-    defaultLayoutRegions:
-        nav: 'nav'
+    # defaultLayoutRegions:
+        # nav: ''
     defaultContentRegion: 'main'
     showForgotPasswordLink: true
     overrideLoginErrors: true

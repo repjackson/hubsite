@@ -32,7 +32,7 @@ template(name='top_nav')
     .ui.inverted.menu
         .right.menu
             // +atNavButton
-            +loginButtons
+            // +loginButtons
             if currentUser
                 a.item(href='/profile' class="{{isActivePath '/profile'}}")
                     i.user.icon
@@ -42,5 +42,12 @@ template(name='top_nav')
                     i.mail.icon
                     | Messages (#{currentUser.unreadcount})
                     // | Messages
+                a#logout.ui.item(href='#') 
+                    i.sign.out.icon
+                    |Sign Out
+            else
+                a.ui.item(href='/sign-in') 
+                    i.sign.in.icon
+                    |Sign In
     a.header-logo(href='/' class="{{isActivePath '/'}}")
         img.ui.medium.image(src='http://impacthubboulder.com/wp-content/uploads/2016/03/Impact_Hub_Boulder_logo.png')
