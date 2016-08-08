@@ -1,8 +1,5 @@
 template(name='events')
     .ui.container
-        #add_event.ui.compact.basic.button
-            i.green.plus.icon
-            |Add Event
         each events
             +event
 
@@ -11,22 +8,25 @@ template(name='event')
     .ui.fluid.card
         .content
             .header
-                |Event Topics:
+                h2.ui.header #{title}
+            .description
+                .ui.header Event Topics:
                 each tags
                     .ui.compact.button.tag(class=tagClass) #{this}
-            .description
-                if can_edit
-                    .ui.labeled.icon.button
-                        i.pencil.icon
-                        |Edit Event
-                p Date: #{date}
-                p Description: #{description}
+                .ui.header Date: 
+                |#{date}
+                .ui.header Description: 
+                |!{description}
         .content
             .ui.header Attendees:
             .ui.horizontal.list
                 each attendees
                     .item #{this}
         .extra.content
+            if can_edit
+                .edit_event.ui.labeled.primary.basic.icon.button
+                    i.pencil.icon
+                    |Edit Event
             if currentUser
                 if attending
                     .ui.basic.button.leave_event

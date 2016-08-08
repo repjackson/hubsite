@@ -36,12 +36,12 @@ template(name='top_nav')
             if currentUser
                 a.item(href='/profile' class="{{isActivePath '/profile'}}")
                     i.user.icon
-                    | Profile
-                    // | Profile (#{currentUser.profile.name})
+                    // | Profile
+                    | #{currentUser.profile.name}
                 a.item(href='/messages' class="{{isActivePath '/messages'}}")
                     i.mail.icon
-                    | Messages (#{currentUser.unreadcount})
-                    // | Messages
+                    // | Messages (#{currentUser.unreadcount})
+                    | Messages
                 a#logout.ui.item(href='#') 
                     i.sign.out.icon
                     |Sign Out

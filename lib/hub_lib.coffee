@@ -7,12 +7,12 @@
 @Docs = new Meteor.Collection 'docs'
 
 Docs.before.insert (userId, doc)->
-    doc.up_voters = [userId]
-    doc.down_voters = []
+    # doc.up_voters = [userId]
+    # doc.down_voters = []
     doc.timestamp = Date.now()
     doc.author_id = Meteor.userId()
     # doc.username = Meteor.user().username
-    doc.points = 1
+    # doc.points = 1
     return
 
 Docs.after.update ((userId, doc, fieldNames, modifier, options) ->
@@ -36,14 +36,6 @@ Conversations.helpers
             participantArray.push(Meteor.users.findOne(id)?.username)
         participantArray
 
-Docs.helpers
-    attendees: ->
-        if @attendee_ids
-            attendeeArray = []
-            for id in @attendee_ids
-                attendeeArray.push(Meteor.users.findOne(id)?.username)
-            attendeeArray
-        else return
 
 Meteor.methods
     delete_doc: (id)->

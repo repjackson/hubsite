@@ -20,11 +20,16 @@ Template.event_cloud.helpers
 
     selected_event_tags: -> selected_event_tags.list()
 
-    user: -> Meteor.user()
-
+    can_add_event: -> Meteor.userId()
 
 
 Template.event_cloud.events
     'click .selecttag': -> selected_event_tags.push @name
     'click .unselecttag': -> selected_event_tags.remove @valueOf()
     'click #cleartags': -> selected_event_tags.clear()
+    
+    
+    'click #add_event': ->
+        Meteor.call 'add_event', (err, id)->
+            if err then console.error err
+            else FlowRouter.go "/events/edit/#{id}"

@@ -1,8 +1,20 @@
+Docs.helpers
+    attendees: ->
+        if @attendee_ids
+            attendeeArray = []
+            for id in @attendee_ids
+                attendeeArray.push(Meteor.users.findOne(id)?.profile.name)
+            attendeeArray
+        else return
+
+
+
+
 Meteor.methods
     add_event: ()->
         Docs.insert
             type: 'event'
-            tags: ['event']
+            tags: []
 
     delete_event: (id)->
         Docs.remove id

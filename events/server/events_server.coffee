@@ -3,8 +3,9 @@ Meteor.publish 'event_tags', (selected_tags)->
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
     # match.authorId = $ne: @userId
+    match.type = 'event'
 
-    tagCloud = Events.aggregate [
+    tagCloud = Docs.aggregate [
         { $match: match }
         { $project: "tags": 1 }
         { $unwind: "$tags" }

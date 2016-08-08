@@ -5,10 +5,6 @@ Template.events.helpers
     events: -> Docs.find()
 
 Template.events.events
-    'click #add_event': ->
-        Meteor.call 'add_event', (err, id)->
-            if err then console.error err
-            else FlowRouter.go "/events/edit/#{id}"
 
 
 
@@ -19,11 +15,11 @@ Template.event.onCreated ->
 
 Template.event.helpers
     tagClass: ->
-        if @valueOf() in selected_event_tags.array() then 'secondary' else 'basic'
+        if @valueOf() in selected_event_tags.array() then 'red' else 'basic'
 
     attending: -> if @attendee_ids and Meteor.userId() in @attendee_ids then true else false
 
-    isHost: -> @author_id is Meteor.userId()
+    can_edit: -> @author_id is Meteor.userId()
 
     eventMessages: -> Messages.find eventId: @_id
 
@@ -52,3 +48,6 @@ Template.event.events
     'click .cancelEvent': ->
         if confirm 'Cancel event?'
             Events.remove @_id
+            
+    'click .edit_event': ->
+        FlowRouter.go "/events/edit/#{@_id}"

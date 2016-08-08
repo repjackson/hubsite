@@ -49,6 +49,8 @@ email@1.1.16
 facebook@1.2.8
 fastclick@1.0.12
 flemay:less-autoprefixer@1.2.0
+fortawesome:fontawesome@4.4.0_1
+froala:editor@2.3.4
 geojson-utils@1.0.9
 github@1.1.8
 gwendall:body-events@0.1.6

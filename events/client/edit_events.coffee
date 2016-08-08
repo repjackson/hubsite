@@ -99,15 +99,17 @@ Template.edit_event.events
 
     'click #save_event': ->
         description = $('#description').val()
-        date = $('#datetimepicker').val()
+        date = $('#date').val()
+        title = $('#title').val()
         Docs.update FlowRouter.getParam('event_id'),
             $set:
                 description: description
                 date: date
+                title: title
                 # tagCount: @tags.length
-        # selected_event_tags.clear()
-        # for tag in tags
-        #     selected_event_tags.push tag
+        selected_event_tags.clear()
+        for tag in @tags
+            selected_event_tags.push tag
         FlowRouter.go '/events'
 
 
@@ -123,15 +125,64 @@ Template.edit_event.events
         selected_type_of_event_tags.clear()
 
 
-    'blur #title': ->
-        title = $('#title').val()
-        if title.length is 0
-            swal 'Must include title', 'danger'
-        else
-            Docs.update FlowRouter.getParam('event_id'),
-                $set: title: title
+    # 'blur #title': ->
+    #     # title = $('#title').val()
+    #     # if title.length is 0
+    #     #     swal 'Must include title'
+    #     # else
+    #     Docs.update FlowRouter.getParam('event_id'),
+    #         $set: title: title
 
 Template.edit_event.onRendered ->
     Meteor.setTimeout (->
-        $('#datetimepicker').datetimepicker()
+        $('#description').froalaEditor
+            heightMin: 200
+            # toolbarInline: true
+            # toolbarButtonsMD: ['bold', 'italic', 'fontSize', 'undo', 'redo', '|', 'insertImage', 'insertVideo','insertFile']
+            # toolbarButtonsSM: ['bold', 'italic', 'fontSize', 'undo', 'redo', '|', 'insertImage', 'insertVideo','insertFile']
+            # toolbarButtonsXS: ['bold', 'italic', 'fontSize', 'undo', 'redo', '|', 'insertImage', 'insertVideo','insertFile']
+            toolbarButtons: 
+                [
+                  'fullscreen'
+                  'bold'
+                  'italic'
+                  'underline'
+                  'strikeThrough'
+                  'subscript'
+                  'superscript'
+                #   'fontFamily'
+                #   'fontSize'
+                  '|'
+                  'color'
+                  'emoticons'
+                #   'inlineStyle'
+                #   'paragraphStyle'
+                  '|'
+                  'paragraphFormat'
+                  'align'
+                  'formatOL'
+                  'formatUL'
+                  'outdent'
+                  'indent'
+                  'quote'
+                  'insertHR'
+                  '-'
+                  'insertLink'
+                  'insertImage'
+                  'insertVideo'
+                  'insertFile'
+                  'insertTable'
+                  'undo'
+                  'redo'
+                  'clearFormatting'
+                  'selectAll'
+                  'html'
+                ]
+        ), 500
+
+    
+    
+    
+    Meteor.setTimeout (->
+        $('#date').datetimepicker()
         ), 500
