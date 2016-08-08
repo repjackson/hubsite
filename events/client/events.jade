@@ -10,11 +10,11 @@ template(name='event')
             .header
                 h2.ui.header #{title}
             .description
-                .ui.header Event Topics:
+                // .ui.header Event Topics:
                 each tags
                     .ui.compact.button.tag(class=tagClass) #{this}
                 .ui.header Date: 
-                |#{date}
+                |#{start_date} to #{end_date}
                 .ui.header Description: 
                 |!{description}
         .content

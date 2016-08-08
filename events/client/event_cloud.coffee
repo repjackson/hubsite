@@ -7,7 +7,7 @@ Template.event_cloud.helpers
     globaltags: ->
         # userCount = Meteor.users.find().count()
         # if 0 < userCount < 3 then tags.find { count: $lt: userCount } else tags.find()
-        Eventtags.find()
+        Event_tags.find()
 
     globaltagClass: ->
         buttonClass = switch
@@ -24,9 +24,9 @@ Template.event_cloud.helpers
 
 
 Template.event_cloud.events
-    'click .selecttag': -> selected_event_tags.push @name
-    'click .unselecttag': -> selected_event_tags.remove @valueOf()
-    'click #cleartags': -> selected_event_tags.clear()
+    'click .select_tag': -> selected_event_tags.push @name
+    'click .unselect_tag': -> selected_event_tags.remove @valueOf()
+    'click #clear_tags': -> selected_event_tags.clear()
     
     
     'click #add_event': ->

@@ -1,0 +1,22 @@
+template(name='posts')
+    .ui.container
+        each posts
+            +post
+
+
+template(name='post')
+    .ui.fluid.card
+        .content
+            .header
+                h2.ui.header #{title}
+            .description
+                // .ui.header Post Topics:
+                each tags
+                    .ui.compact.button.post_tag(class=post_tag_class) #{this}
+                .ui.header Text: 
+                |!{description}
+        .extra.content
+            if can_edit
+                .edit_post.ui.labeled.primary.basic.icon.button
+                    i.pencil.icon
+                    |Edit post

@@ -1,8 +1,6 @@
 signInRequired = FlowRouter.group(triggersEnter: [ AccountsTemplates.ensureSignedIn ])
 
 
-
-
 FlowRouter.route '/', action: (params) ->
     BlazeLayout.render 'layout',
         nav: 'nav'
@@ -31,11 +29,6 @@ FlowRouter.route '/conversations', action: (params) ->
         cloud: 'conversation_cloud'
         main: 'conversations'
 
-FlowRouter.route '/events', action: (params) ->
-    BlazeLayout.render 'layout',
-        nav: 'nav'
-        cloud: 'event_cloud'
-        main: 'events'
 
 FlowRouter.route '/wins', action: (params) ->
     BlazeLayout.render 'layout',
@@ -47,21 +40,41 @@ FlowRouter.route '/wins', action: (params) ->
 #         main: 'conversation'
 
 
+
+
 # Events
 
-signInRequired.route '/events',
-    name: 'events'
-    action: ->
-        BlazeLayout.render 'layout', main: 'events'
-        setTitle 'Events'
+FlowRouter.route '/events', action: (params) ->
+    BlazeLayout.render 'layout',
+        nav: 'nav'
+        cloud: 'event_cloud'
+        main: 'events'
 
 signInRequired.route '/events/edit/:event_id', action: (params) ->
     BlazeLayout.render 'layout',
         main: 'edit_event'
 
-signInRequired.route '/events/view/:event_id', action: (params) ->
+FlowRouter.route '/events/view/:event_id', action: (params) ->
     BlazeLayout.render 'layout',
         main: 'view_event'
+
+
+
+
+# Blog
+
+FlowRouter.route '/posts', action: ->
+    BlazeLayout.render 'layout', 
+        cloud: 'post_cloud'
+        main: 'posts'
+
+signInRequired.route '/posts/edit/:post_id', action: (params) ->
+    BlazeLayout.render 'layout',
+        main: 'edit_post'
+
+FlowRouter.route '/posts/view/:post_id', action: (params) ->
+    BlazeLayout.render 'layout',
+        main: 'view_post'
 
 
 

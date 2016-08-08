@@ -1,7 +1,7 @@
 .ui.segment.container
         h1.ui.center.aligned.header About Impact Hub Boulder
         img.ui.centered.image(src='/img/about_mashup_one.jpg', alt='')
-        p
+        .ui.basic.padded.segment
             | A 
             a(href='/mission-values/') mission and values-driven 
             i.arrow.circle.right.icon
@@ -9,10 +9,11 @@
         .ui.dashed.divider
         h2.ui.center.aligned.header About the International Impact Hub Network
         | Impact Hub Boulder is a proud member of the growing 
-        a(href='http://www.impacthub.net/') global Impact Hub network
+        a(href='http://www.impacthub.net/') Global Impact Hub Network
             i.arrow.right.icon
-        |. Though the network is geographically and culturally diverse, there is strong collaboration and knowledge sharing among the leadership and member communities of each Impact Hub. Visit any Impact Hub around the world and join our active and collaborative community.
-        .ui.four.column.stackable.grid
+            |.
+        |Though the network is geographically and culturally diverse, there is strong collaboration and knowledge sharing among the leadership and member communities of each Impact Hub. Visit any Impact Hub around the world and join our active and collaborative community.
+        .ui.four.column.stackable.padded.grid
             .center.aligned.column
                 img.ui.centered.image(src='/img/icon_open_impact_hubs.png', alt='icon_open_impact_hubs', width='160', height='160')
                 .ui.small.statistic
@@ -35,12 +36,12 @@
                     .label Countries
         .ui.dashed.divider
         h2.ui.center.aligned.header Meet the Impact Hub Team
-        .ui.stackable.cards
+        .ui.stackable.five.cards
             .ui.card
                 .image
                     img(src='/team/peter-mohr.jpg')
                 .content
-                    a.header Peter Mohr
+                    .header Peter Mohr
                     .meta
                         span.date Host
                     .description
@@ -52,7 +53,7 @@
                 .image
                     img(src='/team/Peter_Begley.png')
                 .content
-                    a.header Peter Begley
+                    .header Peter Begley
                     .meta
                         span.date CFO
                     .description
@@ -64,7 +65,7 @@
                 .image
                     img(src='/team/Maiyu_Ondaro.jpg')
                 .content
-                    a.header Maiyu Ondaro
+                    .header Maiyu Ondaro
                     .meta
                         span.date Events & Programs Manager
                     .description
@@ -76,7 +77,7 @@
                 .image
                     img(src='/team/Juliana_Maloy.jpg')
                 .content
-                    a.header Juliana Maloy
+                    .header Juliana Maloy
                     .meta
                         span.date Host
                     .description
@@ -88,7 +89,7 @@
                 .image
                     img(src='/team/Emmett_Skiles.jpg')
                 .content
-                    a.header Emmett Skiles
+                    .header Emmett Skiles
                     .meta
                         span.date Community & Operations Manager
                     .description
@@ -96,65 +97,66 @@
                 .extra.content
                     a(href='https://www.linkedin.com/in/emmettskiles')
                         i.linkedin.icon        
+        .ui.dashed.divider
         h2.ui.center.aligned.header Meet the Impact Hub Boulder Board
-        .ui.stackable.cards
+        .ui.stackable.five.cards
             .ui.card
                 .image
-                    img(src='/team/peter-mohr.jpg')
+                    img(src='/board/Scott_Kiere.jpg')
                 .content
-                    a.header Peter Mohr
+                    .header Scott Kiere
                     .meta
-                        span.date Host
-                    .description
-                        | Host with emphasis on graphic design and operations.
+                        span.date Board Member
+                    // .description
+                    //     | Host with emphasis on graphic design and operations.
                 .extra.content
-                    a(href='https://www.linkedin.com/in/peter-mohr-93a671a9')
+                    a(href='https://www.linkedin.com/in/scottkiere')
                         i.linkedin.icon
             .ui.card
                 .image
-                    img(src='/team/Peter_Begley.png')
+                    img(src='/board/Rich_Hoops.jpg')
                 .content
-                    a.header Peter Begley
+                    .header Rich Hoops
                     .meta
-                        span.date CFO
-                    .description
-                        | Financial oversight of Impact Hub Boulder.
+                        span.date Board Member
+                    // .description
+                    //     | Financial oversight of Impact Hub Boulder.
                 .extra.content
-                    a(href='https://www.linkedin.com/in/peterbegley')
+                    a(href='https://www.linkedin.com/in/rich-hoops-1134503')
                         i.linkedin.icon
             .ui.card
                 .image
-                    img(src='/team/Maiyu_Ondaro.jpg')
+                    img(src='/board/Joellen_Raderstorf.jpg')
                 .content
-                    a.header Maiyu Ondaro
+                    .header Joellen Raderstorf
                     .meta
-                        span.date Events & Programs Manager
-                    .description
-                        | Lead on day-to-day events and programs.
+                        span.date Board Member
+                    // .description
+                    //     | Lead on day-to-day events and programs.
                 .extra.content
-                    a(href='https://www.linkedin.com/in/maiyu-marsha-ondaro-23a541b2')
+                    a(href='https://www.linkedin.com/in/joellen-raderstorf-3264785')
                         i.linkedin.icon            
             .ui.card
                 .image
-                    img(src='/team/Juliana_Maloy.jpg')
+                    img(src='/board/Jim_Davidson.jpg')
                 .content
-                    a.header Juliana Maloy
+                    .header Jim Davidson
                     .meta
-                        span.date Host
-                    .description
-                        | Host with emphasis on member experience and events.
+                        span.date Board Member
+                    // .description
+                    //     | Host with emphasis on member experience and events.
                 .extra.content
-                    a(href='https://www.linkedin.com/in/juliana-maloy-824a4b111')
+                    a(href='https://www.linkedin.com/in/jgdavidson')
                         i.linkedin.icon
             .ui.card
                 .image
-                    img(src='/team/Emmett_Skiles.jpg')
+                    img(src='/board/GregBerry.jpg')
                 .content
-                    a.header Emmett Skiles
+                    .header Greg Berry
                     .meta
-                        span.date Community & Operations Manager
-                    .description
-                        | Day-to-day oversight of community and operations.
+                        span.date Board Member
+                    // .description
+                    //     | Day-to-day oversight of community and operations.
                 .extra.content
-                    a(href='https://www.linkedin.com/in/emmettskiles')
+                    a(href='https://www.linkedin.com/in/gregberry')
                         i.linkedin.icon

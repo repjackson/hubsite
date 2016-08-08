@@ -6,12 +6,12 @@ template(name='event_cloud')
                     i.green.plus.icon
                     |Add Event
         if selected_event_tags
-            #cleartags.ui.red.big.compact.icon.button
+            #clear_tags.ui.red.big.compact.icon.button
                 i.remove.icon
         if selected_event_tags
             each selected_event_tags
-                a.ui.red.big.compact.button.unselecttag
+                a.ui.red.big.compact.button.unselect_tag
                     strong #{this}
         each globaltags
-            .ui.compact.basic.button.selecttag(class=globaltagClass) #{this.name}
+            .ui.compact.basic.button.select_tag(class=globaltagClass) #{this.name}
                 small #{this.count}

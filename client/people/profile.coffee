@@ -92,18 +92,14 @@ Template.profile.events
                     Meteor.call 'addtag', tag, ->
                         $('#addtag').val('')
 
-    'keydown #username': (e,t)->
+    'keydown #name': (e,t)->
         e.preventDefault
-        username = $('#username').val().trim()
+        name = $('#name').val().trim()
         switch e.which
             when 13
-                if username.length > 0
-                    Meteor.call 'update_username', username, (err,res)->
-                        if err
-                            alert 'Username exists.'
-                            $('#username').val(Meteor.user().username)
-                        else
-                            alert "Updated username to #{username}."
+                if name.length > 0
+                    Meteor.call 'update_name', name, (err,res)->
+                        swal "Updated name to #{name}."
     
     'keydown #company': (e,t)->
         e.preventDefault
@@ -113,7 +109,7 @@ Template.profile.events
                 Meteor.users.update Meteor.userId(),
                     $set: "profile.company": company
                 , (err, res)->
-                    swal "Company updated to #{company}"
+                    swal "Updated Company to #{company}"
 
     'click .tag': ->
         tag = @valueOf()

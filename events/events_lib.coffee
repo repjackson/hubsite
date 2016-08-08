@@ -1,3 +1,7 @@
+@Event_tags = new Meteor.Collection 'event_tags'
+
+
+
 Docs.helpers
     attendees: ->
         if @attendee_ids

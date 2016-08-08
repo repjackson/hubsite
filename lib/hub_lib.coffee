@@ -2,8 +2,6 @@
 @Conversationtags = new Meteor.Collection 'conversation_tags'
 @Messages = new Meteor.Collection 'messages'
 @Conversations = new Meteor.Collection 'conversations'
-@Events = new Meteor.Collection 'events'
-@Eventtags = new Meteor.Collection 'event_tags'
 @Docs = new Meteor.Collection 'docs'
 
 Docs.before.insert (userId, doc)->
@@ -109,12 +107,9 @@ Meteor.methods
         Meteor.users.update Meteor.userId(),
             $addToSet: tags: tag
 
-    update_username: (username)->
-        existing_user = Meteor.users.findOne username:username
-        if existing_user then throw new Meteor.Error 500, 'username exists'
-        else
-            Meteor.users.update Meteor.userId(),
-                $set: username: username
+    update_name: (name)->
+        Meteor.users.update Meteor.userId(),
+            $set: "profile.name": name
 
     send_message: (body, recipientId) ->
         Messages.insert

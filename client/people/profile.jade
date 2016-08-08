@@ -6,7 +6,12 @@ template(name='profile')
                     label Your Name
                     .ui.left.icon.input
                         i.user.icon
-                        input#username(type='text' value=currentUser.profile.name)
+                        input#name(type='text' value=currentUser.profile.name)
+                .field
+                    label Your Company
+                    .ui.left.icon.input
+                        i.building.icon
+                        input#company(type='text' value=currentUser.profile.company)
                 .field
                     label Tags
                     each currentUser.tags
@@ -17,18 +22,14 @@ template(name='profile')
                         i.add.green.icon
                         input#addtag(type='text' autofocus='' placeholder='Add tag')
                 .field
-                    label Your Company
-                    .ui.left.icon.input
-                        i.building.icon
-                        input#company(type='text' value=currentUser.profile.company)
-            .ui.grid
-                .ui.four.wide.column
-                    +atForm
-        .ui.segment
-            .ui.header Matched People
-            each matchedUsersList
-                .ui.list
-                    .item
-                        strong #{this.matchedUser} (#{this.length}):
-                        each this.tagIntersection
-                            | #{this}, &nbsp;
+                    .ui.centered.grid
+                        .ui.six.wide.column
+                            +atForm
+        // .ui.segment
+        //     .ui.header Matched People
+        //     each matchedUsersList
+        //         .ui.list
+        //             .item
+        //                 strong #{this.matchedUser} (#{this.length}):
+        //                 each this.tagIntersection
+        //                     | #{this}, &nbsp;

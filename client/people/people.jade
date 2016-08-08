@@ -13,9 +13,7 @@ template(name='person')
         .content
             .header
                 i.user.icon
-                |#{username}
-                if isUser
-                    |(you)
+                |#{profile.name}
                 // if currentUser
                 //     unless isUser
                 //         .ui.small.basic.compact.button.converseWithUser
@@ -28,7 +26,7 @@ template(name='person')
         if currentUser
             unless isUser
                 .extra.content
-                    div Your common tags with #{username} (#{matchedtags.length})
+                    div Your common tags with #{profile.name} (#{matchedtags.length})
                     each matchedtags
                         .ui.basic.label #{this}
                     // div Message #{username}:

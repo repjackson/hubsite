@@ -6,13 +6,16 @@ template(name='edit_event')
                     label Title
                     input#title(type='text' placeholder='Title' value=title)
                 .field
-                    label Date and Time
-                    input#date(type='text' value=date)
+                    label Start Date/Time
+                    input#start_date(type='text' value=start_date)
+                .field
+                    label End Date/Time
+                    input#end_date(type='text' value=end_date)
                 .field
                     label Description
                     textarea#description(rows='5') #{description}
                 .field
-                    .ui.header Your Selected Tags
+                    label Event Tags
                     each tags
                         .ui.basic.button.event_tag
                             i.minus.icon
@@ -21,14 +24,14 @@ template(name='edit_event')
                         i.add.icon
                         input#add_event_tag(type='text' autofocus='' placeholder='Add Tag' maxlength='50')
                 if tags
-                    #save_event.ui.animated.large.green.button
-                        .visible.content Save
-                        .hidden.content
-                            i.right.check.icon
-                #delete_event.ui.animated.red.large.button
-                        .hidden.content 
-                            i.remove.icon
-                        .visible.content Delete
+                    #save_event.ui.large.green.button Save
+                        // .visible.content Save
+                        // .hidden.content
+                        //     i.right.check.icon
+                #delete_event.ui.red.large.button Delete
+                        // .hidden.content 
+                        //     i.remove.icon
+                        // .visible.content Delete
                     
 template(name="tag_result")
     .ui.label #{name}

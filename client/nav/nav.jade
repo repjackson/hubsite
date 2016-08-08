@@ -1,6 +1,6 @@
 template(name='nav')
-    .ui.container.red-nav-bar
-        .ui.red.inverted.large.menu
+    .red-nav-bar
+        .ui.red.inverted.big.stackable.menu
             .ui.container
                 a.item(href='/about' class="{{isActivePath '/about'}}")
                     i.info.icon
@@ -20,6 +20,9 @@ template(name='nav')
                 a.item(href='/become_member' class="{{isActivePath '/become_member'}}")
                     // i.calendar.icon
                     | Become A Member
+                a.item(href='/posts' class="{{isActivePath '/posts'}}")
+                    i.file.text.outline.icon
+                    | Blog
                 a.item(href='/rent' class="{{isActivePath '/rent'}}")
                     // i.calendar.icon
                     | Rent Our Space
@@ -31,8 +34,10 @@ template(name='nav')
 template(name='top_nav')
     .ui.inverted.menu
         .right.menu
-            // +atNavButton
-            // +loginButtons
+            a.icon.item(href='https://www.facebook.com/ImpactHubBoulder')
+                i.facebook.link.icon
+            a.icon.item(href='https://twitter.com/ImpactHubBldr')
+                i.twitter.link.icon
             if currentUser
                 a.item(href='/profile' class="{{isActivePath '/profile'}}")
                     i.user.icon

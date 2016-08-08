@@ -2,7 +2,8 @@ Template.events.onCreated ->
     @autorun -> Meteor.subscribe('events', selected_event_tags.array())
 
 Template.events.helpers
-    events: -> Docs.find()
+    events: -> 
+        Docs.find type: 'event'
 
 Template.events.events
 

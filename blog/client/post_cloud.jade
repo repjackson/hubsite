@@ -1,0 +1,17 @@
+template(name='post_cloud')
+    .ui.center.aligned.segment
+        .ui.header Browse Posts
+            if can_add_post
+                #add_post.ui.compact.basic.button
+                    i.green.plus.icon
+                    |Add Post
+        if selected_post_tags
+            #clear_tags.ui.red.big.compact.icon.button
+                i.remove.icon
+        if selected_post_tags
+            each selected_post_tags
+                a.ui.red.big.compact.button.unselect_tag
+                    strong #{this}
+        each all_post_tags
+            .ui.compact.basic.button.select_tag(class=post_tag_cloud_class) #{this.name}
+                small #{this.count}
