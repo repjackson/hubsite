@@ -12,6 +12,7 @@ Template.edit_post.helpers
     post: ->
         Docs.findOne FlowRouter.getParam('post_id')
     
+    unpicked_alchemy_tags: -> _.difference @alchemy_tags, @tags
 
         
 Template.edit_post.events
@@ -32,6 +33,22 @@ Template.edit_post.events
                 else
                     FlowRouter.go '/posts'
 
+
+    'change [name="upload_picture"]': (event, template) ->
+        post_id = FlowRouter.getParam('post_id')
+        # template.uploading.set true
+        console.log event.target.files
+        uploader = new (Slingshot.Upload)('myFileUploads')
+        uploader.send event.target.files[0], (error, download_url) ->
+            if error
+                # Log service detailed response.
+                console.error 'Error uploading', uploader.xhr.response
+                console.error 'Error uploading', error
+                alert error
+            else
+                Meteor.users.update Meteor.userId(), $push: 'profile.files': download_url
+                Docs.update post_id, $set: featured_image_url: download_url
+            return
 
     'keydown #add_post_tag': (e,t)->
         switch e.which
@@ -63,6 +80,25 @@ Template.edit_post.events
         for tag in @tags
             selected_post_tags.push tag
         FlowRouter.go '/posts'
+
+
+    'click #alchemy_suggest': ->
+        description = $('#description').val()
+        Docs.update FlowRouter.getParam('post_id'),
+            $set: description: description
+        Meteor.call 'alchemy_suggest', FlowRouter.getParam('post_id'), description
+
+
+    'click .add_alchemy_suggestion': ->
+        post_id = FlowRouter.getParam('post_id')
+        Docs.update post_id, $addToSet: tags: @valueOf()
+
+
+    'click #add_all_alchemy': ->
+        post_id = FlowRouter.getParam('post_id')
+        Docs.update post_id,
+            $addToSet: tags: $each: @alchemy_tags
+
 
 
 Template.edit_post.onRendered ->

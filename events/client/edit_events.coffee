@@ -14,29 +14,7 @@ Template.edit_event.helpers
         # docId = FlowRouter.getParam('event_id')
         Docs.findOne FlowRouter.getParam('event_id')
     
-    type_button_class: (type)->
-        # console.log type.hash.type.toString() 
-        if @type is type.hash.type.toString() then 'active' else 'basic'
 
-    settings: ->
-        {
-            position: 'bottom'
-            limit: 10
-            rules: [
-                {
-                    # token: ''
-                    collection: Tags
-                    field: 'name'
-                    matchAll: true
-                    template: Template.tag_result
-                }
-            ]
-        }
-    type_of_event_cloud: -> 
-        Tags.find()
-    
-    selected_type_of_event_tags: ->
-        selected_type_of_event_tags.array()
         
         
 Template.edit_event.events

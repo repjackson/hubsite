@@ -56,12 +56,12 @@ signInRequired.route '/events/edit/:event_id', action: (params) ->
 
 FlowRouter.route '/events/view/:event_id', action: (params) ->
     BlazeLayout.render 'layout',
-        main: 'view_event'
+        main: 'event_page'
 
 
 
 
-# Blog
+# Posts
 
 FlowRouter.route '/posts', action: ->
     BlazeLayout.render 'layout', 
@@ -74,7 +74,7 @@ signInRequired.route '/posts/edit/:post_id', action: (params) ->
 
 FlowRouter.route '/posts/view/:post_id', action: (params) ->
     BlazeLayout.render 'layout',
-        main: 'view_post'
+        main: 'post_page'
 
 
 
@@ -85,6 +85,11 @@ FlowRouter.route '/partners', action: (params) ->
     BlazeLayout.render 'layout',
         nav: 'nav'
         main: 'partners'
+
+FlowRouter.route '/academy', action: (params) ->
+    BlazeLayout.render 'layout',
+        nav: 'nav'
+        main: 'academy'
 
 FlowRouter.route '/rent', action: (params) ->
     BlazeLayout.render 'layout',

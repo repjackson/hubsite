@@ -28,7 +28,7 @@ Meteor.publish 'event_tags', (selected_tags)->
 Meteor.publish 'events', (selected_tags)->
     self = @
     match = {}
-    if selected_tags and selected_tags.length > 0 then match.tags = $all: selected_tags
+    if selected_tags.length > 0 then match.tags = $all: selected_tags
     match.type = 'event'
 
     Docs.find match

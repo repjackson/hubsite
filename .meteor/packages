@@ -45,3 +45,6 @@ accounts-twitter
 accounts-facebook
 iandouglas:accounts-ui-semantic-ui
 froala:editor
+http
+perak:codemirror
+edgee:slingshot

@@ -3,19 +3,22 @@ Template.events.onCreated ->
 
 Template.events.helpers
     events: -> 
-        Docs.find type: 'event'
+        match = {}
+        if selected_event_tags.array and selected_event_tags.array().length > 0 then match.tags = $all: selected_event_tags.array()
+        match.type = 'event'
+    
+        Docs.find match
 
-Template.events.events
 
 
 
 # Single
-Template.event.onCreated ->
-    @autorun -> Meteor.subscribe('eventMessages', Template.currentData()._id)
-    @autorun -> Meteor.subscribe('usernames')
+# Template.event.onCreated ->
+#     @autorun -> Meteor.subscribe('eventMessages', Template.currentData()._id)
+#     @autorun -> Meteor.subscribe('usernames')
 
 Template.event.helpers
-    tagClass: ->
+    event_tag_class: ->
         if @valueOf() in selected_event_tags.array() then 'red' else 'basic'
 
     attending: -> if @attendee_ids and Meteor.userId() in @attendee_ids then true else false
@@ -24,10 +27,13 @@ Template.event.helpers
 
     eventMessages: -> Messages.find eventId: @_id
 
+    day: -> moment(@start_date).format("dddd, MMMM Do");
+    start_time: -> moment(@start_date).format("h:mm a")
+    end_time: -> moment(@end_date).format("h:mm a")
 
 
 Template.event.events
-    'click .tag': ->
+    'click .event_tag': ->
         if @valueOf() in selected_event_tags.array() then selected_event_tags.remove @valueOf() else selected_event_tags.push @valueOf()
 
     'click .join_event': ->

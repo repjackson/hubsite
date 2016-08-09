@@ -4,13 +4,20 @@
 @Conversations = new Meteor.Collection 'conversations'
 @Docs = new Meteor.Collection 'docs'
 
+
+Slingshot.fileRestrictions 'myFileUploads',
+    allowedFileTypes: [
+        'image/png'
+        'image/jpeg'
+        'image/gif'
+    ]
+    maxSize: 10 * 1024 * 1024
+    
+    
+    
 Docs.before.insert (userId, doc)->
-    # doc.up_voters = [userId]
-    # doc.down_voters = []
     doc.timestamp = Date.now()
     doc.author_id = Meteor.userId()
-    # doc.username = Meteor.user().username
-    # doc.points = 1
     return
 
 Docs.after.update ((userId, doc, fieldNames, modifier, options) ->
@@ -18,8 +25,8 @@ Docs.after.update ((userId, doc, fieldNames, modifier, options) ->
 ), fetchPrevious: true
 
 Messages.helpers
-    author: -> Meteor.users.findOne @authorId
-    recipient: -> Meteor.users.findOne @recipientId
+    author: -> Meteor.users.findOne @author_id
+    recipient: -> Meteor.users.findOne @recipient_id
     when: -> moment(@timestamp).fromNow()
 
 Docs.helpers
