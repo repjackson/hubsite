@@ -1,0 +1,59 @@
+template(name='profile')
+    .ui.text.container
+        .ui.segment
+            .ui.form
+                .field
+                    if currentUser.profile.profile_image_url
+                        img.ui.medium.circular.centered.image(src=currentUser.profile.profile_image_url)
+                        a#remove_photo.ui.top.right.attached.basic.label
+                            i.remove.red.link.icon
+                            | Remove Photo
+                    else
+                        label Upload Profile Image
+                        .ui.input
+                            input(type='file' name='upload_picture' accept='image/*')
+                .field
+                    label Name
+                    .ui.left.icon.input
+                        i.user.icon
+                        input#name(type='text' value=currentUser.profile.name)
+                .field
+                    label Email
+                    each currentUser.emails
+                        .ui.list
+                            .item
+                                |#{this.address}
+                .field
+                    label Company
+                    .ui.left.icon.input
+                        i.building.icon
+                        input#company(type='text' value=currentUser.profile.company)
+                .field
+                    label Website
+                    .ui.left.icon.input
+                        i.linkify.icon
+                        input#website(type='text' value=currentUser.profile.website placeholder='home page, blog or company site, e.g. http://simplebits.com')
+                .field
+                    label Tags
+                    each currentUser.tags
+                        .ui.basic.button.tag
+                            i.remove.icon
+                            |#{this}
+                    .ui.left.icon.small.input
+                        i.add.green.icon
+                        input#addtag(type='text' placeholder='Add tag')
+                .field
+                    label Bio
+                    textarea#bio(rows='5')
+                .field
+                    .ui.centered.grid
+                        .ui.eight.wide.column
+                            +atForm
+        // .ui.segment
+        //     .ui.header Matched People
+        //     each matchedUsersList
+        //         .ui.list
+        //             .item
+        //                 strong #{this.matchedUser} (#{this.length}):
+        //                 each this.tagIntersection
+        //                     | #{this}, &nbsp;

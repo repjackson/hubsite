@@ -12,6 +12,6 @@ template(name='event_cloud')
             each selected_event_tags
                 a.ui.red.big.compact.button.unselect_tag
                     strong #{this}
-        each globaltags
-            .ui.compact.basic.button.select_tag(class=globaltagClass) #{this.name}
+        each event_tags
+            .ui.compact.basic.button.select_tag(class=event_tag_class) #{this.name}
                 small #{this.count}

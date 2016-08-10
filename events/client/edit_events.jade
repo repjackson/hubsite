@@ -1,10 +1,20 @@
 template(name='edit_event')
     with event
-        .ui.segment
+        .ui.container.segment
             .ui.form
                 .required.field
                     label Title
                     input#title(type='text' placeholder='Title' value=title)
+                .field
+                    if featured_image_url
+                        label Featured Image
+                        .ui.image
+                            img(src=featured_image_url)
+                            a#remove_photo.ui.right.corner.link.label
+                                i.remove.red.link.icon
+                    else
+                        label Upload Image (1Mb Max)
+                        input(type='file' name='upload_picture' accept='image/*')
                 .field
                     label Start Date/Time
                     input#start_date(type='text' value=start_date)
@@ -22,7 +32,7 @@ template(name='edit_event')
                             |#{this}
                     .ui.left.icon.input
                         i.add.icon
-                        input#add_event_tag(type='text' autofocus='' placeholder='Add Tag' maxlength='50')
+                        input#add_event_tag(type='text' placeholder='Add Tag' maxlength='50')
                 if tags
                     #save_event.ui.large.green.button Save
                         // .visible.content Save

@@ -4,12 +4,12 @@ Template.event_cloud.onCreated ->
     @autorun -> Meteor.subscribe('event_tags', selected_event_tags.array())
 
 Template.event_cloud.helpers
-    globaltags: ->
-        # userCount = Meteor.users.find().count()
-        # if 0 < userCount < 3 then tags.find { count: $lt: userCount } else tags.find()
-        Event_tags.find()
+    event_tags: ->
+        event_count = Events.find().count()
+        if 0 < event_count < 3 then Event_tags.find { count: $lt: event_count } else Event_tags.find()
+        # Event_tags.find()
 
-    globaltagClass: ->
+    event_tag_class: ->
         buttonClass = switch
             when @index <= 10 then 'big'
             when @index <= 20 then 'large'

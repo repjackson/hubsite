@@ -10,7 +10,7 @@ Template.edit_post.onCreated ->
 
 Template.edit_post.helpers
     post: ->
-        Docs.findOne FlowRouter.getParam('post_id')
+        Posts.findOne FlowRouter.getParam('post_id')
     
     unpicked_alchemy_tags: -> _.difference @alchemy_tags, @tags
 
@@ -47,22 +47,27 @@ Template.edit_post.events
                 alert error
             else
                 Meteor.users.update Meteor.userId(), $push: 'profile.files': download_url
-                Docs.update post_id, $set: featured_image_url: download_url
+                Posts.update post_id, $set: featured_image_url: download_url
             return
+            
+            
+    'click #remove_photo': ->
+        Posts.update FlowRouter.getParam('post_id'), 
+            $unset: featured_image_url: 1
+            
 
     'keydown #add_post_tag': (e,t)->
-        switch e.which
-            when 13
-                post_id = FlowRouter.getParam('post_id')
-                tag = $('#add_post_tag').val().toLowerCase().trim()
-                if tag.length > 0
-                    Docs.update post_id,
-                        $addToSet: tags: tag
-                    $('#add_post_tag').val('')
+        if e.which is 13
+            post_id = FlowRouter.getParam('post_id')
+            tag = $('#add_post_tag').val().toLowerCase().trim()
+            if tag.length > 0
+                Posts.update post_id,
+                    $addToSet: tags: tag
+                $('#add_post_tag').val('')
 
     'click .post_tag': (e,t)->
         tag = @valueOf()
-        Docs.update FlowRouter.getParam('post_id'),
+        Posts.update FlowRouter.getParam('post_id'),
             $pull: tags: tag
         $('#add_post_tag').val(tag)
 
@@ -71,7 +76,7 @@ Template.edit_post.events
     'click #save_post': ->
         title = $('#title').val()
         description = $('#description').val()
-        Docs.update FlowRouter.getParam('post_id'),
+        Posts.update FlowRouter.getParam('post_id'),
             $set:
                 description: description
                 title: title
@@ -84,19 +89,19 @@ Template.edit_post.events
 
     'click #alchemy_suggest': ->
         description = $('#description').val()
-        Docs.update FlowRouter.getParam('post_id'),
+        Posts.update FlowRouter.getParam('post_id'),
             $set: description: description
         Meteor.call 'alchemy_suggest', FlowRouter.getParam('post_id'), description
 
 
     'click .add_alchemy_suggestion': ->
         post_id = FlowRouter.getParam('post_id')
-        Docs.update post_id, $addToSet: tags: @valueOf()
+        Posts.update post_id, $addToSet: tags: @valueOf()
 
 
     'click #add_all_alchemy': ->
         post_id = FlowRouter.getParam('post_id')
-        Docs.update post_id,
+        Posts.update post_id,
             $addToSet: tags: $each: @alchemy_tags
 
 

@@ -8,10 +8,10 @@ AccountsTemplates.configure
     overrideLoginErrors: true
     enablePasswordChange: true
 
-    # sendVerificationEmail: true
-    # enforceEmailVerification: true
-    #confirmPassword: true
-    #continuousValidation: false
+    sendVerificationEmail: true
+    enforceEmailVerification: false
+    confirmPassword: true
+    continuousValidation: true
     #displayFormLabels: true
     #forbidClientAccountCreation: true
     #formValidationFeedback: true
@@ -21,7 +21,7 @@ AccountsTemplates.configure
 
     negativeValidation: true
     positiveValidation: true
-    negativeFeedback: false
+    negativeFeedback: true
     positiveFeedback: true
 
     # Privacy Policy and Terms of Use
@@ -31,27 +31,27 @@ AccountsTemplates.configure
 pwd = AccountsTemplates.removeField('password')
 AccountsTemplates.removeField 'email'
 AccountsTemplates.addFields [
-    {
-        _id: 'username'
-        type: 'text'
-        displayName: 'username'
-        required: true
-        minLength: 3
-    }
     # {
-    #     _id: 'email'
-    #     type: 'email'
-    #     required: false
-    #     displayName: 'email'
-    #     re: /.+@(.+){2,}\.(.+){2,}/
-    #     errStr: 'Invalid email'
-    # }
-    # {
-    #     _id: 'username_and_email'
+    #     _id: 'username'
     #     type: 'text'
-    #     required: false
-    #     displayName: 'Login'
+    #     displayName: 'username'
+    #     required: true
+    #     minLength: 3
     # }
+    {
+        _id: 'email'
+        type: 'email'
+        required: true
+        displayName: 'email'
+        re: /.+@(.+){2,}\.(.+){2,}/
+        errStr: 'Invalid email'
+    }
+    {
+        _id: 'username_and_email'
+        type: 'text'
+        required: false
+        displayName: 'Login'
+    }
     pwd
 ]
 

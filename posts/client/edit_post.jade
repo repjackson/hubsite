@@ -1,17 +1,21 @@
 template(name='edit_post')
     with post
-        .ui.segment
+        .ui.container.segment
             .ui.form
                 .required.field
                     label Title
                     input#title(type='text' placeholder='Title' value=title)
                 .field
-                    label Upload Image
-                    input(type='file' name='upload_picture' accept='image/*')
-                if featured_image_url
-                    .field
-                        label Featured Image
-                        img.ui.medium.image(src=featured_image_url)
+                    if profile_image_url
+                        .ui.divider
+                            label Featured Image
+                            img.ui.medium.circular.image(src=profile_image_url)
+                            a#remove_photo.ui.top.right.attached.basic.label
+                                i.remove.red.link.icon
+                                | Remove Photo
+                    else
+                        label Upload Image (1Mb Max)
+                        input(type='file' name='upload_picture' accept='image/*')
                 .field
                     label Description
                     textarea#description(rows='5') #{description}
@@ -34,7 +38,7 @@ template(name='edit_post')
                             |#{this}
                     .ui.left.icon.input
                         i.add.icon
-                        input#add_post_tag(type='text' autofocus='' placeholder='Add Tag' maxlength='50')
+                        input#add_post_tag(type='text' placeholder='Add Tag' maxlength='50')
                 if tags
                     #save_post.ui.large.green.button Save
                 #delete_post.ui.red.large.button Delete

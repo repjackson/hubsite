@@ -3,7 +3,7 @@ template(name='nav')
         .ui.red.inverted.large.menu
             .ui.container
                 a.item(href='/about' class="{{isActivePath '/about'}}")
-                    i.info.icon
+                    i.info.circle.icon
                     |About
                 a.item(href='/people' class="{{isActivePath '/people'}}")
                     i.users.icon
@@ -15,19 +15,22 @@ template(name='nav')
                     i.calendar.icon
                     | Events
                 a.item(href='/partners' class="{{isActivePath '/partners'}}")
-                    // i.calendar.icon
+                    i.building.icon
                     | Partners
                 a.item(href='/academy' class="{{isActivePath '/academy'}}")
-                    // i.calendar.icon
+                    i.university.icon
                     | Programs
+                // a.item(href='/media' class="{{isActivePath '/media'}}")
+                //     i.photo.icon
+                //     | Media
                 a.item(href='/become_member' class="{{isActivePath '/become_member'}}")
-                    // i.calendar.icon
+                    i.add.user.icon
                     | Become A Member
                 a.item(href='/posts' class="{{isActivePath '/posts'}}")
                     i.file.text.outline.icon
                     | Blog
                 a.item(href='/rent' class="{{isActivePath '/rent'}}")
-                    // i.calendar.icon
+                    i.edit.icon
                     | Rent Our Space
                 // a.item(href='/wins' class="{{isActivePath '/wins'}}")
                 //     i.thumbs.up.icon
@@ -37,14 +40,16 @@ template(name='nav')
 template(name='top_nav')
     .ui.inverted.menu
         .right.menu
-            a.icon.item(href='https://www.facebook.com/ImpactHubBoulder')
-                i.facebook.link.icon
-            a.icon.item(href='https://twitter.com/ImpactHubBldr')
-                i.twitter.link.icon
             if currentUser
+                a.item(href='/admin' class="{{isActivePath '/admin'}}")
+                    i.setting.icon
+                    // | Messages (#{currentUser.unreadcount})
+                    | Admin
                 a.item(href='/profile' class="{{isActivePath '/profile'}}")
-                    i.user.icon
-                    // | Profile
+                    if currentUser.profile.profile_image_url
+                        img.ui.avatar.image(src=currentUser.profile.profile_image_url)
+                    else
+                        i.user.icon
                     | #{currentUser.profile.name}
                 a.item(href='/messages' class="{{isActivePath '/messages'}}")
                     i.mail.icon

@@ -1,5 +1,3 @@
-selected_type_of_event_tags = new ReactiveArray []
-
 Template.edit_event.onCreated ->
     self = @
     self.autorun ->
@@ -12,7 +10,7 @@ Template.edit_event.onCreated ->
 Template.edit_event.helpers
     event: ->
         # docId = FlowRouter.getParam('event_id')
-        Docs.findOne FlowRouter.getParam('event_id')
+        Events.findOne FlowRouter.getParam('event_id')
     
 
         
@@ -35,32 +33,45 @@ Template.edit_event.events
                 else
                     FlowRouter.go '/events'
 
-    'autocompleteselect #add_type_of_event_tag': (event, template, doc) ->
-        # console.log 'selected ', doc
-       Docs.update FlowRouter.getParam("event_id"), 
-            $addToSet: tags: doc.name
-        $('#add_type_of_event_tag').val('')
-        selected_type_of_event_tags.push doc.name
+    'change [name="upload_picture"]': (event, template) ->
+        event_id = FlowRouter.getParam('event_id')
+        # template.uploading.set true
+        console.log event.target.files
+        uploader = new (Slingshot.Upload)('myFileUploads')
+        uploader.send event.target.files[0], (error, download_url) ->
+            if error
+                # Log service detailed response.
+                # console.error 'Error uploading', uploader.xhr.response
+                console.error 'Error uploading', error
+                alert error
+            else
+                Meteor.users.update Meteor.userId(), $push: 'profile.files': download_url
+                Events.update event_id, $set: featured_image_url: download_url
+            return
+
+
+    'click #remove_photo': ->
+        Events.update FlowRouter.getParam('event_id'), 
+            $unset: featured_image_url: 1
 
 
 
     'keydown #add_event_tag': (e,t)->
-        switch e.which
-            when 13
-                event_id = FlowRouter.getParam('event_id')
-                tag = $('#add_event_tag').val().toLowerCase().trim()
-                if tag.length > 0
-                    Docs.update event_id,
-                        $addToSet: tags: tag
-                    $('#add_event_tag').val('')
+        if e.which is 13
+            event_id = FlowRouter.getParam('event_id')
+            tag = $('#add_event_tag').val().toLowerCase().trim()
+            if tag.length > 0
+                Events.update event_id,
+                    $addToSet: tags: tag
+                $('#add_event_tag').val('')
 
     'click .event_tag': (e,t)->
-        event = Docs.findOne FlowRouter.getParam('event_id')
+        event = Events.findOne FlowRouter.getParam('event_id')
         tag = @valueOf()
         if tag is event.type
-            Docs.update FlowRouter.getParam('event_id'),
+            Events.update FlowRouter.getParam('event_id'),
                 $set: type: ''
-        Docs.update FlowRouter.getParam('event_id'),
+        Events.update FlowRouter.getParam('event_id'),
             $pull: tags: tag
         $('#add_event_tag').val(tag)
 
@@ -69,9 +80,9 @@ Template.edit_event.events
         current_type = @type
         machine_type = e.currentTarget.id
         type = e.currentTarget.innerHTML.trim().toLowerCase()
-        Docs.update FlowRouter.getParam('event_id'),
+        Events.update FlowRouter.getParam('event_id'),
             $pull: tags: current_type
-        Docs.update FlowRouter.getParam('event_id'),
+        Events.update FlowRouter.getParam('event_id'),
             $set: type: machine_type
             $addToSet: tags: type
 
@@ -80,7 +91,7 @@ Template.edit_event.events
         description = $('#description').val()
         start_date = $('#start_date').val()
         end_date = $('#end_date').val()
-        Docs.update FlowRouter.getParam('event_id'),
+        Events.update FlowRouter.getParam('event_id'),
             $set:
                 description: description
                 start_date: start_date
@@ -93,25 +104,8 @@ Template.edit_event.events
         FlowRouter.go '/events'
 
 
-    'click .select_type_of_event_tag': -> 
-        selected_type_of_event_tags.push @name
-        Docs.update FlowRouter.getParam("event_id"), 
-            $addToSet: tags: @name
-
-    'click .unselect_type_of_event_tag': -> 
-        selected_type_of_event_tags.remove @valueOf()
-
-    'click #clear_type_of_event_tags': -> 
-        selected_type_of_event_tags.clear()
 
 
-    # 'blur #title': ->
-    #     # title = $('#title').val()
-    #     # if title.length is 0
-    #     #     swal 'Must include title'
-    #     # else
-    #     Docs.update FlowRouter.getParam('event_id'),
-    #         $set: title: title
 
 Template.edit_event.onRendered ->
     Meteor.setTimeout (->
@@ -183,11 +177,11 @@ Template.edit_event.onRendered ->
 
                 docid = FlowRouter.getParam 'event_id'
 
-                doc = Docs.findOne docid
+                doc = Events.findOne docid
                 tagsWithoutDate = _.difference(doc.tags, doc.datearray)
                 tagsWithNew = _.union(tagsWithoutDate, datearray)
 
-                Docs.update docid,
+                Events.update docid,
                     $set:
                         tags: tagsWithNew
                         datearray: datearray

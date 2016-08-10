@@ -105,3 +105,8 @@ FlowRouter.route '/become_member', action: (params) ->
     BlazeLayout.render 'layout',
         nav: 'nav'
         main: 'become_member'
+        
+FlowRouter.route '/admin', action: (params) ->
+    BlazeLayout.render 'layout',
+        nav: 'nav'
+        main: 'admin'

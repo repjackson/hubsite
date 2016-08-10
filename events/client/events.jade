@@ -1,48 +1,52 @@
 template(name='events')
-    .ui.container
-        each events
-            +event
+    .ui.container.segment
+        .ui.divided.items
+            each events
+                +event
 
 
 template(name='event')
-    .ui.fluid.card
+    .ui.item
+        .image
+            img.ui.medium.image(src=featured_image_url)
         .content
             .header
                 h2.ui.header #{title}
+            .meta
+                strong #{day} 
+                |from
+                strong #{start_time} 
+                |to 
+                strong #{end_time}
             .description
-                // .ui.header Event Topics:
+                |!{description}
+            .extra
                 each tags
-                    // .ui.compact.button.event_tag(class=event_tag_class) #{this}
-                    .ui.basic.label(class=event_tag_class) #{this}
-                .ui.subheader 
-                    strong #{day} 
-                    |from
-                    strong #{start_time} 
-                    |to 
-                    strong #{end_time}
-                // |#{start_date} to #{end_date}
-                .ui.basic.padded.segment
-                    |!{description}
-        if attendees
-            .content
-                .ui.header Attendees:
-                .ui.horizontal.list
-                    each attendees
-                        .item #{this}
-        .extra.content
-            if can_edit
-                .edit_event.ui.labeled.primary.basic.icon.button
-                    i.pencil.icon
-                    |Edit Event
-            if currentUser
-                if attending
-                    .ui.basic.button.leave_event
-                        i.red.minus.icon
-                        |Leave
+                    .ui.compact.button.event_tag(class=event_tag_class) #{this}
+                    // .ui.basic.label(class=event_tag_class) #{this}
+                if attendees
+                    .ui.header Attendees:
+                    .ui.horizontal.list
+                        each attendees
+                            .item 
+                                img.ui.avatar.image(src=this.profile.profile_image_url)
+                                strong #{this.profile.name}
+                                each this.tags
+                                    .ui.small.basic.label #{this}
+            .extra
+                if can_edit
+                    .edit_event.ui.labeled.right.floated.primary.basic.icon.button
+                        i.pencil.icon
+                        |Edit Event
+                if currentUser
+                    if attending
+                        .ui.basic.right.floated.button.leave_event
+                            i.red.minus.icon
+                            |Leave
+                    else
+                        .ui.basic.right.floated.button.join_event
+                            i.green.plus.icon
+                            |Join
                 else
-                    .ui.button.basic.join_event
-                        i.green.plus.icon
-                        |Join
-            else
-                p Sign in to attend    
-                
+                    p Sign in to attend    
+                    

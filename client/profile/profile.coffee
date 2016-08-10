@@ -101,6 +101,26 @@ Template.profile.events
                     Meteor.call 'update_name', name, (err,res)->
                         swal "Updated name to #{name}."
     
+    'change [name="upload_picture"]': (event, template) ->
+        # template.uploading.set true
+        console.log event.target.files
+        uploader = new (Slingshot.Upload)('myFileUploads')
+        uploader.send event.target.files[0], (error, download_url) ->
+            if error
+                # Log service detailed response.
+                console.error 'Error uploading', uploader.xhr.response
+                console.error 'Error uploading', error
+                alert error
+            else
+                Meteor.users.update Meteor.userId(), 
+                    $set: 'profile.profile_image_url': download_url
+                # Docs.update post_id, $set: featured_image_url: download_url
+            return
+
+    'click #remove_photo': ->
+        Meteor.users.update Meteor.userId(), 
+            $unset: 'profile.profile_image_url': 1
+    
     'keydown #company': (e,t)->
         e.preventDefault
         if e.which is 13
