@@ -1,3 +1,12 @@
+Posts.allow
+    insert: (userId, doc) -> doc.author_id is userId
+    update: (userId, doc) -> doc.author_id is userId
+    remove: (userId, doc) -> doc.author_id is userId
+
+
+
+
+
 Meteor.publish 'post_tags', (selected_tags)->
     self = @
     match = {}
@@ -34,3 +43,16 @@ Meteor.publish 'posts', (selected_tags)->
 Meteor.publish 'post', (id)->
     Posts.find id
     
+    
+    
+Meteor.publish 'featured_posts', ->
+    match = {}
+
+    Posts.find match, limit: 3
+    # Docs.find match,
+    #     fields:
+    #         tags: 1
+    #         attendee_ids: 1
+    #         host_id: 1
+    #         date_array: 1
+    #         date: 1

@@ -3,23 +3,17 @@ Template.edit_post.onCreated ->
     self = @
     self.autorun ->
         self.subscribe 'post', FlowRouter.getParam('post_id')
-        # self.subscribe 'tags', selected_type_of_post_tags.array(),"post"
-
-
-# Template.edit_post.onRendered ->
 
 Template.edit_post.helpers
     post: ->
         Posts.findOne FlowRouter.getParam('post_id')
     
-    unpicked_alchemy_tags: -> _.difference @alchemy_tags, @tags
-
         
 Template.edit_post.events
     'click #delete_post': ->
         swal {
             title: 'Delete post?'
-            text: 'Confirm delete?'
+            # text: 'Confirm delete?'
             type: 'error'
             showCancelButton: true
             closeOnConfirm: true
@@ -86,23 +80,6 @@ Template.edit_post.events
             selected_post_tags.push tag
         FlowRouter.go '/posts'
 
-
-    'click #alchemy_suggest': ->
-        description = $('#description').val()
-        Posts.update FlowRouter.getParam('post_id'),
-            $set: description: description
-        Meteor.call 'alchemy_suggest', FlowRouter.getParam('post_id'), description
-
-
-    'click .add_alchemy_suggestion': ->
-        post_id = FlowRouter.getParam('post_id')
-        Posts.update post_id, $addToSet: tags: @valueOf()
-
-
-    'click #add_all_alchemy': ->
-        post_id = FlowRouter.getParam('post_id')
-        Posts.update post_id,
-            $addToSet: tags: $each: @alchemy_tags
 
 
 

@@ -26,28 +26,6 @@ template(name='slider')
     
     
 
-template(name='featured_posts')
-    .ui.basic.very.padded.segment.container
-        h1.ui.header Featured Posts
-        .ui.three.stackable.cards
-            each featured_posts
-                +featured_post
-                
-                
-template(name='featured_post')
-    .ui.fluid.card
-        .content
-            .header
-                a(href="/posts/view/#{this._id}")
-                    h2.ui.header #{title}
-            .description
-                // .ui.header Post Topics:
-        .extra.content
-            if can_edit
-                .edit_post.ui.labeled.primary.basic.icon.button
-                    i.pencil.icon
-                    |Edit post
-                    
                     
 template(name='academy_widget')
     .ui.very.padded.basic.segment.container

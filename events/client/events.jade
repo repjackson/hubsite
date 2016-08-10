@@ -21,6 +21,7 @@ template(name='event')
             .description
                 |!{description}
             .extra
+                strong Event Tags:
                 each tags
                     .ui.compact.button.event_tag(class=event_tag_class) #{this}
                     // .ui.basic.label(class=event_tag_class) #{this}

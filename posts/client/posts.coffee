@@ -3,16 +3,16 @@ Template.posts.onCreated ->
 
 Template.posts.helpers
     posts: -> 
-        Docs.find type: 'post'
+        Posts.find {}
 
 Template.posts.events
 
 
 
 # Single
-Template.post.onCreated ->
-    @autorun -> Meteor.subscribe('post_messages', Template.currentData()._id)
-    @autorun -> Meteor.subscribe('usernames')
+# Template.post.onCreated ->
+#     @autorun -> Meteor.subscribe('post_messages', Template.currentData()._id)
+#     @autorun -> Meteor.subscribe('usernames')
 
 Template.post.helpers
     post_tag_class: -> if @valueOf() in selected_post_tags.array() then 'red' else 'basic'
@@ -30,12 +30,11 @@ Template.post.events
 
     'keydown .addMessage': (e,t)->
         e.preventDefault
-        switch e.which
-            when 13
-                text = t.find('.addMessage').value.trim()
-                if text.length > 0
-                    Meteor.call 'add_event_message', text, @_id, (err,res)->
-                        t.find('.addMessage').value = ''
+        if e.which is 13
+            text = t.find('.addMessage').value.trim()
+            if text.length > 0
+                Meteor.call 'add_event_message', text, @_id, (err,res)->
+                    t.find('.addMessage').value = ''
 
     'click .edit_post': ->
         FlowRouter.go "/posts/edit/#{@_id}"

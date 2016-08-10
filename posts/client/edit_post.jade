@@ -19,17 +19,6 @@ template(name='edit_post')
                 .field
                     label Description
                     textarea#description(rows='5') #{description}
-                    // div
-                    //     if unpicked_alchemy_tags.length
-                    //         .ui.segment
-                    //             h5.ui.header Suggested Tags
-                    //             div
-                    //                 each unpicked_alchemy_tags
-                    //                     .add_alchemy_suggestion.ui.small.compact.basic.button 
-                    //                         i.plus.icon
-                    //                         |#{this}
-                    //             #add_all_alchemy.ui.blue.button Add All Suggestions
-                    // #alchemy_suggest.ui.basic.button Suggest Tags
                 .field
                     label Post Tags
                     each tags
