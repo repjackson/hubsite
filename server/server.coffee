@@ -1,18 +1,13 @@
-Docs.allow
-    insert: (userId, doc) -> doc.author_id is userId
-    update: (userId, doc) -> doc.author_id is userId
-    remove: (userId, doc) -> doc.author_id is userId
-
 Conversations.allow
     update: (userId, doc, fieldNames, modifier) -> doc.authorId is Meteor.userId()
     remove: (userId, doc)-> doc.authorId is userId
 
 
-Meteor.publish 'wins', ->
-    Docs.find tags: $in: ['impact hub', 'boulder', 'win']
+Meteor.startup ->
+    reCAPTCHA.config privatekey: Meteor.settings.recaptcha_private
+    return
 
-Meteor.publish 'challenges', ->
-    Docs.find tags: $in: ['impact hub', 'boulder', 'challenges']
+
 
 
 Meteor.publish 'person', (id)->
@@ -130,3 +125,13 @@ Meteor.publish 'conversation_tags', (selectedtags)->
     self.ready()
 
 
+Meteor.methods 
+    formSubmissionMethod: (formData, captchaData) ->
+        verifyCaptchaResponse = reCAPTCHA.verifyCaptcha(@connection.clientAddress, captchaData)
+        if !verifyCaptchaResponse.success
+            console.log 'reCAPTCHA check failed!', verifyCaptchaResponse
+            throw new (Meteor.Error)(422, 'reCAPTCHA Failed: ' + verifyCaptchaResponse.error)
+        else
+            console.log 'reCAPTCHA verification passed!'
+        #do stuff with your formData
+        true

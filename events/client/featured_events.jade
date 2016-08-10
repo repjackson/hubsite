@@ -1,0 +1,18 @@
+template(name='featured_events')
+    .ui.basic.very.padded.segment.container
+        h1.ui.header Featured Events
+        .ui.three.stackable.cards
+            each featured_events
+                +featured_event
+          
+          
+          
+template(name='featured_event')
+    .ui.fluid.card
+        .content
+            .header
+                a(href="/events/view/#{this._id}")
+                    h2.ui.header #{title}
+            .description
+                // .ui.header Event Topics:
+                .ui.subheader Date: #{start_date} to #{end_date}

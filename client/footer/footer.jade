@@ -12,23 +12,28 @@ template(name='footer')
 template(name='contact_form')
     .ui.segment
         .ui.form
-            .grouped.required.fields
-                label(for='reason') I am contacting you to...
-                .field
-                    .ui.radio.checkbox
-                        input.hidden(type='radio', name='reason', checked='', tabindex='0')
-                        label Ask a question / provide feedback.
-                .field
-                    .ui.radio.checkbox
-                        input.hidden(type='radio', name='reason', tabindex='0')
-                        label Change, pause, or cancel my membership.
+            // .grouped.required.fields
+            //     label(for='reason') I am contacting you to...
+            //     .field
+            //         .ui.radio.checkbox
+            //             input.hidden(type='radio', name='reason', checked='', tabindex='0')
+            //             label Ask a question / provide feedback.
+            //     .field
+            //         .ui.radio.checkbox
+            //             input.hidden(type='radio', name='reason', tabindex='0')
+            //             label Change, pause, or cancel my membership.
             .required.field
                 label Name
-                input#name(type='text')
+                input#contact_name(type='text')
             .required.field
                 label Email
-                input#name(type='email')
-            .ui.labeled.icon.fluid.basic.button
+                input#contact_email(type='email')
+            .required.field
+                label Message
+                input#contact_message(type='text')
+            .field
+                +reCAPTCHA
+            #submit_contact_form.ui.labeled.icon.fluid.basic.button
                 i.send.icon
                 |Submit
 

@@ -16,6 +16,7 @@ Events.helpers
 Events.before.insert (userId, doc)->
     doc.timestamp = Date.now()
     doc.author_id = Meteor.userId()
+    attendee_ids = []
     return
 
 # Events.after.update ((userId, doc, fieldNames, modifier, options) ->

@@ -47,3 +47,17 @@ Meteor.publish 'events', (selected_tags)->
 
 Meteor.publish 'event', (id)->
     Events.find id
+    
+    
+    
+Meteor.publish 'featured_events', ->
+    match = {}
+
+    Events.find match, limit: 3
+    # Docs.find match,
+    #     fields:
+    #         tags: 1
+    #         attendee_ids: 1
+    #         host_id: 1
+    #         date_array: 1
+    #         date: 1

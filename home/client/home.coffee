@@ -1,14 +1,4 @@
 
-Template.featured_events.onCreated ->
-    self = @
-    self.autorun ->
-        self.subscribe 'featured_events'
-
-
-Template.featured_events.helpers
-    featured_events: -> 
-        Docs.find type:'event', 
-            limit: 3
 
 
 

@@ -25,24 +25,6 @@ template(name='slider')
     img.ui.fluid.attached.image(src='https://oakland.impacthub.net/wp-content/uploads/sites/128/2014/12/impact-hub-oakland-home-banner-with-text.jpg')
     
     
-template(name='featured_events')
-    .ui.basic.very.padded.segment.container
-        h1.ui.header Featured Events
-        .ui.three.stackable.cards
-            each featured_events
-                +featured_event
-          
-          
-          
-template(name='featured_event')
-    .ui.fluid.card
-        .content
-            .header
-                a(href="/events/view/#{this._id}")
-                    h2.ui.header #{title}
-            .description
-                // .ui.header Event Topics:
-                .ui.subheader Date: #{start_date} to #{end_date}
 
 template(name='featured_posts')
     .ui.basic.very.padded.segment.container
