@@ -45,14 +45,10 @@ accounts-twitter
 accounts-facebook
 iandouglas:accounts-ui-semantic-ui
 froala:editor
-http
 perak:codemirror
 edgee:slingshot
 email
 accounts-base
 altapp:recaptcha
 ejson
-orionjs:core
 aldeed:tabular
-nicolaslopezj:orion-admin-only-bootstrap
-orionjs:bootstrap

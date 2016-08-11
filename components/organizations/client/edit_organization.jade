@@ -1,5 +1,5 @@
-template(name='edit_event')
-    with event
+template(name='edit_organization')
+    with organization
         .ui.container.segment
             .ui.form
                 .required.field
@@ -16,29 +16,23 @@ template(name='edit_event')
                         label Upload Image (1Mb Max)
                         input(type='file' name='upload_picture' accept='image/*')
                 .field
-                    label Start Date/Time
-                    input#start_date(type='text' value=start_date)
-                .field
-                    label End Date/Time
-                    input#end_date(type='text' value=end_date)
-                .field
                     label Description
                     textarea#description(rows='5') #{description}
                 .field
-                    label Event Tags
+                    label Organization Tags
                     each tags
-                        .ui.basic.button.event_tag
+                        .ui.basic.button.organization_tag
                             i.minus.icon
                             |#{this}
                     .ui.left.icon.input
                         i.add.icon
-                        input#add_event_tag(type='text' placeholder='Add Tag' maxlength='50')
+                        input#add_organization_tag(type='text' placeholder='Add Tag' maxlength='50')
                 if tags
-                    #save_event.ui.large.green.button Save
+                    #save_organization.ui.large.green.button Save
                         // .visible.content Save
                         // .hidden.content
                         //     i.right.check.icon
-                #delete_event.ui.red.large.button Delete
+                #delete_organization.ui.red.large.button Delete
                         // .hidden.content 
                         //     i.remove.icon
                         // .visible.content Delete

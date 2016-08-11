@@ -1,40 +1,11 @@
-@selectedtags = new ReactiveArray []
 
-
-Template.profile.onCreated ->
-    @autorun -> Meteor.subscribe 'people'
-    @autorun -> Meteor.subscribe 'myTags', selectedtags.array()
+# Template.edit_profile.onCreated ->
+#     @autorun -> Meteor.subscribe 'people'
+#     @autorun -> Meteor.subscribe 'myTags', selectedtags.array()
 
 
 
-Template.profile.helpers
-    globalTags: ->
-        # docCount = Docs.find().count()
-        # if 0 < docCount < 3 then Tags.find { count: $lt: docCount } else Tags.find()
-        Tags.find()
-
-    # globalTagClass: ->
-    #     buttonClass = switch
-    #         when @index <= 20 then 'big'
-    #         when @index <= 40 then 'large'
-    #         when @index <= 60 then ''
-    #         when @index <= 80 then 'small'
-    #         when @index <= 100 then 'tiny'
-    #     return buttonClass
-
-    globalTagClass: ->
-        buttonClass = switch
-            when @index <= 10 then 'big'
-            when @index <= 20 then 'large'
-            when @index <= 30 then ''
-            when @index <= 40 then 'small'
-            when @index <= 50 then 'tiny'
-        return buttonClass
-
-    selectedtags: -> selectedtags.list()
-
-    people: -> Meteor.users.find()
-
+Template.edit_profile.helpers
     # matchedUsersList:->
     #     users = Meteor.users.find({_id: $ne: Meteor.userId()}).fetch()
     #     userMatches = []
@@ -80,7 +51,7 @@ Template.profile.helpers
     #     return sortedCloud
 
 
-Template.profile.events
+Template.edit_profile.events
     'keydown #addtag': (e,t)->
         e.preventDefault
         tag = $('#addtag').val().toLowerCase().trim()

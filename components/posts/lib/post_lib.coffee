@@ -41,3 +41,4 @@ FlowRouter.route '/posts/view/:post_id', action: (params) ->
     BlazeLayout.render 'layout',
         main: 'post_page'
 
+

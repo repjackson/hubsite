@@ -1,0 +1,35 @@
+template(name='organizations')
+    .ui.container.segment
+        .ui.divided.items
+            each organizations
+                +organization
+
+
+template(name='organization')
+    .ui.item
+        .image
+            img.ui.medium.image(src=featured_image_url)
+        .content
+            .header
+                h2.ui.header #{title}
+            .description
+                |!{description}
+            .extra
+                strong Organization Tags:
+                each tags
+                    .ui.compact.button.organization_tag(class=organization_tag_class) #{this}
+                    // .ui.basic.label(class=organization_tag_class) #{this}
+                if attendees
+                    .ui.header Attendees:
+                    .ui.horizontal.list
+                        each attendees
+                            .item 
+                                img.ui.avatar.image(src=this.profile.profile_image_url)
+                                strong #{this.profile.name}
+                                each this.tags
+                                    .ui.small.basic.label #{this}
+            .extra
+                if can_edit
+                    .edit_organization.ui.labeled.right.floated.primary.basic.icon.button
+                        i.pencil.icon
+                        |Edit organization
