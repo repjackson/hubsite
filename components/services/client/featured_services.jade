@@ -1,0 +1,19 @@
+template(name='featured_services')
+    .ui.attached.very.padded.segment.container
+        h1.ui.header Featured services
+        .ui.four.stackable.cards
+            each featured_services
+                +featured_service
+                
+                
+template(name='featured_service')
+    .ui.fluid.card
+        .image
+            a
+                img.ui.image.featured_service_title(src=featured_image_url)
+        .content
+            .header
+                a.featured_service_title
+                    h2.ui.header #{title}
+            .description
+                // .ui.header service Topics:

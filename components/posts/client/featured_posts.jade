@@ -1,0 +1,19 @@
+template(name='featured_posts')
+    .ui.attached.very.padded.segment.container
+        h1.ui.header Featured Posts
+        .ui.four.stackable.cards
+            each featured_posts
+                +featured_post
+                
+                
+template(name='featured_post')
+    .ui.fluid.card
+        .image
+            a
+                img.ui.image.featured_post_title(src=featured_image_url)
+        .content
+            .header
+                a.featured_post_title
+                    h2.ui.header #{title}
+            .description
+                // .ui.header Post Topics:

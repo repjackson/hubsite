@@ -1,0 +1,24 @@
+template(name='posts')
+    .ui.container.segment
+        .ui.divided.items
+            each posts
+                +post
+
+
+template(name='post')
+    .ui.item
+        .image
+            img.ui.medium.image(src=featured_image_url)
+        .content
+            .header
+                h2.ui.header #{title}
+            .meta
+                // .ui.header Post Topics:
+                each tags
+                    .ui.compact.button.post_tag(class=post_tag_class) #{this}
+                |!{description}
+            .extra
+                if can_edit
+                    .edit_post.ui.labeled.primary.basic.icon.button
+                        i.pencil.icon
+                        |Edit post    

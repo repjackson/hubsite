@@ -1,0 +1,33 @@
+template(name='edit_service')
+    with service
+        .ui.container.segment
+            .ui.form
+                .required.field
+                    label Title
+                    input#title(type='text' placeholder='Title' value=title)
+                .field
+                    if featured_image_url
+                        label Featured Image
+                        .ui.medium.image
+                            img(src=featured_image_url)
+                            a#remove_photo.ui.top.right.attached.basic.label
+                                i.remove.red.link.icon
+                                | Remove Photo
+                    else
+                        label Upload Image (1Mb Max)
+                        input(type='file' name='upload_picture' accept='image/*')
+                .field
+                    label Description
+                    textarea#description(rows='5') #{description}
+                .field
+                    label service Tags
+                    each tags
+                        .ui.basic.button.service_tag
+                            i.minus.icon
+                            |#{this}
+                    .ui.left.icon.input
+                        i.add.icon
+                        input#add_service_tag(type='text' placeholder='Add Tag' maxlength='50')
+                if tags
+                    #save_service.ui.large.green.button Save
+                #delete_service.ui.red.large.button Delete

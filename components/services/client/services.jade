@@ -1,0 +1,24 @@
+template(name='services')
+    .ui.container.segment
+        .ui.divided.items
+            each services
+                +service
+
+
+template(name='service')
+    .ui.item
+        .image
+            img.ui.medium.image(src=featured_image_url)
+        .content
+            .header
+                h2.ui.header #{title}
+            .meta
+                // .ui.header service Topics:
+                each tags
+                    .ui.compact.button.service_tag(class=service_tag_class) #{this}
+                |!{description}
+            .extra
+                if can_edit
+                    .edit_service.ui.labeled.primary.basic.icon.button
+                        i.pencil.icon
+                        |Edit service    

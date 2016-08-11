@@ -17,6 +17,9 @@ template(name='nav')
                 a.item(href='/partners' class="{{isActivePath '/partners'}}")
                     i.building.icon
                     | Partners
+                a.item(href='/organizations' class="{{isActivePath '/organizations'}}")
+                    i.building.icon
+                    | Organizations
                 a.item(href='/academy' class="{{isActivePath '/academy'}}")
                     i.university.icon
                     | Programs
@@ -45,7 +48,7 @@ template(name='top_nav')
                     i.setting.icon
                     // | Messages (#{currentUser.unreadcount})
                     | Admin
-                a.item(href='/profile' class="{{isActivePath '/profile'}}")
+                a.item(href="/profile/view/#{currentUser._id}" class="{{isActivePath '/profile'}}")
                     if currentUser.profile.profile_image_url
                         img.ui.avatar.image(src=currentUser.profile.profile_image_url)
                     else

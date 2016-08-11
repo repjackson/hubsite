@@ -50,6 +50,9 @@ perak:codemirror
 edgee:slingshot
 email
 accounts-base
-alanning:roles
 altapp:recaptcha
 ejson
+orionjs:core
+aldeed:tabular
+nicolaslopezj:orion-admin-only-bootstrap
+orionjs:bootstrap
