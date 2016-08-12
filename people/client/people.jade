@@ -1,0 +1,29 @@
+template(name='people')
+    .ui.container
+        // if currentUser
+        //     +profile
+        .ui.cards
+            each people
+                +person_card
+
+
+template(name='person_card')
+    .ui.card
+        a.image(href="/person/view/#{_id}")
+            img(src=person_image_url)
+        .content
+            .header
+                |#{name}
+                // if currentUser
+                //     unless isUser
+                //         .ui.small.basic.compact.button.converseWithUser
+                //             i.comment.icon
+                //             |Converse
+            .description
+                // h5.ui.header #{username}'s tags
+                each tags
+                    .ui.button.tag(class=tag_class) #{this}
+            h3.ui.header #{company}
+            div #{bio}
+            a(href=website target='_blank')
+                h4.ui.header #{website}

@@ -1,0 +1,17 @@
+with person
+    .ui.container.segment
+        .image
+            img(src=person_image_url)
+        h2.ui.header
+            |#{name}
+        .description
+            // h5.ui.header #{username}'s tags
+            each tags
+                .ui.basic.label #{this}
+        h3.ui.header #{company}
+        div #{bio}
+        a(href=website target='_blank')
+            h4.ui.header #{website}
+        if can_edit
+            a#edit_person.ui.basic.blue.button(href="/person/edit/#{_id}")
+                |Edit Person

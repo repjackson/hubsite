@@ -1,0 +1,17 @@
+template(name='people_cloud')
+    .ui.center.aligned.segment
+        .ui.header Browse Hub Members
+            if can_add
+                #add_person.ui.basic.button
+                    i.plus.icon
+                    |Add Profile
+        if selected_people_tags
+            #clear_tags.ui.red.big.compact.icon.circular.button
+                i.remove.icon
+        if selected_people_tags
+            each selected_people_tags
+                a.ui.red.big.compact.button.unselect_tag
+                    strong #{this}
+        each people_tags
+            .ui.compact.basic.button.select_tag(class=people_tag_class) #{this.name}
+                small #{this.count}

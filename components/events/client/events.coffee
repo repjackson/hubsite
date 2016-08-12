@@ -14,7 +14,7 @@ Template.events.helpers
 #     @autorun -> Meteor.subscribe('eventMessages', Template.currentData()._id)
 #     @autorun -> Meteor.subscribe('usernames')
 
-Template.event.helpers
+Template.event_card.helpers
     event_tag_class: -> if @valueOf() in selected_event_tags.array() then 'red' else 'basic'
 
     attending: -> if @attendee_ids and Meteor.userId() in @attendee_ids then true else false
@@ -29,7 +29,7 @@ Template.event.helpers
 
     snippet: -> @description.substr(1, 100)
 
-Template.event.events
+Template.event_card.events
     'click .event_tag': ->
         if @valueOf() in selected_event_tags.array() then selected_event_tags.remove @valueOf() else selected_event_tags.push @valueOf()
 

@@ -1,9 +1,7 @@
-@Peopletags = new Meteor.Collection 'people_tags'
-@Conversationtags = new Meteor.Collection 'conversation_tags'
+@Conversation_tags = new Meteor.Collection 'conversation_tags'
 @Messages = new Meteor.Collection 'messages'
 @Conversations = new Meteor.Collection 'conversations'
 @Docs = new Meteor.Collection 'docs'
-
 
 Slingshot.fileRestrictions 'myFileUploads',
     allowedFileTypes: [

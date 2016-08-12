@@ -10,7 +10,7 @@ Meteor.startup ->
 
 
 
-Meteor.publish 'person', (id)->
+Meteor.publish 'user', (id)->
     Meteor.users.find id,
         fields:
             tags: 1
@@ -49,7 +49,7 @@ Meteor.publish 'received_messages', ->
 
 
 
-Meteor.publish 'people', (selectedtags=[])->
+Meteor.publish 'users', (selectedtags=[])->
     self = @
     match = {}
     if selectedtags.length > 0 then match.tags = $all: selectedtags
@@ -71,32 +71,6 @@ Meteor.publish 'conversations', (selectedtags)->
             authorId: 1
             participantIds: 1
 
-
-
-Meteor.publish 'people_tags', (selectedtags)->
-    self = @
-    match = {}
-    if selectedtags?.length > 0 then match.tags = $all: selectedtags
-    match._id = $ne: @userId
-
-    tagCloud = Meteor.users.aggregate [
-        { $match: match }
-        { $project: "tags": 1 }
-        { $unwind: "$tags" }
-        { $group: _id: "$tags", count: $sum: 1 }
-        { $match: _id: $nin: selectedtags }
-        { $sort: count: -1, _id: 1 }
-        { $limit: 50 }
-        { $project: _id: 0, name: '$_id', count: 1 }
-        ]
-
-    tagCloud.forEach (tag, i) ->
-        self.added 'people_tags', Random.id(),
-            name: tag.name
-            count: tag.count
-            index: i
-
-    self.ready()
 
 
 Meteor.publish 'conversation_tags', (selectedtags)->

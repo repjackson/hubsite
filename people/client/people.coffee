@@ -3,17 +3,17 @@ Template.people.onCreated ->
     # @autorun -> Meteor.subscribe('me')
 
 Template.people.helpers
-    people: -> Meteor.users.find({ _id: $ne: Meteor.userId() })
+    people: -> People.find({ _id: $ne: Meteor.userId() })
     # people: -> Meteor.users.find()
 
 
-Template.person.onCreated ->
+Template.person_card.onCreated ->
     @autorun -> Meteor.subscribe('conversationMessages', Template.currentData()._id)
     # console.log Template.currentData()
     # Meteor.subscribe 'person', @data._id
 
 
-Template.person.helpers
+Template.person_card.helpers
     isUser: -> @_id is Meteor.userId()
 
     tag_class: -> if @valueOf() in selected_people_tags.array() then 'red' else 'basic'
@@ -23,7 +23,7 @@ Template.person.helpers
     # conversationMessages: -> Messages.find()
 
 
-Template.person.events
+Template.person_card.events
     'click .tag': ->
         if @valueOf() in selected_people_tags.array() then selected_people_tags.remove @valueOf() else selected_people_tags.push @valueOf()
 

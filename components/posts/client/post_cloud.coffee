@@ -5,18 +5,18 @@ Template.post_cloud.onCreated ->
 
 Template.post_cloud.helpers
     all_post_tags: ->
-        # userCount = Meteor.users.find().count()
-        # if 0 < userCount < 3 then tags.find { count: $lt: userCount } else tags.find()
-        Post_tags.find()
+        post_count = Posts.find().count()
+        if 0 < post_count < 3 then Post_tags.find { count: $lt: post_count } else Post_tags.find()
+        # Post_tags.find()
 
     post_tag_cloud_class: ->
-        buttonClass = switch
+        button_class = switch
             when @index <= 10 then 'big'
             when @index <= 20 then 'large'
             when @index <= 30 then ''
             when @index <= 40 then 'small'
             when @index <= 50 then 'tiny'
-        return buttonClass
+        return button_class
 
     selected_post_tags: -> selected_post_tags.list()
 
