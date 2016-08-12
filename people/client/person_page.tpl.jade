@@ -1,17 +1,25 @@
 with person
-    .ui.container.segment
-        .image
-            img(src=person_image_url)
+    .ui.text.container.segment
+        img.ui.centered.medium.circular.image(src=person_image_url)
         h2.ui.header
             |#{name}
-        .description
-            // h5.ui.header #{username}'s tags
-            each tags
-                .ui.basic.label #{this}
-        h3.ui.header #{company}
-        div #{bio}
-        a(href=website target='_blank')
-            h4.ui.header #{website}
+        h4.ui.header 
+            i.building.icon
+            |#{company}
+        h4.ui.header 
+            |#{position}
+        h4.ui.header
+            a(href=website target='_blank')
+                i.linkify.icon
+                |#{website}
+        if linkedin
+            a.ui.circular.large.blue.icon.button(href=linkedin target='_blank')
+                i.linkedin.icon
+        .ui.hidden.divider
+        i.large.tags.icon
+        each tags
+            .ui.basic.label #{this}
+        .ui.padded.basic.segment {{nl2br bio}}
         if can_edit
             a#edit_person.ui.basic.blue.button(href="/person/edit/#{_id}")
                 |Edit Person

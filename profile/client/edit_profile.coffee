@@ -72,7 +72,7 @@ Template.edit_profile.events
     
     'change [name="upload_picture"]': (event, template) ->
         # template.uploading.set true
-        console.log event.target.files
+        ##console.log event.target.files
         uploader = new (Slingshot.Upload)('myFileUploads')
         uploader.send event.target.files[0], (error, download_url) ->
             if error

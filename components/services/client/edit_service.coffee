@@ -31,7 +31,7 @@ Template.edit_service.events
     'change [name="upload_picture"]': (event, template) ->
         service_id = FlowRouter.getParam('service_id')
         # template.uploading.set true
-        console.log event.target.files
+        ##console.log event.target.files
         uploader = new (Slingshot.Upload)('myFileUploads')
         uploader.send event.target.files[0], (error, download_url) ->
             if error

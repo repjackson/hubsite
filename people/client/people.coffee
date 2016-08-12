@@ -24,7 +24,7 @@ Template.person_card.helpers
 
 
 Template.person_card.events
-    'click .tag': ->
+    'click .person_tag': ->
         if @valueOf() in selected_people_tags.array() then selected_people_tags.remove @valueOf() else selected_people_tags.push @valueOf()
 
     # 'click .converseWithUser': ->

@@ -24,10 +24,19 @@ template(name='edit_person')
                             i.building.icon
                             input#company(type='text' value=company)
                     .field
+                        label Position
+                        .ui.left.icon.input
+                            input#position(type='text' value=position)
+                    .field
                         label Website
                         .ui.left.icon.input
                             i.linkify.icon
                             input#website(type='text' value=website)
+                    .field
+                        label Linkedin
+                        .ui.left.icon.input
+                            i.linkedin.icon
+                            input#linkedin(type='text' value=linkedin)
                     .field
                         label Tags
                         each tags
