@@ -79,10 +79,12 @@ Template.edit_organization.events
 
     'click #save_organization': ->
         title = $('#title').val()
+        link = $('#link').val()
         description = $('#description').val()
         Organizations.update FlowRouter.getParam('organization_id'),
             $set:
                 title: title
+                link: link
                 description: description
                 # tagCount: @tags.length
         selected_organization_tags.clear()

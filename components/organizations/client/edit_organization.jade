@@ -16,6 +16,11 @@ template(name='edit_organization')
                         label Upload Image (1Mb Max)
                         input(type='file' name='upload_picture' accept='image/*')
                 .field
+                    label Link (include http://)
+                    .ui.left.icon.input
+                        i.linkify.icon
+                        input#link(type='text' value=link placeholder='http://www')
+                .field
                     label Description
                     textarea#description(rows='5') #{description}
                 .field
@@ -28,12 +33,6 @@ template(name='edit_organization')
                         i.add.icon
                         input#add_organization_tag(type='text' placeholder='Add Tag' maxlength='50')
                 if tags
-                    #save_organization.ui.large.green.button Save
-                        // .visible.content Save
-                        // .hidden.content
-                        //     i.right.check.icon
-                #delete_organization.ui.red.large.button Delete
-                        // .hidden.content 
-                        //     i.remove.icon
-                        // .visible.content Delete
-                    
+                    #save_organization.ui.big.green.button Save
+                #delete_organization.ui.red.button Delete
+                        

@@ -52,6 +52,7 @@ Meteor.publish 'event', (id)->
     
 Meteor.publish 'featured_events', ->
     match = {}
+    match.featured = true
 
     Events.find match, limit: 3
     # Docs.find match,

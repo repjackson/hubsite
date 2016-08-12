@@ -69,11 +69,13 @@ Template.edit_post.events
 
     'click #save_post': ->
         title = $('#title').val()
+        publish_date = $('#publish_date').val()
         description = $('#description').val()
         Posts.update FlowRouter.getParam('post_id'),
             $set:
-                description: description
                 title: title
+                publish_date: publish_date
+                description: description
                 # tagCount: @tags.length
         selected_post_tags.clear()
         for tag in @tags

@@ -21,7 +21,7 @@ Template.post.helpers
 
     post_messages: -> Messages.find post_id: @_id
 
-
+    publish_when: -> moment(@publish_date).fromNow()
 
 Template.post.events
     'click .post_tag': ->

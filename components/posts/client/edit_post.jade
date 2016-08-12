@@ -17,6 +17,9 @@ template(name='edit_post')
                         label Upload Image (1Mb Max)
                         input(type='file' name='upload_picture' accept='image/*')
                 .field
+                    label Publish Date
+                    input#publish_date(type='date' value=publish_date)
+                .field
                     label Description
                     textarea#description(rows='5') #{description}
                 .field

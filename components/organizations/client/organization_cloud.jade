@@ -1,10 +1,10 @@
 template(name='organization_cloud')
     .ui.center.aligned.segment
-        .ui.header Browse organizations
+        .ui.header Browse Organizations
             if can_add_organization
                 #add_organization.ui.compact.basic.button
                     i.green.plus.icon
-                    |Add organization
+                    |Add Organization
         if selected_organization_tags
             #clear_tags.ui.red.big.compact.icon.button
                 i.remove.icon
@@ -14,4 +14,4 @@ template(name='organization_cloud')
                     strong #{this}
         each organization_tags
             .ui.compact.basic.button.select_tag(class=organization_tag_class) #{this.name}
-                small #{this.count}
+                // small #{this.count}

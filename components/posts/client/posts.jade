@@ -12,13 +12,13 @@ template(name='post')
         .content
             .header
                 h2.ui.header #{title}
-            .meta
-                // .ui.header Post Topics:
-                each tags
-                    .ui.compact.button.post_tag(class=post_tag_class) #{this}
+            .meta Published #{publish_when}
+            .description
                 |!{description}
             .extra
+                each tags
+                    .ui.compact.button.post_tag(class=post_tag_class) #{this}
                 if can_edit
-                    .edit_post.ui.labeled.primary.basic.icon.button
+                    .edit_post.ui.labeled.primary.basic.right.floated.icon.button
                         i.pencil.icon
                         |Edit post    

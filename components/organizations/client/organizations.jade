@@ -12,10 +12,12 @@ template(name='organization')
         .content
             .header
                 h2.ui.header #{title}
+            .meta
+                a(href=link target="_blank") #{link}
             .description
                 |!{description}
             .extra
-                strong Organization Tags:
+                i.tags.icon
                 each tags
                     .ui.compact.button.organization_tag(class=organization_tag_class) #{this}
                     // .ui.basic.label(class=organization_tag_class) #{this}
@@ -32,4 +34,4 @@ template(name='organization')
                 if can_edit
                     .edit_organization.ui.labeled.right.floated.primary.basic.icon.button
                         i.pencil.icon
-                        |Edit organization
+                        |Edit Organization
