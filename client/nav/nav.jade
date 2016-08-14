@@ -14,12 +14,12 @@ template(name='nav')
                 a.item(href='/events' class="{{isActivePath '/events'}}")
                     i.calendar.icon
                     | Events
-                a.item(href='/partners' class="{{isActivePath '/partners'}}")
-                    i.building.icon
-                    | Partners
+                // a.item(href='/partners' class="{{isActivePath '/partners'}}")
+                //     i.building.icon
+                //     | Partners
                 a.item(href='/organizations' class="{{isActivePath '/organizations'}}")
                     i.building.icon
-                    | Organizations
+                    | Partners
                 a.item(href='/academy' class="{{isActivePath '/academy'}}")
                     i.university.icon
                     | Programs
@@ -44,16 +44,21 @@ template(name='top_nav')
     .ui.inverted.menu
         .right.menu
             if currentUser
+                a.item(href='/services' class="{{isActivePath '/services'}}")
+                    i.laptop.icon
+                    | Services
                 a.item(href='/admin' class="{{isActivePath '/admin'}}")
-                    i.setting.icon
-                    // | Messages (#{currentUser.unreadcount})
+                    i.configure.icon
                     | Admin
-                a.item(href="/profile/view/#{currentUser._id}" class="{{isActivePath '/profile'}}")
+                a.item(href='/account' class="{{isActivePath '/account'}}")
                     if currentUser.profile.profile_image_url
                         img.ui.avatar.image(src=currentUser.profile.profile_image_url)
                     else
                         i.user.icon
+                    // i.setting.icon
+                    // | Account
                     | #{currentUser.profile.name}
+                // a.item(href="/person/view/#{currentUser._id}" class="{{isActivePath '/person/view/#{currentUser._id}'}}")
                 a.item(href='/messages' class="{{isActivePath '/messages'}}")
                     i.mail.icon
                     // | Messages (#{currentUser.unreadcount})

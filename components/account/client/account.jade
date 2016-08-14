@@ -1,0 +1,23 @@
+template(name='account')
+    .ui.container.segment
+        .ui.menu
+            a.item(href='/account/profile')
+                i.user.icon
+                |Profile
+            a.item(href='/account/social')
+                i.user.icon
+                |Social Media Accounts
+            a.item(href='/account/profile')
+                i.user.icon
+                |Profile
+            a.item(href='/account/services')
+                i.user.icon
+                |Services
+        .ui.form
+            .field
+                label Username
+                input(type='text' value=currentUser.username)
+            .field
+                label Display Name
+                input(type='text' value=currentUser.profile.name)
+        

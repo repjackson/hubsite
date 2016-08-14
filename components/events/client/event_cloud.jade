@@ -2,16 +2,16 @@ template(name='event_cloud')
     .ui.center.aligned.segment
         .ui.header Browse Events
             if can_add_event
-                #add_event.ui.compact.basic.button
+                #add_event.ui.compact.basic.circular.button
                     i.green.plus.icon
                     |Add event
         if selected_event_tags
-            #clear_tags.ui.red.big.compact.icon.button
+            #clear_tags.ui.red.big.compact.icon.circular.button
                 i.remove.icon
         if selected_event_tags
             each selected_event_tags
-                a.ui.red.big.compact.button.unselect_tag
+                a.ui.red.big.compact.circular.button.unselect_tag
                     strong #{this}
         each all_event_tags
-            .ui.compact.basic.button.select_tag(class=event_tag_cloud_class) #{this.name}
+            .ui.compact.basic.circular.button.select_tag(class=event_tag_cloud_class) #{this.name}
                 // small #{this.count}

@@ -103,6 +103,13 @@ Template.edit_event.events
             selected_event_tags.push tag
         FlowRouter.go '/events'
 
+    'click #make_featured': ->
+        Events.update FlowRouter.getParam('event_id'),
+            $set: featured_event: true
+
+    'click #make_unfeatured': ->
+        Events.update FlowRouter.getParam('event_id'),
+            $set: featured_event: false
 
 
 

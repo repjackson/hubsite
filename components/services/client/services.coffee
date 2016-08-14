@@ -2,8 +2,7 @@ Template.services.onCreated ->
     @autorun -> Meteor.subscribe('services', selected_service_tags.array())
 
 Template.services.helpers
-    services: -> 
-        services.find {}
+    services: ->  Services.find {}
 
 Template.services.events
 
@@ -22,7 +21,6 @@ Template.service.helpers
     service_messages: -> Messages.find service_id: @_id
 
 
-
 Template.service.events
     'click .service_tag': ->
         if @valueOf() in selected_service_tags.array() then selected_service_tags.remove @valueOf() else selected_service_tags.push @valueOf()
@@ -38,3 +36,9 @@ Template.service.events
 
     'click .edit_service': ->
         FlowRouter.go "/services/edit/#{@_id}"
+
+
+Template.services.events
+    'click #add_service': ->
+        Meteor.call 'add_service', (err, id)->
+            FlowRouter.go "/account/services/edit/#{id}"

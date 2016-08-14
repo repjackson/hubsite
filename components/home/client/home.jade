@@ -45,14 +45,9 @@ template(name='rockstar_members')
 template(name='rockstar_member')
     .ui.fluid.card
         .image
-            img.ui.image(src=profile.profile_image_url)
+            img.ui.image(src=person_image_url)
         .content
             .header
-                h2.ui.header #{profile.name}
+                h2.ui.header #{name}
             .description
                 // .ui.header Post Topics:
-        .extra.content
-            if can_edit
-                .edit_post.ui.labeled.primary.basic.icon.button
-                    i.pencil.icon
-                    |Edit post

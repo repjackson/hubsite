@@ -6,7 +6,7 @@ Template.edit_service.onCreated ->
 
 Template.edit_service.helpers
     service: ->
-        services.findOne FlowRouter.getParam('service_id')
+        Services.findOne FlowRouter.getParam('service_id')
     
         
 Template.edit_service.events
@@ -41,12 +41,12 @@ Template.edit_service.events
                 alert error
             else
                 Meteor.users.update Meteor.userId(), $push: 'profile.files': download_url
-                services.update service_id, $set: featured_image_url: download_url
+                Services.update service_id, $set: featured_image_url: download_url
             return
             
             
     'click #remove_photo': ->
-        services.update FlowRouter.getParam('service_id'), 
+        Services.update FlowRouter.getParam('service_id'), 
             $unset: featured_image_url: 1
             
 
@@ -55,13 +55,13 @@ Template.edit_service.events
             service_id = FlowRouter.getParam('service_id')
             tag = $('#add_service_tag').val().toLowerCase().trim()
             if tag.length > 0
-                services.update service_id,
+                Services.update service_id,
                     $addToSet: tags: tag
                 $('#add_service_tag').val('')
 
     'click .service_tag': (e,t)->
         tag = @valueOf()
-        services.update FlowRouter.getParam('service_id'),
+        Services.update FlowRouter.getParam('service_id'),
             $pull: tags: tag
         $('#add_service_tag').val(tag)
 
@@ -70,10 +70,12 @@ Template.edit_service.events
     'click #save_service': ->
         title = $('#title').val()
         description = $('#description').val()
-        services.update FlowRouter.getParam('service_id'),
+        price = $('#price').val()
+        Services.update FlowRouter.getParam('service_id'),
             $set:
-                description: description
                 title: title
+                description: description
+                price: price
                 # tagCount: @tags.length
         selected_service_tags.clear()
         for tag in @tags

@@ -33,13 +33,15 @@ template(name='edit_event')
                     .ui.left.icon.input
                         i.add.icon
                         input#add_event_tag(type='text' placeholder='Add Tag' maxlength='50')
+                .field
+                    if featured_event
+                        #make_unfeatured.ui.green.button
+                            i.toggle.on.icon
+                            |Featured
+                    else
+                        #make_featured.ui.basic.button
+                            i.toggle.off.icon
+                            |Unfeatured
                 if tags
                     #save_event.ui.large.green.button Save
-                        // .visible.content Save
-                        // .hidden.content
-                        //     i.right.check.icon
                 #delete_event.ui.red.large.button Delete
-                        // .hidden.content 
-                        //     i.remove.icon
-                        // .visible.content Delete
-                    

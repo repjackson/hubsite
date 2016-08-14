@@ -1,22 +1,24 @@
 with event
-    .ui.fluid.card
-        .content
-            .header
-                h2.ui.header #{title}
-            .description
-                // .ui.header Event Topics:
-                each tags
-                    // .ui.compact.button.event_tag(class=event_tag_class) #{this}
-                    .ui.basic.label(class=event_tag_class) #{this}
-                .ui.subheader 
-                    strong #{day} 
-                    |from
-                    strong #{start_time} 
-                    |to 
-                    strong #{end_time}
-                // |#{start_date} to #{end_date}
-                .ui.basic.padded.segment
-                    |!{description}
+    .ui.text.container.segment
+        a.ui.top.left.attached(href='/events')
+            i.left.arrow.icon
+            |Back
+        img.ui.centered.medium.image(src=featured_image_url)
+        h1.ui.header #{title}
+        .description
+            // .ui.header Event Topics:
+            each tags
+                // .ui.compact.button.event_tag(class=event_tag_class) #{this}
+                .ui.basic.label(class=event_tag_class) #{this}
+            .ui.subheader 
+                strong #{day} 
+                |from
+                strong #{start_time} 
+                |to 
+                strong #{end_time}
+            // |#{start_date} to #{end_date}
+            .ui.basic.padded.segment
+                |!{description}
         if attendees
             .content
                 .ui.header Attendees:

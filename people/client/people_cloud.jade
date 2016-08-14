@@ -10,8 +10,8 @@ template(name='people_cloud')
                 i.remove.icon
         if selected_people_tags
             each selected_people_tags
-                a.ui.red.big.compact.button.unselect_tag
+                a.ui.red.big.compact.circular.button.unselect_tag
                     strong #{this}
         each people_tags
-            .ui.compact.basic.button.select_tag(class=people_tag_class) #{this.name}
-                small #{this.count}
+            .ui.compact.basic.compact.circular.button.select_tag(class=people_tag_class) #{this.name}
+                // small #{this.count}

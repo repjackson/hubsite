@@ -1,17 +1,23 @@
 with person
     .ui.text.container.segment
+        a.ui.top.left.attached(href='/people')
+            i.left.arrow.icon
+            |Back
         img.ui.centered.medium.circular.image(src=person_image_url)
         h2.ui.header
             |#{name}
-        h4.ui.header 
-            i.building.icon
-            |#{company}
-        h4.ui.header 
-            |#{position}
-        h4.ui.header
-            a(href=website target='_blank')
-                i.linkify.icon
-                |#{website}
+        if company
+            h4.ui.header 
+                i.building.icon
+                |#{company}
+        if position
+            h4.ui.header 
+                |#{position}
+        if website
+            h4.ui.header
+                a(href=website target='_blank')
+                    i.linkify.icon
+                    |#{website}
         if linkedin
             a.ui.circular.large.blue.icon.button(href=linkedin target='_blank')
                 i.linkedin.icon

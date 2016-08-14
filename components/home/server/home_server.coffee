@@ -5,7 +5,7 @@ Meteor.publish 'rockstar_members', ->
     match = {}
     # match.rockstar_member = true
 
-    Meteor.users.find match, limit: 3
+    People.find match, limit: 3
     # Docs.find match,
     #     fields:
     #         tags: 1

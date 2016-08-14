@@ -1,12 +1,12 @@
 template(name='services')
-    .ui.container.segment
-        .ui.divided.items
+    .ui.container
+        .ui.centered.four.cards
             each services
                 +service
 
 
 template(name='service')
-    .ui.item
+    .ui.card
         .image
             img.ui.medium.image(src=featured_image_url)
         .content
@@ -17,8 +17,10 @@ template(name='service')
                 each tags
                     .ui.compact.button.service_tag(class=service_tag_class) #{this}
                 |!{description}
-            .extra
-                if can_edit
-                    .edit_service.ui.labeled.primary.basic.icon.button
-                        i.pencil.icon
-                        |Edit service    
+        .content
+            span.right.floated
+                |$#{price}
+            if can_edit
+                .edit_service.ui.labeled.primary.basic.icon.button
+                    i.pencil.icon
+                    |Edit    

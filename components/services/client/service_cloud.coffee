@@ -7,7 +7,7 @@ Template.service_cloud.helpers
     all_service_tags: ->
         # userCount = Meteor.users.find().count()
         # if 0 < userCount < 3 then tags.find { count: $lt: userCount } else tags.find()
-        service_tags.find()
+        Service_tags.find()
 
     service_tag_cloud_class: ->
         buttonClass = switch

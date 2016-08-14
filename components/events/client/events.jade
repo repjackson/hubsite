@@ -1,65 +1,69 @@
 template(name='events')
     .ui.container.segment
-        .ui.three.cards
+        .ui.centered.cards
             each events
                 +event_card
 
 
-template(name='event_item')
-    .ui.item
-        .image
-            img.ui.medium.image(src=featured_image_url)
-        .content
-            .header
-                h2.ui.header #{title}
-            .meta
-                strong #{day} 
-                |from
-                strong #{start_time} 
-                |to 
-                strong #{end_time}
-            .description
-                |!{description}
-            .extra
-                i.tags.icon
-                each tags
-                    .ui.compact.button.event_tag(class=event_tag_class) #{this}
-                    // .ui.basic.label(class=event_tag_class) #{this}
-                if attendees
-                    .ui.header Attendees:
-                    .ui.horizontal.list
-                        each attendees
-                            .item 
-                                img.ui.avatar.image(src=this.profile.profile_image_url)
-                                strong #{this.profile.name}
-                                each this.tags
-                                    .ui.small.basic.label #{this}
-            .extra
-                if can_edit
-                    .edit_event.ui.labeled.right.floated.primary.basic.icon.button
-                        i.pencil.icon
-                        |Edit Event
-                if currentUser
-                    if attending
-                        .ui.basic.right.floated.button.leave_event
-                            i.red.minus.icon
-                            |Leave
-                    else
-                        .ui.basic.right.floated.button.join_event
-                            i.green.plus.icon
-                            |Join
-                else
-                    p Sign in to attend    
-                    template(name='event_item')
+// template(name='event_item')
+//     .ui.item
+//         .image
+//             a(href="/events/view/#{_id}")
+//                 img.ui.medium.image(src=featured_image_url)
+//         .content
+//             .header
+//                 h2.ui.header 
+//                     a(href="/events/view/#{_id}") #{title}
+//             .meta
+//                 strong #{day} 
+//                 |from
+//                 strong #{start_time} 
+//                 |to 
+//                 strong #{end_time}
+//             .description
+//                 |!{description}
+//             .extra
+//                 i.tags.icon
+//                 each tags
+//                     .ui.compact.button.event_tag(class=event_tag_class) #{this}
+//                     // .ui.basic.label(class=event_tag_class) #{this}
+//                 if attendees
+//                     .ui.header Attendees:
+//                     .ui.horizontal.list
+//                         each attendees
+//                             .item 
+//                                 img.ui.avatar.image(src=this.profile.profile_image_url)
+//                                 strong #{this.profile.name}
+//                                 each this.tags
+//                                     .ui.small.basic.label #{this}
+//             .extra
+//                 if can_edit
+//                     .edit_event.ui.labeled.right.floated.primary.basic.icon.button
+//                         i.pencil.icon
+//                         |Edit Event
+//                 if currentUser
+//                     if attending
+//                         .ui.basic.right.floated.button.leave_event
+//                             i.red.minus.icon
+//                             |Leave
+//                     else
+//                         .ui.basic.right.floated.button.join_event
+//                             i.green.plus.icon
+//                             |Join
+//                 else
+//                     p Sign in to attend    
+//                     template(name='event_item')
 
 
 template(name='event_card')
     .ui.card
         .image
-            img.ui.medium.image(src=featured_image_url)
+            a(href="/events/view/#{_id}")
+                img.ui.medium.image(src=featured_image_url)
         .content
             .header
-                h2.ui.header #{title}
+                h2.ui.header 
+                    a(href="/events/view/#{_id}") #{title}
             .meta
                 strong #{day} 
                 |from

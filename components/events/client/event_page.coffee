@@ -23,3 +23,19 @@ Template.event_page.helpers
     day: -> moment(@start_date).format("dddd, MMMM Do");
     start_time: -> moment(@start_date).format("h:mm a")
     end_time: -> moment(@end_date).format("h:mm a")
+
+
+Template.event_page.events
+    'click .event_tag': ->
+        if @valueOf() in selected_event_tags.array() then selected_event_tags.remove @valueOf() else selected_event_tags.push @valueOf()
+
+    'click .join_event': ->
+        Meteor.call 'join_event', @_id
+
+    'click .leave_event': ->
+        Meteor.call 'leave_event', @_id
+
+
+            
+    'click .edit_event': ->
+        FlowRouter.go "/events/edit/#{@_id}"

@@ -14,13 +14,19 @@ template(name='person_card')
         .content
             .header
                 a(href="/person/view/#{_id}") #{name}
-        .content
-            each tags
-                .ui.small.compact.button.person_tag(class=tag_class) #{this}
-        .content
-            i.building.icon
-            | #{company}
-            // div {{nl2br bio}}
-        .content
-            i.linkify.icon
-            a(href=website target='_blank') #{website}
+            .meta
+                | #{position}
+            .description 
+                |{{cutString bio 100}}
+        // if website
+        //     .content
+        //         i.linkify.icon
+        //         a(href=website target='_blank') #{website}
+        // if linkedin
+        //     .content
+        //         a.ui.large.blue.icon.circular.button(href=linkedin target='_blank')
+        //             i.linkedin.icon
+        .extra.content
+            a.ui.right.floated(href="/person/view/#{_id}")
+                |Learn More
+                i.right.arrow.icon
