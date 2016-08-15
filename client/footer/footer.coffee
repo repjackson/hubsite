@@ -3,10 +3,10 @@ Template.footer.helpers
 
 
 
-Template.footer.onCreated ->
-    self = @
-    self.autorun ->
-        self.subscribe 'featured_events'
+# Template.footer.onCreated ->
+#     self = @
+#     self.autorun ->
+#         self.subscribe 'featured_events'
 
 
 Template.footer.events

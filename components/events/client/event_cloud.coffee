@@ -5,7 +5,7 @@ Template.event_cloud.onCreated ->
 
 Template.event_cloud.helpers
     all_event_tags: ->
-        event_count = Events.find().count()
+        event_count = Docs.find().count()
         if 0 < event_count < 3 then Event_tags.find { count: $lt: event_count } else Event_tags.find()
         # Event_tags.find()
 

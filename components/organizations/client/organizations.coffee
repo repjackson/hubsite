@@ -3,7 +3,7 @@ Template.organizations.onCreated ->
 
 
 Template.organizations.helpers
-    organizations: -> Organizations.find {}
+    organizations: -> Docs.find {}
 
 
 Template.organization.helpers
@@ -24,12 +24,11 @@ Template.organization.events
 
     'keydown .add_message': (e,t)->
         e.prorganizationDefault
-        switch e.which
-            when 13
-                text = t.find('.add_message').value.trim()
-                if text.length > 0
-                    Meteor.call 'add_organization_message', text, @_id, (err,res)->
-                        t.find('.add_message').value = ''
+        if e.which is 13
+            text = t.find('.add_message').value.trim()
+            if text.length > 0
+                Meteor.call 'add_organization_message', text, @_id, (err,res)->
+                    t.find('.add_message').value = ''
 
             
     'click .edit_organization': ->

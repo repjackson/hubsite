@@ -3,7 +3,7 @@ Template.person_page.onCreated ->
     # @autorun -> Meteor.subscribe('me')
 
 Template.person_page.helpers
-    person: -> People.findOne FlowRouter.getParam('person_id')
+    person: -> Docs.findOne FlowRouter.getParam('person_id')
 
     can_edit: -> Meteor.userId()
 

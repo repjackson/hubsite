@@ -1,42 +1,21 @@
 @People_tags = new Meteor.Collection 'people_tags'
-@People = new Meteor.Collection 'people'
 
 
-People.helpers
-    attendees: ->
-        if @attendee_ids?.length > 0
-            attendeeArray = []
-            for id in @attendee_ids
-                attendeeArray.push(Meteor.users.findOne(id))
-            return attendeeArray
-        else return
-    
-    author: -> Meteor.users.findOne @author_id
-
-People.before.insert (userId, doc)->
-    doc.timestamp = Date.now()
-    doc.author_id = Meteor.userId()
-    attendee_ids = []
-    return
-
-# People.after.update ((userId, doc, fieldNames, modifier, options) ->
-#     doc.tagCount = doc.tags.length
-# ), fetchPrevious: true
 
 
 Meteor.methods
     add_person: ()->
-        People.insert {}
+        Docs.insert {}
 
     delete_person: (id)->
-        People.remove id
+        Docs.remove id
 
     remove_person_tag: (tag, doc_id)->
-        People.update doc_id,
+        Docs.update doc_id,
             $pull: tag
 
     add_person_tag: (tag, doc_id)->
-        People.update doc_id,
+        Docs.update doc_id,
             $addToSet: tags: tag
     
             

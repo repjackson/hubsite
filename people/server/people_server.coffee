@@ -1,4 +1,4 @@
-People.allow
+Docs.allow
     insert: (userId, doc) -> doc.author_id is userId
     update: (userId, doc) -> doc.author_id is userId
     remove: (userId, doc) -> doc.author_id is userId
@@ -10,7 +10,7 @@ Meteor.publish 'people_tags', (selected_tags)->
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
 
-    cloud = People.aggregate [
+    cloud = Docs.aggregate [
         { $match: match }
         { $project: "tags": 1 }
         { $unwind: "$tags" }
@@ -35,8 +35,8 @@ Meteor.publish 'people', (selected_tags)->
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
 
-    People.find match
-    # People.find match,
+    Docs.find match
+    # Docs.find match,
     #     fields:
     #         tags: 1
     #         attendee_ids: 1
@@ -46,7 +46,7 @@ Meteor.publish 'people', (selected_tags)->
 
 
 Meteor.publish 'person', (id)->
-    People.find id
+    Docs.find id
     
     
     
@@ -54,7 +54,7 @@ Meteor.publish 'featured_people', ->
     match = {}
     match.featured = true
 
-    People.find match, limit: 3
+    Docs.find match, limit: 3
     # Docs.find match,
     #     fields:
     #         tags: 1

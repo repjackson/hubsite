@@ -1,16 +1,9 @@
-Events.allow
-    insert: (userId, doc) -> doc.author_id is userId
-    update: (userId, doc) -> doc.author_id is userId
-    remove: (userId, doc) -> doc.author_id is userId
-
-
-
 Meteor.publish 'event_tags', (selected_tags)->
     self = @
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
 
-    tagCloud = Events.aggregate [
+    tagCloud = Docs.aggregate [
         { $match: match }
         { $project: "tags": 1 }
         { $unwind: "$tags" }
@@ -34,9 +27,10 @@ Meteor.publish 'events', (selected_tags)->
     self = @
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
+    match.type = 'event'
 
-    Events.find match
-    # Events.find match,
+    Docs.find match
+    # Docs.find match,
     #     fields:
     #         tags: 1
     #         attendee_ids: 1
@@ -46,19 +40,13 @@ Meteor.publish 'events', (selected_tags)->
 
 
 Meteor.publish 'event', (id)->
-    Events.find id
+    Docs.find id
     
     
     
 Meteor.publish 'featured_events', ->
     match = {}
     match.featured = true
+    match.type = 'event'
 
-    Events.find match, limit: 3
-    # Docs.find match,
-    #     fields:
-    #         tags: 1
-    #         attendee_ids: 1
-    #         host_id: 1
-    #         date_array: 1
-    #         date: 1
+    Docs.find match, limit: 3

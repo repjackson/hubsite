@@ -1,16 +1,12 @@
-Organizations.allow
-    insert: (userId, doc) -> doc.author_id is userId
-    update: (userId, doc) -> userId in doc.officer_ids
-    remove: (userId, doc) -> doc.author_id is userId
-
-
-
 Meteor.publish 'organization_tags', (selected_tags)->
     self = @
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
+    match = 'organization'
 
-    tagCloud = Organizations.aggregate [
+
+
+    cloud = Docs.aggregate [
         { $match: match }
         { $project: "tags": 1 }
         { $unwind: "$tags" }
@@ -21,7 +17,7 @@ Meteor.publish 'organization_tags', (selected_tags)->
         { $project: _id: 0, name: '$_id', count: 1 }
         ]
 
-    tagCloud.forEach (tag, i) ->
+    cloud.forEach (tag, i) ->
         self.added 'organization_tags', Random.id(),
             name: tag.name
             count: tag.count
@@ -34,26 +30,21 @@ Meteor.publish 'organizations', (selected_tags=[])->
     self = @
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
+    match = 'organization'
 
-    Organizations.find match
-    # Organizations.find match,
-    #     fields:
-    #         tags: 1
-    #         attendee_ids: 1
-    #         host_id: 1
-    #         date_array: 1
-    #         date: 1
+    Docs.find match
 
 
 Meteor.publish 'organization', (id)->
-    Organizations.find id
+    Docs.find id
     
     
     
 Meteor.publish 'featured_organizations', ->
     match = {}
+    match = 'organization'
 
-    Organizations.find match, limit: 3
+    Docs.find match, limit: 3
     # Docs.find match,
     #     fields:
     #         tags: 1

@@ -2,16 +2,8 @@ Template.services.onCreated ->
     @autorun -> Meteor.subscribe('services', selected_service_tags.array())
 
 Template.services.helpers
-    services: ->  Services.find {}
+    services: ->  Docs.find {}
 
-Template.services.events
-
-
-
-# Single
-# Template.service.onCreated ->
-#     @autorun -> Meteor.subscribe('service_messages', Template.currentData()._id)
-#     @autorun -> Meteor.subscribe('usernames')
 
 Template.service.helpers
     service_tag_class: -> if @valueOf() in selected_service_tags.array() then 'red' else 'basic'

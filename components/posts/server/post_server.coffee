@@ -1,18 +1,11 @@
-Posts.allow
-    insert: (userId, doc) -> doc.author_id is userId
-    update: (userId, doc) -> doc.author_id is userId
-    remove: (userId, doc) -> doc.author_id is userId
-
-
-
-
-
 Meteor.publish 'post_tags', (selected_tags)->
     self = @
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
+    match.type = 'post'
 
-    cloud = Posts.aggregate [
+
+    cloud = Docs.aggregate [
         { $match: match }
         { $project: "tags": 1 }
         { $unwind: "$tags" }
@@ -37,22 +30,15 @@ Meteor.publish 'posts', (selected_tags)->
     match = {}
     if selected_tags and selected_tags.length > 0 then match.tags = $all: selected_tags
 
-    Posts.find match
+    Docs.find match
 
 
 Meteor.publish 'post', (id)->
-    Posts.find id
+    Docs.find id
     
     
     
 Meteor.publish 'featured_posts', ->
     match = {}
 
-    Posts.find match, limit: 3
-    # Docs.find match,
-    #     fields:
-    #         tags: 1
-    #         attendee_ids: 1
-    #         host_id: 1
-    #         date_array: 1
-    #         date: 1
+    Docs.find match, limit: 3

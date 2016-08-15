@@ -10,7 +10,7 @@ Template.edit_event.onCreated ->
 Template.edit_event.helpers
     event: ->
         # docId = FlowRouter.getParam('event_id')
-        Events.findOne FlowRouter.getParam('event_id')
+        Docs.findOne FlowRouter.getParam('event_id')
     
 
         
@@ -46,12 +46,12 @@ Template.edit_event.events
                 alert error
             else
                 Meteor.users.update Meteor.userId(), $push: 'profile.files': download_url
-                Events.update event_id, $set: featured_image_url: download_url
+                Docs.update event_id, $set: featured_image_url: download_url
             return
 
 
     'click #remove_photo': ->
-        Events.update FlowRouter.getParam('event_id'), 
+        Docs.update FlowRouter.getParam('event_id'), 
             $unset: featured_image_url: 1
 
 
@@ -61,17 +61,17 @@ Template.edit_event.events
             event_id = FlowRouter.getParam('event_id')
             tag = $('#add_event_tag').val().toLowerCase().trim()
             if tag.length > 0
-                Events.update event_id,
+                Docs.update event_id,
                     $addToSet: tags: tag
                 $('#add_event_tag').val('')
 
     'click .event_tag': (e,t)->
-        event = Events.findOne FlowRouter.getParam('event_id')
+        event = Docs.findOne FlowRouter.getParam('event_id')
         tag = @valueOf()
         if tag is event.type
-            Events.update FlowRouter.getParam('event_id'),
+            Docs.update FlowRouter.getParam('event_id'),
                 $set: type: ''
-        Events.update FlowRouter.getParam('event_id'),
+        Docs.update FlowRouter.getParam('event_id'),
             $pull: tags: tag
         $('#add_event_tag').val(tag)
 
@@ -80,9 +80,9 @@ Template.edit_event.events
         current_type = @type
         machine_type = e.currentTarget.id
         type = e.currentTarget.innerHTML.trim().toLowerCase()
-        Events.update FlowRouter.getParam('event_id'),
+        Docs.update FlowRouter.getParam('event_id'),
             $pull: tags: current_type
-        Events.update FlowRouter.getParam('event_id'),
+        Docs.update FlowRouter.getParam('event_id'),
             $set: type: machine_type
             $addToSet: tags: type
 
@@ -91,7 +91,7 @@ Template.edit_event.events
         description = $('#description').val()
         start_date = $('#start_date').val()
         end_date = $('#end_date').val()
-        Events.update FlowRouter.getParam('event_id'),
+        Docs.update FlowRouter.getParam('event_id'),
             $set:
                 description: description
                 start_date: start_date
@@ -104,11 +104,11 @@ Template.edit_event.events
         FlowRouter.go '/events'
 
     'click #make_featured': ->
-        Events.update FlowRouter.getParam('event_id'),
+        Docs.update FlowRouter.getParam('event_id'),
             $set: featured_event: true
 
     'click #make_unfeatured': ->
-        Events.update FlowRouter.getParam('event_id'),
+        Docs.update FlowRouter.getParam('event_id'),
             $set: featured_event: false
 
 
@@ -184,11 +184,11 @@ Template.edit_event.onRendered ->
 
                 docid = FlowRouter.getParam 'event_id'
 
-                doc = Events.findOne docid
+                doc = Docs.findOne docid
                 tagsWithoutDate = _.difference(doc.tags, doc.datearray)
                 tagsWithNew = _.union(tagsWithoutDate, datearray)
 
-                Events.update docid,
+                Docs.update docid,
                     $set:
                         tags: tagsWithNew
                         datearray: datearray

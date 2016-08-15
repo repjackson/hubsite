@@ -3,19 +3,17 @@ Template.people.onCreated ->
     # @autorun -> Meteor.subscribe('me')
 
 Template.people.helpers
-    people: -> People.find({ _id: $ne: Meteor.userId() })
+    people: -> Docs.find({ _id: $ne: Meteor.userId() })
     # people: -> Meteor.users.find()
 
 
 Template.person_card.onCreated ->
-    @autorun -> Meteor.subscribe('conversationMessages', Template.currentData()._id)
+    # @autorun -> Meteor.subscribe('conversationMessages', Template.currentData()._id)
     # console.log Template.currentData()
     # Meteor.subscribe 'person', @data._id
 
 
 Template.person_card.helpers
-    isUser: -> @_id is Meteor.userId()
-
     tag_class: -> if @valueOf() in selected_people_tags.array() then 'red' else 'basic'
 
     matchedtags: -> _.intersection @tags, Meteor.user().tags

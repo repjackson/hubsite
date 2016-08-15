@@ -5,7 +5,7 @@ Template.featured_posts.onCreated ->
 
 
 Template.featured_posts.helpers
-    featured_posts: -> Posts.find {}, limit: 4
+    featured_posts: -> Docs.find {}, limit: 4
             
             
 Template.featured_posts.events

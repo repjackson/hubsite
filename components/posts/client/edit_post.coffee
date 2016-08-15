@@ -6,7 +6,7 @@ Template.edit_post.onCreated ->
 
 Template.edit_post.helpers
     post: ->
-        Posts.findOne FlowRouter.getParam('post_id')
+        Docs.findOne FlowRouter.getParam('post_id')
     
         
 Template.edit_post.events
@@ -41,12 +41,12 @@ Template.edit_post.events
                 alert error
             else
                 Meteor.users.update Meteor.userId(), $push: 'profile.files': download_url
-                Posts.update post_id, $set: featured_image_url: download_url
+                Docs.update post_id, $set: featured_image_url: download_url
             return
             
             
     'click #remove_photo': ->
-        Posts.update FlowRouter.getParam('post_id'), 
+        Docs.update FlowRouter.getParam('post_id'), 
             $unset: featured_image_url: 1
             
 
@@ -55,13 +55,13 @@ Template.edit_post.events
             post_id = FlowRouter.getParam('post_id')
             tag = $('#add_post_tag').val().toLowerCase().trim()
             if tag.length > 0
-                Posts.update post_id,
+                Docs.update post_id,
                     $addToSet: tags: tag
                 $('#add_post_tag').val('')
 
     'click .post_tag': (e,t)->
         tag = @valueOf()
-        Posts.update FlowRouter.getParam('post_id'),
+        Docs.update FlowRouter.getParam('post_id'),
             $pull: tags: tag
         $('#add_post_tag').val(tag)
 
@@ -71,7 +71,7 @@ Template.edit_post.events
         title = $('#title').val()
         publish_date = $('#publish_date').val()
         description = $('#description').val()
-        Posts.update FlowRouter.getParam('post_id'),
+        Docs.update FlowRouter.getParam('post_id'),
             $set:
                 title: title
                 publish_date: publish_date

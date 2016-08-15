@@ -5,7 +5,7 @@ Template.people_cloud.onCreated ->
 
 Template.people_cloud.helpers
     people_tags: ->
-        people_count = People.find().count()
+        people_count = Docs.find().count()
         if 0 < people_count < 3 then People_tags.find { count: $lt: people_count } else People_tags.find()
         # People_tags.find()
 #

@@ -19,27 +19,20 @@ FlowRouter.route '/organizations/view/:organization_id', action: (params) ->
 
 
 
-Organizations.before.insert (userId, doc)->
-    doc.timestamp = Date.now()
-    doc.officer_ids = [Meteor.userId()]
-    return
-
-
-
 Meteor.methods
     add_organization: ()->
-        Organizations.insert
+        Docs.insert
             tags: []
 
     delete_organization: (id)->
-        Organizations.remove id
+        Docs.remove id
 
     remove_organization_tag: (tag, doc_id)->
-        Organizations.update doc_id,
+        Docs.update doc_id,
             $pull: tag
 
     add_organization_tag: (tag, doc_id)->
-        Organizations.update doc_id,
+        Docs.update doc_id,
             $addToSet: tags: tag
             
             

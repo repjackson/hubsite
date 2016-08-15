@@ -6,4 +6,4 @@ Template.submissions.onCreated ->
 
 Template.submissions.helpers
     submissions: -> 
-        Submissions.find {}
+        Docs.find {}

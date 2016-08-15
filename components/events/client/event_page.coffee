@@ -10,7 +10,7 @@ Template.event_page.onCreated ->
 Template.event_page.helpers
     event: ->
         # docId = FlowRouter.getParam('event_id')
-        Events.findOne FlowRouter.getParam('event_id')
+        Docs.findOne FlowRouter.getParam('event_id')
 
     event_tag_class: -> if @valueOf() in selected_event_tags.array() then 'red' else 'basic'
 

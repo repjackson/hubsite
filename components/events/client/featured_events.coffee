@@ -5,7 +5,7 @@ Template.featured_events.onCreated ->
 
 
 Template.featured_events.helpers
-    featured_events: -> Events.find {}, limit: 3
+    featured_events: -> Docs.find {}, limit: 3
     
 Template.featured_event.helpers
     day: -> moment(@start_date).format("dddd, MMMM Do")

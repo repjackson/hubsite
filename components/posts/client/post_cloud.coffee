@@ -5,7 +5,7 @@ Template.post_cloud.onCreated ->
 
 Template.post_cloud.helpers
     all_post_tags: ->
-        post_count = Posts.find().count()
+        post_count = Docs.find().count()
         if 0 < post_count < 3 then Post_tags.find { count: $lt: post_count } else Post_tags.find()
         # Post_tags.find()
 

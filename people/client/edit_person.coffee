@@ -5,7 +5,7 @@ Template.edit_person.onCreated ->
 
 
 Template.edit_person.helpers
-    person: -> People.findOne()
+    person: -> Docs.findOne()
 
     # matchedUsersList:->
     #     users = Meteor.users.find({_id: $ne: Meteor.userId()}).fetch()
@@ -59,7 +59,7 @@ Template.edit_person.events
         if e.which is 13
             if tag.length > 0
                 person_id = FlowRouter.getParam('person_id')
-                People.update person_id,
+                Docs.update person_id,
                     $addToSet: tags: tag
                     , ->
                         $('#add_tag').val('')
@@ -77,20 +77,20 @@ Template.edit_person.events
                 console.error 'Error uploading', error
                 alert error
             else
-                People.update FlowRouter.getParam('person_id'), 
+                Docs.update FlowRouter.getParam('person_id'), 
                     $set: 'person_image_url': download_url
                 # Docs.update post_id, $set: featured_image_url: download_url
             return
 
     'click #remove_photo': ->
-        People.update FlowRouter.getParam('person_id'), 
+        Docs.update FlowRouter.getParam('person_id'), 
             $unset: 'person_image_url': 1
     
 
     'click .person_tag': ->
         tag = @valueOf()
         person_id = FlowRouter.getParam('person_id')
-        People.update person_id,
+        Docs.update person_id,
             $pull: tags: tag
             , ->
                 $('#add_tag').val(tag)
@@ -99,14 +99,18 @@ Template.edit_person.events
         name = $('#name').val()
         bio = $('#bio').val()
         website = $('#website').val()
+        twitter = $('#twitter').val()
+        facebook = $('#facebook').val()
         linkedin = $('#linkedin').val()
         position = $('#position').val()
         company = $('#company').val()
-        People.update FlowRouter.getParam('person_id'),
+        Docs.update FlowRouter.getParam('person_id'),
             $set:
                 name: name
                 bio: bio
                 website: website
+                twitter: twitter
+                facebook: facebook
                 linkedin: linkedin
                 position: position
                 company: company

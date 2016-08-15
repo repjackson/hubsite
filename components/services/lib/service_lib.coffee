@@ -1,10 +1,4 @@
 @Service_tags = new Meteor.Collection 'service_tags'
-@Services = new Meteor.Collection 'services'
-
-Services.before.insert (userId, doc)->
-    doc.timestamp = Date.now()
-    doc.author_id = Meteor.userId()
-    return
 
 
 
@@ -33,17 +27,17 @@ FlowRouter.route '/services/view/:service_id', action: (params) ->
 
 Meteor.methods
     add_service: ()->
-        Services.insert
+        Docs.insert
+            type: 'service'
             tags: []
-            author_id: Meteor.userId()
 
     delete_service: (id)->
-        Services.remove id
+        Docs.remove id
 
     remove_service_tag: (tag, doc_id)->
-        Services.update doc_id,
+        Docs.update doc_id,
             $pull: tag
 
     add_service_tag: (tag, doc_id)->
-        Services.update doc_id,
+        Docs.update doc_id,
             $addToSet: tags: tag

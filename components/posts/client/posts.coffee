@@ -2,17 +2,9 @@ Template.posts.onCreated ->
     @autorun -> Meteor.subscribe('posts', selected_post_tags.array())
 
 Template.posts.helpers
-    posts: -> 
-        Posts.find {}
-
-Template.posts.events
+    posts: -> Docs.find {}
 
 
-
-# Single
-# Template.post.onCreated ->
-#     @autorun -> Meteor.subscribe('post_messages', Template.currentData()._id)
-#     @autorun -> Meteor.subscribe('usernames')
 
 Template.post.helpers
     post_tag_class: -> if @valueOf() in selected_post_tags.array() then 'red' else 'basic'

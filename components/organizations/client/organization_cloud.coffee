@@ -5,7 +5,7 @@ Template.organization_cloud.onCreated ->
 
 Template.organization_cloud.helpers
     organization_tags: ->
-        organization_count = Organizations.find().count()
+        organization_count = Docs.find().count()
         if 0 < organization_count < 3 then Organization_tags.find { count: $lt: organization_count } else Organization_tags.find()
         # organization_tags.find()
 

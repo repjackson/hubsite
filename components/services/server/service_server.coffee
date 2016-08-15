@@ -1,18 +1,11 @@
-Services.allow
-    insert: (userId, doc) -> doc.author_id is userId
-    update: (userId, doc) -> doc.author_id is userId
-    remove: (userId, doc) -> doc.author_id is userId
-
-
-
-
-
 Meteor.publish 'service_tags', (selected_tags)->
     self = @
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
+    match.type = 'service'
 
-    cloud = Services.aggregate [
+
+    cloud = Docs.aggregate [
         { $match: match }
         { $project: "tags": 1 }
         { $unwind: "$tags" }
@@ -36,23 +29,18 @@ Meteor.publish 'services', (selected_tags)->
     self = @
     match = {}
     if selected_tags and selected_tags.length > 0 then match.tags = $all: selected_tags
+    match.type = 'service'
 
-    Services.find match
+    Docs.find match
 
 
 Meteor.publish 'service', (id)->
-    Services.find id
+    Docs.find id
     
     
     
 Meteor.publish 'featured_services', ->
     match = {}
+    match.type = 'service'
 
-    Services.find match, limit: 3
-    # Docs.find match,
-    #     fields:
-    #         tags: 1
-    #         attendee_ids: 1
-    #         host_id: 1
-    #         date_array: 1
-    #         date: 1
+    Docs.find match, limit: 3

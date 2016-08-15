@@ -6,7 +6,7 @@ Template.events.helpers
         match = {}
         if selected_event_tags.array and selected_event_tags.array().length > 0 then match.tags = $all: selected_event_tags.array()
     
-        Events.find match
+        Docs.find match
 
 
 # Single
@@ -51,7 +51,7 @@ Template.event_card.events
 
     'click .cancel_event': ->
         if confirm 'Cancel event?'
-            Events.remove @_id
+            Docs.remove @_id
             
     'click .edit_event': ->
         FlowRouter.go "/events/edit/#{@_id}"

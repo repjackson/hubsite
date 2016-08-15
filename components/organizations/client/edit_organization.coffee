@@ -10,7 +10,7 @@ Template.edit_organization.onCreated ->
 Template.edit_organization.helpers
     organization: ->
         # docId = FlowRouter.getParam('organization_id')
-        Organizations.findOne FlowRouter.getParam('organization_id')
+        Docs.findOne FlowRouter.getParam('organization_id')
     
 
         
@@ -46,12 +46,12 @@ Template.edit_organization.events
                 alert error
             else
                 Meteor.users.update Meteor.userId(), $push: 'profile.files': download_url
-                Organizations.update organization_id, $set: featured_image_url: download_url
+                Docs.update organization_id, $set: featured_image_url: download_url
             return
 
 
     'click #remove_photo': ->
-        Organizations.update FlowRouter.getParam('organization_id'), 
+        Docs.update FlowRouter.getParam('organization_id'), 
             $unset: featured_image_url: 1
 
 
@@ -61,17 +61,17 @@ Template.edit_organization.events
             organization_id = FlowRouter.getParam('organization_id')
             tag = $('#add_organization_tag').val().toLowerCase().trim()
             if tag.length > 0
-                Organizations.update organization_id,
+                Docs.update organization_id,
                     $addToSet: tags: tag
                 $('#add_organization_tag').val('')
 
     'click .organization_tag': (e,t)->
-        organization = Organizations.findOne FlowRouter.getParam('organization_id')
+        organization = Docs.findOne FlowRouter.getParam('organization_id')
         tag = @valueOf()
         if tag is organization.type
-            Organizations.update FlowRouter.getParam('organization_id'),
+            Docs.update FlowRouter.getParam('organization_id'),
                 $set: type: ''
-        Organizations.update FlowRouter.getParam('organization_id'),
+        Docs.update FlowRouter.getParam('organization_id'),
             $pull: tags: tag
         $('#add_organization_tag').val(tag)
 
@@ -81,7 +81,7 @@ Template.edit_organization.events
         title = $('#title').val()
         link = $('#link').val()
         description = $('#description').val()
-        Organizations.update FlowRouter.getParam('organization_id'),
+        Docs.update FlowRouter.getParam('organization_id'),
             $set:
                 title: title
                 link: link
