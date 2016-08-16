@@ -3,16 +3,6 @@
 @Conversations = new Meteor.Collection 'conversations'
 @Docs = new Meteor.Collection 'docs'
 
-Slingshot.fileRestrictions 'myFileUploads',
-    allowedFileTypes: [
-        'image/png'
-        'image/jpeg'
-        'image/gif'
-    ]
-    # maxSize: 10 * 1024
-    maxSize: 1024 * 1024
-    
-    
     
 Docs.before.insert (userId, doc)->
     doc.timestamp = Date.now()

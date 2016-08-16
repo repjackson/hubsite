@@ -4,11 +4,11 @@ template(name='organization_cloud')
             img(src='/img/community_mashup_two.jpg')
             // .ui.bottom.attached.basic.massive.red.label Partners
             .ui.top.attached.basic.massive.red.label Community At Impact Hub Boulder
-        // .ui.header Browse Partners
-        //     if can_add_organization
-        //         #add_organization.ui.compact.basic.circular.button
-        //             i.green.plus.icon
-        //             |Add Organization
+        .ui.header Browse Partners
+            if can_add_organization
+                #add_organization.ui.compact.basic.circular.button
+                    i.green.plus.icon
+                    |Add Organization
         .ui.hidden.divider
         if selected_organization_tags
             #clear_tags.ui.red.big.compact.icon.circular.button

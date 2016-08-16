@@ -1,0 +1,10 @@
+.field
+    if image_id
+        label Image
+        .ui.large.image
+            img(src="{{c.url image_id}}")
+            a#remove_photo.ui.right.corner.link.label
+                i.remove.red.link.icon
+    else
+        label Upload Image
+        input(type='file' name='upload_picture' accept='image/*')

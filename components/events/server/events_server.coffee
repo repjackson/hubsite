@@ -2,8 +2,11 @@ Meteor.publish 'event_tags', (selected_tags)->
     self = @
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
+    match.type = 'event'
+    check(arguments, [Match.Any])
 
-    tagCloud = Docs.aggregate [
+
+    cloud = Docs.aggregate [
         { $match: match }
         { $project: "tags": 1 }
         { $unwind: "$tags" }
@@ -14,7 +17,7 @@ Meteor.publish 'event_tags', (selected_tags)->
         { $project: _id: 0, name: '$_id', count: 1 }
         ]
 
-    tagCloud.forEach (tag, i) ->
+    cloud.forEach (tag, i) ->
         self.added 'event_tags', Random.id(),
             name: tag.name
             count: tag.count
@@ -28,15 +31,9 @@ Meteor.publish 'events', (selected_tags)->
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
     match.type = 'event'
+    check(arguments, [Match.Any])
 
     Docs.find match
-    # Docs.find match,
-    #     fields:
-    #         tags: 1
-    #         attendee_ids: 1
-    #         host_id: 1
-    #         date_array: 1
-    #         date: 1
 
 
 Meteor.publish 'event', (id)->
@@ -45,6 +42,7 @@ Meteor.publish 'event', (id)->
     
     
 Meteor.publish 'featured_events', ->
+    check(arguments, [Match.Any])
     match = {}
     match.featured = true
     match.type = 'event'

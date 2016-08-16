@@ -4,7 +4,7 @@ Template.events.onCreated ->
 Template.events.helpers
     events: -> 
         match = {}
-        if selected_event_tags.array and selected_event_tags.array().length > 0 then match.tags = $all: selected_event_tags.array()
+        # if selected_event_tags.array and selected_event_tags.array().length > 0 then match.tags = $all: selected_event_tags.array()
     
         Docs.find match
 

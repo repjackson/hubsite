@@ -66,21 +66,6 @@ Template.edit_person.events
 
 
     
-    'change [name="upload_picture"]': (event, template) ->
-        # template.uploading.set true
-        ##console.log event.target.files
-        uploader = new (Slingshot.Upload)('myFileUploads')
-        uploader.send event.target.files[0], (error, download_url) ->
-            if error
-                # Log service detailed response.
-                console.error 'Error uploading', uploader.xhr.response
-                console.error 'Error uploading', error
-                alert error
-            else
-                Docs.update FlowRouter.getParam('person_id'), 
-                    $set: 'person_image_url': download_url
-                # Docs.update post_id, $set: featured_image_url: download_url
-            return
 
     'click #remove_photo': ->
         Docs.update FlowRouter.getParam('person_id'), 

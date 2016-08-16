@@ -3,16 +3,7 @@ template(name='edit_person')
         .ui.text.container
             .ui.segment
                 .ui.form
-                    .field
-                        if person_image_url
-                            img.ui.medium.circular.centered.image(src=person_image_url)
-                            a#remove_photo.ui.top.right.attached.basic.label
-                                i.remove.red.link.icon
-                                | Remove Photo
-                        else
-                            label Upload Profile Image (1mb Max, http://resizeimage.net/ for image resizing)
-                            .ui.input
-                                input(type='file' name='upload_picture' accept='image/*')
+                    +upload_image
                     .field
                         label Name
                         .ui.left.icon.input

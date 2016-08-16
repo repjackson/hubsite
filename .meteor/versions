@@ -8,6 +8,7 @@ aldeed:template-extension@4.0.0
 allow-deny@1.0.5
 altapp:recaptcha@2.0.1
 amplify@1.0.0
+audit-argument-checks@1.0.7
 autoupdate@1.2.11
 babel-compiler@6.9.0
 babel-runtime@0.1.10
@@ -45,7 +46,6 @@ diff-sequence@1.0.6
 drewy:datetimepicker@1.0.3
 ecmascript@0.5.7
 ecmascript-runtime@0.3.13
-edgee:slingshot@0.7.1
 ejson@1.0.12
 email@1.1.16
 facebook@1.2.8
@@ -71,6 +71,7 @@ kevohagan:sweetalert@1.0.0
 lai:collection-extensions@0.2.1_1
 lai:ddp-inspector@1.1.9
 launch-screen@1.0.12
+lepozepo:cloudinary@4.2.4
 livedata@1.0.18
 localstorage@1.0.11
 logging@1.1.14

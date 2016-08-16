@@ -1,8 +1,9 @@
 Meteor.publish 'organization_tags', (selected_tags)->
+    check(arguments, [Match.Any])
     self = @
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
-    match = 'organization'
+    match.type = 'organization'
 
 
 
@@ -27,20 +28,23 @@ Meteor.publish 'organization_tags', (selected_tags)->
 
 
 Meteor.publish 'organizations', (selected_tags=[])->
+    check(arguments, [Match.Any])
     self = @
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
-    match = 'organization'
+    match.type = 'organization'
 
     Docs.find match
 
 
 Meteor.publish 'organization', (id)->
+    check(arguments, [Match.Any])
     Docs.find id
     
     
     
 Meteor.publish 'featured_organizations', ->
+    check(arguments, [Match.Any])
     match = {}
     match = 'organization'
 

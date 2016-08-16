@@ -1,7 +1,7 @@
 Template.edit_organization.onCreated ->
     self = @
     self.autorun ->
-        self.subscribe 'organization', FlowRouter.getParam('organization_id')
+        self.subscribe 'organization', FlowRouter.getParam('doc_id')
         # self.subscribe 'tags', selected_type_of_organization_tags.array(),"organization"
 
 
@@ -9,8 +9,8 @@ Template.edit_organization.onCreated ->
 
 Template.edit_organization.helpers
     organization: ->
-        # docId = FlowRouter.getParam('organization_id')
-        Docs.findOne FlowRouter.getParam('organization_id')
+        # docId = FlowRouter.getParam('doc_id')
+        Docs.findOne FlowRouter.getParam('doc_id')
     
 
         
@@ -27,51 +27,28 @@ Template.edit_organization.events
             confirmButtonText: 'Delete'
             confirmButtonColor: '#da5347'
         }, ->
-            Meteor.call 'delete_organization', FlowRouter.getParam('organization_id'), (error, result) ->
+            Meteor.call 'delete_organization', FlowRouter.getParam('doc_id'), (error, result) ->
                 if error
                     console.error error.reason
                 else
                     FlowRouter.go '/organizations'
 
-    'change [name="upload_picture"]': (organization, template) ->
-        organization_id = FlowRouter.getParam('organization_id')
-        # template.uploading.set true
-        console.log organization.target.files
-        uploader = new (Slingshot.Upload)('myFileUploads')
-        uploader.send organization.target.files[0], (error, download_url) ->
-            if error
-                # Log service detailed response.
-                # console.error 'Error uploading', uploader.xhr.response
-                console.error 'Error uploading', error
-                alert error
-            else
-                Meteor.users.update Meteor.userId(), $push: 'profile.files': download_url
-                Docs.update organization_id, $set: featured_image_url: download_url
-            return
-
-
-    'click #remove_photo': ->
-        Docs.update FlowRouter.getParam('organization_id'), 
-            $unset: featured_image_url: 1
-
-
-
     'keydown #add_organization_tag': (e,t)->
         if e.which is 13
-            organization_id = FlowRouter.getParam('organization_id')
+            doc_id = FlowRouter.getParam('doc_id')
             tag = $('#add_organization_tag').val().toLowerCase().trim()
             if tag.length > 0
-                Docs.update organization_id,
+                Docs.update doc_id,
                     $addToSet: tags: tag
                 $('#add_organization_tag').val('')
 
     'click .organization_tag': (e,t)->
-        organization = Docs.findOne FlowRouter.getParam('organization_id')
+        organization = Docs.findOne FlowRouter.getParam('doc_id')
         tag = @valueOf()
         if tag is organization.type
-            Docs.update FlowRouter.getParam('organization_id'),
+            Docs.update FlowRouter.getParam('doc_id'),
                 $set: type: ''
-        Docs.update FlowRouter.getParam('organization_id'),
+        Docs.update FlowRouter.getParam('doc_id'),
             $pull: tags: tag
         $('#add_organization_tag').val(tag)
 
@@ -81,7 +58,7 @@ Template.edit_organization.events
         title = $('#title').val()
         link = $('#link').val()
         description = $('#description').val()
-        Docs.update FlowRouter.getParam('organization_id'),
+        Docs.update FlowRouter.getParam('doc_id'),
             $set:
                 title: title
                 link: link

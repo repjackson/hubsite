@@ -1,22 +1,10 @@
 @Event_tags = new Meteor.Collection 'event_tags'
 
 
-# Docs.helpers
-#     attendees: ->
-#         if @attendee_ids?.length > 0
-#             attendeeArray = []
-#             for id in @attendee_ids
-#                 attendeeArray.push(Meteor.users.findOne(id))
-#             return attendeeArray
-#         else return
-    
-#     author: -> Meteor.users.findOne @author_id
-
-
-
 Meteor.methods
     add_event: ()->
         Docs.insert
+            type: 'event'
             attendee_ids: []
 
     delete_event: (id)->

@@ -70,21 +70,34 @@ Template.edit_profile.events
                     Meteor.call 'update_name', name, (err,res)->
                         swal "Updated name to #{name}."
     
-    'change [name="upload_picture"]': (event, template) ->
-        # template.uploading.set true
-        ##console.log event.target.files
-        uploader = new (Slingshot.Upload)('myFileUploads')
-        uploader.send event.target.files[0], (error, download_url) ->
-            if error
-                # Log service detailed response.
-                console.error 'Error uploading', uploader.xhr.response
-                console.error 'Error uploading', error
-                alert error
-            else
-                Meteor.users.update Meteor.userId(), 
-                    $set: 'profile.profile_image_url': download_url
-                # Docs.update post_id, $set: featured_image_url: download_url
-            return
+    # 'change [name="upload_picture"]': (event, template) ->
+    #     # template.uploading.set true
+    #     ##console.log event.target.files
+    #     uploader = new (Slingshot.Upload)('myFileUploads')
+    #     uploader.send event.target.files[0], (error, download_url) ->
+    #         if error
+    #             # Log service detailed response.
+    #             console.error 'Error uploading', uploader.xhr.response
+    #             console.error 'Error uploading', error
+    #             alert error
+    #         else
+    #             Meteor.users.update Meteor.userId(), 
+    #                 $set: 'profile.profile_image_url': download_url
+    #             # Docs.update post_id, $set: featured_image_url: download_url
+    #         return
+            
+    "change input[type='file']": (e) ->
+        files = e.currentTarget.files
+
+        Cloudinary.upload files,
+            folder:"secret" # optional parameters described in http://cloudinary.com/documentation/upload_images#remote_upload
+            type:"private" # optional: makes the image accessible only via a signed url. The signed url is available publicly for 1 hour.
+            (err,res) -> #optional callback, you can catch with the Cloudinary collection as well
+                console.log "Upload Error: #{err}"
+                console.log "Upload Result: #{res}"
+            
+            
+            
 
     'click #remove_photo': ->
         Meteor.users.update Meteor.userId(), 

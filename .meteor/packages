@@ -46,8 +46,10 @@ accounts-facebook
 iandouglas:accounts-ui-semantic-ui
 froala:editor
 perak:codemirror
-edgee:slingshot
 email
 accounts-base
 altapp:recaptcha
 raix:handlebar-helpers
+lepozepo:cloudinary
+check
+ejson

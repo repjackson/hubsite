@@ -5,16 +5,7 @@ template(name='edit_organization')
                 .required.field
                     label Title
                     input#title(type='text' placeholder='Title' value=title)
-                .field
-                    if featured_image_url
-                        label Featured Image
-                        .ui.large.image
-                            img(src=featured_image_url)
-                            a#remove_photo.ui.right.corner.link.label
-                                i.remove.red.link.icon
-                    else
-                        label Upload Image (1Mb Max)
-                        input(type='file' name='upload_picture' accept='image/*')
+                +upload_image
                 .field
                     label Link (include http://)
                     .ui.left.icon.input

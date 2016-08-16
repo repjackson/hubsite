@@ -1,4 +1,3 @@
-@Organizations = new Meteor.Collection 'organizations'
 @Organization_tags = new Meteor.Collection 'organization_tags'
 
 
@@ -9,11 +8,11 @@ FlowRouter.route '/organizations', action: ->
         cloud: 'organization_cloud'
         main: 'organizations'
 
-FlowRouter.route '/organizations/edit/:organization_id', action: (params) ->
+FlowRouter.route '/organizations/edit/:doc_id', action: (params) ->
     BlazeLayout.render 'layout',
         main: 'edit_organization'
 
-FlowRouter.route '/organizations/view/:organization_id', action: (params) ->
+FlowRouter.route '/organizations/view/:doc_id', action: (params) ->
     BlazeLayout.render 'layout',
         main: 'organization_page'
 

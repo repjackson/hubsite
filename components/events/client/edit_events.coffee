@@ -33,29 +33,6 @@ Template.edit_event.events
                 else
                     FlowRouter.go '/events'
 
-    'change [name="upload_picture"]': (event, template) ->
-        event_id = FlowRouter.getParam('event_id')
-        # template.uploading.set true
-        ##console.log event.target.files
-        uploader = new (Slingshot.Upload)('myFileUploads')
-        uploader.send event.target.files[0], (error, download_url) ->
-            if error
-                # Log service detailed response.
-                # console.error 'Error uploading', uploader.xhr.response
-                console.error 'Error uploading', error
-                alert error
-            else
-                Meteor.users.update Meteor.userId(), $push: 'profile.files': download_url
-                Docs.update event_id, $set: featured_image_url: download_url
-            return
-
-
-    'click #remove_photo': ->
-        Docs.update FlowRouter.getParam('event_id'), 
-            $unset: featured_image_url: 1
-
-
-
     'keydown #add_event_tag': (e,t)->
         if e.which is 13
             event_id = FlowRouter.getParam('event_id')

@@ -17,6 +17,8 @@ link accounts to profile on admin page
 services
 -simplified fivrr structure
 
-lost lake
-hanging lake
-st marys glacier
+
+doc structure complete
+combine edit temlpate
+componentize view template and edit template
+add back content
