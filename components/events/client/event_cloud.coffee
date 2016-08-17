@@ -1,13 +1,12 @@
 @selected_event_tags = new ReactiveArray []
 
 Template.event_cloud.onCreated ->
-    @autorun -> Meteor.subscribe('event_tags', selected_event_tags.array())
+    @autorun -> Meteor.subscribe('tags', selected_event_tags.array(), 'event')
 
 Template.event_cloud.helpers
     all_event_tags: ->
         event_count = Docs.find().count()
-        if 0 < event_count < 3 then Event_tags.find { count: $lt: event_count } else Event_tags.find()
-        # Event_tags.find()
+        if 0 < event_count < 3 then Tags.find { count: $lt: event_count } else Tags.find()
 
     event_tag_cloud_class: ->
         button_class = switch

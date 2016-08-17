@@ -28,15 +28,7 @@ template(name='edit_person')
                         .ui.left.icon.input
                             i.linkedin.icon
                             input#linkedin(type='text' value=linkedin)
-                    .field
-                        label Tags
-                        each tags
-                            .ui.basic.button.tag
-                                i.remove.icon
-                                |#{this}
-                        .ui.left.icon.small.input
-                            i.add.green.icon
-                            input#add_tag(type='text' placeholder='Add tag')
+                    +edit_tags
                     .field
                         label Bio
                         textarea#bio(rows='5') #{bio}

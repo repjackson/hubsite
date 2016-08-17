@@ -1,12 +1,12 @@
 @selected_organization_tags = new ReactiveArray []
 
 Template.organization_cloud.onCreated ->
-    @autorun -> Meteor.subscribe('organization_tags', selected_organization_tags.array())
+    @autorun -> Meteor.subscribe('tags', selected_organization_tags.array(), 'organization')
 
 Template.organization_cloud.helpers
     organization_tags: ->
         organization_count = Docs.find().count()
-        if 0 < organization_count < 3 then Organization_tags.find { count: $lt: organization_count } else Organization_tags.find()
+        if 0 < organization_count < 3 then Tags.find { count: $lt: organization_count } else Tags.find()
         # organization_tags.find()
 
     organization_tag_class: ->

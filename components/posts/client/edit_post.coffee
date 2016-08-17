@@ -2,11 +2,11 @@
 Template.edit_post.onCreated ->
     self = @
     self.autorun ->
-        self.subscribe 'post', FlowRouter.getParam('post_id')
+        self.subscribe 'doc', FlowRouter.getParam('doc_id')
 
 Template.edit_post.helpers
     post: ->
-        Docs.findOne FlowRouter.getParam('post_id')
+        Docs.findOne FlowRouter.getParam('doc_id')
     
         
 Template.edit_post.events
@@ -21,57 +21,18 @@ Template.edit_post.events
             confirmButtonText: 'Delete'
             confirmButtonColor: '#da5347'
         }, ->
-            Meteor.call 'delete_post', FlowRouter.getParam('post_id'), (error, result) ->
+            Meteor.call 'delete_post', FlowRouter.getParam('doc_id'), (error, result) ->
                 if error
                     console.error error.reason
                 else
                     FlowRouter.go '/posts'
 
 
-    'change [name="upload_picture"]': (event, template) ->
-        post_id = FlowRouter.getParam('post_id')
-        # template.uploading.set true
-        ##console.log event.target.files
-        uploader = new (Slingshot.Upload)('myFileUploads')
-        uploader.send event.target.files[0], (error, download_url) ->
-            if error
-                # Log service detailed response.
-                console.error 'Error uploading', uploader.xhr.response
-                console.error 'Error uploading', error
-                alert error
-            else
-                Meteor.users.update Meteor.userId(), $push: 'profile.files': download_url
-                Docs.update post_id, $set: featured_image_url: download_url
-            return
-            
-            
-    'click #remove_photo': ->
-        Docs.update FlowRouter.getParam('post_id'), 
-            $unset: featured_image_url: 1
-            
-
-    'keydown #add_post_tag': (e,t)->
-        if e.which is 13
-            post_id = FlowRouter.getParam('post_id')
-            tag = $('#add_post_tag').val().toLowerCase().trim()
-            if tag.length > 0
-                Docs.update post_id,
-                    $addToSet: tags: tag
-                $('#add_post_tag').val('')
-
-    'click .post_tag': (e,t)->
-        tag = @valueOf()
-        Docs.update FlowRouter.getParam('post_id'),
-            $pull: tags: tag
-        $('#add_post_tag').val(tag)
-
-
-
     'click #save_post': ->
         title = $('#title').val()
         publish_date = $('#publish_date').val()
         description = $('#description').val()
-        Docs.update FlowRouter.getParam('post_id'),
+        Docs.update FlowRouter.getParam('doc_id'),
             $set:
                 title: title
                 publish_date: publish_date
@@ -81,54 +42,3 @@ Template.edit_post.events
         for tag in @tags
             selected_post_tags.push tag
         FlowRouter.go '/posts'
-
-
-
-
-Template.edit_post.onRendered ->
-    Meteor.setTimeout (->
-        $('#description').froalaEditor
-            heightMin: 200
-            # toolbarInline: true
-            # toolbarButtonsMD: ['bold', 'italic', 'fontSize', 'undo', 'redo', '|', 'insertImage', 'insertVideo','insertFile']
-            # toolbarButtonsSM: ['bold', 'italic', 'fontSize', 'undo', 'redo', '|', 'insertImage', 'insertVideo','insertFile']
-            # toolbarButtonsXS: ['bold', 'italic', 'fontSize', 'undo', 'redo', '|', 'insertImage', 'insertVideo','insertFile']
-            toolbarButtons: 
-                [
-                  'fullscreen'
-                  'bold'
-                  'italic'
-                  'underline'
-                  'strikeThrough'
-                  'subscript'
-                  'superscript'
-                #   'fontFamily'
-                #   'fontSize'
-                  '|'
-                  'color'
-                  'emoticons'
-                #   'inlineStyle'
-                #   'paragraphStyle'
-                  '|'
-                  'paragraphFormat'
-                  'align'
-                  'formatOL'
-                  'formatUL'
-                  'outdent'
-                  'indent'
-                  'quote'
-                  'insertHR'
-                  '-'
-                  'insertLink'
-                  'insertImage'
-                  'insertVideo'
-                  'insertFile'
-                  'insertTable'
-                  'undo'
-                  'redo'
-                  'clearFormatting'
-                  'selectAll'
-                  'html'
-                ]
-        ), 500
-

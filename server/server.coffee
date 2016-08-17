@@ -2,6 +2,10 @@ Conversations.allow
     update: (userId, doc, fieldNames, modifier) -> doc.authorId is Meteor.userId()
     remove: (userId, doc)-> doc.authorId is userId
 
+Docs.allow
+    insert: (userId, doc) -> doc.author_id is userId
+    update: (userId, doc) -> doc.author_id is userId
+    remove: (userId, doc) -> doc.author_id is userId
 
 Meteor.startup ->
     reCAPTCHA.config privatekey: Meteor.settings.recaptcha_private
@@ -27,12 +31,6 @@ Meteor.publish 'usernames', ->
         fields:
             username: 1
 
-Meteor.publish 'me', ->
-    Meteor.users.find @userId,
-        fields:
-            tags: 1
-            profile: 1
-            username: 1
 
 Meteor.publish 'sent_messages', ->
     Messages.find
@@ -55,6 +53,7 @@ Meteor.publish 'received_messages', ->
 
 
 Meteor.publish 'users', (selectedtags=[])->
+    check(arguments, [Match.Any])
     self = @
     match = {}
     if selectedtags.length > 0 then match.tags = $all: selectedtags
@@ -66,6 +65,7 @@ Meteor.publish 'users', (selectedtags=[])->
             username: 1
 
 Meteor.publish 'conversations', (selectedtags)->
+    check(arguments, [Match.Any])
     self = @
     match = {}
     if selectedtags and selectedtags.length > 0 then match.tags = $all: selectedtags
@@ -78,25 +78,50 @@ Meteor.publish 'conversations', (selectedtags)->
 
 
 
-Meteor.publish 'conversation_tags', (selectedtags)->
+Meteor.publish 'docs', (selected_tags, filter)->
+    check(arguments, [Match.Any])
+
     self = @
     match = {}
-    if selectedtags.length > 0 then match.tags = $all: selectedtags
-    # match.authorId = $ne: @userId
+    if selected_tags.length > 0 then match.tags = $all: selected_tags
+    match.type = filter
 
-    tagCloud = Conversations.aggregate [
+    Docs.find match
+
+Meteor.publish 'doc', (id)->
+    check(arguments, [Match.Any])
+    Docs.find id
+
+
+Meteor.publish 'featured_docs', (filter)->
+    check(arguments, [Match.Any])
+    match = {}
+    match.featured = true
+    match.type = filter
+    
+    Docs.find match, limit: 3
+
+
+Meteor.publish 'tags', (selected_tags, filter)->
+    check(arguments, [Match.Any])
+    self = @
+    match = {}
+    if selected_tags.length > 0 then match.tags = $all: selected_tags
+    match.type = filter
+
+    cloud = Docs.aggregate [
         { $match: match }
         { $project: "tags": 1 }
         { $unwind: "$tags" }
         { $group: _id: "$tags", count: $sum: 1 }
-        { $match: _id: $nin: selectedtags }
+        { $match: _id: $nin: selected_tags }
         { $sort: count: -1, _id: 1 }
-        { $limit: 50 }
+        { $limit: 20 }
         { $project: _id: 0, name: '$_id', count: 1 }
         ]
 
-    tagCloud.forEach (tag, i) ->
-        self.added 'conversation_tags', Random.id(),
+    cloud.forEach (tag, i) ->
+        self.added 'tags', Random.id(),
             name: tag.name
             count: tag.count
             index: i
@@ -114,3 +139,10 @@ Meteor.methods
             console.log 'reCAPTCHA verification passed!'
         #do stuff with your formData
         true
+        
+        
+AccountsMeld.configure
+    askBeforeMeld: false
+    # meldDBCallback: meldDBCallback
+    # serviceAddedCallback: serviceAddedCallback
+    

@@ -1,5 +1,5 @@
 Template.events.onCreated ->
-    @autorun -> Meteor.subscribe('events', selected_event_tags.array())
+    @autorun -> Meteor.subscribe('docs', selected_event_tags.array(), 'event')
 
 Template.events.helpers
     events: -> 

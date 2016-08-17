@@ -1,9 +1,8 @@
 Template.edit_event.onCreated ->
     self = @
     self.autorun ->
-        self.subscribe 'event', FlowRouter.getParam('doc_id')
+        self.subscribe 'doc', FlowRouter.getParam('doc_id')
 
-# Template.edit_event.onRendered ->
 
 Template.edit_event.helpers
     event: ->

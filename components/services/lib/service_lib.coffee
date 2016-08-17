@@ -1,6 +1,3 @@
-@Service_tags = new Meteor.Collection 'service_tags'
-
-
 
 FlowRouter.route '/services', action: (params) ->
     BlazeLayout.render 'layout',
@@ -30,14 +27,3 @@ Meteor.methods
         Docs.insert
             type: 'service'
             tags: []
-
-    delete_service: (id)->
-        Docs.remove id
-
-    remove_service_tag: (tag, doc_id)->
-        Docs.update doc_id,
-            $pull: tag
-
-    add_service_tag: (tag, doc_id)->
-        Docs.update doc_id,
-            $addToSet: tags: tag

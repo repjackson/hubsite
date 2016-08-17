@@ -1,13 +1,12 @@
 @selected_service_tags = new ReactiveArray []
 
 Template.service_cloud.onCreated ->
-    @autorun -> Meteor.subscribe('service_tags', selected_service_tags.array())
+    @autorun -> Meteor.subscribe('tags', selected_service_tags.array(), 'service')
 
 Template.service_cloud.helpers
     all_service_tags: ->
-        # userCount = Meteor.users.find().count()
-        # if 0 < userCount < 3 then tags.find { count: $lt: userCount } else tags.find()
-        Service_tags.find()
+        service_count = Docs.find().count()
+        if 0 < service_count < 3 then Tags.find { count: $lt: service_count } else Tags.find()
 
     service_tag_cloud_class: ->
         buttonClass = switch

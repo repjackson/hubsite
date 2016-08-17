@@ -1,5 +1,5 @@
 Template.organizations.onCreated ->
-    @autorun -> Meteor.subscribe('organizations', selected_organization_tags.array())
+    @autorun -> Meteor.subscribe('docs', selected_organization_tags.array(), 'organization')
 
 
 Template.organizations.helpers

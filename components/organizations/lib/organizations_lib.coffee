@@ -1,7 +1,3 @@
-@Organization_tags = new Meteor.Collection 'organization_tags'
-
-
-# organizations
 
 FlowRouter.route '/organizations', action: ->
     BlazeLayout.render 'layout', 
@@ -24,15 +20,3 @@ Meteor.methods
             tags: []
             type: 'organization'
 
-    delete_organization: (id)->
-        Docs.remove id
-
-    remove_organization_tag: (tag, doc_id)->
-        Docs.update doc_id,
-            $pull: tag
-
-    add_organization_tag: (tag, doc_id)->
-        Docs.update doc_id,
-            $addToSet: tags: tag
-            
-            

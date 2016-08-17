@@ -2,6 +2,7 @@
 @Messages = new Meteor.Collection 'messages'
 @Conversations = new Meteor.Collection 'conversations'
 @Docs = new Meteor.Collection 'docs'
+@Tags = new Meteor.Collection 'tags'
 
     
 Docs.before.insert (userId, doc)->
@@ -34,74 +35,6 @@ Conversations.helpers
 Meteor.methods
     delete_doc: (id)->
         Docs.remove id
-
-    # vote_up: (id)->
-    #     doc = Docs.findOne id
-    #     if Meteor.userId() in doc.up_voters #undo upvote
-    #         Docs.update id,
-    #             $pull: up_voters: Meteor.userId()
-    #             $inc: points: -1
-    #         Meteor.users.update doc.authorId, $inc: points: -1
-
-    #     else if Meteor.userId() in doc.down_voters #switch downvote to upvote
-    #         Docs.update id,
-    #             $pull: down_voters: Meteor.userId()
-    #             $addToSet: up_voters: Meteor.userId()
-    #             $inc: points: 2
-    #         Meteor.users.update doc.authorId, $inc: points: 2
-
-    #     else #clean upvote
-    #         Docs.update id,
-    #             $addToSet: up_voters: Meteor.userId()
-    #             $inc: points: 1
-    #         Meteor.users.update doc.authorId, $inc: points: 1
-    #     # Meteor.call 'generatePersonalCloud', Meteor.userId()
-
-
-    # create_conversation: (tags, otherUserId)->
-    #     existingConversation = Conversations.findOne tags: tags
-    #     if existingConversation then return
-    #     else
-    #         Conversations.insert
-    #             tags: tags
-    #             authorId: Meteor.userId()
-    #             participantIds: [Meteor.userId(), otherUserId]
-
-    # add_win: (body)->
-    #     Docs.insert
-    #         tags: ['impact hub', 'boulder', 'win']
-    #         body: body
-    #         authorId: Meteor.userId()
-
-
-    # add_challenge: (body)->
-    #     Docs.insert
-    #         tags: ['impact hub', 'boulder', 'challenge']
-    #         body: body
-    #         authorId: Meteor.userId()
-
-
-    # closeConversation: (id)->
-    #     Conversations.remove id
-    #     Messages.remove conversationId: id
-
-    # joinConversation: (id)->
-    #     Conversations.update id,
-    #         $addToSet:
-    #             participantIds: Meteor.userId()
-
-    # leaveConversation: (id)->
-    #     Conversations.update id,
-    #         $pull:
-    #             participantIds: Meteor.userId()
-
-    # removetag: (tag)->
-    #     Meteor.users.update Meteor.userId(),
-    #         $pull: tags: tag
-
-    # addtag: (tag)->
-    #     Meteor.users.update Meteor.userId(),
-    #         $addToSet: tags: tag
 
     # update_name: (name)->
     #     Meteor.users.update Meteor.userId(),
