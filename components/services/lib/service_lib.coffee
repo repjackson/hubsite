@@ -2,7 +2,6 @@
 FlowRouter.route '/services', action: (params) ->
     BlazeLayout.render 'layout',
         nav: 'nav'
-        cloud: 'service_cloud'
         main: 'services'
 
 FlowRouter.route '/account/services', action: (params) ->

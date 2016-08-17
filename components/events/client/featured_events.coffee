@@ -15,8 +15,8 @@ Template.featured_event.helpers
 
 Template.featured_events.events
     'click .featured_event_title': ->
-        selected_event_tags.clear()
+        selected_tags.clear()
         for tag in @tags
-            selected_event_tags.push tag
+            selected_tags.push tag
         FlowRouter.go '/events'
 

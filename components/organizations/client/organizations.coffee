@@ -1,5 +1,8 @@
+@selected_tags = new ReactiveArray []
+
+
 Template.organizations.onCreated ->
-    @autorun -> Meteor.subscribe('docs', selected_organization_tags.array(), 'organization')
+    @autorun -> Meteor.subscribe('docs', selected_tags.array(), 'organization')
 
 
 Template.organizations.helpers
@@ -7,7 +10,7 @@ Template.organizations.helpers
 
 
 Template.organization.helpers
-    organization_tag_class: -> if @valueOf() in selected_organization_tags.array() then 'red' else 'basic'
+    organization_tag_class: -> if @valueOf() in selected_tags.array() then 'red' else 'basic'
 
     attending: -> if @attendee_ids and Meteor.userId() in @attendee_ids then true else false
 
@@ -19,7 +22,7 @@ Template.organization.helpers
 
 Template.organization.events
     'click .organization_tag': ->
-        if @valueOf() in selected_organization_tags.array() then selected_organization_tags.remove @valueOf() else selected_organization_tags.push @valueOf()
+        if @valueOf() in selected_tags.array() then selected_tags.remove @valueOf() else selected_tags.push @valueOf()
 
 
     'keydown .add_message': (e,t)->

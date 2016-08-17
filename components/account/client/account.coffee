@@ -1,9 +1,3 @@
-
-
-
-
-
-            
 Template.user_management.onCreated ->
     self = @
     self.autorun ->

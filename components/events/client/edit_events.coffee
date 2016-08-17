@@ -12,22 +12,6 @@ Template.edit_event.helpers
         
         
 Template.edit_event.events
-    'click #delete_event': ->
-        swal {
-            title: 'Delete event?'
-            text: 'Confirm delete?'
-            type: 'error'
-            showCancelButton: true
-            closeOnConfirm: true
-            cancelButtonText: 'No'
-            confirmButtonText: 'Delete'
-            confirmButtonColor: '#da5347'
-        }, ->
-            Meteor.call 'delete_event', FlowRouter.getParam('doc_id'), (error, result) ->
-                if error
-                    console.error error.reason
-                else
-                    FlowRouter.go '/events'
 
 
     'click #save_event': ->
@@ -42,18 +26,11 @@ Template.edit_event.events
                 end_date: end_date
                 title: title
                 # tagCount: @tags.length
-        selected_event_tags.clear()
+        selected_tags.clear()
         for tag in @tags
-            selected_event_tags.push tag
+            selected_tags.push tag
         FlowRouter.go '/events'
 
-    'click #make_featured': ->
-        Docs.update FlowRouter.getParam('doc_id'),
-            $set: featured_event: true
-
-    'click #make_unfeatured': ->
-        Docs.update FlowRouter.getParam('doc_id'),
-            $set: featured_event: false
 
 
 

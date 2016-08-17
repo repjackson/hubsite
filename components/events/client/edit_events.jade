@@ -12,15 +12,7 @@ template(name='edit_event')
                     input#end_date(type='text' value=end_date)
                 +edit_description
                 +edit_tags
-                .field
-                    if featured_event
-                        #make_unfeatured.ui.green.button
-                            i.toggle.on.icon
-                            |Featured
-                    else
-                        #make_featured.ui.basic.button
-                            i.toggle.off.icon
-                            |Unfeatured
+                +edit_featured
                 if tags
                     #save_event.ui.large.green.button Save
-                #delete_event.ui.red.large.button Delete
+                +delete_button

@@ -1,19 +1,20 @@
 Template.events.onCreated ->
-    @autorun -> Meteor.subscribe('docs', selected_event_tags.array(), 'event')
-
+    @autorun -> Meteor.subscribe('docs', selected_tags.array(), 'event')
+    selected_tags.clear()
+    
+    
 Template.events.helpers
     events: -> 
         match = {}
-        # if selected_event_tags.array and selected_event_tags.array().length > 0 then match.tags = $all: selected_event_tags.array()
+        # if selected_tags.array and selected_tags.array().length > 0 then match.tags = $all: selected_tags.array()
         Docs.find match
 
 
 Template.event_card.helpers
-    event_tag_class: -> if @valueOf() in selected_event_tags.array() then 'red' else 'basic'
+    event_tag_class: -> if @valueOf() in selected_tags.array() then 'red' else 'basic'
 
     attending: -> if @attendee_ids and Meteor.userId() in @attendee_ids then true else false
 
-    can_edit: -> @author_id is Meteor.userId()
 
     event_messages: -> Messages.find event_id: @_id
 
@@ -21,11 +22,11 @@ Template.event_card.helpers
     start_time: -> moment(@start_date).format("h:mm a")
     end_time: -> moment(@end_date).format("h:mm a")
 
-    snippet: -> @description.substr(1, 100)
+    # snippet: -> @description?.substr(1, 100)
 
 Template.event_card.events
     'click .event_tag': ->
-        if @valueOf() in selected_event_tags.array() then selected_event_tags.remove @valueOf() else selected_event_tags.push @valueOf()
+        if @valueOf() in selected_tags.array() then selected_tags.remove @valueOf() else selected_tags.push @valueOf()
 
     'click .join_event': ->
         Meteor.call 'join_event', @_id
@@ -39,4 +40,4 @@ Template.event_card.events
             Docs.remove @_id
             
     'click .edit_event': ->
-        FlowRouter.go "/events/edit/#{@_id}"
+        FlowRouter.go "/event/edit/#{@_id}"

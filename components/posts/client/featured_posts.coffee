@@ -10,8 +10,8 @@ Template.featured_posts.helpers
             
 Template.featured_posts.events
     'click .featured_post_title': ->
-        selected_post_tags.clear()
+        selected_tags.clear()
         for tag in @tags
-            selected_post_tags.push tag
+            selected_tags.push tag
         FlowRouter.go '/posts'
 

@@ -1,5 +1,5 @@
 Template.posts.onCreated ->
-    @autorun -> Meteor.subscribe('docs', selected_post_tags.array(), 'post')
+    @autorun -> Meteor.subscribe('docs', selected_tags.array(), 'post')
 
 Template.posts.helpers
     posts: -> Docs.find {}
@@ -7,7 +7,7 @@ Template.posts.helpers
 
 
 Template.post.helpers
-    post_tag_class: -> if @valueOf() in selected_post_tags.array() then 'red' else 'basic'
+    post_tag_class: -> if @valueOf() in selected_tags.array() then 'red' else 'basic'
 
     can_edit: -> @author_id is Meteor.userId()
 
@@ -17,7 +17,7 @@ Template.post.helpers
 
 Template.post.events
     'click .post_tag': ->
-        if @valueOf() in selected_post_tags.array() then selected_post_tags.remove @valueOf() else selected_post_tags.push @valueOf()
+        if @valueOf() in selected_tags.array() then selected_tags.remove @valueOf() else selected_tags.push @valueOf()
 
 
     'keydown .addMessage': (e,t)->

@@ -7,7 +7,7 @@ Template.event_page.onCreated ->
 Template.event_page.helpers
     event: -> Docs.findOne FlowRouter.getParam('doc_id')
 
-    event_tag_class: -> if @valueOf() in selected_event_tags.array() then 'red' else 'basic'
+    event_tag_class: -> if @valueOf() in selected_tags.array() then 'red' else 'basic'
 
     attending: -> if @attendee_ids and Meteor.userId() in @attendee_ids then true else false
 
@@ -22,7 +22,7 @@ Template.event_page.helpers
 
 Template.event_page.events
     'click .event_tag': ->
-        if @valueOf() in selected_event_tags.array() then selected_event_tags.remove @valueOf() else selected_event_tags.push @valueOf()
+        if @valueOf() in selected_tags.array() then selected_tags.remove @valueOf() else selected_tags.push @valueOf()
 
     'click .join_event': ->
         Meteor.call 'join_event', @_id
@@ -33,4 +33,4 @@ Template.event_page.events
 
             
     'click .edit_event': ->
-        FlowRouter.go "/events/edit/#{@_id}"
+        FlowRouter.go "/event/edit/#{@_id}"

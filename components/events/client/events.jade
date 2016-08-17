@@ -1,4 +1,5 @@
 template(name='events')
+    +cloud filter='event'
     .ui.centered.cards
         each events
             +event_card
@@ -7,12 +8,12 @@ template(name='events')
 template(name='event_card')
     .ui.card
         .image
-            a(href="/events/view/#{_id}")
+            a(href="/event/view/#{_id}")
                 img.ui.medium.image(src=featured_image_url)
         .content
             .header
                 h2.ui.header 
-                    a(href="/events/view/#{_id}") #{title}
+                    a(href="/event/view/#{_id}") #{title}
             .meta
                 strong #{day} 
                 |from

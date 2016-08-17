@@ -1,6 +1,6 @@
 
 Template.edit_person.onCreated ->
-    @autorun -> Meteor.subscribe 'person', FlowRouter.getParam('person_id')
+    @autorun -> Meteor.subscribe 'doc', FlowRouter.getParam('doc_id')
 
 
 
@@ -53,33 +53,6 @@ Template.edit_person.helpers
 
 
 Template.edit_person.events
-    'keydown #add_tag': (e,t)->
-        e.preventDefault
-        tag = $('#add_tag').val().toLowerCase().trim()
-        if e.which is 13
-            if tag.length > 0
-                person_id = FlowRouter.getParam('person_id')
-                Docs.update person_id,
-                    $addToSet: tags: tag
-                    , ->
-                        $('#add_tag').val('')
-
-
-    
-
-    'click #remove_photo': ->
-        Docs.update FlowRouter.getParam('person_id'), 
-            $unset: 'person_image_url': 1
-    
-
-    'click .person_tag': ->
-        tag = @valueOf()
-        person_id = FlowRouter.getParam('person_id')
-        Docs.update person_id,
-            $pull: tags: tag
-            , ->
-                $('#add_tag').val(tag)
-
     'click #save_person': ->
         name = $('#name').val()
         bio = $('#bio').val()
@@ -89,7 +62,7 @@ Template.edit_person.events
         linkedin = $('#linkedin').val()
         position = $('#position').val()
         company = $('#company').val()
-        Docs.update FlowRouter.getParam('person_id'),
+        Docs.update FlowRouter.getParam('doc_id'),
             $set:
                 name: name
                 bio: bio
@@ -99,8 +72,8 @@ Template.edit_person.events
                 linkedin: linkedin
                 position: position
                 company: company
-        selected_people_tags.clear()
+        selected_tags.clear()
         for tag in @tags
-            selected_people_tags.push tag
+            selected_tags.push tag
         FlowRouter.go "/person/view/#{@_id}"
 

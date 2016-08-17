@@ -1,7 +1,6 @@
 template(name='people')
+    +cloud filter='person'
     .ui.container
-        // if currentUser
-        //     +profile
         .ui.centered.cards
             each people
                 +person_card
@@ -16,8 +15,8 @@ template(name='person_card')
                 a(href="/person/view/#{_id}") #{name}
             .meta
                 | #{position}
-            .description 
-                |{{cutString bio 100}}
+            // .description 
+            //     |{{cutString bio 100}}
         // if website
         //     .content
         //         i.linkify.icon

@@ -1,15 +1,11 @@
 Meteor.methods
-    add_event: ()->
-        Docs.insert
-            type: 'event'
-            attendee_ids: []
-
-
     join_event: (id)->
+        check(arguments, [Match.Any])
         Docs.update id, 
             $addToSet: attendee_ids: Meteor.userId()    
             
     leave_event: (id)->
+        check(arguments, [Match.Any])
         Docs.update id, 
             $pull: attendee_ids: Meteor.userId()
             
@@ -20,14 +16,14 @@ Meteor.methods
 FlowRouter.route '/events', action: (params) ->
     BlazeLayout.render 'layout',
         nav: 'nav'
-        cloud: 'event_cloud'
+        # cloud: 'event_cloud'
         main: 'events'
 
-FlowRouter.route '/events/edit/:doc_id', action: (params) ->
+FlowRouter.route '/event/edit/:doc_id', action: (params) ->
     BlazeLayout.render 'layout',
         main: 'edit_event'
 
-FlowRouter.route '/events/view/:doc_id', action: (params) ->
+FlowRouter.route '/event/view/:doc_id', action: (params) ->
     BlazeLayout.render 'layout',
         main: 'event_page'
 

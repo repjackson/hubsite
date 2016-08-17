@@ -1,7 +1,7 @@
-@selected_post_tags = new ReactiveArray []
+@selected_tags = new ReactiveArray []
 
 Template.post_cloud.onCreated ->
-    @autorun -> Meteor.subscribe('post_tags', selected_post_tags.array())
+    @autorun -> Meteor.subscribe('post_tags', selected_tags.array())
 
 Template.post_cloud.helpers
     all_post_tags: ->
@@ -18,15 +18,15 @@ Template.post_cloud.helpers
             when @index <= 50 then 'tiny'
         return button_class
 
-    selected_post_tags: -> selected_post_tags.list()
+    selected_tags: -> selected_tags.list()
 
     can_add_post: -> Meteor.userId()
 
 
 Template.post_cloud.events
-    'click .select_tag': -> selected_post_tags.push @name
-    'click .unselect_tag': -> selected_post_tags.remove @valueOf()
-    'click #clear_tags': -> selected_post_tags.clear()
+    'click .select_tag': -> selected_tags.push @name
+    'click .unselect_tag': -> selected_tags.remove @valueOf()
+    'click #clear_tags': -> selected_tags.clear()
     
     
     'click #add_post': ->
