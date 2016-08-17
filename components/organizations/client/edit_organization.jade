@@ -2,27 +2,11 @@ template(name='edit_organization')
     with organization
         .ui.container.segment
             .ui.form
-                .required.field
-                    label Title
-                    input#title(type='text' placeholder='Title' value=title)
+                +edit_title
                 +upload_image
-                .field
-                    label Link (include http://)
-                    .ui.left.icon.input
-                        i.linkify.icon
-                        input#link(type='text' value=link placeholder='http://www')
-                .field
-                    label Description
-                    textarea#description(rows='5') #{description}
-                .field
-                    label Organization Tags
-                    each tags
-                        .ui.basic.button.organization_tag
-                            i.minus.icon
-                            |#{this}
-                    .ui.left.icon.input
-                        i.add.icon
-                        input#add_organization_tag(type='text' placeholder='Add Tag' maxlength='50')
+                +edit_link
+                +edit_description
+                +edit_tags
                 if tags
                     #save_organization.ui.big.green.button Save
                 #delete_organization.ui.red.button Delete

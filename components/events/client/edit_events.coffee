@@ -1,16 +1,13 @@
 Template.edit_event.onCreated ->
     self = @
     self.autorun ->
-        self.subscribe 'event', FlowRouter.getParam('event_id')
-        # self.subscribe 'tags', selected_type_of_event_tags.array(),"event"
-
+        self.subscribe 'event', FlowRouter.getParam('doc_id')
 
 # Template.edit_event.onRendered ->
 
 Template.edit_event.helpers
     event: ->
-        # docId = FlowRouter.getParam('event_id')
-        Docs.findOne FlowRouter.getParam('event_id')
+        Docs.findOne FlowRouter.getParam('doc_id')
     
 
         
@@ -27,48 +24,19 @@ Template.edit_event.events
             confirmButtonText: 'Delete'
             confirmButtonColor: '#da5347'
         }, ->
-            Meteor.call 'delete_event', FlowRouter.getParam('event_id'), (error, result) ->
+            Meteor.call 'delete_event', FlowRouter.getParam('doc_id'), (error, result) ->
                 if error
                     console.error error.reason
                 else
                     FlowRouter.go '/events'
 
-    'keydown #add_event_tag': (e,t)->
-        if e.which is 13
-            event_id = FlowRouter.getParam('event_id')
-            tag = $('#add_event_tag').val().toLowerCase().trim()
-            if tag.length > 0
-                Docs.update event_id,
-                    $addToSet: tags: tag
-                $('#add_event_tag').val('')
-
-    'click .event_tag': (e,t)->
-        event = Docs.findOne FlowRouter.getParam('event_id')
-        tag = @valueOf()
-        if tag is event.type
-            Docs.update FlowRouter.getParam('event_id'),
-                $set: type: ''
-        Docs.update FlowRouter.getParam('event_id'),
-            $pull: tags: tag
-        $('#add_event_tag').val(tag)
-
-
-    'click .type_button': (e,t)->
-        current_type = @type
-        machine_type = e.currentTarget.id
-        type = e.currentTarget.innerHTML.trim().toLowerCase()
-        Docs.update FlowRouter.getParam('event_id'),
-            $pull: tags: current_type
-        Docs.update FlowRouter.getParam('event_id'),
-            $set: type: machine_type
-            $addToSet: tags: type
 
     'click #save_event': ->
         title = $('#title').val()
         description = $('#description').val()
         start_date = $('#start_date').val()
         end_date = $('#end_date').val()
-        Docs.update FlowRouter.getParam('event_id'),
+        Docs.update FlowRouter.getParam('doc_id'),
             $set:
                 description: description
                 start_date: start_date
@@ -81,63 +49,16 @@ Template.edit_event.events
         FlowRouter.go '/events'
 
     'click #make_featured': ->
-        Docs.update FlowRouter.getParam('event_id'),
+        Docs.update FlowRouter.getParam('doc_id'),
             $set: featured_event: true
 
     'click #make_unfeatured': ->
-        Docs.update FlowRouter.getParam('event_id'),
+        Docs.update FlowRouter.getParam('doc_id'),
             $set: featured_event: false
 
 
 
-
 Template.edit_event.onRendered ->
-    Meteor.setTimeout (->
-        $('#description').froalaEditor
-            heightMin: 200
-            # toolbarInline: true
-            # toolbarButtonsMD: ['bold', 'italic', 'fontSize', 'undo', 'redo', '|', 'insertImage', 'insertVideo','insertFile']
-            # toolbarButtonsSM: ['bold', 'italic', 'fontSize', 'undo', 'redo', '|', 'insertImage', 'insertVideo','insertFile']
-            # toolbarButtonsXS: ['bold', 'italic', 'fontSize', 'undo', 'redo', '|', 'insertImage', 'insertVideo','insertFile']
-            toolbarButtons: 
-                [
-                  'fullscreen'
-                  'bold'
-                  'italic'
-                  'underline'
-                  'strikeThrough'
-                  'subscript'
-                  'superscript'
-                #   'fontFamily'
-                #   'fontSize'
-                  '|'
-                  'color'
-                  'emoticons'
-                #   'inlineStyle'
-                #   'paragraphStyle'
-                  '|'
-                  'paragraphFormat'
-                  'align'
-                  'formatOL'
-                  'formatUL'
-                  'outdent'
-                  'indent'
-                  'quote'
-                  'insertHR'
-                  '-'
-                  'insertLink'
-                  'insertImage'
-                  'insertVideo'
-                  'insertFile'
-                  'insertTable'
-                  'undo'
-                  'redo'
-                  'clearFormatting'
-                  'selectAll'
-                  'html'
-                ]
-        ), 500
-
     Meteor.setTimeout (->
         $('#start_date').datetimepicker(
             onChangeDateTime: (dp,$input)->
@@ -159,13 +80,13 @@ Template.edit_event.onRendered ->
                 datearray = _.map(datearray, (el)-> el.toString().toLowerCase())
                 # datearray = _.each(datearray, (el)-> console.log(typeof el))
 
-                docid = FlowRouter.getParam 'event_id'
+                doc_id = FlowRouter.getParam 'doc_id'
 
-                doc = Docs.findOne docid
+                doc = Docs.findOne doc_id
                 tagsWithoutDate = _.difference(doc.tags, doc.datearray)
                 tagsWithNew = _.union(tagsWithoutDate, datearray)
 
-                Docs.update docid,
+                Docs.update doc_id,
                     $set:
                         tags: tagsWithNew
                         datearray: datearray

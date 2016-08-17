@@ -4,3 +4,5 @@ Meteor.startup ->
 
 $.cloudinary.config
     cloud_name:"facet"
+
+Template.registerHelper 'is_author', () ->  Meteor.userId() is @author_id

@@ -36,11 +36,11 @@ FlowRouter.route '/events', action: (params) ->
         cloud: 'event_cloud'
         main: 'events'
 
-FlowRouter.route '/events/edit/:event_id', action: (params) ->
+FlowRouter.route '/events/edit/:doc_id', action: (params) ->
     BlazeLayout.render 'layout',
         main: 'edit_event'
 
-FlowRouter.route '/events/view/:event_id', action: (params) ->
+FlowRouter.route '/events/view/:doc_id', action: (params) ->
     BlazeLayout.render 'layout',
         main: 'event_page'
 

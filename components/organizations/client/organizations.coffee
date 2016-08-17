@@ -11,7 +11,7 @@ Template.organization.helpers
 
     attending: -> if @attendee_ids and Meteor.userId() in @attendee_ids then true else false
 
-    can_edit: -> Meteor.userId() in @officer_ids?
+    can_edit: -> Meteor.userId() is @author_id
 
     organization_messages: -> Messages.find organization_id: @_id
 

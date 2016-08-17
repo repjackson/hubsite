@@ -5,8 +5,6 @@ Meteor.publish 'organization_tags', (selected_tags)->
     if selected_tags.length > 0 then match.tags = $all: selected_tags
     match.type = 'organization'
 
-
-
     cloud = Docs.aggregate [
         { $match: match }
         { $project: "tags": 1 }
@@ -49,10 +47,3 @@ Meteor.publish 'featured_organizations', ->
     match = 'organization'
 
     Docs.find match, limit: 3
-    # Docs.find match,
-    #     fields:
-    #         tags: 1
-    #         attendee_ids: 1
-    #         host_id: 1
-    #         date_array: 1
-    #         date: 1

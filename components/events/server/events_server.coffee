@@ -1,4 +1,6 @@
 Meteor.publish 'event_tags', (selected_tags)->
+    check(arguments, [Match.Any])
+
     self = @
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
@@ -27,6 +29,9 @@ Meteor.publish 'event_tags', (selected_tags)->
 
 
 Meteor.publish 'events', (selected_tags)->
+    check(arguments, [Match.Any])
+
+    
     self = @
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
@@ -37,11 +42,15 @@ Meteor.publish 'events', (selected_tags)->
 
 
 Meteor.publish 'event', (id)->
+    check(arguments, [Match.Any])
+
     Docs.find id
     
     
     
 Meteor.publish 'featured_events', ->
+    check(arguments, [Match.Any])
+
     check(arguments, [Match.Any])
     match = {}
     match.featured = true

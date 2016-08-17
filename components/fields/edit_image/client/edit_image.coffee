@@ -1,4 +1,4 @@
-Template.upload_image.events
+Template.edit_image.events
     "change input[type='file']": (e) ->
         doc_id = FlowRouter.getParam('doc_id')
         files = e.currentTarget.files
@@ -19,3 +19,5 @@ Template.upload_image.events
         Docs.update FlowRouter.getParam('doc_id'), 
             $unset: image_url: 1
 
+Template.edit_image.helpers
+    log: -> console.log @

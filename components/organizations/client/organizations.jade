@@ -31,7 +31,7 @@ template(name='organization')
                                 each this.tags
                                     .ui.small.basic.label #{this}
             .extra
-                if can_edit
+                if is_author
                     .edit_organization.ui.labeled.right.floated.primary.basic.icon.button
                         i.pencil.icon
                         |Edit Organization

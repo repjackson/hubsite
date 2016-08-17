@@ -6,6 +6,7 @@ FlowRouter.route '/', action: (params) ->
         nav: 'nav'
         # cloud: 'cloud'
         main: 'home'
+        footer: 'footer'
 
 
 FlowRouter.route '/people', action: (params) ->

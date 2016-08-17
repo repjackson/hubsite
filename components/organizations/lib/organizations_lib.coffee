@@ -22,6 +22,7 @@ Meteor.methods
     add_organization: ()->
         Docs.insert
             tags: []
+            type: 'organization'
 
     delete_organization: (id)->
         Docs.remove id

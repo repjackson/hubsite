@@ -5,14 +5,8 @@ Template.events.helpers
     events: -> 
         match = {}
         # if selected_event_tags.array and selected_event_tags.array().length > 0 then match.tags = $all: selected_event_tags.array()
-    
         Docs.find match
 
-
-# Single
-# Template.event.onCreated ->
-#     @autorun -> Meteor.subscribe('eventMessages', Template.currentData()._id)
-#     @autorun -> Meteor.subscribe('usernames')
 
 Template.event_card.helpers
     event_tag_class: -> if @valueOf() in selected_event_tags.array() then 'red' else 'basic'
@@ -39,15 +33,6 @@ Template.event_card.events
     'click .leave_event': ->
         Meteor.call 'leave_event', @_id
 
-
-    'keydown .add_message': (e,t)->
-        e.preventDefault
-        switch e.which
-            when 13
-                text = t.find('.add_message').value.trim()
-                if text.length > 0
-                    Meteor.call 'add_event_message', text, @_id, (err,res)->
-                        t.find('.add_message').value = ''
 
     'click .cancel_event': ->
         if confirm 'Cancel event?'
