@@ -10,7 +10,7 @@ template(name='featured_service')
     .ui.fluid.card
         .image
             a
-                img.ui.image.featured_service_title(src=featured_image_url)
+                img.ui.image.featured_service_title(src="{{c.url image_id}}")
         .content
             .header
                 a.featured_service_title

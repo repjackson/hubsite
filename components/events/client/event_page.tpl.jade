@@ -3,7 +3,7 @@ with event
         a.ui.top.left.attached(href='/events')
             i.left.arrow.icon
             |Back
-        img.ui.centered.medium.image(src=featured_image_url)
+        img.ui.centered.medium.image(src="{{c.url image_id}}")
         h1.ui.header #{title}
         .description
             // .ui.header Event Topics:

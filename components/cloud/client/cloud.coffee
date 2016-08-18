@@ -32,4 +32,5 @@ Template.cloud.events
     'click #add': ->
         id = Docs.insert 
             type: @filter
+            tags: [@filter]
         FlowRouter.go "/#{@filter}/edit/#{id}"

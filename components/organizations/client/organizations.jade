@@ -13,7 +13,7 @@ template(name='organizations')
 template(name='organization')
     .ui.item
         .image
-            img.ui.medium.image(src=featured_image_url)
+            img.ui.medium.image(src="{{c.url image_id}}")
         .content
             .header
                 h2.ui.header #{title}

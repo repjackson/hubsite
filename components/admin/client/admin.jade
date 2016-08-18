@@ -1,26 +1,27 @@
 template(name='admin')
-    .ui.container.segment
-        +submissions
-        +user_management
+    +submissions
+    +user_management
         
         
 template(name='user_management')
     table.ui.celled.table
         thead
             tr
-                th Name
+                th Username
                 th Email
+                th Profile
                 th Role(s)
                 th Actions
         tbody
             each hub_users
                 tr
-                    td 
-                        img.ui.avatar.image(src=profile.profile_image_url)
-                        |#{profile.name}
+                    td #{username}
                     td 
                         each emails
                             |#{address}
+                    td 
+                        img.ui.avatar.image(src="{{c.url profile_doc.image_id}}")
+                        |#{profile_doc.name}
                     td #{role}
                     td 
                         .ui.compact.button Email

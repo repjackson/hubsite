@@ -11,7 +11,7 @@ template(name='featured_event')
     .ui.fluid.card
         .image
             a
-                img.ui.medium.image.featured_event_title(src=featured_image_url)
+                img.ui.medium.image.featured_event_title(src="{{c.url image_id}}")
         .content
             .header
                 // a(href="/event/view/#{this._id}")

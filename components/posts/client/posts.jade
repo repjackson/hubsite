@@ -1,4 +1,5 @@
 template(name='posts')
+    +cloud filter='post'
     .ui.container.segment
         .ui.divided.items
             each posts
@@ -8,7 +9,7 @@ template(name='posts')
 template(name='post')
     .ui.item
         .image
-            img.ui.medium.image(src=featured_image_url)
+            img.ui.medium.image(src="{{c.url image_id}}")
         .content
             .header
                 h2.ui.header #{title}

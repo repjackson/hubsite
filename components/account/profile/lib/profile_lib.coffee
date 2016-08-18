@@ -1,4 +1,4 @@
-FlowRouter.route '/profile/edit/:user_id', action: (params) ->
+FlowRouter.route '/profile/edit/', action: (params) ->
     BlazeLayout.render 'layout',
         main: 'edit_profile'
 

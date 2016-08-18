@@ -19,14 +19,5 @@ Template.post.events
     'click .post_tag': ->
         if @valueOf() in selected_tags.array() then selected_tags.remove @valueOf() else selected_tags.push @valueOf()
 
-
-    'keydown .addMessage': (e,t)->
-        e.preventDefault
-        if e.which is 13
-            text = t.find('.addMessage').value.trim()
-            if text.length > 0
-                Meteor.call 'add_event_message', text, @_id, (err,res)->
-                    t.find('.addMessage').value = ''
-
     'click .edit_post': ->
-        FlowRouter.go "/posts/edit/#{@_id}"
+        FlowRouter.go "/post/edit/#{@_id}"

@@ -7,3 +7,5 @@ Template.user_management.onCreated ->
 Template.user_management.helpers
     hub_users: -> 
         Meteor.users.find {}
+
+

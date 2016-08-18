@@ -1,11 +1,8 @@
-@selected_people_tags = new ReactiveArray []
-
-
 Template.people.onCreated ->
-    @autorun -> Meteor.subscribe('docs', selected_people_tags.array(), 'person')
+    @autorun -> Meteor.subscribe('people', selected_people_tags.array())
 
 Template.people.helpers
-    people: -> Docs.find()
+    people: -> Meteor.users.find()
 
 
 
@@ -17,5 +14,5 @@ Template.person_card.helpers
  
 
 Template.person_card.events
-    'click .person_tag': ->
+    'click .doc_tag': ->
         if @valueOf() in selected_people_tags.array() then selected_people_tags.remove @valueOf() else selected_people_tags.push @valueOf()

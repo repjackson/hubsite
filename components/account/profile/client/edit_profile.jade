@@ -1,5 +1,5 @@
-template(name='edit_person')
-    with person
+template(name='edit_profile')
+    with currentUser.profile
         .ui.text.container
             .ui.segment
                 .ui.form
@@ -28,12 +28,20 @@ template(name='edit_person')
                         .ui.left.icon.input
                             i.linkedin.icon
                             input#linkedin(type='text' value=linkedin)
-                    +edit_tags
+                    .field
+                        label Tags
+                        each tags
+                            .ui.basic.button.person_tag
+                                i.minus.icon
+                                |#{this}
+                        .ui.left.icon.input
+                            i.add.icon
+                            input#add_person_tag(type='text' placeholder='Add Tag' maxlength='50')
                     .field
                         label Bio
                         textarea#bio(rows='5') #{bio}
                     .field
-                        #save_person.ui.large.green.button Save
+                        #save_profile.ui.large.green.button Save
                         
             // .ui.segment
             //     .ui.header Matched People

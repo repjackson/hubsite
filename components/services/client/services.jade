@@ -9,7 +9,7 @@ template(name='services')
 template(name='service')
     .ui.card
         .image
-            img.ui.medium.image(src=featured_image_url)
+            img.ui.medium.image(src="{{c.url image_id}}")
         .content
             .header
                 h2.ui.header #{title}

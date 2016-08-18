@@ -20,6 +20,7 @@ Cloudinary.config
 
 
 Meteor.publish 'user', (id)->
+    check(arguments, [Match.Any])
     Meteor.users.find id,
         fields:
             tags: 1
@@ -27,42 +28,36 @@ Meteor.publish 'user', (id)->
             username: 1
 
 Meteor.publish 'usernames', ->
+    check(arguments, [Match.Any])
     Meteor.users.find {},
         fields:
             username: 1
 
 
 Meteor.publish 'sent_messages', ->
+    check(arguments, [Match.Any])
     Messages.find
         authorId: @userId
 
 
 Meteor.publish 'conversationMessages', (conversationId) ->
+    check(arguments, [Match.Any])
     Messages.find
         conversationId: conversationId
 
 
 Meteor.publish 'eventMessages', (eventId) ->
+    check(arguments, [Match.Any])
     Messages.find
         eventId: eventId
 
 Meteor.publish 'received_messages', ->
+    check(arguments, [Match.Any])
     Messages.find
         recipientId: @userId
 
 
 
-Meteor.publish 'users', (selectedtags=[])->
-    check(arguments, [Match.Any])
-    self = @
-    match = {}
-    if selectedtags.length > 0 then match.tags = $all: selectedtags
-
-    Meteor.users.find match,
-        fields:
-            tags: 1
-            profile: 1
-            username: 1
 
 Meteor.publish 'conversations', (selectedtags)->
     check(arguments, [Match.Any])

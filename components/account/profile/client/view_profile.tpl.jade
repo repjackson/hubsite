@@ -3,7 +3,7 @@ with person
         a.ui.top.left.attached(href='/people')
             i.left.arrow.icon
             |Back
-        img.ui.centered.medium.circular.image(src=person_image_url)
+        img.ui.centered.medium.circular.image(src="{{c.url image_id}}")
         h2.ui.header
             |#{name}
         if company
@@ -27,5 +27,5 @@ with person
             .ui.basic.label #{this}
         .ui.padded.basic.segment {{nl2br bio}}
         if can_edit
-            a#edit_person.ui.basic.blue.button(href="/person/edit/#{_id}")
-                |Edit Person
+            a#edit_profile.ui.basic.blue.button(href="/profile/edit/")
+                |Edit Profile

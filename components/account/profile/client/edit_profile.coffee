@@ -1,11 +1,11 @@
 
-Template.edit_person.onCreated ->
-    @autorun -> Meteor.subscribe 'doc', FlowRouter.getParam('doc_id')
+Template.edit_profile.onCreated ->
+    @autorun -> Meteor.subscribe 'me'
 
 
 
-Template.edit_person.helpers
-    person: -> Docs.findOne()
+Template.edit_profile.helpers
+    # person: -> Meteor.user()
 
     # matchedUsersList:->
     #     users = Meteor.users.find({_id: $ne: Meteor.userId()}).fetch()
@@ -52,8 +52,26 @@ Template.edit_person.helpers
     #     return sortedCloud
 
 
-Template.edit_person.events
-    'click #save_person': ->
+Template.edit_profile.events
+    'keydown #add_person_tag': (e,t)->
+        if e.which is 13
+            tag = $('#add_person_tag').val().toLowerCase().trim()
+            if tag.length > 0
+                Meteor.users.update Meteor.userId(),
+                    $addToSet: "profile.tags": tag
+                $('#add_person_tag').val('')
+
+    'click .person_tag': (e,t)->
+        tag = @valueOf()
+        Meteor.users.update Meteor.userId(),
+            $pull: "profile.tags": tag
+        $('#add_person_tag').val(tag)
+
+
+
+
+
+    'click #save_profile': ->
         name = $('#name').val()
         bio = $('#bio').val()
         website = $('#website').val()
@@ -62,18 +80,15 @@ Template.edit_person.events
         linkedin = $('#linkedin').val()
         position = $('#position').val()
         company = $('#company').val()
-        Docs.update FlowRouter.getParam('doc_id'),
+        Meteor.users.update Meteor.userId(),
             $set:
-                name: name
-                bio: bio
-                website: website
-                twitter: twitter
-                facebook: facebook
-                linkedin: linkedin
-                position: position
-                company: company
-        selected_tags.clear()
-        for tag in @tags
-            selected_tags.push tag
-        FlowRouter.go "/person/view/#{@_id}"
+                "profile.name": name
+                "profile.bio": bio
+                "profile.website": website
+                "profile.twitter": twitter
+                "profile.facebook": facebook
+                "profile.linkedin": linkedin
+                "profile.position": position
+                "profile.company": company
+        FlowRouter.go "/profile/view/#{Meteor.userId()}"
 
