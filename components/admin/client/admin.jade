@@ -39,6 +39,8 @@ template(name='user_management')
                     td 
                         img.ui.avatar.image(src="{{c.url profile_doc.image_id}}")
                         |#{profile_doc.name}
-                    td #{role}
+                    td 
+                        each roles
+                            |#{this}
                     td 
                         .ui.compact.button Email

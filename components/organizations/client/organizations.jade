@@ -33,8 +33,8 @@ template(name='organization')
                                 strong #{this.profile.name}
                                 each this.tags
                                     .ui.small.basic.label #{this}
-            .extra
-                if is_author
+            if isInRole 'admin'
+                .extra
                     .edit_organization.ui.labeled.right.floated.primary.basic.icon.button
                         i.pencil.icon
                         |Edit Organization

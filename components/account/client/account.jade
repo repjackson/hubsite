@@ -11,12 +11,13 @@ template(name='edit_account')
         
 template(name='account_nav')
     .ui.menu
-        a.item(href='/profile/edit')
-            i.user.icon
-            |Profile
-        a.item(href='/account/social')
-            i.user.icon
-            |Social Media Accounts
-        a.item(href='/account/services')
-            i.user.icon
-            |Services
+        .ui.container
+            a.item(href='/profile/edit')
+                i.user.icon
+                |Profile
+            a.item(href='/account/social')
+                i.user.icon
+                |Social Media Accounts
+            // a.item(href='/account/services')
+            //     i.user.icon
+            //     |Services
