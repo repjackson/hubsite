@@ -1,4 +1,4 @@
-FlowRouter.route '/account', action: (params) ->
+FlowRouter.route '/person/:user_id/account', action: (params) ->
     BlazeLayout.render 'layout',
-        nav: 'nav'
-        main: 'account'
+        sub_nav: 'account_nav'
+        main: 'edit_account'

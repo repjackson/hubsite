@@ -4,6 +4,9 @@ template(name='admin')
         
         
 template(name='user_management')
+    a#add_user.ui.basic.green.button(href='/admin/add_user')
+        i.plus.icon
+        |Add New User
     table.ui.celled.table
         thead
             tr

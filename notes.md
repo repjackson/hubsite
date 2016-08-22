@@ -1,18 +1,7 @@
-higher quality photo
-gallery
+banner photo for each page
 
-roles
-admin page
+ImpactHUB Academy
+copy the logo photo from old about page
+change editable ability for events for Maiyu
 
-tokens, 1/$10
-transactions, tips, offering services, record transactions, rate the transactions
-
-
-
-link accounts to profile on admin page
-services
--simplified fivrr structure
-
-
-componentize view template and edit template
-add content
+cloudinary remove
