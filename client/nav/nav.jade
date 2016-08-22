@@ -59,16 +59,16 @@ template(name='top_nav')
                     // | Account
                     | #{currentUser.profile.name}
                 // a.item(href="/person/view/#{currentUser._id}" class="{{isActivePath '/person/view/#{currentUser._id}'}}")
-                a.item(href='/messages' class="{{isActivePath '/messages'}}")
-                    i.mail.icon
-                    // | Messages (#{currentUser.unreadcount})
-                    | Messages
+                // a.item(href='/messages' class="{{isActivePath '/messages'}}")
+                //     i.mail.icon
+                //     // | Messages (#{currentUser.unreadcount})
+                //     | Messages
                 a#logout.ui.item(href='#') 
                     i.sign.out.icon
                     |Sign Out
             else
                 a.ui.item(href='/sign-in') 
                     i.sign.in.icon
-                    |Sign In
+                    |Sign In/ Register
     a.header-logo(href='/' class="{{isActivePath '/'}}")
         img.ui.medium.image(src='/img/Impact_Hub_Boulder_logo.png')

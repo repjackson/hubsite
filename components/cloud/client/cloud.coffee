@@ -29,8 +29,3 @@ Template.cloud.events
     'click .unselect_tag': -> selected_tags.remove @valueOf()
     'click #clear_tags': -> selected_tags.clear()
     
-    'click #add': ->
-        id = Docs.insert 
-            type: @filter
-            tags: [@filter]
-        FlowRouter.go "/#{@filter}/edit/#{id}"

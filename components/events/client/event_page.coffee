@@ -11,7 +11,7 @@ Template.event_page.helpers
 
     attending: -> if @attendee_ids and Meteor.userId() in @attendee_ids then true else false
 
-    can_edit: -> @author_id is Meteor.userId()
+    can_edit: -> Meteor.userId()
 
     event_messages: -> Messages.find doc_id: @_id
 

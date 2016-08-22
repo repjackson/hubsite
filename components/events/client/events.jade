@@ -7,9 +7,9 @@ template(name='events')
 
 template(name='event_card')
     .ui.card
-        .image
+        .content
             a(href="/event/view/#{_id}")
-                img.ui.medium.image(src="{{c.url image_id}}")
+                img.ui.image(src="{{c.url image_id height=200 crop='fit'}}")
         .content
             .header
                 h2.ui.header 
@@ -20,7 +20,7 @@ template(name='event_card')
                 strong #{start_time} 
                 |to 
                 strong #{end_time}
-        if is_author
+        if can_edit
             .extra.content
                 .edit_event.ui.labeled.right.floated.primary.basic.icon.button
                     i.pencil.icon
