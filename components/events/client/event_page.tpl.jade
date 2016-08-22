@@ -26,7 +26,7 @@ with event
                     each attendees
                         .item #{this}
         .extra.content
-            if can_edit
+            if isInRole 'admin'
                 .edit_event.ui.labeled.primary.basic.icon.button
                     i.pencil.icon
                     |Edit Event

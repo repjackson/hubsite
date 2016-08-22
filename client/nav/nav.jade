@@ -1,3 +1,38 @@
+template(name='top_nav')
+    .ui.inverted.menu
+        .right.menu
+            if currentUser
+                // a.item(href='/services' class="{{isActivePath '/services'}}")
+                //     i.laptop.icon
+                //     | Services
+                if isInRole 'admin'
+                    a.item(href='/admin' class="{{isActivePath '/admin'}}")
+                        i.configure.icon
+                        | Admin
+                a.item(href='/account' class="{{isActivePath '/account'}}")
+                    if currentUser.profile.profile_image_url
+                        img.ui.avatar.image(src=currentUser.profile.profile_image_url)
+                    else
+                        i.user.icon
+                    // i.setting.icon
+                    // | Account
+                    | #{currentUser.profile.name}
+                // a.item(href="/person/view/#{currentUser._id}" class="{{isActivePath '/person/view/#{currentUser._id}'}}")
+                // a.item(href='/messages' class="{{isActivePath '/messages'}}")
+                //     i.mail.icon
+                //     // | Messages (#{currentUser.unreadcount})
+                //     | Messages
+                a#logout.ui.item(href='#') 
+                    i.sign.out.icon
+                    |Sign Out
+            else
+                a.ui.item(href='/sign-in') 
+                    i.sign.in.icon
+                    |Sign In/ Register
+    a.header-logo(href='/' class="{{isActivePath '/'}}")
+        img.ui.medium.image(src='/img/Impact_Hub_Boulder_logo.png')
+
+
 template(name='nav')
     .red-nav-bar
         .ui.red.inverted.large.menu
@@ -38,37 +73,3 @@ template(name='nav')
                 // a.item(href='/wins' class="{{isActivePath '/wins'}}")
                 //     i.thumbs.up.icon
                 //     | Wins/Challenges
-
-
-template(name='top_nav')
-    .ui.inverted.menu
-        .right.menu
-            if currentUser
-                a.item(href='/services' class="{{isActivePath '/services'}}")
-                    i.laptop.icon
-                    | Services
-                a.item(href='/admin' class="{{isActivePath '/admin'}}")
-                    i.configure.icon
-                    | Admin
-                a.item(href='/account' class="{{isActivePath '/account'}}")
-                    if currentUser.profile.profile_image_url
-                        img.ui.avatar.image(src=currentUser.profile.profile_image_url)
-                    else
-                        i.user.icon
-                    // i.setting.icon
-                    // | Account
-                    | #{currentUser.profile.name}
-                // a.item(href="/person/view/#{currentUser._id}" class="{{isActivePath '/person/view/#{currentUser._id}'}}")
-                // a.item(href='/messages' class="{{isActivePath '/messages'}}")
-                //     i.mail.icon
-                //     // | Messages (#{currentUser.unreadcount})
-                //     | Messages
-                a#logout.ui.item(href='#') 
-                    i.sign.out.icon
-                    |Sign Out
-            else
-                a.ui.item(href='/sign-in') 
-                    i.sign.in.icon
-                    |Sign In/ Register
-    a.header-logo(href='/' class="{{isActivePath '/'}}")
-        img.ui.medium.image(src='/img/Impact_Hub_Boulder_logo.png')

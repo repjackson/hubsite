@@ -21,7 +21,7 @@ template(name='post')
             .extra
                 each tags
                     .ui.compact.button.post_tag(class=post_tag_class) #{this}
-                if can_edit
+                if isInRole 'admin'
                     .edit_post.ui.labeled.primary.basic.right.floated.icon.button
                         i.pencil.icon
                         |Edit post    

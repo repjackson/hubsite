@@ -22,7 +22,7 @@ template(name='event_card')
                 strong #{start_time} 
                 |to 
                 strong #{end_time}
-        if can_edit
+        if isInRole 'admin'
             .extra.content
                 .edit_event.ui.labeled.right.floated.primary.basic.icon.button
                     i.pencil.icon

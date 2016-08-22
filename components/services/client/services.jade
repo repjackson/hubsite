@@ -22,7 +22,7 @@ template(name='service')
             span.right.floated
                 |$#{price}
             +favorite
-            if can_edit
+            if isInRole 'admin'
                 .edit_service.ui.labeled.primary.basic.icon.button
                     i.pencil.icon
                     |Edit    
