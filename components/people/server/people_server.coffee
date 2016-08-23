@@ -1,8 +1,30 @@
+console.log 'Setting Meteor.users.allow'
+Meteor.users.allow
+    insert: (userId, doc) ->
+        # only admin can insert 
+        u = Meteor.users.findOne(_id: userId)
+        u and u.isAdmin
+    update: (userId, doc, fields, modifier) ->
+        # console.log 'user ' + userId + 'wants to modify doc' + doc._id
+        if userId and doc._id == userId
+            # console.log 'user allowed to modify own account!'
+            # user can modify own 
+            return true
+        # admin can modify any
+        u = Meteor.users.findOne(_id: userId)
+        u and u.isAdmin
+    remove: (userId, doc) ->
+        # only admin can remove
+        u = Meteor.users.findOne(_id: userId)
+        u and u.isAdmin
+
+
+
 Meteor.publish 'people_tags', (selected_people_tags)->
     check(arguments, [Match.Any])
     self = @
     match = {}
-    if selected_people_tags.length > 0 then match.profile.tags = $all: selected_people_tags
+    if selected_people_tags.length > 0 then match.tags = $all: selected_people_tags
 
     cloud = Meteor.users.aggregate [
         { $match: match }
@@ -24,7 +46,7 @@ Meteor.publish 'people_tags', (selected_people_tags)->
     self.ready()
 
 
-Meteor.publish 'users', (selected_people_tags=[])->
+Meteor.publish 'people', (selected_people_tags=[])->
     check(arguments, [Match.Any])
     self = @
     match = {}

@@ -15,16 +15,21 @@ Template.edit_event.events
 
 
     'click #save_event': ->
+        # value = $('#description').val()
+        # content = value.replace(/(<([^>]+)>)/ig, "")
+        # console.log content
         title = $('#title').val()
         description = $('#description').val()
+        simple_description = description.replace(/(<([^>]+)>)/ig, "")
         start_date = $('#start_date').val()
         end_date = $('#end_date').val()
         Docs.update FlowRouter.getParam('doc_id'),
             $set:
+                title: title
                 description: description
                 start_date: start_date
                 end_date: end_date
-                title: title
+                simple_description: simple_description
                 # tagCount: @tags.length
         selected_tags.clear()
         for tag in @tags

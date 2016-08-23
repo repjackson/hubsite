@@ -58,13 +58,13 @@ Template.edit_profile.events
             tag = $('#add_person_tag').val().toLowerCase().trim()
             if tag.length > 0
                 Meteor.users.update Meteor.userId(),
-                    $addToSet: "profile.tags": tag
+                    $addToSet: tags: tag
                 $('#add_person_tag').val('')
 
     'click .person_tag': (e,t)->
         tag = @valueOf()
         Meteor.users.update Meteor.userId(),
-            $pull: "profile.tags": tag
+            $pull: tags: tag
         $('#add_person_tag').val(tag)
 
 
@@ -92,3 +92,33 @@ Template.edit_profile.events
                 "profile.company": company
         FlowRouter.go "/profile/view/#{Meteor.userId()}"
 
+
+
+    "change input[type='file']": (e) ->
+        files = e.currentTarget.files
+
+        Cloudinary.upload files[0],
+            # folder:"secret" # optional parameters described in http://cloudinary.com/documentation/upload_images#remote_upload
+            # type:"private" # optional: makes the image accessible only via a signed url. The signed url is available publicly for 1 hour.
+            (err,res) -> #optional callback, you can catch with the Cloudinary collection as well
+                # console.log "Upload Error: #{err}"
+                # console.dir res
+                if err
+                    console.error 'Error uploading', err
+                else
+                    Meteor.users.update Meteor.userId(), 
+                        $set: "profile.image_id": res.public_id
+                return
+
+    'click #remove_photo': ->
+        # console.log @image_id
+        
+# 		Cloudinary.delete @image_id, (err,res) ->
+# 			console.log "Upload Error: #{err}"
+# 			console.log "Upload Result: #{res}"
+
+        # Cloudinary.destroy @image_id, (result) ->
+        #     console.log result
+
+        Meteor.users.update Meteor.userId(), 
+            $unset: "profile.image_id": 1

@@ -1,33 +1,42 @@
 template(name='edit_profile')
-    with currentUser.profile
+    with currentUser
         .ui.text.container
             .ui.segment
                 .ui.form
-                    +edit_image
+                    .field
+                        if profile.image_id
+                            label Image
+                            .ui.large.image
+                                img(src="{{c.url profile.image_id}}")
+                                a#remove_photo.ui.right.corner.link.label
+                                    i.remove.red.link.icon
+                        else
+                            label Upload Image
+                            input(type='file' name='upload_picture' accept='image/*')
                     .field
                         label Name
                         .ui.left.icon.input
                             i.user.icon
-                            input#name(type='text' value=name)
+                            input#name(type='text' value=profile.name)
                     .field
                         label Company
                         .ui.left.icon.input
                             i.building.icon
-                            input#company(type='text' value=company)
+                            input#company(type='text' value=profile.company)
                     .field
                         label Position
                         .ui.input
-                            input#position(type='text' value=position)
+                            input#position(type='text' value=profile.position)
                     .field
                         label Website
                         .ui.left.icon.input
                             i.linkify.icon
-                            input#website(type='text' value=website)
+                            input#website(type='text' value=profile.website)
                     .field
                         label Linkedin
                         .ui.left.icon.input
                             i.linkedin.icon
-                            input#linkedin(type='text' value=linkedin)
+                            input#linkedin(type='text' value=profile.linkedin)
                     .field
                         label Tags
                         each tags

@@ -1,6 +1,6 @@
 template(name='events')
     h1.ui.center.aligned.header Events at Impact Hub Boulder
-    img.ui.centered.image(src='/banners/event_banner.jpg', alt='')
+    img.ui.centered.image(src='/banners/event_banner_cut.jpg', alt='')
     +cloud filter='event'
     .ui.centered.cards
         each events
@@ -9,9 +9,9 @@ template(name='events')
 
 template(name='event_card')
     .ui.card
-        .content
+        .image
             a(href="/event/view/#{_id}")
-                img.ui.image(src="{{c.url image_id height=200 crop='fit'}}")
+                img(src="{{c.url image_id height=175 width=275 crop='fill'}}")
         .content
             .header
                 h2.ui.header 
@@ -22,6 +22,8 @@ template(name='event_card')
                 strong #{start_time} 
                 |to 
                 strong #{end_time}
+        .content
+            |!{snippet}
         if isInRole 'admin'
             .extra.content
                 .edit_event.ui.labeled.right.floated.primary.basic.icon.button

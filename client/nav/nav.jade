@@ -9,7 +9,7 @@ template(name='top_nav')
                     a.item(href='/admin' class="{{isActivePath '/admin'}}")
                         i.configure.icon
                         | Admin
-                a.item(href='/account' class="{{isActivePath '/account'}}")
+                a.item(href='/profile/edit' class="{{isActivePath '/profile/edit'}}")
                     if currentUser.profile.profile_image_url
                         img.ui.avatar.image(src=currentUser.profile.profile_image_url)
                     else

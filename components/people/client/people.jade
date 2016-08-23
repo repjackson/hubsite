@@ -9,14 +9,14 @@ template(name='people')
 template(name='person_card')
     .ui.card
         a.image(href="/profile/view/#{_id}")
-            img(src="{{c.url image_id}}")
+            img(src="{{c.url profile.image_id}}")
         .content
             .header
                 a(href="/profile/view/#{_id}") #{profile.name}
             .meta
                 | #{profile.position}
         .content
-            each profile.tags
+            each tags
                 .ui.tiny.compact.circular.button.doc_tag(class=tag_class) #{this}
         .extra.content
             a.ui.right.floated(href="/profile/view/#{_id}")

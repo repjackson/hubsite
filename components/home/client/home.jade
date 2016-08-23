@@ -3,18 +3,18 @@ template(name='home')
     +call_to_action
     +academy_widget
     +featured_events
-    +rockstar_members
-    +featured_posts
+    // +rockstar_members
+    // +featured_posts
 
 
 template(name='call_to_action')
     .ui.attached.very.padded.segment
         .ui.stackable.container.grid
             .ten.wide.column
-                h1.ui.header COME FOR COWORKING, STAY FOR COMMUNITY
+                // h1.ui.header COME FOR COWORKING, STAY FOR COMMUNITY
                 h3.ui.header Impact Hub Boulder is a member-based coworking space and event venue for entrepreneurs creating positive impact.
                 h4
-                    a(href='/partners')
+                    a(href='/organizations')
                         |Meet Our Partners
                         i.right.arrow.icon
             .six.wide.center.aligned.column
@@ -22,7 +22,7 @@ template(name='call_to_action')
                     |Join Now
 
 template(name='slider')
-    img.ui.fluid.attached.image(src='https://oakland.impacthub.net/wp-content/uploads/sites/128/2014/12/impact-hub-oakland-home-banner-with-text.jpg')
+    img.ui.centered.attached.image(src='/banners/homepage_banner.jpg')
     
     
 

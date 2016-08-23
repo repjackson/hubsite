@@ -13,8 +13,6 @@ Template.event_page.helpers
 
     can_edit: -> Meteor.userId()
 
-    event_messages: -> Messages.find doc_id: @_id
-
     day: -> moment(@start_date).format("dddd, MMMM Do");
     start_time: -> moment(@start_date).format("h:mm a")
     end_time: -> moment(@end_date).format("h:mm a")
