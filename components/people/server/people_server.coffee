@@ -25,6 +25,8 @@ Meteor.publish 'people_tags', (selected_people_tags, published_mode, checkedin_m
     match = {}
     if selected_people_tags.length > 0 then match.tags = $all: selected_people_tags
     match.published = published_mode 
+    match.checked_in = checkedin_mode 
+
 
     cloud = Meteor.users.aggregate [
         { $match: match }
@@ -52,6 +54,7 @@ Meteor.publish 'people', (selected_people_tags=[], published_mode, checkedin_mod
     match = {}
     if selected_people_tags.length > 0 then match.tags = $all: selected_people_tags
     match.published = published_mode 
+    match.checked_in = checkedin_mode 
 
     Meteor.users.find match,
         fields:

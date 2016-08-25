@@ -1,5 +1,5 @@
 Template.people.onCreated ->
-    @autorun -> Meteor.subscribe('people', selected_people_tags.array(), Session.get('published_mode'), true)
+    @autorun -> Meteor.subscribe('people', selected_people_tags.array(), Session.get('published_mode'), Session.get('checkedin_mode'))
 
 Template.people.helpers
     people: -> Meteor.users.find()

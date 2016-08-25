@@ -1,7 +1,7 @@
 @selected_people_tags = new ReactiveArray []
 
 Template.people_cloud.onCreated ->
-    @autorun -> Meteor.subscribe('people_tags', selected_people_tags.array(), Session.get('published_mode'), true)
+    @autorun -> Meteor.subscribe('people_tags', selected_people_tags.array(), Session.get('published_mode'), Session.get('checkedin_mode'))
 
 Template.people_cloud.helpers
     all_people_tags: ->
@@ -29,4 +29,7 @@ Template.people_cloud.events
     'click #clear_people_tags': -> selected_people_tags.clear()
     
     'click #turn_off_published_mode': -> Session.set 'published_mode', false
-    'click #turn_on_published_mode': -> Session.set 'published_mode', true
+    'click #turn_on_published_mode': -> Session.set 'published_mode', true    
+    
+    'click #turn_off_checkedin_mode': -> Session.set 'checkedin_mode', false
+    'click #turn_on_checkedin_mode': -> Session.set 'checkedin_mode', true
