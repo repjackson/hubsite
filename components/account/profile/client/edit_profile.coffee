@@ -1,6 +1,6 @@
 
 Template.edit_profile.onCreated ->
-    @autorun -> Meteor.subscribe 'my_profile'
+    @autorun -> Meteor.subscribe 'user_profile', FlowRouter.getParam('user_id')
 
 
 
@@ -64,14 +64,14 @@ Template.edit_profile.events
         company = $('#company').val()
         Meteor.users.update Meteor.userId(),
             $set:
-                "name": name
-                "bio": bio
-                "website": website
-                "linkedin": linkedin
-                "twitter": twitter
-                "facebook": facebook
-                "position": position
-                "company": company
+                "profile.name": name
+                "profile.bio": bio
+                "profile.website": website
+                "profile.linkedin": linkedin
+                "profile.twitter": twitter
+                "profile.facebook": facebook
+                "profile.position": position
+                "profile.company": company
         FlowRouter.go "/profile/view/#{Meteor.userId()}"
 
     'keydown #add_tag': (e,t)->
@@ -112,9 +112,9 @@ Template.edit_profile.events
                     console.error 'Error uploading', err
                 else
                     Meteor.users.update Meteor.userId(), 
-                        $set: image_id: res.public_id
+                        $set: "profile.image_id": res.public_id
                 return
 
     'click #remove_photo': ->
         Meteor.users.update Meteor.userId(), 
-            $unset: image_id: 1
+            $unset: "profile.image_id": 1

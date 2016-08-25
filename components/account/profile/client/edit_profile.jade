@@ -3,10 +3,10 @@ template(name='edit_profile')
         with person
             .ui.form
                 .field
-                    if image_id
+                    if profile.image_id
                         label Image
                         .ui.centered.image
-                            img(src="{{c.url image_id width=200 height=200 gravity='face' crop='fill'}}")
+                            img(src="{{c.url profile.image_id width=200 height=200 gravity='face' crop='fill'}}")
                             a#remove_photo.ui.right.corner.link.label
                                 i.remove.red.link.icon
                     else
@@ -16,36 +16,36 @@ template(name='edit_profile')
                     label Name
                     .ui.left.icon.input
                         i.user.icon
-                        input#name(type='text' value=name)
+                        input#name(type='text' value=profile.name)
                 .field
                     label Company
                     .ui.left.icon.input
                         i.building.icon
-                        input#company(type='text' value=company)
+                        input#company(type='text' value=profile.company)
                 .field
                     label Position
                     .ui.input
-                        input#position(type='text' value=position)
+                        input#position(type='text' value=profile.position)
                 .field
                     label Website
                     .ui.left.icon.input
                         i.linkify.icon
-                        input#website(type='text' value=website)
+                        input#website(type='text' value=profile.website)
                 .field
                     label Linkedin
                     .ui.left.icon.input
                         i.linkedin.icon
-                        input#linkedin(type='text' value=linkedin)
+                        input#linkedin(type='text' value=profile.linkedin)
                 .field
                     label Twitter
                     .ui.left.icon.input
                         i.twitter.icon
-                        input#twitter(type='text' value=twitter)
+                        input#twitter(type='text' value=profile.twitter)
                 .field
                     label Facebook
                     .ui.left.icon.input
                         i.facebook.icon
-                        input#facebook(type='text' value=facebook)
+                        input#facebook(type='text' value=profile.facebook)
                 .field
                     label Tags (anything to identify you with)
                     each tags

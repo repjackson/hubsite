@@ -11,19 +11,20 @@ Meteor.users.allow
             return true
         # admin can modify any
         u = Meteor.users.findOne(_id: userId)
-        u and u.isAdmin
+        u and 'admin' in u.roles
     remove: (userId, doc) ->
         # only admin can remove
         u = Meteor.users.findOne(_id: userId)
-        u and u.isAdmin
+        u and 'admin' in u.roles
 
 
 
-Meteor.publish 'people_tags', (selected_people_tags)->
+Meteor.publish 'people_tags', (selected_people_tags, published_mode, checkedin_mode)->
     check(arguments, [Match.Any])
     self = @
     match = {}
     if selected_people_tags.length > 0 then match.tags = $all: selected_people_tags
+    match.published = published_mode 
 
     cloud = Meteor.users.aggregate [
         { $match: match }
@@ -45,15 +46,17 @@ Meteor.publish 'people_tags', (selected_people_tags)->
     self.ready()
 
 
-Meteor.publish 'people', (selected_people_tags=[])->
+Meteor.publish 'people', (selected_people_tags=[], published_mode, checkedin_mode)->
     check(arguments, [Match.Any])
     self = @
     match = {}
     if selected_people_tags.length > 0 then match.tags = $all: selected_people_tags
-
+    match.published = published_mode 
 
     Meteor.users.find match,
         fields:
             tags: 1
             profile: 1
             username: 1
+            published: 1
+            checked_in: 1
