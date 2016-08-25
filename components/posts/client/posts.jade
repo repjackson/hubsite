@@ -1,6 +1,7 @@
 template(name='posts')
-    h1.ui.center.aligned.header Impact Hub Boulder Blog
-    img.ui.centered.fluid.image(src='/banners/blog_banner.jpg', alt='')
+    div
+        img.ui.centered.fluid.image(src='/banners/blog_banner.jpg', alt='')
+        h1.overlay-text Impact Hub Boulder Blog
     +cloud filter='post'
     .ui.container.segment
         .ui.divided.items

@@ -1,4 +1,7 @@
 template(name='people')
+    div
+        img.ui.centered.fluid.image(src='/banners/people_banner.jpg', alt='')
+        h1.overlay-text Impact Hub Members
     +people_cloud
     .ui.container
         .ui.centered.four.cards
@@ -9,7 +12,7 @@ template(name='people')
 template(name='person_card')
     .ui.card
         a.image(href="/profile/view/#{_id}")
-            img(src="{{c.url profile.image_id}}")
+            img(src="{{c.url profile.image_id width=300 height=300 gravity='face' crop='fill'}}")
             if published
                 .ui.top.right.attached.green.label Published
             else

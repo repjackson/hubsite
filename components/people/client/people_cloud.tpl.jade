@@ -8,14 +8,14 @@
             #turn_on_published_mode.ui.basic.button
                 i.toggle.off.icon
                 |Viewing Only Unpublished
-        if $.Session.get 'checkedin_mode'
-            #turn_off_checkedin_mode.ui.green.button
-                i.toggle.on.icon
-                |Viewing Only Checked In
-        else
-            #turn_on_checkedin_mode.ui.basic.button
-                i.toggle.off.icon
-                |Viewing Only Checked Out
+    if $.Session.get 'checkedin_mode'
+        #turn_off_checkedin_mode.ui.green.button
+            i.toggle.on.icon
+            |Viewing Only Checked In
+    else
+        #turn_on_checkedin_mode.ui.basic.button
+            i.toggle.off.icon
+            |Viewing Only Checked Out
     .ui.hidden.divider
     if selected_people_tags
         #clear_people_tags.ui.red.big.compact.icon.circular.button

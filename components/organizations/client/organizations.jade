@@ -1,6 +1,7 @@
 template(name='organizations')
-    h1.ui.center.aligned.header Community at Impact Hub Boulder
-    img.ui.centered.fluid.image(src='/banners/organization_banner.jpg', alt='')
+    div
+        img.ui.centered.fluid.image(src='/banners/organization_banner.jpg', alt='')
+        h1.overlay-text Community at Impact Hub Boulder
     +cloud filter='organization'
     .ui.container.basic.segment
         .ui.divided.items

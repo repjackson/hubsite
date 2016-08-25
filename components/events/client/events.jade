@@ -1,6 +1,7 @@
 template(name='events')
-    h1.ui.center.aligned.header Events at Impact Hub Boulder
-    img.ui.centered.image(src='/banners/event_banner_cut.jpg', alt='')
+    div
+        img.ui.centered.image(src='/banners/event_banner_cut.jpg', alt='')
+        h1.overlay-text Events at Impact Hub Boulder
     +cloud filter='event'
     .ui.centered.cards
         each events
