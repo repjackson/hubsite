@@ -5,10 +5,6 @@ Template.nav.onCreated ->
 
 
 Template.nav.helpers
-    user_counter: -> Meteor.users.find().count()
-
-    user: -> Meteor.user()
-
     tagsettings: -> {
         position: 'bottom'
         limit: 10
@@ -23,8 +19,6 @@ Template.nav.helpers
 
     userTagClass: ->
         if @name in selectedTags.array() then 'primary' else 'basic'
-
-    user_counter: -> Meteor.users.find().count()
 
 
 

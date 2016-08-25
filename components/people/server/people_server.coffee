@@ -1,4 +1,3 @@
-console.log 'Setting Meteor.users.allow'
 Meteor.users.allow
     insert: (userId, doc) ->
         # only admin can insert 
@@ -51,6 +50,7 @@ Meteor.publish 'people', (selected_people_tags=[])->
     self = @
     match = {}
     if selected_people_tags.length > 0 then match.tags = $all: selected_people_tags
+
 
     Meteor.users.find match,
         fields:

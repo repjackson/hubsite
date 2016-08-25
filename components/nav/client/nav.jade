@@ -9,9 +9,9 @@ template(name='top_nav')
                     a.item(href='/admin' class="{{isActivePath '/admin'}}")
                         i.configure.icon
                         | Admin
-                a.item(href='/profile/edit' class="{{isActivePath '/profile/edit'}}")
+                a.item(href="/profile/edit/#{currentUser.profile_doc}" class="{{isActivePath '/profile/edit/'}}")
                     if currentUser.profile.profile_image_url
-                        img.ui.avatar.image(src=currentUser.profile.profile_image_url)
+                        img.ui.avatar.image(src=currentUser.profile_doc.profile_image_url)
                     else
                         i.user.icon
                     // i.setting.icon
@@ -26,7 +26,7 @@ template(name='top_nav')
                     i.sign.out.icon
                     |Sign Out
             else
-                a.ui.item(href='/sign-in') 
+                a.ui.item(href='/sign-up') 
                     i.sign.in.icon
                     |Sign In/ Register
     a.header-logo(href='/' class="{{isActivePath '/'}}")

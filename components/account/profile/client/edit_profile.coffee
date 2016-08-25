@@ -1,11 +1,11 @@
 
 Template.edit_profile.onCreated ->
-    @autorun -> Meteor.subscribe 'me'
+    @autorun -> Meteor.subscribe 'my_profile'
 
 
 
 Template.edit_profile.helpers
-    # person: -> Meteor.user()
+    person: -> Meteor.users.findOne FlowRouter.getParam('user_id')
 
     # matchedUsersList:->
     #     users = Meteor.users.find({_id: $ne: Meteor.userId()}).fetch()
@@ -53,24 +53,6 @@ Template.edit_profile.helpers
 
 
 Template.edit_profile.events
-    'keydown #add_person_tag': (e,t)->
-        if e.which is 13
-            tag = $('#add_person_tag').val().toLowerCase().trim()
-            if tag.length > 0
-                Meteor.users.update Meteor.userId(),
-                    $addToSet: tags: tag
-                $('#add_person_tag').val('')
-
-    'click .person_tag': (e,t)->
-        tag = @valueOf()
-        Meteor.users.update Meteor.userId(),
-            $pull: tags: tag
-        $('#add_person_tag').val(tag)
-
-
-
-
-
     'click #save_profile': ->
         name = $('#name').val()
         bio = $('#bio').val()
@@ -82,15 +64,38 @@ Template.edit_profile.events
         company = $('#company').val()
         Meteor.users.update Meteor.userId(),
             $set:
-                "profile.name": name
-                "profile.bio": bio
-                "profile.website": website
-                "profile.twitter": twitter
-                "profile.facebook": facebook
-                "profile.linkedin": linkedin
-                "profile.position": position
-                "profile.company": company
+                "name": name
+                "bio": bio
+                "website": website
+                "linkedin": linkedin
+                "twitter": twitter
+                "facebook": facebook
+                "position": position
+                "company": company
         FlowRouter.go "/profile/view/#{Meteor.userId()}"
+
+    'keydown #add_tag': (e,t)->
+        if e.which is 13
+            tag = $('#add_tag').val().toLowerCase().trim()
+            if tag.length > 0
+                Meteor.users.update Meteor.userId(),
+                    $addToSet: tags: tag
+                $('#add_tag').val('')
+
+    'click .profile_tag': (e,t)->
+        tag = @valueOf()
+        Meteor.users.update Meteor.userId(),
+            $pull: tags: tag
+        $('#add_tag').val(tag)
+
+
+    'click #make_published': ->
+        Meteor.users.update Meteor.userId(),
+            $set: published: true
+
+    'click #make_unpublished': ->
+        Meteor.users.update Meteor.userId(),
+            $set: published: false
 
 
 
@@ -107,18 +112,9 @@ Template.edit_profile.events
                     console.error 'Error uploading', err
                 else
                     Meteor.users.update Meteor.userId(), 
-                        $set: "profile.image_id": res.public_id
+                        $set: image_id: res.public_id
                 return
 
     'click #remove_photo': ->
-        # console.log @image_id
-        
-# 		Cloudinary.delete @image_id, (err,res) ->
-# 			console.log "Upload Error: #{err}"
-# 			console.log "Upload Result: #{res}"
-
-        # Cloudinary.destroy @image_id, (result) ->
-        #     console.log result
-
         Meteor.users.update Meteor.userId(), 
-            $unset: "profile.image_id": 1
+            $unset: image_id: 1

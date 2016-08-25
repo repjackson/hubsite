@@ -4,7 +4,11 @@ Conversations.allow
 
 Docs.allow
     insert: (userId, doc) -> doc.author_id is userId
-    update: (userId, doc) -> doc.author_id is userId or Roles.userIsInRole(userId, 'admin')
+    # update: (userId, doc) -> doc.author_id is userId or Roles.userIsInRole(userId, 'admin')
+    update: (userId, doc) -> 
+        console.log doc
+        console.log userId
+        doc.author_id is userId
     remove: (userId, doc) -> doc.author_id is userId or Roles.userIsInRole(userId, 'admin')
 
 Meteor.startup ->
@@ -19,13 +23,6 @@ Cloudinary.config
 
 
 
-Meteor.publish 'user', (id)->
-    check(arguments, [Match.Any])
-    Meteor.users.find id,
-        fields:
-            tags: 1
-            profile: 1
-            username: 1
 
 Meteor.publish 'usernames', ->
     check(arguments, [Match.Any])

@@ -12,7 +12,7 @@ template(name='edit_account')
 template(name='account_nav')
     .ui.menu
         .ui.container
-            a.item(href='/profile/edit')
+            a.item(href="/profile/edit/#{currentUser.profile_doc}")
                 i.user.icon
                 |Profile
             a.item(href='/account/social')
