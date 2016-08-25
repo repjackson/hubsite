@@ -5,7 +5,7 @@ Template.wins_challenges.onCreated ->
 Template.wins_challenges.helpers
     wins: -> Docs.find( tags: $all: ['impact hub', 'boulder', 'win'] )
     challenges: -> Docs.find( tags: $all: ['impact hub', 'boulder', 'challenge'] )
-    isAuthor: -> @authorId is Meteor.userId()
+    isAuthor: -> @author_id is Meteor.userId()
     vote_upButtonClass: ->
         if not Meteor.userId() then 'disabled basic'
         else if Meteor.userId() in @up_voters then 'green'

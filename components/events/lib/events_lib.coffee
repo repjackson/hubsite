@@ -10,7 +10,6 @@ Meteor.methods
             $pull: attendee_ids: Meteor.userId()
             
             
-            
 # Events
 
 FlowRouter.route '/events', action: (params) ->

@@ -21,30 +21,27 @@ template(name='conversation')
             .description
                 .ui.basic.segment
                     .ui.divided.list
-                        each conversationMessages
+                        each conversation_messages
                             .item
                                 strong #{this.author.username}:
                                 |#{this.text}
                                 .meta #{this.when}
-                    if inConversation
+                    if in_conversation
                         .ui.small.left.icon.transparent.input
                             i.plus.icon
-                            input.addMessage(type='text' placeholder='Add Message')
+                            input.add_message(type='text' placeholder='Add Message')
         if currentUser
             .extra.content
                 if isOwner
-                    .ui.basic.button.closeConversation
+                    .ui.basic.button.close_conversation
                         i.red.remove.icon
                         |Close
-                if inConversation
-                    .ui.basic.button.leaveConversation
+                if in_conversation
+                    .ui.basic.button.leave_conversation
                         i.red.minus.icon
                         |Leave
                 else
-                    .ui.basic.button.joinConversation
+                    .ui.basic.button.join_conversation
                         i.green.plus.icon
                         |Join
-                .ui.basic.floated.right.button.createEvent
-                    i.green.calendar.icon
-                    |Create Event from Discussion
 

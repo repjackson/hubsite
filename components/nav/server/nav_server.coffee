@@ -1,6 +1,8 @@
 Meteor.publish 'me', ->
     Meteor.users.find @userId,
         fields:
-            profile_doc: 1
+            profile: 1
             username: 1
+            image_id: 1
+            tags: 1
             

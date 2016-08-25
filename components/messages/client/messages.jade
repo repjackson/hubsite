@@ -1,4 +1,4 @@
-template(name='messagePage')
+template(name='message_page')
     .ui.text.container
         +sent_messages
         +received_messages
@@ -37,4 +37,4 @@ template(name='message')
 
 
 template(name='userPill')
-    span(class="label" authorId=_id) #{username}
+    span(class="label" author_id=_id) #{username}

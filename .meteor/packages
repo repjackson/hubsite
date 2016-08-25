@@ -5,13 +5,13 @@
 # but you can also edit it by hand.
 
 meteor-base@1.0.4             # Packages every Meteor app needs to have
-mongo@1.1.11                   # The database Meteor supports right now
+mongo@1.1.12                   # The database Meteor supports right now
 blaze-html-templates@1.0.4    # Compile .html files into Meteor Blaze views
 session@1.1.6                 # Client-side reactive dictionary for your app
 tracker@1.1.0                 # Meteor's client-side reactive programming library
 
 
-coffeescript@1.2.4
+coffeescript@1.2.4_1
 mquandalle:jade
 random@1.0.10
 manuel:reactivearray
@@ -53,5 +53,6 @@ raix:handlebar-helpers
 lepozepo:cloudinary
 check@1.2.3
 ejson@1.0.12
-shell-server
+shell-server@0.2.1
 alanning:roles
+meteorhacks:fast-render

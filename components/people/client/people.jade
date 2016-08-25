@@ -28,7 +28,7 @@ template(name='person_card')
                 | #{profile.position}
         .content
             each tags
-                .ui.tiny.compact.circular.button.doc_tag(class=tag_class) #{this}
+                .ui.tiny.compact.circular.button.person_tag(class=tag_class) #{this}
         .extra.content
             a.ui.right.floated(href="/profile/view/#{_id}")
                 |Learn More

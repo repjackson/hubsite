@@ -18,7 +18,7 @@ Template.nav.helpers
     }
 
     userTagClass: ->
-        if @name in selectedTags.array() then 'primary' else 'basic'
+        if @name in selected_tags.array() then 'primary' else 'basic'
 
 
 
@@ -43,7 +43,7 @@ Template.nav.events
                     $('#globalsearch').val ''
 
     'click #homeLink': ->
-        selectedTags.clear()
+        selected_tags.clear()
 
     'keyup #search': (e)->
         e.preventDefault()
@@ -51,14 +51,14 @@ Template.nav.events
         switch e.which
             when 13
                 if searchTerm is 'clear'
-                    selectedTags.clear()
+                    selected_tags.clear()
                     $('#search').val('')
                 else
-                    selectedTags.push searchTerm
+                    selected_tags.push searchTerm
                     $('#search').val('')
             when 8
                 if searchTerm is ''
-                    selectedTags.pop()
+                    selected_tags.pop()
 
 Template.top_nav.events
     'click #logout': -> AccountsTemplates.logout()

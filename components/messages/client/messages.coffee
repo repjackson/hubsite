@@ -7,7 +7,7 @@ Template.sent_messages.onCreated ->
 
 
 Template.sent_messages.helpers
-    sent_messages: -> Messages.find( authorId: Meteor.userId() )
+    sent_messages: -> Messages.find( author_id: Meteor.userId() )
 
     userSettings: -> {
         position: 'bottom'
@@ -23,7 +23,7 @@ Template.sent_messages.helpers
 
 
 Template.received_messages.helpers
-    received_messages: -> Messages.find( recipientId: Meteor.userId() )
+    received_messages: -> Messages.find( recipient_id: Meteor.userId() )
 
 
 Template.sent_messages.events
@@ -31,7 +31,7 @@ Template.sent_messages.events
         body = $('#text').val()
         recipientUsername = $('#recipient').val()
         # console.log 'recipient', recipient
-        recipientId = Meteor.users.findOne({username: recipientUsername})._id
-        Meteor.call 'send_message', body, recipientId
+        recipient_id = Meteor.users.findOne({username: recipientUsername})._id
+        Meteor.call 'send_message', body, recipient_id
 
 

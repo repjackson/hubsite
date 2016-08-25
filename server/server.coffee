@@ -1,14 +1,6 @@
-Conversations.allow
-    update: (userId, doc, fieldNames, modifier) -> doc.authorId is Meteor.userId()
-    remove: (userId, doc)-> doc.authorId is userId
-
 Docs.allow
     insert: (userId, doc) -> doc.author_id is userId
-    # update: (userId, doc) -> doc.author_id is userId or Roles.userIsInRole(userId, 'admin')
-    update: (userId, doc) -> 
-        console.log doc
-        console.log userId
-        doc.author_id is userId
+    update: (userId, doc) -> doc.author_id is userId or Roles.userIsInRole(userId, 'admin')
     remove: (userId, doc) -> doc.author_id is userId or Roles.userIsInRole(userId, 'admin')
 
 Meteor.startup ->
@@ -30,43 +22,6 @@ Meteor.publish 'usernames', ->
         fields:
             username: 1
 
-
-Meteor.publish 'sent_messages', ->
-    check(arguments, [Match.Any])
-    Messages.find
-        authorId: @userId
-
-
-Meteor.publish 'conversationMessages', (conversationId) ->
-    check(arguments, [Match.Any])
-    Messages.find
-        conversationId: conversationId
-
-
-Meteor.publish 'eventMessages', (eventId) ->
-    check(arguments, [Match.Any])
-    Messages.find
-        eventId: eventId
-
-Meteor.publish 'received_messages', ->
-    check(arguments, [Match.Any])
-    Messages.find
-        recipientId: @userId
-
-
-
-
-Meteor.publish 'conversations', (selectedtags)->
-    check(arguments, [Match.Any])
-    self = @
-    match = {}
-    if selectedtags and selectedtags.length > 0 then match.tags = $all: selectedtags
-
-    Conversations.find match,
-        fields:
-            tags: 1
-            authorId: 1
-            participantIds: 1
 
 
 

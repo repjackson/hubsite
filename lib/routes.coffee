@@ -9,22 +9,6 @@ FlowRouter.route '/', action: (params) ->
         footer: 'footer'
 
 
-FlowRouter.route '/people', action: (params) ->
-    BlazeLayout.render 'layout',
-        nav: 'nav'
-        main: 'people'
-
-FlowRouter.route '/messages', action: (params) ->
-    BlazeLayout.render 'layout',
-        nav: 'nav'
-        main: 'messagePage'
-
-FlowRouter.route '/conversations', action: (params) ->
-    BlazeLayout.render 'layout',
-        nav: 'nav'
-        cloud: 'conversation_cloud'
-        main: 'conversations'
-
 
 FlowRouter.route '/wins', action: (params) ->
     BlazeLayout.render 'layout',

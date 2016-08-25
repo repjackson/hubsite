@@ -1,15 +1,15 @@
-@selectedConversationTags = new ReactiveArray []
+@selected_conversation_tags = new ReactiveArray []
 
 Template.conversation_cloud.onCreated ->
-    @autorun -> Meteor.subscribe('conversation_tags', selectedConversationTags.array())
+    @autorun -> Meteor.subscribe('conversation_tags', selected_conversation_tags.array())
 
 Template.conversation_cloud.helpers
-    globaltags: ->
+    conversation_tags: ->
         # userCount = Meteor.users.find().count()
         # if 0 < userCount < 3 then tags.find { count: $lt: userCount } else tags.find()
-        Conversationtags.find()
+        Conversation_tags.find()
 
-    globaltagClass: ->
+    conversation_tag_class: ->
         buttonClass = switch
             when @index <= 10 then 'big'
             when @index <= 20 then 'large'
@@ -18,13 +18,10 @@ Template.conversation_cloud.helpers
             when @index <= 50 then 'tiny'
         return buttonClass
 
-    selectedConversationTags: -> selectedConversationTags.list()
-
-    user: -> Meteor.user()
-
+    selected_conversation_tags: -> selected_conversation_tags.list()
 
 
 Template.conversation_cloud.events
-    'click .selecttag': -> selectedConversationTags.push @name
-    'click .unselecttag': -> selectedConversationTags.remove @valueOf()
-    'click #cleartags': -> selectedConversationTags.clear()
+    'click .select_tag': -> selected_conversation_tags.push @name
+    'click .unselect_tag': -> selected_conversation_tags.remove @valueOf()
+    'click #clear_tags': -> selected_conversation_tags.clear()

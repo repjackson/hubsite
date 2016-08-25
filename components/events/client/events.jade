@@ -10,9 +10,9 @@ template(name='events')
 
 template(name='event_card')
     .ui.card
-        .image
+        .image2
             a(href="/event/view/#{_id}")
-                img(src="{{c.url image_id height=175 width=275 crop='fill'}}")
+                img.ui.image(src="{{c.url image_id height=175 width=300 crop='fill'}}")
         .content
             .header
                 h2.ui.header 

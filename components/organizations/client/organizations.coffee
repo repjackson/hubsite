@@ -3,6 +3,7 @@
 
 Template.organizations.onCreated ->
     @autorun -> Meteor.subscribe('docs', selected_tags.array(), 'organization')
+    selected_tags.clear()
 
 
 Template.organizations.helpers

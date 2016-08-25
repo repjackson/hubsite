@@ -1,16 +1,6 @@
 @People_tags = new Meteor.Collection 'people_tags'
 
 
-Meteor.users.helpers
-    profile_doc: -> 
-        Docs.findOne
-            type: 'profile'
-            author_id: @_id
-
-
-
-
-
 FlowRouter.route '/people', action: (params) ->
     BlazeLayout.render 'layout',
         nav: 'nav'

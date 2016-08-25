@@ -1,5 +1,8 @@
 Template.posts.onCreated ->
     @autorun -> Meteor.subscribe('docs', selected_tags.array(), 'post')
+    selected_tags.clear()
+
+
 
 Template.posts.helpers
     posts: -> Docs.find {}
