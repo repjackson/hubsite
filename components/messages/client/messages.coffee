@@ -15,8 +15,8 @@ Template.sent_messages.helpers
         rules: [
             {
                 collection: Meteor.users
-                field: 'username'
-                template: Template.userPill
+                field: 'profile.name'
+                template: Template.user_pill
             }
         ]
     }
@@ -29,9 +29,9 @@ Template.received_messages.helpers
 Template.sent_messages.events
     'click #send': (e)->
         body = $('#text').val()
-        recipientUsername = $('#recipient').val()
+        recipient_name = $('#recipient').val()
         # console.log 'recipient', recipient
-        recipient_id = Meteor.users.findOne({username: recipientUsername})._id
+        recipient_id = Meteor.users.findOne({"profile.name": recipient_name})._id
         Meteor.call 'send_message', body, recipient_id
 
 

@@ -12,14 +12,8 @@ FlowRouter.route '/messages', action: (params) ->
         main: 'message_page'
 
 Meteor.methods
-    send_message: (body, recipient_id) ->
-        Messages.insert
-            timestamp: Date.now()
-            author_id: Meteor.userId()
-            body: body
-            recipient_id: recipient_id
-
     add_message: (text, conversation_id) ->
+        check(arguments, [Match.Any])
         Messages.insert
             timestamp: Date.now()
             author_id: Meteor.userId()

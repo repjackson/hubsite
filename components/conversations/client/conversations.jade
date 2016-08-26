@@ -1,47 +1,30 @@
 template(name='conversations')
     .ui.container
-        each conversations
-            +conversation
+        .ui.two.cards
+            each conversations
+                +conversation_card
 
 
-template(name='conversation')
-    .ui.fluid.card
+template(name='conversation_card')
+    .ui.card
         .content
             .header
-                |Conversation Topics:
-                // .ui.horizontal.list
+                a(href="/conversation/#{_id}")|Topics:
                 each tags
-                    .ui.large.compact.button.tag(class=tagClass) #{this}
-                    // .item.tag(class=tagClass) #{this}
+                    .ui.compact.label(class=conversation_tag_class) #{this}
+                    // .item.tag(class=tag_class) #{this}
                 div
                     |Participants: &nbsp;
                     .ui.horizontal.list
                         each participants
-                            .item #{this}
+                            .item 
+                                img.ui.avatar.image(src="{{c.url profile.image_id width=100 height=100 gravity='face' crop='fill'}}")
+                                |#{profile.name}
             .description
                 .ui.basic.segment
                     .ui.divided.list
                         each conversation_messages
                             .item
-                                strong #{this.author.username}:
+                                strong #{this.author.profile.name}:
                                 |#{this.text}
                                 .meta #{this.when}
-                    if in_conversation
-                        .ui.small.left.icon.transparent.input
-                            i.plus.icon
-                            input.add_message(type='text' placeholder='Add Message')
-        if currentUser
-            .extra.content
-                if isOwner
-                    .ui.basic.button.close_conversation
-                        i.red.remove.icon
-                        |Close
-                if in_conversation
-                    .ui.basic.button.leave_conversation
-                        i.red.minus.icon
-                        |Leave
-                else
-                    .ui.basic.button.join_conversation
-                        i.green.plus.icon
-                        |Join
-

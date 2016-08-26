@@ -1,42 +1,47 @@
-with event
-    .ui.text.container.basic.segment
-        a.ui.top.left.attached.basic.button(href='/events')
-            i.left.arrow.icon
-            |Back
-        div
-            img.ui.centered.large.image(src="{{c.url image_id}}")
-            .overlay-text 
-                h1 #{title}
-                h3 #{day} from #{start_time} to #{end_time}
-        .ui.hidden.divider
-        .description
-            // .ui.header Event Topics:
-            each tags
-                // .ui.compact.button.event_tag(class=event_tag_class) #{this}
-                .ui.basic.label(class=event_tag_class) #{this}
-            // |#{start_date} to #{end_date}
-            .ui.basic.padded.segment
-                |#{simple_description_cut}
-        if attendees
-            .content
-                .ui.header Attendees:
+with conversation
+    .ui.fluid.card
+        .content
+            a.ui.top.left.attached.basic.button(href='/conversations')
+                i.left.arrow.icon
+                |Back
+            .header
+                |Conversation Topics:
+            if can_edit
+                +edit_tags
+            else
+                each tags
+                    .ui.large.basic.label #{this}
+            div
+                |Participants: &nbsp;
                 .ui.horizontal.list
-                    each attendees
-                        .item #{this}
-        .extra.content
-            if isInRole 'admin'
-                .edit_event.ui.primary.basic.button
-                    i.pencil.icon
-                    |Edit Event
-            if currentUser
-                if attending
-                    .ui.basic.button.leave_event
+                    each participants
+                        .item 
+                            img.ui.avatar.image(src="{{c.url profile.image_id width=100 height=100 gravity='face' crop='fill'}}")
+                            |#{profile.name}
+            .description
+                .ui.segment
+                    .ui.divided.list
+                        each conversation_messages
+                            .item
+                                strong #{this.author.profile.name}:
+                                |#{this.text}
+                                .meta #{this.when}
+                    if in_conversation
+                        .ui.small.left.icon.input
+                            i.plus.icon
+                            input.add_message(type='text' placeholder='Add Message')
+        if currentUser
+            .extra.content
+                if isOwner
+                    .ui.basic.button.close_conversation
+                        i.red.remove.icon
+                        |Close
+                if in_conversation
+                    .ui.basic.button.leave_conversation
                         i.red.minus.icon
                         |Leave
                 else
-                    .ui.button.basic.join_event
+                    .ui.basic.button.join_conversation
                         i.green.plus.icon
                         |Join
-            else
-                p Sign in to attend    
-                
+

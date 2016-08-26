@@ -36,5 +36,5 @@ template(name='message')
         .text #{body}
 
 
-template(name='userPill')
-    span(class="label" author_id=_id) #{username}
+template(name='user_pill')
+    span(class="label" author_id=_id) #{profile.name}

@@ -17,7 +17,7 @@ Template.nav.helpers
         ]
     }
 
-    userTagClass: ->
+    usertag_class: ->
         if @name in selected_tags.array() then 'primary' else 'basic'
 
 
