@@ -43,8 +43,8 @@ FlowRouter.route '/about', action: (params) ->
         nav: 'nav'
         main: 'about'
         
-FlowRouter.route '/become_member', action: (params) ->
+FlowRouter.route '/join', action: (params) ->
     BlazeLayout.render 'layout',
         nav: 'nav'
-        main: 'become_member'
+        main: 'join'
         
