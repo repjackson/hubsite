@@ -2,7 +2,7 @@
 Template.edit_service.onCreated ->
     self = @
     self.autorun ->
-        self.subscribe 'service', FlowRouter.getParam('doc_id')
+        self.subscribe 'doc', FlowRouter.getParam('doc_id')
 
 Template.edit_service.helpers
     service: ->

@@ -1,7 +1,13 @@
 template(name='services')
+    .ui.hidden.divider
+    .ui.basic.very.padded.center.aligned.container
+        h1.ui.header Services
+            #add_service.ui.compact.basic.button
+                i.green.plus.icon
+                |Add Service
     +cloud filter='service'
     .ui.container
-        .ui.centered.four.cards
+        .ui.centered.three.cards
             each services
                 +service
 

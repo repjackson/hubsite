@@ -2,18 +2,18 @@
 
 
 Template.services.onCreated ->
-    @autorun -> Meteor.subscribe('services', selected_tags.array())
+    @autorun -> Meteor.subscribe('docs', selected_tags.array(), 'service')
 
 Template.services.helpers
     services: ->  Docs.find {}
 
 
 Template.service.helpers
-    service_tag_class: -> if @valueOf() in selected_tags.array() then 'red' else 'basic'
-
     can_edit: -> @author_id is Meteor.userId()
 
     service_messages: -> Messages.find service_id: @_id
+
+    service_tag_class: -> if @valueOf() in selected_tags.array() then 'red' else 'basic'
 
 
 Template.service.events
@@ -21,19 +21,16 @@ Template.service.events
         if @valueOf() in selected_tags.array() then selected_tags.remove @valueOf() else selected_tags.push @valueOf()
 
 
-    'keydown .addMessage': (e,t)->
-        e.preventDefault
-        if e.which is 13
-            text = t.find('.addMessage').value.trim()
-            if text.length > 0
-                Meteor.call 'add_event_message', text, @_id, (err,res)->
-                    t.find('.addMessage').value = ''
-
     'click .edit_service': ->
-        FlowRouter.go "/services/edit/#{@_id}"
+        FlowRouter.go "/service/edit/#{@_id}"
 
 
 Template.services.events
     'click #add_service': ->
-        Meteor.call 'add_service', (err, id)->
-            FlowRouter.go "/account/services/edit/#{id}"
+        id = Docs.insert 
+            type: 'service'
+            tags: ['service', Meteor.user().profile.name.toLowerCase()]
+        FlowRouter.go "/service/edit/#{id}"
+            
+            
+
