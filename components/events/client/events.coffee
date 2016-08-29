@@ -9,6 +9,11 @@ Template.events.helpers
         # if selected_tags.array and selected_tags.array().length > 0 then match.tags = $all: selected_tags.array()
         Docs.find match
 
+    options: ->
+        # defaultView: 'basicWeek'
+        defaultView: 'month'
+
+
 
 Template.event_card.helpers
     event_tag_class: -> if @valueOf() in selected_tags.array() then 'red' else 'basic'

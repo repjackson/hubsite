@@ -63,3 +63,12 @@ Meteor.publish 'people', (selected_people_tags=[], published_mode, checkedin_mod
             username: 1
             published: 1
             checked_in: 1
+            
+            
+Meteor.publish 'people_list', (doc_id)->
+    check(arguments, [Match.Any])
+    ids = Docs.findOne(doc_id).participant_ids
+    if ids
+        Meteor.users.find
+            _id: $in: ids
+    else return

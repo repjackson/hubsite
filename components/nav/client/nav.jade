@@ -1,17 +1,17 @@
 template(name='top_nav')
     .ui.inverted.menu
         .right.menu
+            a.item(href='/services' class="{{isActivePath '/services'}}")
+                i.laptop.icon
+                | Services
+            a.item(href='/conversations' class="{{isActivePath '/conversations'}}")
+                i.comments.outline.icon
+                | Conversations
             if currentUser
                 if isInRole 'admin'
                     a.item(href='/admin' class="{{isActivePath '/admin'}}")
                         i.configure.icon
                         | Admin
-                a.item(href='/services' class="{{isActivePath '/services'}}")
-                    i.laptop.icon
-                    | Services
-                a.item(href='/conversations' class="{{isActivePath '/conversations'}}")
-                    i.comments.outline.icon
-                    | Conversations
                 a.item(href='/messages' class="{{isActivePath '/messages'}}")
                     i.mail.icon
                     | Messages
@@ -34,12 +34,12 @@ template(name='top_nav')
                     i.add.user.icon
                     |Register
     a.header-logo(href='/' class="{{isActivePath '/'}}")
-        img.ui.medium.image(src='/img/Impact_Hub_Boulder_logo.png')
+        img(src='/img/Impact_Hub_Boulder_logo.png')
 
 
 template(name='nav')
     .red-nav-bar
-        .ui.red.inverted.large.fluid.eight.item.menu
+        .ui.red.inverted.large.fluid.eight.item.stackable.menu
             .ui.container
                 a.item(href='/about' class="{{isActivePath '/about'}}")
                     // i.info.circle.icon

@@ -3,6 +3,8 @@ Template.conversation_page.onCreated ->
     self.autorun ->
         self.subscribe 'doc', FlowRouter.getParam('doc_id')
         self.subscribe('conversation_messages', FlowRouter.getParam('doc_id'))
+        self.subscribe('people_list', FlowRouter.getParam('doc_id'))
+
 
 Template.conversation_page.helpers
     conversation: -> 

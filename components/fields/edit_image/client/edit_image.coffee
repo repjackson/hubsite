@@ -16,17 +16,20 @@ Template.edit_image.events
                 return
 
     'click #remove_photo': ->
-        # console.log @image_id
-        
-# 		Cloudinary.delete @image_id, (err,res) ->
-# 			console.log "Upload Error: #{err}"
-# 			console.log "Upload Result: #{res}"
-
-        # Cloudinary.destroy @image_id, (result) ->
-        #     console.log result
-
-        Docs.update FlowRouter.getParam('doc_id'), 
-            $unset: image_id: 1
-
-Template.edit_image.helpers
-    log: -> console.log @
+        swal {
+            title: 'Remove Photo?'
+            type: 'warning'
+            showCancelButton: true
+            closeOnConfirm: true
+            cancelButtonText: 'No'
+            confirmButtonText: 'Remove'
+            confirmButtonColor: '#da5347'
+        }, ->
+            # console.log @image_id
+    # 		Cloudinary.delete @image_id, (err,res) ->
+    # 			console.log "Upload Error: #{err}"
+    # 			console.log "Upload Result: #{res}"
+            Docs.update FlowRouter.getParam('doc_id'), 
+                $unset: image_id: 1
+# Template.edit_image.helpers
+#     log: -> console.log @

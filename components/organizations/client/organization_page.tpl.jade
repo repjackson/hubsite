@@ -1,0 +1,16 @@
+with organization
+    .ui.fluid.card
+        .content
+            +back_button
+            .header
+                h2.ui.header #{title}
+            .description
+                // .ui.header Post Topics:
+                each tags
+                    .ui.basic.label #{this}
+                |!{description}
+        .extra.content
+            if isInRole 'admin'
+                .edit_organization.ui.primary.basic.button
+                    i.pencil.icon
+                    |Edit Organization    

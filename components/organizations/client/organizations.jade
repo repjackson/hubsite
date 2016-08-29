@@ -12,10 +12,11 @@ template(name='organizations')
 template(name='organization')
     .ui.item
         .image
-            img.ui.medium.image(src="{{c.url image_id}}")
+            img.ui.medium.image(src="{{c.url image_id width=800 height=600 gravity='face' crop='fill'}}")
         .content
             .header
-                h2.ui.header #{title}
+                a(href="/organization/view/#{_id}")
+                    h2.ui.header #{title}
             .meta
                 a(href=link target="_blank") #{link}
             .description
@@ -36,6 +37,6 @@ template(name='organization')
                                     .ui.small.basic.label #{this}
             if isInRole 'admin'
                 .extra
-                    .edit_organization.ui.labeled.right.floated.primary.basic.icon.button
+                    .edit_organization.ui.right.floated.primary.basic.button
                         i.pencil.icon
                         |Edit Organization

@@ -1,8 +1,6 @@
 with event
     .ui.text.container.basic.segment
-        a.ui.top.left.attached.basic.button(href='/events')
-            i.left.arrow.icon
-            |Back
+        +back_button
         div
             img.ui.centered.large.image(src="{{c.url image_id width=600 height=600 crop='fill'}}")
             .overlay-text 
@@ -37,6 +35,7 @@ with event
                     .ui.button.basic.join_event
                         i.green.plus.icon
                         |Join
+            +favorite
             else
                 p Sign in to attend    
                 

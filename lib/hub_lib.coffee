@@ -5,10 +5,11 @@
 Docs.before.insert (userId, doc)->
     doc.timestamp = Date.now()
     doc.author_id = Meteor.userId()
+    # doc.tag = []
     return
 
 Docs.after.update ((userId, doc, fieldNames, modifier, options) ->
-    doc.tag_count = doc.tags.length
+    doc.tag_count = doc.tags?.length
 ), fetchPrevious: true
 
 

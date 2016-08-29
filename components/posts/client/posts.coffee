@@ -5,7 +5,10 @@ Template.posts.onCreated ->
 
 
 Template.posts.helpers
-    posts: -> Docs.find {}
+    posts: -> Docs.find {},
+        sort:
+            publish_date: 1
+            
 
 
 

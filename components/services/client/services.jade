@@ -15,7 +15,7 @@ template(name='services')
 template(name='service')
     .ui.card
         .image
-            img.ui.medium.image(src="{{c.url image_id}}")
+            img.ui.medium.image(src="{{c.url image_id width=800 height=600 crop='fill'}}")
         .content
             .header
                 h2.ui.header #{title}
@@ -29,6 +29,6 @@ template(name='service')
                 |$#{price}
             +favorite
             if isInRole 'admin'
-                .edit_service.ui.labeled.primary.basic.icon.button
+                .edit_service.ui.primary.basic.button
                     i.pencil.icon
                     |Edit    

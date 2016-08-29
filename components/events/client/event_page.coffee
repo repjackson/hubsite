@@ -2,7 +2,7 @@ Template.event_page.onCreated ->
     self = @
     self.autorun ->
         self.subscribe 'doc', FlowRouter.getParam('doc_id')
-
+        self.subscribe('attendees', FlowRouter.getParam('doc_id'))
 
 Template.event_page.helpers
     event: -> Docs.findOne FlowRouter.getParam('doc_id')
@@ -13,7 +13,7 @@ Template.event_page.helpers
 
     can_edit: -> Meteor.userId()
 
-    day: -> moment(@start_date).format("dddd, MMMM Do");
+    day: -> moment(@start_date).format("dddd, MMMM Do")
     start_time: -> moment(@start_date).format("h:mm a")
     end_time: -> moment(@end_date).format("h:mm a")
 
@@ -28,7 +28,5 @@ Template.event_page.events
     'click .leave_event': ->
         Meteor.call 'leave_event', @_id
 
-
-            
     'click .edit_event': ->
         FlowRouter.go "/event/edit/#{@_id}"

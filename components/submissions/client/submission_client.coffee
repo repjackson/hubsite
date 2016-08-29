@@ -1,7 +1,7 @@
 Template.submissions.onCreated ->
     self = @
     self.autorun ->
-        self.subscribe 'submissions'
+        self.subscribe 'docs', 'submission'
 
 
 Template.submissions.helpers

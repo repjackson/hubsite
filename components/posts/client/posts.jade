@@ -3,26 +3,31 @@ template(name='posts')
         img.ui.centered.fluid.image(src='/banners/blog_banner.jpg', alt='')
         h1.overlay-text Impact Hub Boulder Blog
     +cloud filter='post'
-    .ui.container.segment
-        .ui.divided.items
+    .ui.container.basic.segment
+        .ui.cards
             each posts
                 +post
 
 
 template(name='post')
-    .ui.item
+    .ui.fluid.card
         .image
-            img.ui.medium.image(src="{{c.url image_id}}")
+            img(src="{{c.url image_id width=800 height=600 gravity='face' crop='fill'}}")
         .content
             .header
-                h2.ui.header #{title}
-            .meta Published #{publish_when}
+                a(href="/post/view/#{_id}")
+                    h2.ui.header #{title}
+            if publish_date
+                .meta
+                    | Published #{publish_when}
             .description
                 |!{description}
-            .extra
-                each tags
-                    .ui.compact.button.post_tag(class=post_tag_class) #{this}
-                if isInRole 'admin'
-                    .edit_post.ui.labeled.primary.basic.right.floated.icon.button
-                        i.pencil.icon
-                        |Edit post    
+        .content
+            each tags
+                .ui.compact.button.post_tag(class=post_tag_class) #{this}
+            if isInRole 'admin'
+                .edit_post.ui.primary.basic.right.floated.button
+                    i.pencil.icon
+                    |Edit Post    
+        .content
+            +favorite

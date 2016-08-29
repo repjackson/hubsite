@@ -6,6 +6,14 @@ template(name='events')
     .ui.centered.cards
         each events
             +event_card
+    // .ui.grid
+    //     .twelve.wide.column
+    //         .ui.centered.cards
+    //             each events
+    //                 +event_card
+    //     .three.wide.column
+    //         +fullcalendar options
+
 
 
 template(name='event_card')
@@ -25,8 +33,9 @@ template(name='event_card')
                 strong #{end_time}
         .content
             |!{snippet}
-        if isInRole 'admin'
-            .extra.content
-                .edit_event.ui.labeled.right.floated.primary.basic.icon.button
+        .extra.content
+            +favorite
+            if isInRole 'admin'
+                .edit_event.ui.right.floated.primary.basic.button
                     i.pencil.icon
                     |Edit Event

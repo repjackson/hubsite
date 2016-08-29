@@ -9,6 +9,7 @@ with service
                     .ui.compact.button.service_tag(class=service_tag_class) #{this}
                 |!{description}
         .extra.content
+            +favorite
             if isInRole 'admin'
                 .edit_service.ui.labeled.primary.basic.icon.button
                     i.pencil.icon
