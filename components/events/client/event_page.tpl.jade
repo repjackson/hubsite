@@ -6,6 +6,7 @@ with event
             .overlay-text 
                 h1 #{title}
                 h3 #{day} from #{start_time} to #{end_time}
+                h3 @#{location}
         .ui.hidden.divider
         .description
             // .ui.header Event Topics:
@@ -18,7 +19,7 @@ with event
         if attendee_ids
             .content
                 .ui.header Attendees:
-                .ui.horizontal.list
+                .ui.vertical.list
                     each attendee_ids
                         +user_blurb id=this
         .extra.content

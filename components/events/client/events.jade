@@ -31,6 +31,8 @@ template(name='event_card')
                 strong #{start_time} 
                 |to 
                 strong #{end_time}
+            .meta
+                span @#{location}
         .content
             |!{snippet}
         .extra.content

@@ -22,6 +22,7 @@ Template.edit_event.events
         description = $('#description').val()
         simple_description = description.replace(/(<([^>]+)>)/ig, "")
         start_date = $('#start_date').val()
+        location = $('#location').val()
         end_date = $('#end_date').val()
         Docs.update FlowRouter.getParam('doc_id'),
             $set:
@@ -29,12 +30,13 @@ Template.edit_event.events
                 description: description
                 start_date: start_date
                 end_date: end_date
+                location: location
                 simple_description: simple_description
                 # tagCount: @tags.length
-        selected_tags.clear()
-        for tag in @tags
-            selected_tags.push tag
-        FlowRouter.go '/events'
+        # selected_tags.clear()
+        # for tag in @tags
+        #     selected_tags.push tag
+        FlowRouter.go "/event/view/#{@_id}"
 
 
 
