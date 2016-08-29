@@ -4,15 +4,17 @@ with post
         .ui.fluid.card
             .content
                 +back_button
-                .header
-                    h2.ui.header #{title}
-                .description
-                    // .ui.header Post Topics:
+                div
+                    img.ui.centered.large.image(src="{{c.url image_id width=600 height=600 crop='fill'}}")
+                    .overlay-text 
+                        h1 #{title}
+                .ui.basic.segment
                     each tags
                         .ui.basic.label #{this}
+                .description
                     |!{description}
             .extra.content
                 if isInRole 'admin'
-                    .edit_post.ui.labeled.primary.basic.icon.button
+                    .edit_post.ui.primary.basic.button
                         i.pencil.icon
                         |Edit post    

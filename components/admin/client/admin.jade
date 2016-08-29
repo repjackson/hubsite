@@ -1,31 +1,36 @@
 template(name='admin')
-    +submissions
-    +user_management
-        
-    #add_event.ui.compact.basic.button
-        i.green.plus.icon
-        |Add Event
-
-    #add_organization.ui.compact.basic.button
-        i.green.plus.icon
-        |Add Organization
-
-    #add_post.ui.compact.basic.button
-        i.green.plus.icon
-        |Add Post
-
+    .ui.container
+        .ui.segment
+            +submissions
+        .ui.segment
+            +user_management
+        .ui.segment
+            #add_event.ui.compact.basic.button
+                i.large.icons
+                    i.calendar.icon
+                    i.green.plus.corner.icon
+                |Add Event
+            #add_organization.ui.compact.basic.button
+                i.large.icons
+                    i.building.icon
+                    i.green.plus.corner.icon
+                |Add Organization
+            #add_post.ui.compact.basic.button
+                i.large.icons
+                    i.sticky.note.outline.icon
+                    i.green.plus.corner.icon
+                |Add Post
     
         
         
         
 template(name='user_management')
-    a#add_user.ui.basic.green.button(href='/admin/add_user')
-        i.plus.icon
-        |Add New User
+    // a#add_user.ui.basic.green.button(href='/admin/add_user')
+    //     i.plus.icon
+    //     |Add New User
     table.ui.celled.table
         thead
             tr
-                th Username
                 th Email
                 th Profile
                 th Role(s)
@@ -33,15 +38,26 @@ template(name='user_management')
         tbody
             each hub_users
                 tr
-                    td #{username}
                     td 
                         each emails
                             |#{address}
                     td 
-                        img.ui.avatar.image(src="{{c.url profile_doc.image_id}}")
-                        |#{profile_doc.name}
+                        a(href="/profile/view/#{_id}")
+                            img.ui.avatar.image(src="{{c.url profile.image_id width=100 height=100 gravity='face' crop='fill'}}")
+                            |#{profile.name}
                     td 
+                        if user_is_admin 'admin'
+                            .remove_admin.ui.basic.icon.button
+                                i.remove.icon
+                        else
+                            .make_admin.ui.basic.icon.button
+                                i.plus.icon
                         each roles
-                            |#{this}
+                            .ui.basic.label #{this}
                     td 
-                        .ui.compact.button Email
+                        .email_user.ui.compact.basic.disabled.button
+                            i.mail.icon
+                            |Email
+                        .email_user.ui.compact.basic.button 
+                            i.send.icon
+                            |Direct Message

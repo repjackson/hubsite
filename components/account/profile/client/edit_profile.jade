@@ -6,7 +6,7 @@ template(name='edit_profile')
                     if profile.image_id
                         label Image
                         .ui.centered.image
-                            img(src="{{c.url profile.image_id width=200 height=200 gravity='face' crop='fill'}}")
+                            img(src="{{c.url profile.image_id width=400 height=400 gravity='face' crop='fill'}}")
                             a#remove_photo.ui.right.corner.link.label
                                 i.remove.red.link.icon
                     else

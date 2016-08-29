@@ -1,10 +1,11 @@
 template(name='conversation_cloud')
-    .ui.center.aligned.segment
-        .ui.header Browse Conversations
-        if currentUser
-            #create_conversation.ui.basic.button
-                i.plus.icon
-                |Create Conversation
+    .ui.center.aligned.basic.segment
+        .ui.header 
+            |Browse Conversations
+            if currentUser
+                #create_conversation.ui.basic.button
+                    i.plus.green.icon
+                    |Create Conversation
         if selected_conversation_tags
             #clear_tags.ui.primary.big.compact.icon.button
                 i.remove.icon

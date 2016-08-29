@@ -4,11 +4,9 @@ with person
             .ui.top.right.attached.green.label Published
         else
             .ui.top.right.attached.red.label Unpublished
-        a.ui.top.left.attached.basic.button(href='/people')
-            i.left.arrow.icon
-            |Back
+        +back_button
         with profile
-            img.ui.centered.medium.circular.image(src="{{c.url image_id}}")
+            img.ui.centered.medium.circular.image(src="{{c.url image_id width=800 height=600 gravity='face' crop='fill'}}")
             h2.ui.header
                 |#{name}
             if company

@@ -26,7 +26,10 @@ template(name='service')
                 |!{description}
         .content
             span.right.floated
-                |$#{price}
+                if price
+                    |$#{price}
+                else
+                    .ui.basic.green.label Free
             +favorite
             if isInRole 'admin'
                 .edit_service.ui.primary.basic.button
