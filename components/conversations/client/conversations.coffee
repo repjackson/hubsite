@@ -24,5 +24,5 @@ Template.conversation_card.helpers
 
 
 Template.conversation_card.helpers
-    conversation_tag_class: -> if @valueOf() in selected_conversation_tags.array() then 'blue' else 'basic'
+    conversation_tag_class: -> if @valueOf() in selected_conversation_tags.array() then 'red' else 'basic'
 

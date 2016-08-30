@@ -15,19 +15,29 @@ with event
                 if location
                     h3 @#{location}
         .ui.hidden.divider
-        .description
-            // .ui.header Event Topics:
-            each tags
-                // .ui.compact.button.event_tag(class=event_tag_class) #{this}
-                .ui.basic.label(class=event_tag_class) #{this}
-            // |#{start_date} to #{end_date}
-            .ui.basic.padded.segment
-                |!{description}
-        if attendee_ids
-            .content
-                .ui.segment
-                    .ui.header Attendees:
-                    .ui.vertical.list
+        .ui.grid
+            .eleven.wide.column
+                .description
+                    .ui.header Event Tags:
+                        each tags
+                            .ui.basic.label(class=event_tag_class) #{this}
+                    .ui.basic.padded.segment
+                        |!{description}
+                .extra.content
+                    if isInRole 'admin'
+                        .edit_event.ui.primary.basic.button
+                            i.pencil.icon
+                            |Edit Event
+                    +favorite
+            .five.wide.column
+                .ui.dividing.header Date and Time
+                h2.ui.sub.header #{day} from #{start_time} to #{end_time}
+                if location
+                    .ui.dividing.header Location
+                    h2.ui.sub.header @#{location}
+                if attendee_ids
+                    .ui.dividing.header Attendees
+                    .ui.divided.vertical.list
                         each attendee_ids
                             +user_blurb id=this
                     if currentUser
@@ -39,12 +49,5 @@ with event
                             .ui.button.basic.join_event
                                 i.green.plus.icon
                                 |Join
-        .extra.content
-            if isInRole 'admin'
-                .edit_event.ui.primary.basic.button
-                    i.pencil.icon
-                    |Edit Event
-            +favorite
-            else
-                p Sign in to attend    
-                
+                    else
+                        p Sign in to attend    
