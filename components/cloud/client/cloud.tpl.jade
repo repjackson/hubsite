@@ -1,11 +1,11 @@
 .ui.center.aligned.basic.segment
     if selected_tags
-        #clear_tags.ui.red.big.compact.icon.circular.button
+        #clear_tags.ui.red.big.compact.icon.button
             i.remove.icon
     if selected_tags
         each selected_tags
-            a.ui.red.big.compact.circular.button.unselect_tag
+            a.ui.red.big.compact.button.unselect_tag
                 strong #{this}
     each all_tags
-        .ui.compact.basic.circular.button.select_tag(class=tag_cloud_class) #{this.name}
+        .ui.compact.basic.button.select_tag(class=tag_cloud_class) #{this.name}
             // small #{this.count}

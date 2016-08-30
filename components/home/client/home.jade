@@ -2,13 +2,14 @@ template(name='home')
     +slider
     +call_to_action
     +academy_widget
+    // .ui.container
     +featured_events
-    // +rockstar_members
+    +rockstar_members
     +featured_posts
 
 
 template(name='call_to_action')
-    .ui.attached.very.padded.segment
+    .ui.attached.very.padded.basic.segment
         .ui.stackable.container.grid
             .ten.wide.column
                 // h1.ui.header COME FOR COWORKING, STAY FOR COMMUNITY
@@ -28,12 +29,12 @@ template(name='slider')
 
                     
 template(name='academy_widget')
-    .ui.very.padded.attached.segment.container
+    .ui.very.padded.attached.basic.segment.container
         h2.ui.header HUB Academy
                 
                 
 template(name='rockstar_members')
-    .ui.attached.very.padded.segment.container
+    .ui.attached.very.padded.basic.segment.container
         .ui.container
             h1.ui.header Rockstar Members
             .ui.three.stackable.cards
@@ -45,9 +46,9 @@ template(name='rockstar_members')
 template(name='rockstar_member')
     .ui.fluid.card
         .image
-            img.ui.image(src=person_image_url)
+            img.ui.image(src="{{c.url profile.image_id width=200 height=200 gravity='face' crop='fill'}}")
         .content
             .header
-                h2.ui.header #{name}
+                h2.ui.header #{profile.name}
             .description
                 // .ui.header Post Topics:

@@ -78,6 +78,7 @@ Meteor.publish 'tags', (selected_tags, filter)->
 
 Meteor.methods 
     formSubmissionMethod: (formData, captchaData) ->
+        check(arguments, [Match.Any])
         verifyCaptchaResponse = reCAPTCHA.verifyCaptcha(@connection.clientAddress, captchaData)
         if !verifyCaptchaResponse.success
             console.log 'reCAPTCHA check failed!', verifyCaptchaResponse

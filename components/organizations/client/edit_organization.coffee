@@ -22,10 +22,10 @@ Template.edit_organization.events
                 link: link
                 description: description
                 # tagCount: @tags.length
-        selected_tags.clear()
-        for tag in @tags
-            selected_tags.push tag
-        FlowRouter.go '/organizations'
+        # selected_tags.clear()
+        # for tag in @tags
+        #     selected_tags.push tag
+        FlowRouter.go "/organization/view/#{@_id}"
 
 
 

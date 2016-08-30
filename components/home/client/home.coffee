@@ -12,6 +12,6 @@ Template.rockstar_members.onCreated ->
 
 Template.rockstar_members.helpers
     rockstar_members: -> 
-        Docs.find {}, 
+        Meteor.users.find {}, 
             limit: 3
 

@@ -1,12 +1,19 @@
 with event
-    .ui.text.container.basic.segment
-        +back_button
+    .ui.container.basic.segment
+        // +back_button
+        a.ui.basic.top.left.attached.button(href="/events")
+            i.arrow.left.icon
+            |Events
         div
-            img.ui.centered.large.image(src="{{c.url image_id width=600 height=600 crop='fill'}}")
+            if image_id
+                img.ui.centered.image(src="{{c.url image_id width=800 height=600 crop='fill'}}")
+            else
+                img.ui.centered.image(src="/img/about_mashup_one.jpg")
             .overlay-text 
                 h1 #{title}
                 h3 #{day} from #{start_time} to #{end_time}
-                h3 @#{location}
+                if location
+                    h3 @#{location}
         .ui.hidden.divider
         .description
             // .ui.header Event Topics:
@@ -18,24 +25,25 @@ with event
                 |!{description}
         if attendee_ids
             .content
-                .ui.header Attendees:
-                .ui.vertical.list
-                    each attendee_ids
-                        +user_blurb id=this
+                .ui.segment
+                    .ui.header Attendees:
+                    .ui.vertical.list
+                        each attendee_ids
+                            +user_blurb id=this
+                    if currentUser
+                        if attending
+                            .ui.basic.button.leave_event
+                                i.red.minus.icon
+                                |Leave
+                        else
+                            .ui.button.basic.join_event
+                                i.green.plus.icon
+                                |Join
         .extra.content
             if isInRole 'admin'
                 .edit_event.ui.primary.basic.button
                     i.pencil.icon
                     |Edit Event
-            if currentUser
-                if attending
-                    .ui.basic.button.leave_event
-                        i.red.minus.icon
-                        |Leave
-                else
-                    .ui.button.basic.join_event
-                        i.green.plus.icon
-                        |Join
             +favorite
             else
                 p Sign in to attend    

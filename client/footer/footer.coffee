@@ -11,8 +11,8 @@ Template.footer.helpers
 
 Template.footer.events
     'click #submit_contact_form': ->
-        contact_reason = $('input[name="reason"]:checked').val()
-        console.log contact_reason
+        # contact_reason = $('input[name="reason"]:checked').val()
+        # console.log contact_reason
         formData = {}
         #get the captcha data
         captchaData = grecaptcha.getResponse()
@@ -22,6 +22,6 @@ Template.footer.events
             if error
                 console.log 'There was an error: ' + error.reason
             else
-                console.log 'Success!'
+                console.log 'Success!', 
             return
         return

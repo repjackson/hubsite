@@ -14,3 +14,13 @@ Meteor.publish 'rockstar_members', ->
     #         date_array: 1
     #         date: 1
 
+
+Meteor.publish 'featured_posts', ->
+    Docs.find
+        type: 'post'
+        featured: true
+        
+Meteor.publish 'featured_events', ->
+    Docs.find
+        type: 'event'
+        featured: true

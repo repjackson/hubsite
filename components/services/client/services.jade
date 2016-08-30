@@ -15,15 +15,18 @@ template(name='services')
 template(name='service')
     .ui.card
         .image
-            img.ui.medium.image(src="{{c.url image_id width=800 height=600 crop='fill'}}")
+            a(href="/service/view/#{_id}")
+                img.ui.medium.image(src="{{c.url image_id width=800 height=600 crop='fill'}}")
         .content
-            .header
-                h2.ui.header #{title}
-            .meta
-                // .ui.header service Topics:
-                each tags
-                    .ui.compact.button.service_tag(class=service_tag_class) #{this}
-                |!{description}
+            a(href="/service/view/#{_id}")
+                .header
+                    h2.ui.header #{title}
+        // .content
+        //     // .ui.header service Topics:
+        //     each tags
+        //         .ui.compact.button.service_tag(class=service_tag_class) #{this}
+        .content
+            |!{description}
         .content
             span.right.floated
                 if price

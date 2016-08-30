@@ -1,16 +1,17 @@
 with service
     .ui.fluid.card
         .content
+            +back_button
             .header
                 h2.ui.header #{title}
             .description
                 // .ui.header service Topics:
                 each tags
-                    .ui.compact.button.service_tag(class=service_tag_class) #{this}
+                    .ui.basic.label #{this}
                 |!{description}
         .extra.content
             +favorite
             if isInRole 'admin'
-                .edit_service.ui.labeled.primary.basic.icon.button
+                a.edit_service.ui.primary.basic.button(href="/service/view/#{_id}")
                     i.pencil.icon
                     |Edit Service    
