@@ -24,16 +24,16 @@ template(name='contact_form')
             //             label Change, pause, or cancel my membership.
             .required.field
                 label Name
-                input#contact_name(type='text')
+                input#name(type='text')
             .required.field
                 label Email
-                input#contact_email(type='email')
+                input#email(type='email')
             .required.field
                 label Message
-                input#contact_message(type='text')
-            .field
-                .ui.basic.fluid.segment
-                +reCAPTCHA
+                input#message(type='text')
+            .four.wide.field
+                .ui.basic.segment
+                    +reCAPTCHA
             #submit_contact_form.ui.labeled.icon.fluid.basic.button
                 i.send.icon
                 |Submit

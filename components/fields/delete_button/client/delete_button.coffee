@@ -4,6 +4,7 @@ Template.delete_button.events
             title: 'Delete?'
             # text: 'Confirm delete?'
             type: 'error'
+            animation: false
             showCancelButton: true
             closeOnConfirm: true
             cancelButtonText: 'No'

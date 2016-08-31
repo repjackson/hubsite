@@ -19,6 +19,7 @@ Template.edit_image.events
         swal {
             title: 'Remove Photo?'
             type: 'warning'
+            animation: false
             showCancelButton: true
             closeOnConfirm: true
             cancelButtonText: 'No'

@@ -33,7 +33,8 @@ Meteor.publish 'docs', (selected_tags, filter)->
     if selected_tags.length > 0 then match.tags = $all: selected_tags
     match.type = filter
 
-    Docs.find match
+    Docs.find match,
+        limit: 10
 
 Meteor.publish 'doc', (id)->
     check(arguments, [Match.Any])

@@ -3,7 +3,10 @@ with post
     .ui.container
         .ui.fluid.card
             .content
-                +back_button
+                // +back_button
+                a.ui.top.left.attached.basic.button(href="/posts")
+                    i.arrow.left.icon
+                    |Blog
                 div
                     img.ui.centered.large.image(src="{{c.url image_id width=600 height=600 crop='fill'}}")
                     .overlay-text 

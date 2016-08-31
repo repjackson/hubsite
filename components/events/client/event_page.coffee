@@ -15,7 +15,7 @@ Template.event_page.helpers
 
     day: -> moment(@start_date).format("dddd, MMMM Do")
     start_time: -> moment(@start_date).format("h:mm a")
-    end_time: -> moment(@end_date).format("h:mm a")
+    end_time: -> moment(@end_date)?.format("h:mm a")
 
     
 Template.event_page.events

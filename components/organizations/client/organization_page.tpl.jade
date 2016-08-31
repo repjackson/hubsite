@@ -1,25 +1,24 @@
 with organization
     .ui.container
-        .ui.fluid.card
-            .content
-                +back_button
-                if image_id
-                    img.ui.centered.image(src="{{c.url image_id width=800 height=600 crop='fill'}}")
-                else
-                    img.ui.centered.image(src="/img/about_mashup_one.jpg")
-                .overlay-text 
-                    h1 #{title}
-            .ui.hidden.divider
-            .content
-                .header
-                    h2.ui.header #{title}
-                .description
-                    // .ui.header Post Topics:
-                    each tags
-                        .ui.basic.label #{this}
-                    |!{description}
-            .extra.content
-                if isInRole 'admin'
-                    .edit_organization.ui.primary.basic.button
-                        i.pencil.icon
-                        |Edit Organization    
+        .image
+            if image_id
+                img.ui.centered.image(src="{{c.url image_id width=800 height=600 crop='fill'}}")
+            else
+                img.ui.centered.image(src="/img/about_mashup_one.jpg")
+        .content
+            .overlay-text 
+                h1 #{title}
+        .ui.hidden.divider
+        .content
+            .header
+                h2.ui.header #{title}
+            .description
+                // .ui.header Post Topics:
+                each tags
+                    .ui.basic.label #{this}
+                |!{description}
+        .extra.content
+            if isInRole 'admin'
+                .edit_organization.ui.primary.basic.button
+                    i.pencil.icon
+                    |Edit Organization    

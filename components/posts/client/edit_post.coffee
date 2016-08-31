@@ -20,7 +20,7 @@ Template.edit_post.events
                 publish_date: publish_date
                 description: description
                 # tagCount: @tags.length
-        selected_tags.clear()
-        for tag in @tags
-            selected_tags.push tag
-        FlowRouter.go '/posts'
+        # selected_tags.clear()
+        # for tag in @tags
+        #     selected_tags.push tag
+        FlowRouter.go "/post/view/#{@_id}"

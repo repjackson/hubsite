@@ -20,6 +20,7 @@ Template.user_management.events
             title: "Remove #{@profile.name} from Admins?"
             # text: 'You will not be able to recover this imaginary file!'
             type: 'warning'
+            animation: false
             showCancelButton: true
             # confirmButtonColor: '#DD6B55'
             confirmButtonText: 'Remove Privilages'
@@ -36,6 +37,7 @@ Template.user_management.events
             title: "Make #{@profile.name} an Admin?"
             # text: 'You will not be able to recover this imaginary file!'
             type: 'warning'
+            animation: false
             showCancelButton: true
             # confirmButtonColor: '#DD6B55'
             confirmButtonText: 'Make Admin'

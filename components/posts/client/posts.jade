@@ -11,8 +11,9 @@ template(name='posts')
 
 template(name='post')
     .ui.fluid.card
-        .image
-            img(src="{{c.url image_id width=800 height=600 gravity='face' crop='fill'}}")
+        a(href="/post/view/#{_id}")
+            .image
+                img.ui.huge.image(src="{{c.url image_id width=1000 height=200 gravity='face' crop='fill'}}")
         .content
             .header
                 a(href="/post/view/#{_id}")

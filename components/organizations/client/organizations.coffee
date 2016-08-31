@@ -36,4 +36,4 @@ Template.organization.events
 
             
     'click .edit_organization': ->
-        FlowRouter.go "/organizations/edit/#{@_id}"
+        FlowRouter.go "/organization/edit/#{@_id}"

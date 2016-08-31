@@ -9,7 +9,7 @@ template(name='top_nav')
                 | Conversations
             if currentUser
                 if isInRole 'admin'
-                    a.item(href='/admin' class="{{isActivePath '/admin'}}")
+                    a.item(href='/admin/submissions' class="{{isActivePath '/admin/submissions'}}")
                         i.configure.icon
                         | Admin
                 a.item(href='/messages' class="{{isActivePath '/messages'}}")

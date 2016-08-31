@@ -1,15 +1,23 @@
 template(name='submissions')
-    h2.ui.header Contact Form Submissions
-    .ui.list
-        each submissions
-            +submission
-                
-                
-template(name='submission')
-    .item
-        .content
-            strong #{name}
-            strong #{email}
-            strong #{message}
-            .ui.right.floated.icon.button
-                i.remove.red.icon.remove_submission
+    .ui.container
+        table.ui.table
+            thead
+                tr
+                    th Name
+                    th Email
+                    th Message
+                    th 
+            tbody
+                each submissions
+                    tr
+                        td #{data.name}
+                        td #{data.email}
+                        td #{data.message}
+                        td
+                            .ui.basic.disabled.button.mail_feedbacker
+                                i.mail.icon
+                                |Mail
+                            .ui.basic.button.remove_submission
+                                i.remove.icon
+                                |Remove
+                    
