@@ -52,18 +52,18 @@ with event
                     .ui.divided.vertical.list
                         each attendee_ids
                             +user_blurb id=this
-                    if currentUser
-                        if attending
-                            .ui.basic.icon.fluid.button.leave_event 
-                                i.large.icons
-                                    i.user.icon
-                                    i.red.minus.corner.icon
-                                | Leave
-                        else
-                            .ui.basic.icon.fluid.button.join_event 
-                                i.large.icons
-                                    i.user.icon
-                                    i.green.plus.corner.icon
-                                | Join
+                if currentUser
+                    if attending
+                        .ui.basic.icon.fluid.button.leave_event 
+                            i.large.icons
+                                i.user.icon
+                                i.red.minus.corner.icon
+                            | Leave
                     else
-                        p Sign in to attend    
+                        .ui.basic.icon.fluid.button.join_event 
+                            i.large.icons
+                                i.user.icon
+                                i.green.plus.corner.icon
+                            | Join
+                else
+                    p Sign in to attend    

@@ -19,16 +19,17 @@ template(name='events')
 
 template(name='event_card')
     .ui.card
-        .image2
+        .image
             a(href="/event/view/#{_id}")
                 if image_id
                     img.ui.image(src="{{c.url image_id height=175 width=300 crop='fill'}}")            
                 else
-                    img.ui.image(src="/img/Impact_Hub_Boulder_logo.png")
+                    img.ui.image(src="{{c.url 'ih_logo_placeholder_pdwzf8' height=175 width=300 crop='fill'}}")            
+                    // img.ui.large.image(src="/img/ih_logo_placeholder.png")
         .content
-            .header
-                h2.ui.header 
-                    a(href="/event/view/#{_id}") #{title}
+            // .header
+            h3.ui.red.header 
+                a(href="/event/view/#{_id}") #{title}
             .meta
                 strong #{day} 
             .meta
