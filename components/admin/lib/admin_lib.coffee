@@ -22,4 +22,10 @@ FlowRouter.route '/admin/content_management', action: (params) ->
         sub_nav: 'admin_nav'
         main: 'content_management'
         
+FlowRouter.route '/admin/newsletter', action: (params) ->
+    BlazeLayout.render 'layout',
+        nav: 'nav'
+        sub_nav: 'admin_nav'
+        main: 'newsletter_sign_up_list'
+        
         
