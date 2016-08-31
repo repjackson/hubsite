@@ -1,10 +1,11 @@
 template(name='featured_posts')
     .ui.attached.very.padded.basic.segment.container
-        h1.ui.header Featured Posts
-        .ui.four.stackable.cards
-            each featured_posts
-                // +post
-                +featured_post
+        .ui.container
+            h1.ui.header Featured Posts
+            .ui.four.stackable.cards
+                each featured_posts
+                    // +post
+                    +featured_post
                 
                 
 template(name='featured_post')

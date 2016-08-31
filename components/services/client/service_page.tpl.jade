@@ -1,5 +1,5 @@
 with service
-    .ui.container.segment
+    .ui.container.padded.segment
         .content
             +back_button
             .header
@@ -9,9 +9,14 @@ with service
                 each tags
                     .ui.basic.label #{this}
                 |!{description}
-        .extra.content
-            +favorite
-            if isInRole 'admin'
-                a.edit_service.ui.primary.basic.button(href="/service/view/#{_id}")
-                    i.pencil.icon
-                    |Edit Service    
+            .right.floated
+                .ui.horizontal.statistic
+                    .label
+                        i.dollar.icon
+                    .value #{price}
+        .ui.hidden.divider
+        +favorite
+        if isInRole 'admin'
+            a.edit_service.ui.primary.basic.button(href="/service/view/#{_id}")
+                i.pencil.icon
+                |Edit

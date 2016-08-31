@@ -23,21 +23,23 @@ template(name='call_to_action')
                     |Join Now
 
 template(name='slider')
-    img.ui.centered.attached.fluid.image(src='/banners/homepage_banner.jpg')
+    .ui.container
+        img.ui.centered.attached.fluid.image(src='/banners/homepage_banner.jpg')
     
     
 
                     
 template(name='academy_widget')
     .ui.very.padded.attached.basic.segment.container
-        h2.ui.header HUB Academy
+        .ui.container
+            h2.ui.header HUB Academy
                 
                 
 template(name='rockstar_members')
     .ui.attached.very.padded.basic.segment
         .ui.container
             h1.ui.header Rockstar Members
-            .ui.three.stackable.cards
+            .ui.four.stackable.cards
                 each rockstar_members
                     +rockstar_member
                     

@@ -8,6 +8,7 @@ Meteor.publish 'events', (selected_tags)->
     
 
     Docs.find match,
+        limit: 10
         sort: 
             start_date: 1
 

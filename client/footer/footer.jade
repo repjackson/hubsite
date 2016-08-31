@@ -1,7 +1,7 @@
 template(name='footer')
-    .ui.basic.fluid.secondary.segment.footer
+    .ui.basic.fluid.inverted.segment.footer
         .ui.stackable.three.column.grid
-            .column
+            .center.aligned.column
                 +contact_form
             .center.aligned.column
                 +badges
@@ -10,60 +10,54 @@ template(name='footer')
                 
                 
 template(name='contact_form')
-    .ui.segment
-        .ui.form
-            // .grouped.required.fields
-            //     label(for='reason') I am contacting you to...
-            //     .field
-            //         .ui.radio.checkbox
-            //             input.hidden(type='radio', name='reason', checked='', tabindex='0')
-            //             label Ask a question / provide feedback.
-            //     .field
-            //         .ui.radio.checkbox
-            //             input.hidden(type='radio', name='reason', tabindex='0')
-            //             label Change, pause, or cancel my membership.
+    .ui.inverted.segment
+        .ui.inverted.form
+            h2.ui.inverted.header Contact Us
             .required.field
-                label Name
-                input#name(type='text')
+                input#name(type='text' placeholder='Name')
             .required.field
-                label Email
-                input#email(type='email')
+                input#email(type='email' placeholder='Email')
             .required.field
-                label Message
-                input#message(type='text')
-            .four.wide.field
-                .ui.basic.segment
-                    +reCAPTCHA
-            #submit_contact_form.ui.labeled.icon.fluid.basic.button
+                input#message(type='text' placeholder='Message')
+            // .four.wide.field
+            //     .ui.basic.segment
+            //         +reCAPTCHA
+            #submit_contact_form.ui.inverted.labeled.icon.fluid.basic.button
                 i.send.icon
                 |Submit
 
 
 
 template(name='badges')
-    .ui.tiny.images
-        // .ui.compact.segment
-        img.ui.image(src='/badges/B-Corp.png')
-        // .ui.compact.segment
-        img.ui.image(src='/badges/CO_entrep_nature.png')
-        .ui.hidden.divider
-        a.ui.icon.large.circular.blue.button(href='https://www.facebook.com/ImpactHubBoulder' target="_blank")
-            i.facebook.link.icon
-        a.ui.icon.large.circular.blue.button(href='https://twitter.com/ImpactHubBldr' target="_blank")
-            i.twitter.link.icon
+    +newsletter
+    .ui.two.column.centered.grid
+        .ui.four.column.centered.row
+            .column
+                // .ui.compact.segment
+                img.ui.tiny.image(src='/badges/B-Corp.png')
+            .column
+                .ui.compact.segment
+                    img.ui.image(src='/badges/entrepreneurial_by_nature.jpg')
+    .ui.hidden.divider
+    a.ui.icon.big.white.inverted.button(href='https://www.facebook.com/ImpactHubBoulder' target="_blank")
+        i.facebook.link.icon
+    a.ui.icon.big.white.inverted.button(href='https://twitter.com/ImpactHubBldr' target="_blank")
+        i.twitter.link.icon
 
     
     
 template(name='contact_info')
-    h3.ui.header CONTACT INFORMATION:
-    p Impact Hub Boulder
-    p 1877 Broadway, Suite 100
-    p Boulder, CO 80302
-    p 303.629.2899
-    h3.ui.header HOURS:
-    p MON to FRI: 9 to 6 PM
-    p SAT to SUN: closed
-    p Weather policy follows BVSD closures
+    h3.ui.inverted.header CONTACT INFORMATION
+    .ui.basic.inverted.segment
+        p Impact Hub Boulder
+        p 1877 Broadway, Suite 100
+        p Boulder, CO 80302
+        p 303.629.2899
+    h3.ui.inverted.header HOURS
+    .ui.basic.inverted.segment
+        p MON to FRI: 9 to 6 PM
+        p SAT to SUN: closed
+        p Weather policy follows BVSD closures
     a(href='https://hubboulder.formstack.com/forms/updateccinfo') 
         |Update your payment info 
         i.right.arrow.icon

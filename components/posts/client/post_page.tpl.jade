@@ -1,23 +1,23 @@
 with post
-    .ui.hidden.divider
-    .ui.container
-        .ui.fluid.card
-            .content
-                // +back_button
-                a.ui.top.left.attached.basic.button(href="/posts")
-                    i.arrow.left.icon
-                    |Blog
+    .ui.container.segment
+        .content
+            a.ui.top.left.attached.basic.button(href="/posts")
+                i.arrow.left.icon
+                |Blog
+            if image_id
                 div
                     img.ui.centered.large.image(src="{{c.url image_id width=600 height=600 crop='fill'}}")
                     .overlay-text 
                         h1 #{title}
-                .ui.basic.segment
-                    each tags
-                        .ui.basic.label #{this}
-                .description
-                    |!{description}
-            .extra.content
-                if isInRole 'admin'
-                    .edit_post.ui.primary.basic.button
-                        i.pencil.icon
-                        |Edit post    
+            else
+                h1 #{title}
+            .ui.basic.segment
+                each tags
+                    .ui.basic.label #{this}
+            .ui.basic.padded.segment
+                |!{description}
+        .extra.content
+            if isInRole 'admin'
+                .edit_post.ui.primary.basic.button
+                    i.pencil.icon
+                    |Edit    
