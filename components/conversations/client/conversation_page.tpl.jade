@@ -1,5 +1,5 @@
 with conversation
-    .ui.text.container
+    .ui.container
         .ui.fluid.card
             .content
                 +back_button
@@ -9,7 +9,7 @@ with conversation
                     +edit_tags
                 else
                     each tags
-                        .ui.large.basic.label #{this}
+                        .ui.basic.label #{this}
                 div
                     |Participants: &nbsp;
                     .ui.horizontal.list
@@ -31,7 +31,7 @@ with conversation
                                 input.add_message(type='text' placeholder='Add Message')
             if currentUser
                 .extra.content
-                    if isOwner
+                    if can_edit
                         .ui.basic.button.close_conversation
                             i.red.remove.icon
                             |Close

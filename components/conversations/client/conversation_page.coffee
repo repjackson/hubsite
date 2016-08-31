@@ -38,5 +38,21 @@ Template.conversation_page.events
                     t.find('.add_message').value = ''
 
     'click .close_conversation': ->
-        if confirm 'Close conversation?'
-            Meteor.call 'close_conversation', @_id
+        self = @
+        swal {
+            title: "Close Conversation?"
+            text: 'This will also delete the messages'
+            type: 'warning'
+            showCancelButton: true
+            animation: false
+            confirmButtonColor: '#DD6B55'
+            confirmButtonText: 'Close'
+            closeOnConfirm: true
+        }, ->
+            Meteor.call 'close_conversation', self._id, ->
+                FlowRouter.go '/conversations'
+            # console.log self
+            # swal "Submission Removed", "",'success'
+            return
+
+

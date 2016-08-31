@@ -28,3 +28,6 @@ template(name='conversation_card')
                                 strong #{this.author.profile.name}:
                                 |#{this.text}
                                 .meta #{this.when}
+                                if can_edit
+                                    .right.floated
+                                        i.remove.link.icon.remove_message
