@@ -26,7 +26,7 @@ with event
                         |!{description}
                     // .ui.divider
                     each tags
-                        .ui.basic.label(class=event_tag_class) #{this}
+                        .ui.basic.label #{this}
                 .ui.hidden.divider
                 a.ui.basic.button(href="/events")
                     i.arrow.left.icon
@@ -41,6 +41,7 @@ with event
                 if location
                     h3.ui.dividing.make-uppercase.header Location
                     span #{location}
+                .ui.divider
                 h3.ui.dividing.make-uppercase.header Actions
                 if isInRole 'admin'
                     .edit_event.ui.basic.button

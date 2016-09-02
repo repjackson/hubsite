@@ -25,12 +25,29 @@ Template.edit_image.events
             cancelButtonText: 'No'
             confirmButtonText: 'Remove'
             confirmButtonColor: '#da5347'
-        }, ->
-            # console.log @image_id
-    # 		Cloudinary.delete @image_id, (err,res) ->
-    # 			console.log "Upload Error: #{err}"
-    # 			console.log "Upload Result: #{res}"
-            Docs.update FlowRouter.getParam('doc_id'), 
-                $unset: image_id: 1
+        }, =>
+            Meteor.call "c.delete_by_public_id", @image_id, (err,res) ->
+                if not err
+                    # Do Stuff with res
+                    console.log res
+                    Docs.update FlowRouter.getParam('doc_id'), 
+                        $unset: image_id: 1
+
+                else
+                    throw new Meteor.Error "it failed miserably"
+
+    #         console.log Cloudinary
+    # 		Cloudinary.delete "37hr", (err,res) ->
+    # 		    if err 
+    # 		        console.log "Upload Error: #{err}"
+    # 		    else
+    #     			console.log "Upload Result: #{res}"
+    #                 # Docs.update FlowRouter.getParam('doc_id'), 
+    #                 #     $unset: image_id: 1
+
+
+            
+            
+            
 # Template.edit_image.helpers
 #     log: -> console.log @

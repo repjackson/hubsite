@@ -12,7 +12,17 @@ template(name='footer')
 template(name='contact_form')
     .ui.inverted.segment
         .ui.inverted.form
-            h2.ui.inverted.header Contact Us
+            h2.ui.inverted.make-uppercase.header Contact Us
+            .required.fields
+                label(for='reason') I am contacting you to...
+                .field
+                    .ui.radio.checkbox
+                        input.hidden(type='radio', name='reason', checked='', tabindex='0')
+                        label Ask a question / provide feedback.
+                .field
+                    .ui.radio.checkbox
+                        input.hidden(type='radio', name='reason', tabindex='0')
+                        label Change, pause, or cancel my membership.
             .required.field
                 input#name(type='text' placeholder='Name')
             .required.field
@@ -22,8 +32,7 @@ template(name='contact_form')
             // .four.wide.field
             //     .ui.basic.segment
             //         +reCAPTCHA
-            #submit_contact_form.ui.inverted.labeled.icon.fluid.basic.button
-                i.send.icon
+            #submit_contact_form.ui.inverted.fluid.basic.button
                 |Submit
 
 

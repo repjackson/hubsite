@@ -1,11 +1,13 @@
 template(name='featured_events')
     .ui.very.padded.attached.basic.segment
         .ui.container
-            h1.ui.header Featured Events
+            .ui.divider
+            h1.ui.make-uppercase.header Featured Events
+            .ui.divider
             .ui.four.stackable.cards
                 each featured_events
                     // +featured_event
-                    +event_card
+                    +featured_event
               
           
           

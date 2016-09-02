@@ -17,10 +17,10 @@ template(name='person_card')
                 .ui.top.right.attached.green.label Published
             else
                 .ui.top.right.attached.red.label Unpublished
-            if checked_in
-                .ui.top.left.attached.green.label Checked In
-            else
-                .ui.top.left.attached.red.label Checked Out
+            // if checked_in
+            //     .ui.top.left.attached.green.label Checked In
+            // else
+            //     .ui.top.left.attached.red.label Checked Out
         .content
             .header
                 a(href="/profile/view/#{_id}") #{profile.name}
@@ -29,16 +29,16 @@ template(name='person_card')
         .content
             each tags
                 .ui.tiny.compact.button.person_tag(class=tag_class) #{this}
-        .extra.content
-            if isInRole 'admin'
-                if checked_in
-                    #check_out.ui.basic.button
-                        i.red.remove.icon
-                        |Check Out
-                else
-                    #check_in.ui.basic.button
-                        i.green.check.icon
-                        |Check In
+        // .extra.content
+        //     if isInRole 'admin'
+        //         if checked_in
+        //             #check_out.ui.basic.button
+        //                 i.red.remove.icon
+        //                 |Check Out
+        //         else
+        //             #check_in.ui.basic.button
+        //                 i.green.check.icon
+        //                 |Check In
         .extra.content
             .ui.right.floated.basic.button(href="/profile/view/#{_id}")
                 |Learn More
