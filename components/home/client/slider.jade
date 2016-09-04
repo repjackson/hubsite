@@ -1,0 +1,47 @@
+template(name='view_slider')
+    
+    // .ui.container
+    //     img.ui.centered.attached.fluid.image(src='/banners/homepage_banner.jpg')
+    // #swiper-container1.swiper-container
+    //     .swiper-wrapper
+    //         if isInRole 'admin'
+    //             a.ui.top.right.attached.link.label(href='/edit-slides')
+    //                 i.setting.icon
+    //                 |Edit Slider
+    //         .swiper-slide
+    //             img.ui.centered.attached.fluid.image(src='/banners/homepage_banner.jpg')
+    //         .swiper-slide
+    //             h2 test header
+    //             h2 test header
+
+            // .swiper-slide
+            //     each gallery_images
+            //         div(style="background-image:url(data:image/png;base64,{{base64encoded}})")
+
+
+template(name='edit_slides')
+    a#add_slide.ui.basic.button
+        i.plus.icon
+        |Add Slide
+    .ui.divided.items
+        each slides
+            +slide_item
+
+
+template(name='slide_item')
+    .item
+        .image #{image_id}
+        .description #{description}
+        .extra.content
+            a.ui.basic.button(href="/slide/edit/#{_id}")
+                i.pencil.icon
+                |Edit Slide
+        
+template(name='edit_slide')
+    with slide
+        .ui.container.segment
+            +edit_image
+            +edit_description
+            a#save_slide.ui.green.button(href='/edit-slides')
+                |Save Slide
+                

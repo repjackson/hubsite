@@ -24,3 +24,9 @@ Meteor.publish 'featured_events', ->
     Docs.find
         type: 'event'
         featured: true
+        
+        
+Meteor.publish 'slides', ->
+    Docs.find
+        type: 'slide'
+        

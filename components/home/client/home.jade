@@ -1,5 +1,5 @@
 template(name='home')
-    +slider
+    +view_slider
     +call_to_action
     +academy_widget
     // .ui.container
@@ -22,17 +22,6 @@ template(name='call_to_action')
                 a.ui.massive.green.button(href='/join')
                     .make-uppercase Join Now
 
-template(name='slider')
-    .ui.container
-        img.ui.centered.attached.fluid.image(src='/banners/homepage_banner.jpg')
-    #swiper-container1.swiper-container
-        .swiper-wrapper
-            .swiper-slide
-                img.ui.centered.attached.fluid.image(src='/banners/homepage_banner.jpg')
-
-            // .swiper-slide
-            //     each gallery_images
-            //         div(style="background-image:url(data:image/png;base64,{{base64encoded}})")
 
     
 
