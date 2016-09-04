@@ -1,5 +1,31 @@
 template(name='view_slider')
-    
+    .active.ui.tab.basic.segment(data-tab='first')
+        img.ui.fluid.centered.image(src="{{c.url 'slider/Community_sgaqcp.jpg' width=1000 height=400 crop='fill'}}")
+        a(href='/academy')
+            .overlay-text.slider-text Academy
+            h2.overlay-text-subheader Get ur learn on!
+    .ui.tab.basic.segment(data-tab='second')
+        img.ui.fluid.centered.image(src="{{c.url 'slider/Events_m4brwk' width=1000 height=400 crop='fill'}}")
+        a(href='/events')
+            .overlay-text.slider-text Events
+            h2.overlay-text-subheader Sign up for one of our events.  Get rich!  Fall in love!  Free food!
+    .ui.tab.basic.segment(data-tab='third')
+        img.ui.fluid.centered.image(src="{{c.url 'slider/Boardroom_hs0qof' width=1000 height=400 crop='fill'}}")
+        a(href='/people')
+            .overlay-text.slider-text Community
+            h2.overlay-text-subheader Check out our members.  OMG they are like so the coolest.
+    .ui.tab.basic.segment(data-tab='fourth')
+        img.ui.fluid.centered.image(src="{{c.url 'slider/fixed_desks' width=1000 height=400 crop='fill'}}")
+        a(href='/join')
+            .overlay-text.slider-text Fixed Desks
+            h2.overlay-text-subheader OMg get a desk youll look rich
+    .ui.bottom.attached.tabular.menu
+        .ui.text.container
+            a.active.item(data-tab='first') Academy
+            a.item(data-tab='second') Events
+            a.item(data-tab='third') Community
+            a.item(data-tab='fourth') Fixed Desks
+
     // .ui.container
     //     img.ui.centered.attached.fluid.image(src='/banners/homepage_banner.jpg')
     // #swiper-container1.swiper-container
@@ -14,9 +40,9 @@ template(name='view_slider')
     //             h2 test header
     //             h2 test header
 
-            // .swiper-slide
-            //     each gallery_images
-            //         div(style="background-image:url(data:image/png;base64,{{base64encoded}})")
+    // .swiper-slide
+    //     each gallery_images
+    //         div(style="background-image:url(data:image/png;base64,{{base64encoded}})")
 
 
 template(name='edit_slides')

@@ -1,5 +1,10 @@
 Template.view_slider.events
 
+
+Template.view_slider.onRendered ->
+    $('.menu .item').tab()
+    
+
 Template.edit_slides.onCreated -> @autorun -> Meteor.subscribe('slides')
 
 
