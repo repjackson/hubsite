@@ -11,6 +11,12 @@ Template.footer.helpers
 
 Template.footer.events
     'click #submit_contact_form': ->
+        if $("#cancel").prop('checked')
+            reason='cancel'
+        else if $("#question").prop('checked')
+            reason='question'
+        console.log reason
+        
         name = $('#name').val()
         email = $('#email').val()
         message = $('#message').val()
@@ -18,6 +24,7 @@ Template.footer.events
             name: name
             email: email
             message: message
+            reason: reas
         # console.dir form_data
         #get the captcha data
         # captchaData = grecaptcha.getResponse()
@@ -29,7 +36,15 @@ Template.footer.events
             $('#name').val('')
             $('#email').val('')
             $('#message').val('')
-            swal "Thank you, #{form_data.name}.", "We'll be in touch.", 'success'
+            swal {
+                title: "Thank you, #{form_data.name}."
+                text: "We'll be in touch."
+                type: 'success'
+                animation: false
+                timer: 2000
+                # confirmButtonColor: '#DD6B55'
+            }
+
 
         
         # Meteor.call 'formSubmissionMethod', form_data, captchaData, (error, result) ->

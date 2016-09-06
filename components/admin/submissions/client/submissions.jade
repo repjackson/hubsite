@@ -5,6 +5,7 @@ template(name='submissions')
                 tr
                     th Name
                     th Email
+                    th Reason
                     th Message
                     th 
             tbody
@@ -12,6 +13,8 @@ template(name='submissions')
                     tr
                         td #{data.name}
                         td #{data.email}
+                        td 
+                            .ui.basic.label #{data.reason}
                         td #{data.message}
                         td
                             .ui.basic.disabled.button.mail_feedbacker

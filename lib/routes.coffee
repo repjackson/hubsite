@@ -38,6 +38,11 @@ FlowRouter.route '/rent', action: (params) ->
         nav: 'nav'
         main: 'rent'
 
+FlowRouter.route '/host-meeting', action: (params) ->
+    BlazeLayout.render 'layout',
+        nav: 'nav'
+        main: 'host_meeting'
+
 FlowRouter.route '/about', action: (params) ->
     BlazeLayout.render 'layout',
         nav: 'nav'

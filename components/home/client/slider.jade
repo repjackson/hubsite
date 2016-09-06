@@ -1,25 +1,30 @@
 template(name='view_slider')
+    #next.ui.button Next Tab
     .active.ui.tab.basic.segment(data-tab='first')
         img.ui.fluid.centered.image(src="{{c.url 'slider/Community_sgaqcp.jpg' width=1000 height=400 crop='fill'}}")
         a(href='/academy')
-            .overlay-text.slider-text Academy
-            h2.overlay-text-subheader Get ur learn on!
+            .overlay-text.slider-text 
+                // i.university.icon
+                |Academy
+            h2.overlay-text-subheader Learn more about our exciting new direction.
     .ui.tab.basic.segment(data-tab='second')
         img.ui.fluid.centered.image(src="{{c.url 'slider/Events_m4brwk' width=1000 height=400 crop='fill'}}")
         a(href='/events')
-            .overlay-text.slider-text Events
-            h2.overlay-text-subheader Sign up for one of our events.  Get rich!  Fall in love!  Free food!
+            .overlay-text.slider-text 
+                // i.birthday.icon
+                |Events
+            h2.overlay-text-subheader Check out what's happening this month.
     .ui.tab.basic.segment(data-tab='third')
         img.ui.fluid.centered.image(src="{{c.url 'slider/Boardroom_hs0qof' width=1000 height=400 crop='fill'}}")
         a(href='/people')
             .overlay-text.slider-text Community
-            h2.overlay-text-subheader Check out our members.  OMG they are like so the coolest.
+            h2.overlay-text-subheader Check out our members.  They're the coolest.
     .ui.tab.basic.segment(data-tab='fourth')
         img.ui.fluid.centered.image(src="{{c.url 'slider/fixed_desks' width=1000 height=400 crop='fill'}}")
         a(href='/join')
             .overlay-text.slider-text Fixed Desks
-            h2.overlay-text-subheader OMg get a desk youll look rich
-    .ui.bottom.attached.tabular.menu
+            h2.overlay-text-subheader Be the coolest one in the room.
+    .ui.bottom.attached.menu
         .ui.text.container
             a.active.item(data-tab='first') Academy
             a.item(data-tab='second') Events

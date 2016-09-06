@@ -1,7 +1,7 @@
 template(name='footer')
     .ui.basic.fluid.inverted.segment.footer
         .ui.stackable.three.column.grid
-            .center.aligned.column
+            .column
                 +contact_form
             .center.aligned.column
                 +badges
@@ -13,16 +13,16 @@ template(name='contact_form')
     .ui.inverted.segment
         .ui.inverted.form
             h2.ui.inverted.make-uppercase.header Contact Us
-            .required.fields
-                label(for='reason') I am contacting you to...
+            .grouped.inverted.fields
+                // h4.ui.inverted.header(for='reason') I am contacting you to...
                 .field
-                    .ui.radio.checkbox
-                        input.hidden(type='radio', name='reason', checked='', tabindex='0')
-                        label Ask a question / provide feedback.
+                    .ui.toggle.checkbox
+                        input#question(type='radio', name='reason', checked='', tabindex='0')
+                        label(for='question') I'm asking a question / providing feedback.
                 .field
-                    .ui.radio.checkbox
-                        input.hidden(type='radio', name='reason', tabindex='0')
-                        label Change, pause, or cancel my membership.
+                    .ui.toggle.checkbox
+                        input#cancel(type='radio', name='reason', tabindex='0')
+                        label(for='cancel') I want to change, pause, or cancel my membership.
             .required.field
                 input#name(type='text' placeholder='Name')
             .required.field
@@ -39,14 +39,14 @@ template(name='contact_form')
 
 template(name='badges')
     +newsletter_sign_up
+    .ui.compact.segment
+        img.ui.tiny.image(src='/badges/entrepreneurial_by_nature.jpg')
+    img.ui.tiny.image(src='/badges/B-Corp.png')
     .ui.two.column.centered.grid
-        .ui.four.column.centered.row
-            .column
+        .ui.centered.row
+            .centered.column
                 // .ui.compact.segment
-                img.ui.tiny.image(src='/badges/B-Corp.png')
-            .column
-                .ui.compact.segment
-                    img.ui.image(src='/badges/entrepreneurial_by_nature.jpg')
+            .centered.column
     .ui.hidden.divider
     a.ui.icon.big.white.inverted.button(href='https://www.facebook.com/ImpactHubBoulder' target="_blank")
         i.facebook.link.icon

@@ -64,7 +64,7 @@ Meteor.publish 'tags', (selected_tags, filter)->
         { $group: _id: "$tags", count: $sum: 1 }
         { $match: _id: $nin: selected_tags }
         { $sort: count: -1, _id: 1 }
-        { $limit: 20 }
+        { $limit: 10 }
         { $project: _id: 0, name: '$_id', count: 1 }
         ]
 
@@ -95,3 +95,30 @@ AccountsMeld.configure
     # meldDBCallback: meldDBCallback
     # serviceAddedCallback: serviceAddedCallback
     
+
+serviceAddedCallback = (user_id, service_name) ->
+    if service_name == 'linkedin'
+        user = Meteor.users.findOne(user_id)
+        link = user.services[service_name].publicProfileUrl
+        if link
+            Meteor.users.update user_id, $set: 'profile.linkedin': link
+        if user.profile.position.length is 0
+            headline = user.services['linkedin'].headline
+            Meteor.users.update user_id, $set: 'profile.position': headline
+    if service_name == 'facebook'
+        user = Meteor.users.findOne(user_id)
+        link = user.services[service_name].link
+        if link
+            Meteor.users.update user_id, $set: 'profile.facebook': link
+        if user.profile.name.length is 0
+            console.log 'no name'
+            name = user.services['facebook'].name
+            Meteor.users.update user_id, $set: 'profile.name': name
+    if service_name == 'twitter'
+        user = Meteor.users.findOne(user_id)
+        screen_name = user.services[service_name].screenName
+        if screen_name
+            Meteor.users.update user_id, $set: 'profile.twitter': "https://twitter.com/#{screen_name}"
+    return
+
+AccountsMeld.configure serviceAddedCallback: serviceAddedCallback

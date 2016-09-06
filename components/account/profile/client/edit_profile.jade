@@ -6,7 +6,7 @@ template(name='edit_profile')
                     if profile.image_id
                         label Image
                         .ui.centered.image
-                            img(src="{{c.url profile.image_id width=400 height=400 gravity='face' crop='fill'}}")
+                            img.ui.medium.image(src="{{c.url profile.image_id width=400 height=400 gravity='face' crop='fill'}}")
                             a#remove_photo.ui.right.corner.link.label
                                 i.remove.red.link.icon
                     else
@@ -17,11 +17,11 @@ template(name='edit_profile')
                     .ui.left.icon.input
                         i.user.icon
                         input#name(type='text' value=profile.name)
-                .field
-                    label Company
-                    .ui.left.icon.input
-                        i.building.icon
-                        input#company(type='text' value=profile.company)
+                // .field
+                //     label Company
+                //     .ui.left.icon.input
+                //         i.building.icon
+                //         input#company(type='text' value=profile.company)
                 .field
                     label Position
                     .ui.input
@@ -31,21 +31,21 @@ template(name='edit_profile')
                     .ui.left.icon.input
                         i.linkify.icon
                         input#website(type='text' value=profile.website)
-                .field
-                    label Linkedin
-                    .ui.left.icon.input
-                        i.linkedin.icon
-                        input#linkedin(type='text' value=profile.linkedin)
-                .field
-                    label Twitter
-                    .ui.left.icon.input
-                        i.twitter.icon
-                        input#twitter(type='text' value=profile.twitter)
-                .field
-                    label Facebook
-                    .ui.left.icon.input
-                        i.facebook.icon
-                        input#facebook(type='text' value=profile.facebook)
+                // .field
+                //     label Linkedin
+                //     .ui.left.icon.input
+                //         i.linkedin.icon
+                //         input#linkedin(type='text' value=profile.linkedin)
+                // .field
+                //     label Twitter
+                //     .ui.left.icon.input
+                //         i.twitter.icon
+                //         input#twitter(type='text' value=profile.twitter)
+                // .field
+                //     label Facebook
+                //     .ui.left.icon.input
+                //         i.facebook.icon
+                //         input#facebook(type='text' value=profile.facebook)
                 .field
                     label Tags (anything to identify you with)
                     each tags
@@ -67,5 +67,8 @@ template(name='edit_profile')
                         #make_published.ui.basic.button
                             i.toggle.off.icon
                             |Unpublished
+                .ui.eight.column.grid
+                    .ui.padded.basic.segment
+                        +atForm
                 .field
-                    #save_profile.ui.large.green.button Save
+                    #save_profile.ui.fluid.green.button Save

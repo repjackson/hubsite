@@ -1,7 +1,7 @@
 template(name='posts')
     div
         img.ui.centered.fluid.image(src='/banners/blog_banner.jpg', alt='')
-        h1.overlay-text Impact Hub Boulder Blog
+        h1.overlay-text.banner-text Impact Hub Boulder Blog
     +cloud filter='post'
     .ui.container.basic.segment
         .ui.cards
@@ -13,7 +13,7 @@ template(name='post')
     .ui.fluid.card
         a(href="/post/view/#{_id}")
             .image
-                img.ui.huge.image(src="{{c.url image_id width=1000 height=200 gravity='face' crop='fill'}}")
+                img.ui.huge.image(src="{{c.url image_id width=1500 height=200 gravity='face' crop='fill'}}")
         .content
             .header
                 a(href="/post/view/#{_id}")

@@ -1,8 +1,12 @@
 Template.view_slider.events
+    'click #next': ->
+        $.tab('change tab', 'second');
+
 
 
 Template.view_slider.onRendered ->
     $('.menu .item').tab()
+    $.tab()
     
 
 Template.edit_slides.onCreated -> @autorun -> Meteor.subscribe('slides')
