@@ -3,6 +3,7 @@ Template.edit_image.events
         doc_id = FlowRouter.getParam('doc_id')
         files = e.currentTarget.files
 
+
         Cloudinary.upload files[0],
             # folder:"secret" # optional parameters described in http://cloudinary.com/documentation/upload_images#remote_upload
             # type:"private" # optional: makes the image accessible only via a signed url. The signed url is available publicly for 1 hour.

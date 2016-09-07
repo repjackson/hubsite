@@ -11,11 +11,12 @@ template(name='featured_posts')
 template(name='featured_post')
     .ui.card
         .image
-            a(href="/posts/#{@_id}")
+            a(href="/post/view/#{this._id}")
                 img.ui.image.featured_post_title(src="{{c.url image_id width=400 height=400 gravity='face' crop='fill'}}")
         .content
             .header
                 a.featured_post_title
-                    h2.ui.header #{title}
+                    h3.ui.header #{title}
             .description
                 // .ui.header Post Topics:
+                |Published on #{publish_date}

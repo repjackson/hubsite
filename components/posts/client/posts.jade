@@ -13,7 +13,7 @@ template(name='post')
     .ui.fluid.card
         a(href="/post/view/#{_id}")
             .image
-                img.ui.huge.image(src="{{c.url image_id width=1500 height=200 gravity='face' crop='fill'}}")
+                img.ui.image(src="{{c.url image_id width=1500 height=200 gravity='face' crop='fill'}}")
         .content
             .header
                 a(href="/post/view/#{_id}")

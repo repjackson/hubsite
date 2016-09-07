@@ -64,7 +64,7 @@ Meteor.publish 'tags', (selected_tags, filter)->
         { $group: _id: "$tags", count: $sum: 1 }
         { $match: _id: $nin: selected_tags }
         { $sort: count: -1, _id: 1 }
-        { $limit: 10 }
+        { $limit: 20 }
         { $project: _id: 0, name: '$_id', count: 1 }
         ]
 
@@ -89,7 +89,11 @@ Meteor.methods
         #do stuff with your formData
         true
         
-        
+    download_image: (image_url) ->
+        #https://atmospherejs.com/froatsnook/request
+        result = request.getSync(image_url, encoding: null)
+        return 'data:image/png;base64,' + new Buffer(result.body).toString('base64')
+
 AccountsMeld.configure
     askBeforeMeld: false
     # meldDBCallback: meldDBCallback
@@ -111,8 +115,14 @@ serviceAddedCallback = (user_id, service_name) ->
         if link
             Meteor.users.update user_id, $set: 'profile.facebook': link
         if user.profile.name.length is 0
-            console.log 'no name'
             name = user.services['facebook'].name
+            Meteor.users.update user_id, $set: 'profile.name': name
+    if service_name == 'google'
+        user = Meteor.users.findOne(user_id)
+        picture = user.services['google'].picture
+        Meteor.users.update user_id, $set: 'profile.google_image': picture
+        if user.profile.name.length is 0
+            name = user.services['google'].name
             Meteor.users.update user_id, $set: 'profile.name': name
     if service_name == 'twitter'
         user = Meteor.users.findOne(user_id)

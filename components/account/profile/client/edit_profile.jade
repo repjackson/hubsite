@@ -13,6 +13,11 @@ template(name='edit_profile')
                         label Upload Image
                         input(type='file' name='upload_picture' accept='image/*')
                 .field
+                    if profile.google_image
+                        label Google Image
+                        img.ui.small.image(src=profile.google_image)
+                        #pick_google_image.ui.basic.button Make this Profile Image
+                .field
                     label Name
                     .ui.left.icon.input
                         i.user.icon

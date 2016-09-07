@@ -57,9 +57,6 @@ Template.edit_profile.events
         name = $('#name').val()
         bio = $('#bio').val()
         website = $('#website').val()
-        twitter = $('#twitter').val()
-        facebook = $('#facebook').val()
-        linkedin = $('#linkedin').val()
         position = $('#position').val()
         company = $('#company').val()
         Meteor.users.update Meteor.userId(),
@@ -67,9 +64,6 @@ Template.edit_profile.events
                 "profile.name": name
                 "profile.bio": bio
                 "profile.website": website
-                "profile.linkedin": linkedin
-                "profile.twitter": twitter
-                "profile.facebook": facebook
                 "profile.position": position
                 "profile.company": company
         FlowRouter.go "/profile/view/#{Meteor.userId()}"
@@ -101,7 +95,7 @@ Template.edit_profile.events
 
     "change input[type='file']": (e) ->
         files = e.currentTarget.files
-
+        # console.log files
         Cloudinary.upload files[0],
             # folder:"secret" # optional parameters described in http://cloudinary.com/documentation/upload_images#remote_upload
             # type:"private" # optional: makes the image accessible only via a signed url. The signed url is available publicly for 1 hour.
@@ -114,6 +108,50 @@ Template.edit_profile.events
                     Meteor.users.update Meteor.userId(), 
                         $set: "profile.image_id": res.public_id
                 return
+
+    'click #pick_google_image': ->
+        picture = Meteor.user().profile.google_image
+        console.log picture
+        
+        
+        # response = HTTP.call('GET', picture, npmRequestOptions: encoding: null)
+        # data = 'data:' + response.headers['content-type'] + ';base64,' + new Buffer(response.content).toString('base64')
+        # console.log typeof data
+        
+        Meteor.call 'download_image', picture, (err, res)->
+            console.log res
+        # HTTP.call 'GET', picture, {encoding: null}, (error, response) ->
+        #     if error
+        #         console.log error
+        #     else
+        #         console.log response
+        #         console.log typeof response.content
+        
+        #         ###
+        #          This will return the HTTP response object that looks something like this:
+        #          {
+        #              content: "String of content...",
+        #              data: Array[100], <-- Our actual data lives here. 
+        #              headers: {  Object containing HTTP response headers }
+        #              statusCode: 200
+        #          }
+        #         ###
+        
+        #     return
+
+        # Cloudinary.upload picture,
+        #     # folder:"secret" # optional parameters described in http://cloudinary.com/documentation/upload_images#remote_upload
+        #     # type:"private" # optional: makes the image accessible only via a signed url. The signed url is available publicly for 1 hour.
+        #     (err,res) -> #optional callback, you can catch with the Cloudinary collection as well
+        #         # console.log "Upload Error: #{err}"
+        #         # console.dir res
+        #         if err
+        #             console.error 'Error uploading', err
+        #         else
+        #             Meteor.users.update Meteor.userId(), 
+        #                 $set: "profile.image_id": res.public_id
+        #         return
+
 
     'click #remove_photo': ->
         Meteor.users.update Meteor.userId(), 
