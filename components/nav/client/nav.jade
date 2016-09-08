@@ -9,14 +9,21 @@ template(name='top_nav')
             //     | Conversations
             if currentUser
                 if isInRole 'admin'
+                    a#add_event.item
+                        // i.icons
+                            i.plus.corner.icon
+                        i.calendar.icon
+                        |Add Event
                     a.item(href='/admin/submissions' class="{{isActivePath '/admin/submissions'}}")
-                        i.configure.icon
+                        i.icons
+                            i.configure.icon
+                            i.corner.red.icon
                         | Admin
-                a.item(href='/messages' class="{{isActivePath '/messages'}}")
-                    i.mail.icon
-                    | Messages
-                    if currentUser.unreadcount
-                        |(#{currentUser.unreadcount})
+                // a.item(href='/messages' class="{{isActivePath '/messages'}}")
+                //     i.mail.icon
+                //     | Messages
+                //     if currentUser.unreadcount
+                //         |(#{currentUser.unreadcount})
                 a.item(href="/profile/edit" class="{{isActivePath '/profile/edit'}}")
                     if currentUser.profile.image_id
                         img.ui.avatar.image(src="{{c.url currentUser.profile.image_id width=50 height=50 gravity='face' crop='fill'}}")
@@ -39,24 +46,24 @@ template(name='top_nav')
 
 template(name='nav')
     .red-nav-bar
-        .ui.red.inverted.large.fluid.eight.item.stackable.menu
+        .ui.red.inverted.large.fluid.five.item.stackable.menu
             .ui.container
                 a.item(href='/about' class="{{isActivePath '/about'}}")
                     // i.info.circle.icon
                     // strong.make-uppercase About
                     strong About
-                a.item(href='/people' class="{{isActivePath '/people'}}")
-                    // i.users.icon
-                    // strong.make-uppercase People
-                    strong People
+                // a.item(href='/people' class="{{isActivePath '/people'}}")
+                //     // i.users.icon
+                //     // strong.make-uppercase People
+                //     strong Members
                 a.item(href='/events' class="{{isActivePath '/events'}}")
                     // i.calendar.icon
                     // strong.make-uppercase Events
                     strong Events
-                a.item(href='/organizations' class="{{isActivePath '/organizations'}}")
-                    // i.building.icon
-                    // strong.make-uppercase In-House
-                    strong In-House
+                // a.item(href='/organizations' class="{{isActivePath '/organizations'}}")
+                //     // i.building.icon
+                //     // strong.make-uppercase In-House
+                //     strong In-House
                 a.item(href='/academy' class="{{isActivePath '/academy'}}")
                     // i.university.icon
                     // strong.make-uppercase Programs
@@ -67,9 +74,9 @@ template(name='nav')
                 a.item(href='/join' class="{{isActivePath '/join'}}")
                     // i.add.user.icon
                     strong Join
-                a.item(href='/posts' class="{{isActivePath '/posts'}}")
-                    // i.file.text.outline.icon
-                    strong Blog
+                // a.item(href='/posts' class="{{isActivePath '/posts'}}")
+                //     // i.file.text.outline.icon
+                //     strong Blog
                 a.item(href='/rent' class="{{isActivePath '/rent'}}")
                     // i.edit.icon
                     strong Rent Our Space

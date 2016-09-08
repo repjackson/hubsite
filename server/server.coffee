@@ -1,3 +1,5 @@
+{ request } = require "meteor/froatsnook:request"
+
 Docs.allow
     insert: (userId, doc) -> doc.author_id is userId
     update: (userId, doc) -> doc.author_id is userId or Roles.userIsInRole(userId, 'admin')
@@ -92,7 +94,11 @@ Meteor.methods
     download_image: (image_url) ->
         #https://atmospherejs.com/froatsnook/request
         result = request.getSync(image_url, encoding: null)
-        return 'data:image/png;base64,' + new Buffer(result.body).toString('base64')
+        console.log 'server typeof', typeof result
+        image = 'data:image/png;base64,' + new Buffer(result.body).toString('base64')
+        return result
+
+
 
 AccountsMeld.configure
     askBeforeMeld: false

@@ -53,11 +53,6 @@ Template.user_management.events
 
 
 Template.admin.events
-    'click #add_event': ->
-        id = Docs.insert 
-            type: 'event'
-        FlowRouter.go "/event/edit/#{id}"
-
     'click #add_organization': ->
         id = Docs.insert 
             type: 'organization'

@@ -62,3 +62,10 @@ Template.nav.events
 
 Template.top_nav.events
     'click #logout': -> AccountsTemplates.logout()
+    
+    'click #add_event': ->
+        id = Docs.insert 
+            type: 'event'
+        FlowRouter.go "/event/edit/#{id}"
+
+    

@@ -111,46 +111,24 @@ Template.edit_profile.events
 
     'click #pick_google_image': ->
         picture = Meteor.user().profile.google_image
-        console.log picture
-        
-        
-        # response = HTTP.call('GET', picture, npmRequestOptions: encoding: null)
-        # data = 'data:' + response.headers['content-type'] + ';base64,' + new Buffer(response.content).toString('base64')
-        # console.log typeof data
-        
         Meteor.call 'download_image', picture, (err, res)->
-            console.log res
-        # HTTP.call 'GET', picture, {encoding: null}, (error, response) ->
-        #     if error
-        #         console.log error
-        #     else
-        #         console.log response
-        #         console.log typeof response.content
-        
-        #         ###
-        #          This will return the HTTP response object that looks something like this:
-        #          {
-        #              content: "String of content...",
-        #              data: Array[100], <-- Our actual data lives here. 
-        #              headers: {  Object containing HTTP response headers }
-        #              statusCode: 200
-        #          }
-        #         ###
-        
-        #     return
-
-        # Cloudinary.upload picture,
-        #     # folder:"secret" # optional parameters described in http://cloudinary.com/documentation/upload_images#remote_upload
-        #     # type:"private" # optional: makes the image accessible only via a signed url. The signed url is available publicly for 1 hour.
-        #     (err,res) -> #optional callback, you can catch with the Cloudinary collection as well
-        #         # console.log "Upload Error: #{err}"
-        #         # console.dir res
-        #         if err
-        #             console.error 'Error uploading', err
-        #         else
-        #             Meteor.users.update Meteor.userId(), 
-        #                 $set: "profile.image_id": res.public_id
-        #         return
+            if err
+                console.error err
+            else
+                console.log typeof res
+                Cloudinary.upload res,
+                    # folder:"secret" # optional parameters described in http://cloudinary.com/documentation/upload_images#remote_upload
+                    # type:"private" # optional: makes the image accessible only via a signed url. The signed url is available publicly for 1 hour.
+                    (err,res) -> #optional callback, you can catch with the Cloudinary collection as well
+                        # console.log "Upload Error: #{err}"
+                        # console.dir res
+                        if err
+                            console.error 'Error uploading', err
+                        else
+                            console.log 'i think this worked'
+                            Meteor.users.update Meteor.userId(), 
+                                $set: "profile.image_id": res.public_id
+                        return
 
 
     'click #remove_photo': ->
