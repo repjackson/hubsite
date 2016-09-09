@@ -1,19 +1,23 @@
 template(name='edit_event')
     with event
-        .ui.container.segment
+        .ui.container.basic.segment
+            h2.ui.center.aligned.header Edit Event
             .ui.form
                 +edit_title
                 +edit_image
-                .field
-                    label Start Date/Time
-                    input#start_date(type='text' value=start_date)
-                .field
-                    label End Date/Time
-                    input#end_date(type='text' value=end_date)
+                .two.fields
+                    .field
+                        label Start Date/Time
+                        input#start_date(type='text' value=start_date)
+                    .field
+                        label End Date/Time
+                        input#end_date(type='text' value=end_date)
                 +edit_location
                 +edit_description
                 +edit_tags
                 +edit_featured
+                +publish_button
+                .ui.divider
                 if tags
-                    #save_event.ui.large.green.button Save
+                    #save_event.ui.big.green.button Save
                 +delete_button

@@ -7,7 +7,7 @@ Template.delete_button.events
             animation: false
             showCancelButton: true
             closeOnConfirm: true
-            cancelButtonText: 'No'
+            cancelButtonText: 'Cancel'
             confirmButtonText: 'Delete'
             confirmButtonColor: '#da5347'
         }, ->

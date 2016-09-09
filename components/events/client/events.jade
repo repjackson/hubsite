@@ -4,7 +4,11 @@ template(name='events')
         h1.overlay-text.banner-text Events at Impact Hub Boulder
     .ui.container
         +cloud filter='event'
-        .ui.centered.cards
+        // h2.impact-header Featured Events
+        #sync_events.ui.big.basic.button Sync Eventbrite Events
+        +featured_events
+        h2.impact-header Upcoming Events
+        .ui.centered.four.cards
             each events
                 +event_card
     // .ui.grid
@@ -28,7 +32,7 @@ template(name='event_card')
                     // img.ui.large.image(src="/img/ih_logo_placeholder.png")
         .content
             // .header
-            h3.ui.red.header 
+            h3.ui.red.header.make-uppercase 
                 a(href="/event/view/#{_id}") #{title}
             .meta
                 strong #{day} 

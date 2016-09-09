@@ -3,7 +3,7 @@ Template.events.onCreated ->
     selected_tags.clear()
     
 Template.events.events
-
+    'click #sync_events': -> Meteor.call 'sync_events'
     
 Template.events.helpers
     events: -> 

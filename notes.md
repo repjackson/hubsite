@@ -9,7 +9,6 @@ slide that shows the coworking space
     full screen video
     
 define where the thumbnail is on the events photos
-red header on events
 add to calendar for events
 
 integrate with mailchimp
