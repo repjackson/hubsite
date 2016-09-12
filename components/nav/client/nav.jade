@@ -9,11 +9,11 @@ template(name='top_nav')
             //     | Conversations
             if currentUser
                 if isInRole 'admin'
-                    a#add_event.item
-                        // i.icons
-                            i.plus.corner.icon
-                        i.calendar.icon
-                        |Add Event
+                    // a#add_event.item
+                    //     // i.icons
+                    //         i.plus.corner.icon
+                    //     i.calendar.icon
+                    //     |Add Event
                     a.item(href='/admin/submissions' class="{{isActivePath '/admin/submissions'}}")
                         i.icons
                             i.configure.icon

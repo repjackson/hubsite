@@ -3,7 +3,6 @@ Template.events.onCreated ->
     selected_tags.clear()
     
 Template.events.events
-    'click #sync_events': -> Meteor.call 'sync_events'
     
 Template.events.helpers
     events: -> 
@@ -30,7 +29,8 @@ Template.event_card.helpers
     start_time: -> moment(@start.local).format("h:mm a")
     end_time: -> moment(@end.local).format("h:mm a")
 
-    snippet: -> @simple_description?.substr(1, 100)
+    snippet: -> @description.text.substr(0, 200).concat('...')
+        
 
 Template.event_card.events
     'click .event_tag': ->

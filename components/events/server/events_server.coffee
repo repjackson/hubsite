@@ -39,7 +39,7 @@ Meteor.methods
         #         else
         #             console.log res        
         
-        # get events
+        # get events!
         HTTP.get 'https://www.eventbriteapi.com/v3/events/search/', {
                 params:
                     token: 'QLL5EULOADTSJDS74HH7'
@@ -57,6 +57,25 @@ Meteor.methods
                         else
                             id = Events.insert event
                             console.log 'created event', event.id
+
+
+        # HTTP.get 'https://www.eventbriteapi.com/v3/organizers/9633894482/events/', {
+        #         params:
+        #             token: 'QLL5EULOADTSJDS74HH7'
+        #     }, 
+        #     (err, res)->
+        #         if err
+        #             console.error err
+        #         else
+        #             console.log res
+        #             # for event in res.data.events
+        #             #     existing_event = Events.findOne { id: event.id} 
+        #             #     if existing_event
+        #             #         console.log 'found duplicate', event.id
+        #             #         continue
+        #             #     else
+        #             #         id = Events.insert event
+        #             #         console.log 'created event', event.id
 
 
         

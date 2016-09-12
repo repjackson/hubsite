@@ -1,6 +1,6 @@
 with event
+    // +back_button
     .ui.container.basic.segment
-        // +back_button
         div
             img.ui.centered.fluid.image(src=logo.url)
             // if image_id
@@ -10,13 +10,10 @@ with event
             .overlay-text 
                 h1 #{name.text}
                 // h3 #{day} from #{start_time} to #{end_time}
-                if end_date
+                // .overlay-text-subheader
+                h3
                     |#{day} 
                     .sub.header #{start_time} to #{end_time}
-                else
-                    |#{day} at #{start_time}
-                if location
-                    h3 @#{location}
         .ui.hidden.divider
         .ui.divided.grid
             .eleven.wide.column
@@ -28,9 +25,6 @@ with event
                     // .ui.divider
                     // each tags
                     //     .ui.basic.label #{this}
-                a.ui.basic.button(href=url target='_window')
-                    i.ticket.icon
-                    |Sign Up on Eventbrite
                 .ui.divider
                 a.ui.basic.button(href="/events")
                     i.arrow.left.icon
@@ -46,29 +40,32 @@ with event
                     h3.ui.dividing.make-uppercase.header Location
                     span #{location}
                 .ui.divider
-                h3.ui.dividing.make-uppercase.header Actions
-                if isInRole 'admin'
-                    .edit_event.ui.basic.button
-                        i.pencil.icon
-                        |Edit
-                +favorite
-                if attendee_ids
-                    h3.ui.dividing.make-uppercase.header Attendees
-                    .ui.divided.vertical.list
-                        each attendee_ids
-                            +user_blurb id=this
-                if currentUser
-                    if attending
-                        .ui.basic.icon.fluid.button.leave_event 
-                            i.large.icons
-                                i.user.icon
-                                i.red.minus.corner.icon
-                            | Leave
-                    else
-                        .ui.basic.icon.fluid.button.join_event 
-                            i.large.icons
-                                i.user.icon
-                                i.green.plus.corner.icon
-                            | Join
-                else
-                    p Sign in to attend    
+                a.ui.basic.fluid.black.button(href=url target='_window')
+                    i.ticket.icon
+                    |Register on Eventbrite
+                // h3.ui.dividing.make-uppercase.header Actions
+                // if isInRole 'admin'
+                //     .edit_event.ui.basic.button
+                //         i.pencil.icon
+                //         |Edit
+                // +favorite
+                // if attendee_ids
+                //     h3.ui.dividing.make-uppercase.header Attendees
+                //     .ui.divided.vertical.list
+                //         each attendee_ids
+                //             +user_blurb id=this
+                // if currentUser
+                //     if attending
+                //         .ui.basic.icon.fluid.button.leave_event 
+                //             i.large.icons
+                //                 i.user.icon
+                //                 i.red.minus.corner.icon
+                //             | Leave
+                //     else
+                //         .ui.basic.icon.fluid.button.join_event 
+                //             i.large.icons
+                //                 i.user.icon
+                //                 i.green.plus.corner.icon
+                //             | Join
+                // else
+                //     p Sign in to attend    

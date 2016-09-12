@@ -52,7 +52,7 @@ Template.user_management.events
 
 
 
-Template.admin.events
+Template.content_management.events
     'click #add_organization': ->
         id = Docs.insert 
             type: 'organization'
@@ -63,3 +63,4 @@ Template.admin.events
             type: 'post'
         FlowRouter.go "/post/edit/#{id}"
 
+    'click #sync_events': -> Meteor.call 'sync_events'

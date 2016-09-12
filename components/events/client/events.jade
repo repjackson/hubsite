@@ -5,8 +5,8 @@ template(name='events')
     .ui.container
         // +cloud filter='event'
         // h2.impact-header Featured Events
-        #sync_events.ui.big.basic.button Sync Eventbrite Events
         // +featured_events
+        .ui.hidden.divider
         h2.impact-header Upcoming Events
         .ui.centered.four.cards
             each events
@@ -38,17 +38,15 @@ template(name='event_card')
             .meta
                 strong #{day} 
             .meta
-                strong #{start_time} 
-                |to 
-                strong #{end_time}
+                strong #{start_time} to #{end_time}
             if location
                 .meta
                     span @#{location}
-        // .content
-        //     |!{snippet}
-        .extra.content
-            +favorite
-            if isInRole 'admin'
-                .edit_event.ui.right.floated.primary.basic.button
-                    i.pencil.icon
-                    |Edit Event
+            .ui.hidden.divider
+            |#{snippet}
+        // .extra.content
+        //     +favorite
+        //     if isInRole 'admin'
+        //         .edit_event.ui.right.floated.primary.basic.button
+        //             i.pencil.icon
+        //             |Edit Event
