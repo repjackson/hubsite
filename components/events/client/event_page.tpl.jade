@@ -1,13 +1,14 @@
 with event
-    .ui.container.segment
+    .ui.container.basic.segment
         // +back_button
         div
-            if image_id
-                img.ui.centered.image(src="{{c.url image_id width=800 height=400 crop='fill'}}")
-            else
-                img.ui.centered.image(src="/img/about_mashup_one.jpg")
+            img.ui.centered.fluid.image(src=logo.url)
+            // if image_id
+            //     img.ui.centered.image(src="{{c.url image_id width=800 height=400 crop='fill'}}")
+            // else
+            //     img.ui.centered.image(src="/img/about_mashup_one.jpg")
             .overlay-text 
-                h1 #{title}
+                h1 #{name.text}
                 // h3 #{day} from #{start_time} to #{end_time}
                 if end_date
                     |#{day} 
@@ -23,11 +24,14 @@ with event
                 .description
                     // |Event Tags:
                     .ui.basic.segment
-                        |!{description}
+                        |!{description.html}
                     // .ui.divider
-                    each tags
-                        .ui.basic.label #{this}
-                .ui.hidden.divider
+                    // each tags
+                    //     .ui.basic.label #{this}
+                a.ui.basic.button(href=url target='_window')
+                    i.ticket.icon
+                    |Sign Up on Eventbrite
+                .ui.divider
                 a.ui.basic.button(href="/events")
                     i.arrow.left.icon
                     |Events

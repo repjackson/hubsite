@@ -9,7 +9,7 @@ Template.events.helpers
     events: -> 
         match = {}
         # if selected_tags.array and selected_tags.array().length > 0 then match.tags = $all: selected_tags.array()
-        Docs.find match
+        Events.find match
 
     options: ->
         # defaultView: 'basicWeek'
@@ -26,9 +26,9 @@ Template.event_card.helpers
 
     event_messages: -> Messages.find event_id: @_id
 
-    day: -> moment(@start_date).format("dddd, MMMM Do");
-    start_time: -> moment(@start_date).format("h:mm a")
-    end_time: -> moment(@end_date).format("h:mm a")
+    day: -> moment(@start.local).format("dddd, MMMM Do");
+    start_time: -> moment(@start.local).format("h:mm a")
+    end_time: -> moment(@end.local).format("h:mm a")
 
     snippet: -> @simple_description?.substr(1, 100)
 

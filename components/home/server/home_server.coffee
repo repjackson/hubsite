@@ -21,8 +21,7 @@ Meteor.publish 'featured_posts', ->
         featured: true
         
 Meteor.publish 'featured_events', ->
-    Docs.find
-        type: 'event'
+    Events.find
         featured: true
         
         

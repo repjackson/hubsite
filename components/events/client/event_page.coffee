@@ -1,11 +1,10 @@
 Template.event_page.onCreated ->
     self = @
     self.autorun ->
-        self.subscribe 'doc', FlowRouter.getParam('doc_id')
-        self.subscribe('attendees', FlowRouter.getParam('doc_id'))
+        self.subscribe 'event', FlowRouter.getParam('event_id')
 
 Template.event_page.helpers
-    event: -> Docs.findOne FlowRouter.getParam('doc_id')
+    event: -> Events.findOne FlowRouter.getParam('event_id')
 
     event_tag_class: -> if @valueOf() in selected_tags.array() then 'red' else 'basic'
 
@@ -13,20 +12,14 @@ Template.event_page.helpers
 
     can_edit: -> Meteor.userId()
 
-    day: -> moment(@start_date).format("dddd, MMMM Do")
-    start_time: -> moment(@start_date).format("h:mm a")
-    end_time: -> moment(@end_date)?.format("h:mm a")
+    day: -> moment(@start.local).format("dddd, MMMM Do");
+    start_time: -> moment(@start.local).format("h:mm a")
+    end_time: -> moment(@end.local).format("h:mm a")
 
     
 Template.event_page.events
     'click .event_tag': ->
         if @valueOf() in selected_tags.array() then selected_tags.remove @valueOf() else selected_tags.push @valueOf()
-
-    'click .join_event': ->
-        Meteor.call 'join_event', @_id
-
-    'click .leave_event': ->
-        Meteor.call 'leave_event', @_id
 
     'click .edit_event': ->
         FlowRouter.go "/event/edit/#{@_id}"

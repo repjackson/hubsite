@@ -3,10 +3,10 @@ template(name='events')
         img.ui.fluid.image(src='/banners/event_banner_cut.jpg', alt='')
         h1.overlay-text.banner-text Events at Impact Hub Boulder
     .ui.container
-        +cloud filter='event'
+        // +cloud filter='event'
         // h2.impact-header Featured Events
         #sync_events.ui.big.basic.button Sync Eventbrite Events
-        +featured_events
+        // +featured_events
         h2.impact-header Upcoming Events
         .ui.centered.four.cards
             each events
@@ -25,15 +25,16 @@ template(name='event_card')
     .ui.card
         .image
             a(href="/event/view/#{_id}")
-                if image_id
-                    img.ui.image(src="{{c.url image_id height=175 width=300 crop='fill'}}")            
-                else
-                    img.ui.image(src="{{c.url 'ih_logo_placeholder_pdwzf8' height=175 width=300 crop='fill'}}")            
-                    // img.ui.large.image(src="/img/ih_logo_placeholder.png")
+                img.ui.image(src=logo.url)            
+                // if image_id
+                //     img.ui.image(src="{{c.url image_id height=175 width=300 crop='fill'}}")            
+                // else
+                //     img.ui.image(src="{{c.url 'ih_logo_placeholder_pdwzf8' height=175 width=300 crop='fill'}}")            
+                //     // img.ui.large.image(src="/img/ih_logo_placeholder.png")
         .content
             // .header
             h3.ui.red.header.make-uppercase 
-                a(href="/event/view/#{_id}") #{title}
+                a(href="/event/view/#{_id}") #{name.text}
             .meta
                 strong #{day} 
             .meta
