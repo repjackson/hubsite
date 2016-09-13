@@ -1,36 +1,54 @@
 
-rent space items
+<!--rent space items-->
 
-split tag categories and create more classic interface
+<!--split tag categories and create more classic interface-->
 
-moving slideshow on homepage_banner
+<!--moving slideshow on homepage_banner-->
 
-slide that shows the coworking space
-    full screen video
+<!--slide that shows the coworking space-->
+<!--    full screen video-->
     
-define where the thumbnail is on the events photos
-add to calendar for events
+<!--define where the thumbnail is on the events photos-->
+<!--add to calendar for events-->
 
-integrate with mailchimp
-ability to add programs
-clone headers from oakland
+<!--integrate with mailchimp-->
+<!--ability to add programs-->
+<!--clone headers from oakland-->
 
-member prices for events
+<!--member prices for events-->
 
-clone oakland events
-
-
-sections within organizations
-side filter of professional tags
+<!--clone oakland events-->
 
 
-add button for admins
+<!--sections within organizations-->
+<!--side filter of professional tags-->
 
-modal for academy, embedded slideshow
 
-switch 'people' to 'members'
+<!--add button for admins-->
 
-search for other organization
-hover text for nonlogged in people
+<!--modal for academy, embedded slideshow-->
 
-alpha beta opt in 
+<!--switch 'people' to 'members'-->
+
+<!--search for other organization-->
+<!--hover text for nonlogged in people-->
+
+<!--alpha beta opt in -->
+
+
+lower overlay on events
+filter events by organizer
+pull events by venue
+get past events
+manual adding of events
+manual featured events
+
+
+space rental
+-rooms and event venue
+    link on events page to rent
+    
+    
+events
+better picture
+side links to add to calendar 

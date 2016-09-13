@@ -1,15 +1,15 @@
 template(name='home')
-    +view_slider
-    +call_to_action
-    +academy_widget
-    // .ui.container
-    +featured_events
-    +rockstar_members
-    +featured_posts
+    .ui.container
+        +view_slider
+        +call_to_action
+        +academy_widget
+    // +featured_events
+    // +rockstar_members
+    // +featured_posts
 
 
 template(name='call_to_action')
-    .ui.attached.very.padded.basic.segment
+    .ui.very.padded.basic.segment
         .ui.stackable.container.grid
             .ten.wide.column
                 // h1.ui.header COME FOR COWORKING, STAY FOR COMMUNITY
@@ -28,7 +28,7 @@ template(name='call_to_action')
 
                     
 template(name='academy_widget')
-    .ui.very.padded.attached.basic.segment.container
+    .ui.very.padded.basic.segment.container
         .ui.container
             h2.ui.make-uppercase.header HUB Academy
                 

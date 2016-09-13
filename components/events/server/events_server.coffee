@@ -50,13 +50,20 @@ Meteor.methods
                     console.error err
                 else
                     for event in res.data.events
+                        # console.log 'event', event.id
                         existing_event = Events.findOne { id: event.id} 
                         if existing_event
-                            console.log 'found duplicate', event.id
                             continue
                         else
-                            id = Events.insert event
-                            console.log 'created event', event.id
+                            image_id = event.logo.id
+                            image_object = HTTP.get "https://www.eventbriteapi.com/v3/media/#{image_id}", {
+                                params:
+                                    token: 'QLL5EULOADTSJDS74HH7'
+                            }
+                            # console.log image_object
+                            new_image_url = image_object.data.url
+                            event.big_image_url = new_image_url
+                            event_id = Events.insert event
 
 
         # HTTP.get 'https://www.eventbriteapi.com/v3/organizers/9633894482/events/', {

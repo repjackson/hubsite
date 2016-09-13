@@ -1,20 +1,19 @@
 with event
     // +back_button
+    .header-wrapper
+        img.ui.centered.fluid.image(src=big_image_url)
+        // if image_id
+        //     img.ui.centered.image(src="{{c.url image_id width=800 height=400 crop='fill'}}")
+        // else
+        //     img.ui.centered.image(src="/img/about_mashup_one.jpg")
+        .event-header
+            h1 #{name.text}
+            // h3 #{day} from #{start_time} to #{end_time}
+            // .overlay-text-subheader
+            h2
+                |#{day} 
+                .sub.header #{start_time} to #{end_time}
     .ui.container.basic.segment
-        div
-            img.ui.centered.fluid.image(src=logo.url)
-            // if image_id
-            //     img.ui.centered.image(src="{{c.url image_id width=800 height=400 crop='fill'}}")
-            // else
-            //     img.ui.centered.image(src="/img/about_mashup_one.jpg")
-            .overlay-text 
-                h1 #{name.text}
-                // h3 #{day} from #{start_time} to #{end_time}
-                // .overlay-text-subheader
-                h3
-                    |#{day} 
-                    .sub.header #{start_time} to #{end_time}
-        .ui.hidden.divider
         .ui.divided.grid
             .eleven.wide.column
                 // h1.ui.header #{title}
