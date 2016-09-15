@@ -12,4 +12,104 @@ div
         a.ui.basic.button(title='EVENT RENTAL', href='http://impacthubboulder.com/host-an-event/', target='_self')
           | EVENT RENTAL
           i.arrow.circle.right.icon
-        h5.ui.header More Coming Soon...
+    // +host_meeting
+    h2.impact-header Event Spaces
+    // .ui.big.black.basic.button 
+    //     .make-uppercase Try a Free Day
+    .ui.divided.items
+        .ui.item
+            .image
+                img.ui.large.image(src="{{c.url 'venue'}}")
+            .content
+                .header Venue
+                .description
+                    | If you’re looking to host a large event that will take more than just one of our spaces, we offer an option of renting the majority of our space. With the whole HUB at your disposal, you can have break-out groups, multiple, and concurrent sessions.
+                .extra
+                    .ui.tiny.statistic
+                        .value
+                            // img(src='/icons/chair_icon.png')
+                            | 150
+                        .label
+                            |Seats
+                    .ui.tiny.statistic
+                        .value
+                            // i.male.icon
+                            | 250
+                        .label
+                            |People
+                    .ui.tiny.statistic
+                        .value
+                            | 3,000
+                        .label
+                            | Square Feet
+        .ui.item
+            .image
+                img(src="{{c.url 'middle_conference_room'}}")
+            .content
+                .header Middle Conference Room
+                .description
+                    |Our most intimate meeting space, the Middle Conference Room offers a round table that can accommodate up to six people. The conference room features a large flat panel display (equipped w/ Apple TV) and glass walls.
+                .extra
+                    .ui.tiny.statistic
+                        .value
+                            | 6
+                        .label
+                            |Seats
+                    .ui.tiny.statistic
+                        .value
+                            | 8
+                        .label
+                            |People
+                    .ui.tiny.statistic
+                        .value
+                            | 100
+                        .label
+                            | Square Feet
+        .ui.item
+            .image
+                img(src="{{c.url 'se_conference_room'}}")
+            .content
+                .header Southeast Conference Room
+                .description
+                    | The Southeast Conference Room can seat 8 comfortably around a table. The room features a large flat panel display (equipped w/ Apple TV), windows, and glass walls. A mobile white board is available upon request.
+                .extra
+                    .ui.tiny.statistic
+                        .value
+                            | 8
+                        .label
+                            |Seats
+                    .ui.tiny.statistic
+                        .value
+                            | 12
+                        .label
+                            |People
+                    .ui.tiny.statistic
+                        .value
+                            | 200
+                        .label
+                            | Square Feet
+        .ui.item
+            .image
+                img(src="{{c.url 'board_room'}}")
+            .content
+                .header Boardroom
+                .description
+                    | Our largest-capacity conference room, the Board Room can seat 14 around a large table. The Board Room features a large flat panel display (equipped w/ Apple TV), glass walls and windows, and a credenza for supplies or food and beverages. A mobile white board is available upon request.
+                .extra
+                    .ui.tiny.statistic
+                        .value
+                            | 12
+                        .label
+                            |Seats
+                    .ui.tiny.statistic
+                        .value
+                            | 18
+                        .label
+                            |People
+                    .ui.tiny.statistic
+                        .value
+                            | 400
+                        .label
+                            | Square Feet
+    .formstack_embed
+        script(src='https://us.bookingbug.com/widget/all.js?id=usw1528057&c1=transparent&c2=F5F5F5&c3=DDDDDD&c4=ADADAD&c5=FFFFFF&c6=087f94&c7=274361&c8=EBEBEB&c9=88C66F&f1=&style=medium&icons=&is_rounded=1&width=570&height=570', type='text/javascript')
