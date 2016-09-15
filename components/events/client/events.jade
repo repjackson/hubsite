@@ -7,10 +7,16 @@ template(name='events')
         // h2.impact-header Featured Events
         // +featured_events
         .ui.hidden.divider
+        if isInRole 'admin'
+            .ui.input
+                input#manual_event_add(type='text' placeholder='Manually Add Eventbrite Event (id)')
         h2.impact-header Upcoming Events
-        .ui.centered.four.cards
-            each events
-                +event_card
+        if Template.subscriptionsReady
+            .ui.centered.four.cards
+                each events
+                    +event_card
+        else
+            |Loading Events...
     // .ui.grid
     //     .twelve.wide.column
     //         .ui.centered.cards

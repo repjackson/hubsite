@@ -3,7 +3,15 @@ Template.events.onCreated ->
     selected_tags.clear()
     
 Template.events.events
-    
+    'keydown #manual_event_add': (e,t)->
+        e.preventDefault
+        if e.which is 13
+            event_id = t.find('#manual_event_add').value.trim()
+            if event_id.length > 0
+                console.log 'attemping to add event with id ', event_id
+                Meteor.call 'manual_event_add', event_id, (err,res)->
+                    t.find('#manual_event_add').value = ''
+
 Template.events.helpers
     events: -> 
         match = {}

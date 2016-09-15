@@ -26,99 +26,45 @@ Meteor.publish 'attendees', (doc_id)->
     
     
 Meteor.methods
-    'sync_events': ->
-        # get me
-        
-        # HTTP.get 'https://www.eventbriteapi.com/v3/users/me/', {
-        #         params:
-        #             token: 'QLL5EULOADTSJDS74HH7'
-        #     }, 
-        #     (err, res)->
-        #         if err
-        #             console.error err
-        #         else
-        #             console.log res        
-        
-        # get events!
-        HTTP.get 'https://www.eventbriteapi.com/v3/events/search/', {
+    sync_events: ->
+        HTTP.get 'https://www.eventbriteapi.com/v3/users/me/owned_events/', {
                 params:
                     token: 'QLL5EULOADTSJDS74HH7'
-                    'organizer.id': '9633894482'
+                    expand: 'organizer,venue'
             }, 
             (err, res)->
                 if err
                     console.error err
                 else
-                    for event in res.data.events
-                        # console.log 'event', event.id
-                        existing_event = Events.findOne { id: event.id} 
-                        if existing_event
-                            continue
-                        else
-                            image_id = event.logo.id
-                            image_object = HTTP.get "https://www.eventbriteapi.com/v3/media/#{image_id}", {
-                                params:
-                                    token: 'QLL5EULOADTSJDS74HH7'
-                            }
-                            # console.log image_object
-                            new_image_url = image_object.data.url
-                            event.big_image_url = new_image_url
-                            event_id = Events.insert event
-
-
-        # HTTP.get 'https://www.eventbriteapi.com/v3/organizers/9633894482/events/', {
-        #         params:
-        #             token: 'QLL5EULOADTSJDS74HH7'
-        #     }, 
-        #     (err, res)->
-        #         if err
-        #             console.error err
-        #         else
-        #             console.log res
-        #             # for event in res.data.events
-        #             #     existing_event = Events.findOne { id: event.id} 
-        #             #     if existing_event
-        #             #         console.log 'found duplicate', event.id
-        #             #         continue
-        #             #     else
-        #             #         id = Events.insert event
-        #             #         console.log 'created event', event.id
+                    console.log res
+                    # for event in res.data.events
+                    #     existing_event = Events.findOne { id: event.id} 
+                    #     if existing_event
+                    #         console.log 'found duplicate', event.id
+                    #         continue
+                    #     else
+                    #         id = Events.insert event
+                    #         console.log 'created event', event.id
 
 
         
-        # organizer id
-        # HTTP.get 'https://www.eventbriteapi.com/v3/organizers/10751261682', {
-        #         params:
-        #             token: 'QLL5EULOADTSJDS74HH7'
-        #     #         'organizer.id': '10751261682'
-        #     }, 
-        #     (err, res)->
-        #         if err
-        #             console.error err
-        #         else
-        #             console.log res
-        
-        # impact hub organizer id
-        # HTTP.get 'https://www.eventbriteapi.com/v3/organizers/6250752107', {
-        #         params:
-        #             token: 'QLL5EULOADTSJDS74HH7'
-        #     #         'organizer.id': '10751261682'
-        #     }, 
-        #     (err, res)->
-        #         if err
-        #             console.error err
-        #         else
-        #             console.log res
-        
+    manual_event_add: (event_id)->
         # event id
-        # HTTP.get 'https://www.eventbriteapi.com/v3/events/25209852347', {
-        #         params:
-        #             token: 'QLL5EULOADTSJDS74HH7'
-        #     #         'organizer.id': '10751261682'
-        #     }, 
-        #     (err, res)->
-        #         if err
-        #             console.error err
-        #         else
-        #             console.log res
-                    
+        HTTP.get "https://www.eventbriteapi.com/v3/events/#{event_id}", {
+                params:
+                    token: 'QLL5EULOADTSJDS74HH7'
+            #         'organizer.id': '10751261682'
+            }, 
+            (err, res)->
+                if err
+                    console.error err
+                else
+                    event = res.data
+                    existing_event = Events.findOne { id: event.id} 
+                    if existing_event
+                        console.log 'found duplicate', event.id
+                        return
+                    else
+                        id = Events.insert event
+                        console.log 'created event', event.id
+                
