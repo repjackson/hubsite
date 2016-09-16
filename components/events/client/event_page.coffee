@@ -23,3 +23,27 @@ Template.event_page.events
 
     'click .edit_event': ->
         FlowRouter.go "/event/edit/#{@_id}"
+
+    'click #make_featured': ->
+        Events.update FlowRouter.getParam('event_id'),
+            $set: featured: true
+
+    'click #make_unfeatured': ->
+        Events.update FlowRouter.getParam('event_id'),
+            $set: featured: false
+
+    'click #delete': ->
+        swal {
+            title: 'Delete event?'
+            text: 'It will still be on Eventbrite.'
+            type: 'warning'
+            animation: false
+            showCancelButton: true
+            closeOnConfirm: true
+            cancelButtonText: 'No'
+            confirmButtonText: 'Yes'
+            confirmButtonColor: '#da5347'
+        }, ->
+            event = Events.findOne FlowRouter.getParam('event_id')
+            Events.remove event._id, ->
+                FlowRouter.go "/events"

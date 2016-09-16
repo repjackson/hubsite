@@ -63,4 +63,3 @@ Template.content_management.events
             type: 'post'
         FlowRouter.go "/post/edit/#{id}"
 
-    'click #sync_events': -> Meteor.call 'sync_events'

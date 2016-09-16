@@ -29,7 +29,10 @@ with event
                     i.arrow.left.icon
                     |Events
             .five.wide.column
-                h3.ui.dividing.make-uppercase.header Date and Time
+                a.ui.basic.fluid.black.button(href=url target='_window')
+                    i.ticket.icon
+                    |Register on Eventbrite
+                h3.impact-header Date and Time
                 if end_date
                     div #{day} 
                     div #{start_time} to #{end_time}
@@ -39,32 +42,30 @@ with event
                     h3.ui.dividing.make-uppercase.header Location
                     span #{location}
                 .ui.divider
-                a.ui.basic.fluid.black.button(href=url target='_window')
-                    i.ticket.icon
-                    |Register on Eventbrite
-                // h3.ui.dividing.make-uppercase.header Actions
-                // if isInRole 'admin'
-                //     .edit_event.ui.basic.button
-                //         i.pencil.icon
-                //         |Edit
-                // +favorite
-                // if attendee_ids
-                //     h3.ui.dividing.make-uppercase.header Attendees
-                //     .ui.divided.vertical.list
-                //         each attendee_ids
-                //             +user_blurb id=this
-                // if currentUser
-                //     if attending
-                //         .ui.basic.icon.fluid.button.leave_event 
-                //             i.large.icons
-                //                 i.user.icon
-                //                 i.red.minus.corner.icon
-                //             | Leave
-                //     else
-                //         .ui.basic.icon.fluid.button.join_event 
-                //             i.large.icons
-                //                 i.user.icon
-                //                 i.green.plus.corner.icon
-                //             | Join
-                // else
-                //     p Sign in to attend    
+                if isInRole 'admin'
+                    h3.impact-header Admin
+                    #delete.ui.basic.button 
+                        i.delete.icon
+                        |Delete
+                    if featured
+                        #make_unfeatured.ui.green.button
+                            i.toggle.on.icon
+                            |Make Unfeatured
+                    else
+                        #make_featured.ui.basic.button
+                            i.toggle.off.icon
+                            |Make Featured
+                h3.impact-header Organizer Information
+                with organizer
+                    h2.ui.header 
+                        .ui.avatar.image
+                            img(src=logo.url)
+                        |#{name}
+                    |!{description.html}
+                    a.ui.icon.basic.button(href="https://www.facebook.com/#{facebook}" target="_blank")
+                        i.facebook.link.icon
+                    a.ui.icon.basic.button(href="https://twitter.com/#{twitter}" target="_blank")
+                        i.twitter.link.icon
+                    a.ui.basic.button(href=url target='_blank') 
+                        i.external.icon
+                        |Eventbrite Profile

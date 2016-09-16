@@ -12,7 +12,7 @@ template(name='events')
                 input#manual_event_add(type='text' placeholder='Manually Add Eventbrite Event (id)')
         h2.impact-header Upcoming Events
         if Template.subscriptionsReady
-            .ui.centered.four.cards
+            .ui.centered.four.stackable.cards
                 each events
                     +event_card
         else
