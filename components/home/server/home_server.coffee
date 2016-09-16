@@ -20,10 +20,6 @@ Meteor.publish 'featured_posts', ->
         type: 'post'
         featured: true
         
-Meteor.publish 'featured_events', ->
-    Events.find
-        featured: true
-        
         
 Meteor.publish 'slides', ->
     Docs.find

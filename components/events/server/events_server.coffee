@@ -3,6 +3,10 @@ Events.allow
     update: (userId, doc) -> doc.author_id is userId or Roles.userIsInRole(userId, 'admin')
     remove: (userId, doc) -> doc.author_id is userId or Roles.userIsInRole(userId, 'admin')
 
+Meteor.publish 'featured_events', ->
+    Events.find
+        featured: true
+        
 
 
 Meteor.publish 'events', (selected_tags)->
@@ -23,14 +27,6 @@ Meteor.publish 'events', (selected_tags)->
 Meteor.publish 'event', (event_id)->
     Events.find event_id
 
-Meteor.publish 'attendees', (doc_id)->
-    check(arguments, [Match.Any])
-    ids = Events.findOne(doc_id).attendee_ids
-    if ids
-        Meteor.users.find
-            _id: $in: ids
-    else return
-    
     
 Meteor.methods
     manual_event_add: (event_id)->
@@ -38,7 +34,7 @@ Meteor.methods
         HTTP.get "https://www.eventbriteapi.com/v3/events/#{event_id}", {
                 params:
                     token: 'QLL5EULOADTSJDS74HH7'
-                    expand: 'organizer, venue, logo, format, category, subcategory, ticket_classes, bookmark_info'
+                    expand: 'organizer,venue,logo,format,category,subcategory,ticket_classes,bookmark_info'
             }, 
             (err, res)->
                 if err

@@ -4,26 +4,26 @@ template(name='events')
         h1.overlay-text.banner-text Events at Impact Hub Boulder
     .ui.container
         // +cloud filter='event'
-        // h2.impact-header Featured Events
-        // +featured_events
         .ui.hidden.divider
         if isInRole 'admin'
-            .ui.input
-                input#manual_event_add(type='text' placeholder='Manually Add Eventbrite Event (id)')
-        h2.impact-header Upcoming Events
-        if Template.subscriptionsReady
-            .ui.centered.four.stackable.cards
-                each events
-                    +event_card
-        else
-            |Loading Events...
-    // .ui.grid
-    //     .twelve.wide.column
-    //         .ui.centered.cards
-    //             each events
-    //                 +event_card
-    //     .three.wide.column
-    //         +fullcalendar options
+            .ui.labeled.input
+                .ui.basic.label 
+                    i.red.configure.icon
+                    |Add Eventbrite Event by Id
+                input#manual_event_add(type='text')
+        .ui.hidden.divider
+        .ui.stackable.grid
+            .eleven.wide.column
+                +featured_events
+                h2.impact-header Upcoming Events
+                if Template.subscriptionsReady
+                    .ui.centered.stackable.cards
+                        each events
+                            +event_card
+                else
+                    |Loading Events...
+            .five.wide.column
+                +fullcalendar options
 
 
 
@@ -45,12 +45,10 @@ template(name='event_card')
                 strong #{day} 
             .meta
                 strong #{start_time} to #{end_time}
-            if location
-                .meta
-                    span @#{location}
-            .ui.hidden.divider
+            .meta
+                |Organized by #{organizer.name}
+            .ui.hidden.fitted.divider
             |#{snippet}
-        // .extra.content
         //     +favorite
         //     if isInRole 'admin'
         //         .edit_event.ui.right.floated.primary.basic.button

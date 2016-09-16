@@ -14,10 +14,8 @@ template(name='top_nav')
                     //         i.plus.corner.icon
                     //     i.calendar.icon
                     //     |Add Event
-                    a.item(href='/admin/submissions' class="{{isActivePath '/admin/submissions'}}")
-                        i.icons
-                            i.configure.icon
-                            i.corner.red.icon
+                    a.item(href='/admin/' class="{{isActivePath '/admin/'}}")
+                        i.configure.icon
                         | Admin
                 // a.item(href='/messages' class="{{isActivePath '/messages'}}")
                 //     i.mail.icon

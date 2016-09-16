@@ -1,6 +1,6 @@
 Template.events.onCreated ->
     @autorun -> Meteor.subscribe('events', selected_tags.array())
-    selected_tags.clear()
+    # selected_tags.clear()
     
 Template.events.events
     'keydown #manual_event_add': (e,t)->

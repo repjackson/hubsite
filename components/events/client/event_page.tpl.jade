@@ -19,46 +19,14 @@ with event
                 // h1.ui.header #{title}
                 .description
                     // |Event Tags:
-                    .ui.basic.segment
-                        |!{description.html}
-                    // .ui.divider
-                    // each tags
-                    //     .ui.basic.label #{this}
-                .ui.divider
-                a.ui.basic.button(href="/events")
-                    i.arrow.left.icon
-                    |Events
-            .five.wide.column
-                a.ui.basic.fluid.black.button(href=url target='_window')
-                    i.ticket.icon
-                    |Register on Eventbrite
-                h3.impact-header Date and Time
-                if end_date
-                    div #{day} 
-                    div #{start_time} to #{end_time}
-                else
-                    |#{day} at #{start_time}
-                if location
-                    h3.ui.dividing.make-uppercase.header Location
-                    span #{location}
-                .ui.divider
-                if isInRole 'admin'
-                    h3.impact-header Admin
-                    #delete.ui.basic.button 
-                        i.delete.icon
-                        |Delete
-                    if featured
-                        #make_unfeatured.ui.green.button
-                            i.toggle.on.icon
-                            |Make Unfeatured
-                    else
-                        #make_featured.ui.basic.button
-                            i.toggle.off.icon
-                            |Make Featured
+                    |!{description.html}
+                // .ui.divider
+                // each tags
+                //     .ui.basic.label #{this}
                 h3.impact-header Organizer Information
                 with organizer
                     h2.ui.header 
-                        .ui.avatar.image
+                        .ui.tiny.image
                             img(src=logo.url)
                         |#{name}
                     |!{description.html}
@@ -69,3 +37,41 @@ with event
                     a.ui.basic.button(href=url target='_blank') 
                         i.external.icon
                         |Eventbrite Profile
+                // .ui.divider
+                // a.ui.basic.button(href="/events")
+                //     i.arrow.left.icon
+                //     |Events
+            .five.wide.column
+                a.ui.basic.fluid.black.big.button(href=url target='_window')
+                    i.ticket.icon
+                    |Register on Eventbrite
+                h3.impact-header Date and Time
+                h4
+                    if end_date
+                        div #{day} 
+                        div #{start_time} to #{end_time}
+                    else
+                        |#{day} at #{start_time}
+                h3.impact-header Tickets
+                each ticket_classes
+                    .ui.basic.label #{name} #{cost.display}
+                h3.impact-header Venue
+                with venue
+                    h3.ui.header #{name}
+                    h4.ui.header #{address.localized_address_display}
+
+                if isInRole 'admin'
+                    h3.impact-header 
+                        i.red.configure.icon
+                        |Admin
+                    #delete.ui.black.basic.button 
+                        i.delete.red.icon
+                        |Delete
+                    if featured
+                        #make_unfeatured.ui.green.button
+                            i.toggle.on.icon
+                            |Make Unfeatured
+                    else
+                        #make_featured.ui.black.basic.button
+                            i.toggle.off.green.icon
+                            |Make Featured

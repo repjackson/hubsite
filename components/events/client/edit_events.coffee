@@ -12,8 +12,6 @@ Template.edit_event.helpers
         
         
 Template.edit_event.events
-
-
     'click #save_event': ->
         # value = $('#description').val()
         # content = value.replace(/(<([^>]+)>)/ig, "")
