@@ -1,6 +1,4 @@
 
-<!--rent space items-->
-
 <!--split tag categories and create more classic interface-->
 
 <!--moving slideshow on homepage_banner-->
@@ -8,14 +6,9 @@
 <!--slide that shows the coworking space-->
 <!--    full screen video-->
     
-<!--add to calendar for events-->
 
 <!--integrate with mailchimp-->
 <!--ability to add programs-->
-
-<!--member prices for events-->
-
-<!--clone oakland events-->
 
 
 <!--sections within organizations-->
@@ -32,8 +25,6 @@
 filter events by organizer
 pull events by venue
 get past events
-manual adding of events
-manual featured events
 
 
 space rental
@@ -42,7 +33,7 @@ space rental
     
     
 events
-side links to add to calendar 
+    side links to add to calendar 
 
 
 

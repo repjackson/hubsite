@@ -45,22 +45,28 @@ with event
                 a.ui.basic.fluid.black.big.button(href=url target='_window')
                     i.ticket.icon
                     |Register on Eventbrite
-                h3.impact-header When
-                h4
-                    if end_date
-                        div #{day} 
-                        div #{start_time} to #{end_time}
-                    else
-                        |#{day} at #{start_time}
-                h3.impact-header Where
+                h3.ui.dividing.header.make-uppercase When
+                .ui.basic.segment
+                    h4
+                        if end_date
+                            div #{day} 
+                            div #{start_time} to #{end_time}
+                        else
+                            |#{day} at #{start_time}
+                h3.ui.dividing.header.make-uppercase Where
                 with venue
-                    h3.ui.header #{name}
-                    h4.ui.header #{address.localized_address_display}
-                h3.impact-header How
-                each ticket_classes
-                    .ui.basic.label #{name} #{cost.display}
+                    .ui.basic.segment
+                        a(href="http://maps.google.com/?q=#{name}" target='_blank')
+                            h4.ui.center.aligned.header
+                                div #{name}
+                                div #{address.localized_address_display}
+                        +map 
+                h3.ui.dividing.header.make-uppercase How
+                .ui.basic.segment
+                    each ticket_classes
+                        .ui.basic.label #{name} #{cost.display}
                 if isInRole 'admin'
-                    h3.impact-header 
+                    h3.ui.dividing.header.make-uppercase 
                         i.red.configure.icon
                         |Admin
                     #delete.ui.black.basic.button 

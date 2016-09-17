@@ -36,6 +36,7 @@ constellation:subscriptions@0.4.2
 constellation:tiny@0.4.1
 dandv:caret-position@2.1.1
 dburles:collection-helpers@1.0.4
+dburles:google-maps@1.1.5
 dburles:mongo-collection-instances@0.3.5
 ddp@1.2.5
 ddp-client@1.2.9
