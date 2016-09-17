@@ -1,4 +1,5 @@
 @Events = new Meteor.Collection 'events'
+@Event_tags = new Meteor.Collection 'event_tags'
 
 
 Meteor.methods

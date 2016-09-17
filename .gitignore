@@ -4,3 +4,4 @@ settings.json
 mup.json
 client/sem/*
 !client/sem/custom.semantic.json
+!client/sem/site/globals/site.variables.import.less

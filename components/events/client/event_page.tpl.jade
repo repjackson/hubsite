@@ -45,20 +45,20 @@ with event
                 a.ui.basic.fluid.black.big.button(href=url target='_window')
                     i.ticket.icon
                     |Register on Eventbrite
-                h3.impact-header Date and Time
+                h3.impact-header When
                 h4
                     if end_date
                         div #{day} 
                         div #{start_time} to #{end_time}
                     else
                         |#{day} at #{start_time}
-                h3.impact-header Tickets
-                each ticket_classes
-                    .ui.basic.label #{name} #{cost.display}
-                h3.impact-header Venue
+                h3.impact-header Where
                 with venue
                     h3.ui.header #{name}
                     h4.ui.header #{address.localized_address_display}
+                h3.impact-header How
+                each ticket_classes
+                    .ui.basic.label #{name} #{cost.display}
                 if isInRole 'admin'
                     h3.impact-header 
                         i.red.configure.icon
@@ -74,3 +74,6 @@ with event
                         #make_featured.ui.black.basic.button
                             i.toggle.off.green.icon
                             |Make Featured
+                    #reload.ui.basic.black.button 
+                        i.refresh.icon
+                        |Reload

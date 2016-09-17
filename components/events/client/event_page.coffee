@@ -47,3 +47,22 @@ Template.event_page.events
             event = Events.findOne FlowRouter.getParam('event_id')
             Events.remove event._id, ->
                 FlowRouter.go "/events"
+
+    'click #reload': ->
+        swal {
+            title: 'Reload event?'
+            text: 'This will delete and redownload event from Eventbrite.'
+            type: 'warning'
+            animation: false
+            showCancelButton: true
+            closeOnConfirm: true
+            cancelButtonText: 'No'
+            confirmButtonText: 'Yes'
+            confirmButtonColor: '#da5347'
+        }, ->
+            event = Events.findOne FlowRouter.getParam('event_id')
+            event_id = event.id
+            Events.remove event._id, ->
+                Meteor.call 'add_event', event_id, (err, _id)->
+                    console.log _id
+                    FlowRouter.go "/event/view/#{_id}" 

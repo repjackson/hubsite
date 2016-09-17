@@ -43,3 +43,7 @@ space rental
     
 events
 side links to add to calendar 
+
+
+
+$ DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy --settings settings.json www.collider.cloud

@@ -1,21 +1,21 @@
 Template.events.onCreated ->
-    @autorun -> Meteor.subscribe('events', selected_tags.array())
-    # selected_tags.clear()
+    @autorun -> Meteor.subscribe('events', selected_event_tags.array())
+    # selected_event_tags.clear()
     
 Template.events.events
-    'keydown #manual_event_add': (e,t)->
+    'keydown #add_event': (e,t)->
         e.preventDefault
         if e.which is 13
-            event_id = t.find('#manual_event_add').value.trim()
+            event_id = t.find('#add_event').value.trim()
             if event_id.length > 0
                 # console.log 'attemping to add event with id ', event_id
-                Meteor.call 'manual_event_add', event_id, (err,res)->
-                    t.find('#manual_event_add').value = ''
+                Meteor.call 'add_event', event_id, (err,res)->
+                    t.find('#add_event').value = ''
 
 Template.events.helpers
     events: -> 
         match = {}
-        # if selected_tags.array and selected_tags.array().length > 0 then match.tags = $all: selected_tags.array()
+        # if selected_event_tags.array and selected_event_tags.array().length > 0 then match.tags = $all: selected_event_tags.array()
         Events.find match
 
     options: ->
@@ -25,7 +25,7 @@ Template.events.helpers
 
 
 Template.event_card.helpers
-    event_tag_class: -> if @valueOf() in selected_tags.array() then 'red' else 'basic'
+    event_tag_class: -> if @valueOf() in selected_event_tags.array() then 'red' else 'basic'
 
     attending: -> if @attendee_ids and Meteor.userId() in @attendee_ids then true else false
 
@@ -42,18 +42,4 @@ Template.event_card.helpers
 
 Template.event_card.events
     'click .event_tag': ->
-        if @valueOf() in selected_tags.array() then selected_tags.remove @valueOf() else selected_tags.push @valueOf()
-
-    'click .join_event': ->
-        Meteor.call 'join_event', @_id
-
-    'click .leave_event': ->
-        Meteor.call 'leave_event', @_id
-
-
-    'click .cancel_event': ->
-        if confirm 'Cancel event?'
-            Docs.remove @_id
-            
-    'click .edit_event': ->
-        FlowRouter.go "/event/edit/#{@_id}"
+        if @valueOf() in selected_event_tags.array() then selected_event_tags.remove @valueOf() else selected_event_tags.push @valueOf()

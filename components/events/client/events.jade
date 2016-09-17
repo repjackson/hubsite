@@ -10,7 +10,7 @@ template(name='events')
                 .ui.basic.label 
                     i.red.configure.icon
                     |Add Eventbrite Event by Id
-                input#manual_event_add(type='text')
+                input#add_event(type='text')
         .ui.hidden.divider
         .ui.stackable.grid
             .eleven.wide.column
@@ -23,7 +23,8 @@ template(name='events')
                 else
                     |Loading Events...
             .five.wide.column
-                +fullcalendar options
+                +event_cloud
+                // +fullcalendar options
 
 
 
@@ -45,8 +46,10 @@ template(name='event_card')
                 strong #{day} 
             .meta
                 strong #{start_time} to #{end_time}
-            .meta
-                |Organized by #{organizer.name}
+            // .meta
+            //     |Organized by #{organizer.name}
+            // .meta
+            //     |At #{venue.name}
             .ui.hidden.fitted.divider
             |#{snippet}
         //     +favorite

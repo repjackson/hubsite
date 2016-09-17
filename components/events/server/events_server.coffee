@@ -9,19 +9,43 @@ Meteor.publish 'featured_events', ->
         
 
 
-Meteor.publish 'events', (selected_tags)->
+Meteor.publish 'events', (selected_event_tags)->
     check(arguments, [Match.Any])
 
     self = @
     match = {}
-    # if selected_tags.length > 0 then match.tags = $all: selected_tags
-    # match.type = 'event'
-    
+    if selected_event_tags.length > 0 then match.tags = $all: selected_event_tags
 
     Events.find match,
         limit: 10
         # sort: 
         #     start_date: 1
+
+Meteor.publish 'event_tags', (selected_event_tags)->
+    check(arguments, [Match.Any])
+    self = @
+    match = {}
+    if selected_event_tags.length > 0 then match.tags = $all: selected_event_tags
+
+    cloud = Events.aggregate [
+        { $match: match }
+        { $project: "tags": 1 }
+        { $unwind: "$tags" }
+        { $group: _id: "$tags", count: $sum: 1 }
+        { $match: _id: $nin: selected_event_tags }
+        { $sort: count: -1, _id: 1 }
+        { $limit: 20 }
+        { $project: _id: 0, name: '$_id', count: 1 }
+        ]
+
+    cloud.forEach (tag, i) ->
+        self.added 'event_tags', Random.id(),
+            name: tag.name
+            count: tag.count
+            index: i
+
+    self.ready()
+
 
 
 Meteor.publish 'event', (event_id)->
@@ -29,8 +53,7 @@ Meteor.publish 'event', (event_id)->
 
     
 Meteor.methods
-    manual_event_add: (event_id)->
-        # event id
+    add_event: (event_id)->
         HTTP.get "https://www.eventbriteapi.com/v3/events/#{event_id}", {
                 params:
                     token: 'QLL5EULOADTSJDS74HH7'
@@ -54,7 +77,32 @@ Meteor.methods
                         # console.log image_object
                         new_image_url = image_object.data.url
                         event.big_image_url = new_image_url
+                        val = event.start.local
+                        # console.log val
+                        minute = moment(val).minute()
+                        hour = moment(val).format('h')
+                        date = moment(val).format('Do')
+                        ampm = moment(val).format('a')
+                        weekdaynum = moment(val).isoWeekday()
+                        weekday = moment().isoWeekday(weekdaynum).format('dddd')
+        
+                        month = moment(val).format('MMMM')
+                        year = moment(val).format('YYYY')
+        
+                        # datearray = [hour, minute, ampm, weekday, month, date, year]
+                        datearray = [weekday, month, date]
+                        datearray = _.map(datearray, (el)-> el.toString().toLowerCase())
+
+                        # console.log datearray
+                        
+                        event.date_array = datearray
+                        # console.log event.date_array
+                        
+                        event.tags = datearray
+                        
                         event_id = Events.insert event
-                
-                
-                
+                        console.log 'event_id', event_id                
+                        return event_id
+                return event_id    
+        console.log event_id
+        return event_id    
