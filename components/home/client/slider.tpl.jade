@@ -1,0 +1,35 @@
+#layerslider(style='width: 800px; height: 300px;')
+    .ls-slide(data-ls='slidedelay: 4000;')
+        img.ls-bg(src="{{c.url 'slider/Community_sgaqcp.jpg' width=1000 height=400 crop='fill'}}", alt='Slide background')
+        img.ls-tn(src="{{c.url 'slider/Community_sgaqcp.jpg' width=200 height=100 crop='fill'}}", alt='Slide thumbnail')
+        .ls-l.overlay-text.slider-text(style="top: 10px; left: 10px;") 
+            // i.university.icon
+            |Academy
+        h2.ls-l.overlay-text-subheader(style="top: 100px; left: 10px;")
+            |Learn more about our exciting new direction.
+        a.ls-link(href='/academy')
+    .ls-slide(data-ls='slidedelay: 4000;')
+        img.ls-bg(src="{{c.url 'slider/Events_m4brwk' width=1000 height=400 crop='fill'}}", alt='Slide background')
+        img.ls-tn(src="{{c.url 'slider/Events_m4brwk' width=200 height=100 crop='fill'}}", alt='Slide thumbnail')
+        .ls-l.overlay-text.slider-text(style="top: 10px; left: 10px;")
+            // i.birthday.icon
+            |Events
+        h2.ls-l.overlay-text-subheader(style="top: 100px; left: 10px;")
+            |Check out what's happening this month.
+        a.ls-link(href='/events')
+    .ls-slide(data-ls='slidedelay: 4000;')
+        img.ls-bg(src="{{c.url 'slider/Boardroom_hs0qof' width=1000 height=400 crop='fill'}}", alt='Slide background')
+        img.ls-tn(src="{{c.url 'slider/Boardroom_hs0qof' width=200 height=100 crop='fill'}}", alt='Slide thumbnail')
+        .ls-l.overlay-text.slider-text(style="top: 10px; left: 10px;")  
+            |Community
+        h2.ls-l.overlay-text-subheader(style="top: 100px; left: 10px;")
+            |Check out our members.  They're neat!
+        a.ls-link(href='/people')
+    .ls-slide(data-ls='slidedelay: 4000;')
+        img.ls-bg(src="{{c.url 'slider/fixed_desks' width=1000 height=400 crop='fill'}}", alt='Slide background')
+        img.ls-tn(src="{{c.url 'slider/fixed_desks' width=200 height=100 crop='fill'}}", alt='Slide thumbnail')
+        .ls-l.overlay-text.slider-text(style="top: 10px; left: 10px;")
+            |Fixed Desks
+        h2.ls-l.overlay-text-subheader(style="top: 100px; left: 10px;")
+            |Be the coolest one in the room.
+        a.ls-link(href='/join')

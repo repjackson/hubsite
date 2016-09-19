@@ -12,7 +12,6 @@
 
 
 <!--sections within organizations-->
-<!--side filter of professional tags-->
 
 <!--modal for academy, embedded slideshow-->
 
@@ -21,10 +20,6 @@
 
 <!--alpha beta opt in -->
 
-
-filter events by organizer
-pull events by venue
-get past events
 
 
 space rental
