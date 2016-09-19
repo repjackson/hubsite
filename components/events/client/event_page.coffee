@@ -16,6 +16,21 @@ Template.event_page.helpers
     start_time: -> moment(@start.local).format("h:mm a")
     end_time: -> moment(@end.local).format("h:mm a")
 
+
+    event_calendar_link: ->
+        link = 
+        "http://www.google.com/calendar/event?
+            action=TEMPLATE
+            &text=#{@name.text}
+            &dates=#{@start.local}/#{@end.local}
+            &details=#{@description.text}
+            &location=#{@venue.name}
+            &trp=false
+            &sprop=
+            &sprop=name:
+            target='_blank' rel='nofollow'"
+        new_link = encodeURI(link)
+
     
 Template.event_page.events
     'click .event_tag': ->
@@ -63,6 +78,6 @@ Template.event_page.events
             event = Events.findOne FlowRouter.getParam('event_id')
             event_id = event.id
             Events.remove event._id, ->
-                Meteor.call 'add_event', event_id, (err, _id)->
-                    console.log _id
-                    FlowRouter.go "/event/view/#{_id}" 
+                Meteor.call 'add_event', event_id, (err, id)->
+                    console.log 'new event id', id
+                    FlowRouter.go "/event/view/#{id}" 

@@ -93,16 +93,22 @@ Meteor.methods
                         datearray = [weekday, month, date]
                         datearray = _.map(datearray, (el)-> el.toString().toLowerCase())
 
-                        # console.log datearray
                         
                         event.date_array = datearray
-                        # console.log event.date_array
                         
-                        event.tags = datearray
+                        tags = datearray
+                      
+                        tags.push event.venue.name
+                        tags.push event.organizer.name
                         
-                        event_id = Events.insert event
-                        console.log 'event_id', event_id                
-                        return event_id
-                return event_id    
-        console.log event_id
-        return event_id    
+                        if event.category 
+                            for category_object in event.category
+                                tags push category_object.name
+                        
+                        trimmed_tags = _.map tags, (tag) ->
+                            tag.trim()
+                        unique_tags = _.uniq trimmed_tags
+                        event.tags = unique_tags 
+                        
+                        new_event_id = Events.insert event
+                        return new_event_id

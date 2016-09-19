@@ -65,6 +65,9 @@ with event
                 .ui.basic.segment
                     each ticket_classes
                         .ui.basic.label #{name} #{cost.display}
+                h3.ui.dividing.header.make-uppercase Links
+                a(href=event_calendar_link)
+                    | Add to my calendar
                 if isInRole 'admin'
                     h3.ui.dividing.header.make-uppercase 
                         i.red.configure.icon
@@ -83,3 +86,6 @@ with event
                     #reload.ui.basic.black.button 
                         i.refresh.icon
                         |Reload
+                    h3.ui.header Event Tags
+                    each tags
+                        .ui.basic.label #{this}
