@@ -1,0 +1,11 @@
+// div
+//     img.ui.centered.fluid.image(src='/banners/academy_banner_small.jpg', alt='')
+//     h1.overlay-text.banner-text Impact HUB Academy (Coming Soon)
+#academy_slider(style='width: 800px; height: 400px;')
+    .ls-slide(data-ls='slidedelay: 2000;')
+        img.ls-bg(src="{{c.url 'academy_banner' width=800 height=400 effect='blur'}}", alt='Slide background')
+        img.ls-l(src="{{c.url 'academy_logo' width=100 height=100 crop='fill' }}",  alt="Image layer" style="top: 10px; left: 10px;")
+        .ls-l.overlay-text.slider-text(style="top: 30px; left: 120px;") 
+            | Impact HUB Academy
+        .ls-l.overlay-text-subheader(style="top: 150px;") 
+            | Impact Hub Academy is a brand new non profit 501c3 established as a tandem organization, created with the unique ability to leverage Impact Hub Boulder and the Impact Hub Global Network, for the purpose of delivering quality education programming focused on creating organizations focused on delivering positive social and environmental impact.

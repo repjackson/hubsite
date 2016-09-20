@@ -2,6 +2,15 @@ Template.events.onCreated ->
     @autorun -> Meteor.subscribe('events', selected_event_tags.array())
     # selected_event_tags.clear()
     
+    
+Template.events.onRendered ->
+    $('#event_slider').layerSlider
+        autoStart: true
+        # firstLayer: 2
+        # skin: 'borderlesslight'
+        # skinsPath: '/static/layerslider/skins/'
+    
+    
 Template.events.events
     'keydown #add_event': (e,t)->
         e.preventDefault

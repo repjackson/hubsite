@@ -42,6 +42,4 @@ impact hub academy slider with first two slides of pitch deck
 events
     side links to add to calendar 
 
-
-
 $ DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy --settings settings.json www.collider.cloud
