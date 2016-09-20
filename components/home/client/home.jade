@@ -2,7 +2,6 @@ template(name='home')
     +slider
     .ui.container
         +call_to_action
-        +academy_widget
     // +featured_events
     // +rockstar_members
     // +featured_posts
@@ -13,14 +12,16 @@ template(name='call_to_action')
         .ui.stackable.container.grid
             .ten.wide.column
                 // h1.ui.header COME FOR COWORKING, STAY FOR COMMUNITY
-                h3.ui.header Impact Hub Boulder is a member-based coworking space and event venue for entrepreneurs creating positive impact in the world.
-                // h3.ui.header Impact Hub Boulder is the best co-working space in the world where you meet your best friend and impact the future.
-                h4
-                    a(href='/organizations')
-                        |Meet Our Partners
-                        i.right.arrow.icon
+                div(style="font-size: large")
+                    p
+                        |Impact Hub Boulder is a member-based coworking space and event venue for entrepreneurs creating positive impact in the world.
+                    p
+                        |An innovation lab. A business Incubator. A social enterprise community center. Impact Hub offers you a unique ecosystem of resources, inspiration, and collaboration opportunities to grow the positive impact of your work. Joining our diverse community of members and collaborators will inspire, connect, and enable you to develop your best work every step of the way.
+                    p
+                        |Impact Hub Boulder is part of a global network of 81 other Impact Hubs in cities around the world.
+
             .six.wide.center.aligned.column
-                a.ui.massive.green.button(href='/join')
+                a.ui.massive.basic.black.button(href='/join')
                     | Join
 
 

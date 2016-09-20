@@ -20,13 +20,25 @@
 
 <!--alpha beta opt in -->
 
+past events
 
+rental modals
 
-space rental
--rooms and event venue
-    link on events page to rent
+dynamic organization collage on about us 
+
+join page
+    Fixed Desk Application page with embedded google form
+    add color to cells, make font of header and pricing bigger
     
+rent page
+    remove round table 
     
+update favicon to ihb logo
+
+meet academy board members on about us page
+
+impact hub academy slider with first two slides of pitch deck
+
 events
     side links to add to calendar 
 
