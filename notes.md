@@ -1,16 +1,3 @@
-<!--slide that shows the coworking space-->
-<!--    full screen video-->
-    
-<!--integrate with mailchimp-->
-<!--ability to add programs-->
-
-<!--modal for academy, embedded slideshow-->
-
-<!--hover text for nonlogged in people-->
-
-<!--alpha beta opt in -->
-
-past events
 
 rental modals
 
@@ -37,13 +24,10 @@ events
 academy
     donate button
     'support'
-    up through positioning from pitchdeck
-    
+
 slider
     italicize font
     make pinned map slide
-    cocreating our 
-    #impactboulderacademy
     anchor caption to bottom, include dots inside
     
 $ DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy --settings settings.json www.collider.cloud

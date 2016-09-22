@@ -53,3 +53,13 @@ FlowRouter.route '/join', action: (params) ->
         nav: 'nav'
         main: 'join'
         
+FlowRouter.route '/permanent-desk-program', action: (params) ->
+    BlazeLayout.render 'layout',
+        nav: 'nav'
+        main: 'permanent'
+        
+FlowRouter.route '/permanent-desk-application', action: (params) ->
+    BlazeLayout.render 'layout',
+        nav: 'nav'
+        main: 'permanent_application'
+        

@@ -1,7 +1,7 @@
-#rent_slider(style='width: 800px; height: 100px;')
+#rent_slider(style='width: 1000px; height: 300px;')
     .ls-slide(data-ls='slidedelay: 4000;')
-        img.ls-bg(src='/banners/event_banner_cut.jpg', alt='Slide background' height='100')
-        .ls-l.overlay-text.slider-text(style="top: 10px;") 
+        img.ls-bg(src="{{c.url 'color_coworking' width=1000 height=300 crop='fill' }}", alt='Slide background' height='100')
+        .ls-l.overlay-text.slider-text(style="top: 50%;") 
             | Rent A Conference Room or Event Space
 .ui.basic.segment.container
     .ui.basic.segment

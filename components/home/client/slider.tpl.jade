@@ -1,41 +1,38 @@
-#layerslider(style='width: 800px; height: 300px;')
-    .ls-slide(data-ls='slidedelay: 4000;')
-        img.ls-bg(src="{{c.url 'slider/Community_sgaqcp.jpg' width=1000 crop='scale'}}", alt='Slide background')
-        img.ls-tn(src="{{c.url 'slider/Community_sgaqcp.jpg' width=200 height=100 crop='scale'}}", alt='Slide thumbnail')
-        .ls-l.homeslider-header(style="top: 75%; left: 50%; font-size: 18px;")
+#layerslider(style='width:1000px; height: 300px;')
+    .ls-slide(data-ls='slidedelay: 4000; transition3d: all;')
+        img.ls-bg(src="{{c.url 'academy_banner' width=1199  height=300 crop='crop' gravity='north'}}", alt='Slide background')
+        img.ls-tn(src="{{c.url 'academy_banner' width=200 height=100 crop='fill'}}", alt='Slide thumbnail')
+        .ls-l.homeslider-header(style="top: 80%; height: 100px; left: 50%;" data-ls="rotateyin: 90; rotateyout: 90;")
             // i.university.icon
-            h1 Academy
-        // h2.ls-l.overlay-text-subheader(style="top: 100px;")
-        //     |Learn more about our exciting new direction.
+            h3.slider-caption-header Academy
+            p.slider-caption-subheader Learn more about our exciting new direction.
         a.ls-link(href='/academy')
-    .ls-slide(data-ls='slidedelay: 4000;')
-        img.ls-bg(src="{{c.url 'slider/Events_m4brwk' width=1000 crop='scale'}}", alt='Slide background')
-        img.ls-tn(src="{{c.url 'slider/Events_m4brwk' width=200 height=100 crop='scale'}}", alt='Slide thumbnail')
-        .ls-l.homeslider-header(style="top: 75%; left: 50%; font-size: 18px;")
+    .ls-slide(data-ls='slidedelay: 4000; transition3d: all;')
+        img.ls-bg(src="{{c.url 'slider/Events_m4brwk' width=1000 height=300 crop='fill' gravity='north'}}", alt='Slide background')
+        img.ls-tn(src="{{c.url 'slider/Events_m4brwk' width=200 height=100 crop='fill'}}", alt='Slide thumbnail')
+        .ls-l.homeslider-header(style="top: 80%; height: 100px; left: 50%;" data-ls="rotateyin: 90; rotateyout: 90;")
             // i.birthday.icon
-            h1 Events
-            h4 Check out what's happening this month.
+            h3.slider-caption-header Events
+            p.slider-caption-subheader Check out what's happening this month.
         a.ls-link(href='/events')
-    .ls-slide(data-ls='slidedelay: 4000;')
-        img.ls-bg(src="{{c.url 'slider/Boardroom_hs0qof' width=1000 crop='scale'}}", alt='Slide background')
-        img.ls-tn(src="{{c.url 'slider/Boardroom_hs0qof' width=200 height=100 crop='scale'}}", alt='Slide thumbnail')
-        .ls-l.homeslider-header(style="top: 75%; left: 50%; font-size: 18px;")
-            h1 Community
-            h4 Check out our members.
-        a.ls-link(href='/people')
-    .ls-slide(data-ls='slidedelay: 4000;')
-        img.ls-bg(src="{{c.url 'slider/fixed_desks' width=1000 crop='scale'}}", alt='Slide background')
-        img.ls-tn(src="{{c.url 'slider/fixed_desks' width=200 height=100 crop='scale'}}", alt='Slide thumbnail')
-        .ls-l.homeslider-header(style="top: 75%; left: 50%; font-size: 18px;")
-            h1 Fixed Desks
-        // h2.ls-l.overlay-text-subheader(style="top: 100px;")
-        //     |Be the coolest one in the room.
+    // .ls-slide(data-ls='slidedelay: 4000; transition3d: all;')
+    //     img.ls-bg(src="{{c.url 'slider/Boardroom_hs0qof' width=1000 crop='fill'}}", alt='Slide background')
+    //     img.ls-tn(src="{{c.url 'slider/Boardroom_hs0qof' width=200 height=100 crop='fill'}}", alt='Slide thumbnail')
+    //     .ls-l.homeslider-header(style="top: 80%; height: 100px; left: 50%;" data-ls="rotateyin: 90; rotateyout: 90;")
+    //         h3.slider-caption-header Community
+    //         p.slider-caption-subheader Check out our members.
+    //     a.ls-link(href='/people')
+    .ls-slide(data-ls='slidedelay: 4000; transition3d: all;')
+        img.ls-bg(src="{{c.url 'fixed' width=1000 crop='fill' gravity='north'}}", alt='Slide background')
+        img.ls-tn(src="{{c.url 'fixed' width=200 height=100 crop='fill' effect='improve'}}", alt='Slide thumbnail')
+        .ls-l.homeslider-header(style="top: 80%; height: 100px; left: 50%;" data-ls="rotateyin: 90; rotateyout: 90;")
+            h3.slider-caption-header Permanent Desks
+            p.slider-caption-subheader Click here for more information.
         a.ls-link(href='/join')
-    .ls-slide(data-ls='slidedelay: 4000;')
-        img.ls-bg(src="{{c.url 'cocreating' width=1000 crop='scale'}}", alt='Slide background')
-        img.ls-tn(src="{{c.url 'cocreating' width=200 height=100 crop='scale'}}", alt='Slide thumbnail')
-        .ls-l.homeslider-header(style="top: 75%; left: 50%; font-size: 18px;")
-            h1 Help IHB Create the Future
-            h1 Co-Creating the Future in Boulder
-            h4 #impacthubacademy
+    .ls-slide(data-ls='slidedelay: 4000; transition3d: all;')
+        img.ls-bg(src="{{c.url 'cocreating2' width=1024 height=300 crop='fill' gravity='north'}}", alt='Slide background')
+        img.ls-tn(src="{{c.url 'cocreating2' width=200 height=100 crop='fill'}}", alt='Slide thumbnail')
+        .ls-l.homeslider-header(style="top: 80%; height: 100px; left: 50%;" data-ls="rotateyin: 90; rotateyout: 90;")
+            h3.slider-caption-header Co-Creating the Future in Boulder
+            p.slider-caption-subheader #impacthubacademy
         a.ls-link(href='/join')

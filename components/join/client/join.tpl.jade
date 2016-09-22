@@ -1,10 +1,10 @@
 // div
 //     img.ui.fluid.image(src='/banners/event_banner_cut.jpg', alt='')
 //     h1.overlay-text.banner-text Join Impact Hub Boulder Today: Membership Options
-#join_slider(style='width: 800px; height: 100px;')
+#join_slider(style='width: 1000px; height: 300px;')
     .ls-slide(data-ls='slidedelay: 4000;')
-        img.ls-bg(src='/banners/event_banner_cut.jpg', alt='Slide background' height='100')
-        .ls-l.overlay-text.slider-text(style="top: 10px;") 
+        img.ls-bg(src="{{c.url 'color_coworking' width=1000 height=300 crop='fill' }}", alt='Slide background' height='100')
+        .ls-l.overlay-text.slider-text(style="top: 50%;") 
             | Join Impact Hub Boulder Today: Membership Options
 .ui.basic.segment.container
     .ui.basic.padded.segment
