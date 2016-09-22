@@ -9,17 +9,50 @@ Meteor.publish 'featured_events', ->
         
 
 
-Meteor.publish 'events', (selected_event_tags)->
+# Meteor.publish 'upcoming_events', (selected_event_tags)->
+#     check(arguments, [Match.Any])
+
+#     self = @
+#     match = {}
+#     if selected_event_tags.length > 0 then match.tags = $all: selected_event_tags
+
+#     today = Date.now()
+#     # match.start.local = $gt: today
+#     match["start.local"] = $lte: today
+
+#     console.log 'upcoming events match', match
+#     Events.find match,
+#         limit: 10
+#         # sort: 
+#         #     start_date: 1
+
+Meteor.publish 'selected_events', (selected_event_tags)->
     check(arguments, [Match.Any])
 
     self = @
     match = {}
     if selected_event_tags.length > 0 then match.tags = $all: selected_event_tags
-
-    Events.find match,
-        limit: 10
+    
+    Events.find match
+        # limit: 10
         # sort: 
         #     start_date: 1
+
+
+# Meteor.publish 'past_events', (selected_event_tags)->
+#     check(arguments, [Match.Any])
+
+#     self = @
+#     match = {}
+#     if selected_event_tags.length > 0 then match.tags = $all: selected_event_tags
+    
+#     Events.find match,
+#         limit: 10
+#         # sort: 
+#         #     start_date: 1
+
+
+
 
 Meteor.publish 'event_tags', (selected_event_tags)->
     check(arguments, [Match.Any])
@@ -106,7 +139,7 @@ Meteor.methods
                                 tags push category_object.name
                         
                         trimmed_tags = _.map tags, (tag) ->
-                            tag.trim()
+                            tag.trim().toLowerCase()
                         unique_tags = _.uniq trimmed_tags
                         event.tags = unique_tags 
                         

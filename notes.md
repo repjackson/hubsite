@@ -1,21 +1,11 @@
-
-<!--split tag categories and create more classic interface-->
-
-<!--moving slideshow on homepage_banner-->
-
 <!--slide that shows the coworking space-->
 <!--    full screen video-->
     
-
 <!--integrate with mailchimp-->
 <!--ability to add programs-->
 
-
-<!--sections within organizations-->
-
 <!--modal for academy, embedded slideshow-->
 
-<!--search for other organization-->
 <!--hover text for nonlogged in people-->
 
 <!--alpha beta opt in -->
@@ -36,8 +26,6 @@ rent page
 update favicon to ihb logo
 
 meet academy board members on about us page
-
-impact hub academy slider with first two slides of pitch deck
 
 events
     side links to add to calendar 

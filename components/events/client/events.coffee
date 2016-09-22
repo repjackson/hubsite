@@ -1,15 +1,9 @@
-Template.events.onCreated ->
-    @autorun -> Meteor.subscribe('events', selected_event_tags.array())
-    # selected_event_tags.clear()
-    
+
     
 Template.events.onRendered ->
     $('#event_slider').layerSlider
         autoStart: true
-        # firstLayer: 2
-        # skin: 'borderlesslight'
-        # skinsPath: '/static/layerslider/skins/'
-    
+
     
 Template.events.events
     'keydown #add_event': (e,t)->
@@ -21,12 +15,25 @@ Template.events.events
                 Meteor.call 'add_event', event_id, (err,res)->
                     t.find('#add_event').value = ''
 
-Template.events.helpers
-    events: -> 
-        match = {}
-        # if selected_event_tags.array and selected_event_tags.array().length > 0 then match.tags = $all: selected_event_tags.array()
-        Events.find match
 
+Template.events.onCreated -> @autorun -> Meteor.subscribe('selected_events', selected_event_tags.array())
+# Template.upcoming_events.onCreated -> @autorun -> Meteor.subscribe('upcoming_events', selected_event_tags.array())
+# Template.past_events.onCreated -> @autorun -> Meteor.subscribe('past_events', selected_event_tags.array())
+
+Template.upcoming_events.helpers
+    upcoming_events: -> 
+        match = {}
+        if selected_event_tags.array and selected_event_tags.array().length > 0 then match.tags = $all: selected_event_tags.array()
+        # Events.find {}
+
+
+Template.past_events.helpers
+    past_events: -> 
+        # match = {}
+        # if selected_event_tags.array and selected_event_tags.array().length > 0 then match.tags = $all: selected_event_tags.array()
+        Events.find {}
+
+Template.events.helpers
     options: ->
         # defaultView: 'basicWeek'
         defaultView: 'month'
@@ -36,12 +43,6 @@ Template.events.helpers
 Template.event_card.helpers
     event_tag_class: -> if @valueOf() in selected_event_tags.array() then 'red' else 'basic'
 
-    attending: -> if @attendee_ids and Meteor.userId() in @attendee_ids then true else false
-
-    can_edit: -> Meteor.userId()
-
-    event_messages: -> Messages.find event_id: @_id
-
     day: -> moment(@start.local).format("dddd, MMMM Do");
     start_time: -> moment(@start.local).format("h:mm a")
     end_time: -> moment(@end.local).format("h:mm a")
@@ -50,5 +51,5 @@ Template.event_card.helpers
         
 
 Template.event_card.events
-    'click .event_tag': ->
-        if @valueOf() in selected_event_tags.array() then selected_event_tags.remove @valueOf() else selected_event_tags.push @valueOf()
+    # 'click .event_tag': ->
+    #     if @valueOf() in selected_event_tags.array() then selected_event_tags.remove @valueOf() else selected_event_tags.push @valueOf()
