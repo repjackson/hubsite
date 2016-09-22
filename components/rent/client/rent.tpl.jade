@@ -22,31 +22,17 @@
     .ui.centered.four.cards
         .ui.card
             .image
-                img(src="{{c.url 'venue'}}")
+                img(src="{{c.url 'venue' height=500 crop='scale'}}")
                 // a(href="{{c.url 'venue'}}")
             .content
                 .header Venue
                 // .description
                 //     | If you’re looking to host a large event that will take more than just one of our spaces, we offer an option of renting the majority of our space. With the whole HUB at your disposal, you can have break-out groups, multiple, and concurrent sessions.
-                .extra
-                    .ui.mini.statistics
-                        .ui.statistic
-                            .value
-                                // img(src='/icons/chair_icon.png')
-                                | 150
-                            .label
-                                |Seats
-                        .ui.statistic
-                            .value
-                                // i.male.icon
-                                | 250
-                            .label
-                                |People
-                        .ui.statistic
-                            .value
-                                | 3,000
-                            .label
-                                | Square Feet
+                .extra.content
+                    div 150 Seats
+                    div 250 People
+                    span.right.floated
+                        | 3,000 Square Feet
         .ui.card
             .image
                 img(src="{{c.url 'middle_conference_room'}}")
@@ -55,23 +41,11 @@
                 .header Middle Conference Room
                 // .description
                 //     |Our most intimate meeting space, the Middle Conference Room offers a round table that can accommodate up to six people. The conference room features a large flat panel display (equipped w/ Apple TV) and glass walls.
-                .extra
-                    .ui.mini.statistics
-                        .ui.statistic
-                            .value
-                                | 6
-                            .label
-                                |Seats
-                        .ui.statistic
-                            .value
-                                | 8
-                            .label
-                                |People
-                        .ui.statistic
-                            .value
-                                | 100
-                            .label
-                                | Square Feet
+                .extra.content
+                    div 6 Seats
+                    div 8 People
+                    span.right.floated
+                        | 100 Square Feet
                     // .ui.mini.statistic
                     //     .value
                     //         i.dollar.icon
@@ -99,9 +73,8 @@
                 // .description
                 //     | The Southeast Conference Room can seat 8 comfortably around a table. The room features a large flat panel display (equipped w/ Apple TV), windows, and glass walls. A mobile white board is available upon request.
                 .extra.content
-                    span
-                        | 8 Seats
-                        | 12 People
+                    div 8 Seats
+                    div 12 People
                     span.right.floated
                         | 200 Square Feet
                     // .ui.mini.statistic
@@ -130,23 +103,11 @@
                 .header Boardroom
                 // .description
                 //     | Our largest-capacity conference room, the Board Room can seat 14 around a large table. The Board Room features a large flat panel display (equipped w/ Apple TV), glass walls and windows, and a credenza for supplies or food and beverages. A mobile white board is available upon request.
-                .extra
-                    .ui.mini.statistics
-                        .ui.statistic
-                            .value
-                                | 12
-                            .label
-                                |Seats
-                        .ui.statistic
-                            .value
-                                | 18
-                            .label
-                                |People
-                        .ui.statistic
-                            .value
-                                | 400
-                            .label
-                                | Square Feet
+                .extra.content
+                    div 12 Seats
+                    div 18 People
+                    span.right.floated
+                        | 400 Square Feet
                         // .ui.mini.statistic
                         //     .value
                         //         i.dollar.icon
@@ -213,7 +174,8 @@
     //     script(type='text/javascript', src='http://hubboulder.formstack.com/forms/js.php/event_reservations')
     //     noscript
     //         a(href='http://hubboulder.formstack.com/forms/event_reservations', title='Online Form') Online Form - Reserve Event Space at Impact Hub Boulder
-    .ui.center.aligned.basic.segment
-        a.ui.center.aligned.huge.black.basic.button(href='https://www.bookingbug.com/home/116291-Impact-Hub-Boulder' target='_window') 
-            .make-uppercase Reserve
+    .ui.centered.grid
+        .six.wide.column
+            a.impact-button-dark(href='https://www.bookingbug.com/home/116291-Impact-Hub-Boulder' target='_window') 
+                h2 Reserve
 

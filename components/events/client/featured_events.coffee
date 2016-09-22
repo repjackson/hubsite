@@ -6,9 +6,9 @@ Template.featured_events.onCreated ->
 
 Template.featured_events.helpers
     featured_events: -> 
-        Events.find 
-            featured: true
-
+        Events.find {featured: true}, sort: "start.local": 1
+        
+        
 Template.featured_event.helpers
     day: -> moment(@start_date).format("dddd, MMMM Do")
     start_time: -> moment(@start_date).format("h:mm a")

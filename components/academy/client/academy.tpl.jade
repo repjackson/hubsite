@@ -1,11 +1,44 @@
 // div
 //     img.ui.centered.fluid.image(src='/banners/academy_banner_small.jpg', alt='')
 //     h1.overlay-text.banner-text Impact HUB Academy (Coming Soon)
-#academy_slider(style='width: 800px; height: 400px;')
+#academy_slider(style='width: 1199px; height: 635px;')
     .ls-slide(data-ls='slidedelay: 2000;')
-        img.ls-bg(src="{{c.url 'academy_banner' width=800 height=400 effect='blur'}}", alt='Slide background')
-        img.ls-l(src="{{c.url 'academy_logo' width=100 height=100 crop='fill' }}",  alt="Image layer" style="top: 10px; left: 10px;")
-        .ls-l.overlay-text.slider-text(style="top: 30px; left: 120px;") 
-            | Impact HUB Academy
-        .ls-l.overlay-text-subheader(style="top: 150px;") 
-            | Impact Hub Academy is a brand new non profit 501c3 established as a tandem organization, created with the unique ability to leverage Impact Hub Boulder and the Impact Hub Global Network, for the purpose of delivering quality education programming focused on creating organizations focused on delivering positive social and environmental impact.
+        img.ls-bg(src="{{c.url 'academy_banner' height=635 width=1199 crop='fill' gravity='face'}}", alt='Slide background')
+        // img.ls-l(src="{{c.url 'academy_logo' width=100 height=100 crop='fill' }}",  alt="Image layer" style="top: 10px; left: 10px;")
+        .ls-l.overlay-text.slider-text(style="top: 50%;") 
+            | Introducing Impact HUB Academy
+.ui.container.basic.padded.segment
+    .ui.stackable.two.column.grid
+        .ui.six.wide.column
+            img.ui.centered.medium.image(src="{{c.url 'academy_logo'}}")
+        .ui.ten.wide.column
+            .ui.padded.basic.segment
+                h1.ui.dividing.header
+                    | Impact HUB Academy
+                .large-text
+                    | Impact Hub Academy is a brand new non profit 501c3 established as a tandem organization, created with the unique ability to leverage Impact Hub Boulder and the Impact Hub Global Network, for the purpose of delivering quality education programming focused on creating organizations focused on delivering positive social and environmental impact.
+    .ui.basic.padded.segment
+        img.ui.centered.bordered.image(src="{{c.url 'flatirons'}}")
+    .ui.text.container
+        .ui.basic.segment
+            h2.ui.dividing.header Mission
+            .large-text Our mission is to provide resources, inspiration and connections to enable enterprising ideas for sustainable impact.
+        
+            h2.ui.dividing.header Vision 
+            .large-text To build a thriving eco-system for collaboration through our programmatic initiatives, workshops and seminars resulting in greater positive impact with measurable business success and economic return.  
+        
+            h2.ui.dividing.header Values 
+            .large-text Collaboration.    Education.    Entrepreneurial Spirit.  Better Business.    Community.    Creativity. 
+    .ui.hidden.divider
+    .ui.text.container
+        h1.impact-header Positioning
+        .ui.basic.segment
+            h2.ui.dividing.header Background
+            .large-text There are currently countless initiatives at work on creating content for social capital, however many of these efforts have become isolated and competitive, limiting their scope and reach. 
+            
+            h2.ui.dividing.header Action 
+            .large-text The Impact HUB Academy is positioned to become a leading backbone organization in the Boulder area and beyond with a strategic focus on supporting aligned activities in order to address large-scale issues and address complex local and global challenges. With an emphasis on business and sustainable social impact, members of the Academy are invited to become an alliance of change-makers and enterprises, helping us to source challenges which will be fed into our programs for resolution and business creation.  
+            
+            h2.ui.dividing.header Outcome
+            .large-text The outcome being greater collective impact and collaboration among previously disparate organizations, and the building of a stronger social entrepreneurial global community.  As the Academy advances, we will be focusing on Impact Measurement by collecting local and region-wide workforce data in a reporting system that tracks results to improve performance for the Academy and our program partners.
+

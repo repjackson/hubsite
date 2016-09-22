@@ -29,5 +29,21 @@ meet academy board members on about us page
 
 events
     side links to add to calendar 
-
+    sort by date
+    manually change photo
+    editing description
+    banner taller and clearer
+    
+academy
+    donate button
+    'support'
+    up through positioning from pitchdeck
+    
+slider
+    italicize font
+    make pinned map slide
+    cocreating our 
+    #impactboulderacademy
+    anchor caption to bottom, include dots inside
+    
 $ DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy --settings settings.json www.collider.cloud

@@ -4,8 +4,7 @@ Events.allow
     remove: (userId, doc) -> doc.author_id is userId or Roles.userIsInRole(userId, 'admin')
 
 Meteor.publish 'featured_events', ->
-    Events.find
-        featured: true
+    Events.find {featured: true}, sort: "start.local": -1
         
 
 

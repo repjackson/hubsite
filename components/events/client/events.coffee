@@ -22,16 +22,14 @@ Template.events.onCreated -> @autorun -> Meteor.subscribe('selected_events', sel
 
 Template.upcoming_events.helpers
     upcoming_events: -> 
-        match = {}
-        if selected_event_tags.array and selected_event_tags.array().length > 0 then match.tags = $all: selected_event_tags.array()
-        # Events.find {}
-
+        today = new Date()
+        Events.find {"start.local": $gte: today.toISOString()}, sort: "start.local": 1
 
 Template.past_events.helpers
     past_events: -> 
-        # match = {}
-        # if selected_event_tags.array and selected_event_tags.array().length > 0 then match.tags = $all: selected_event_tags.array()
-        Events.find {}
+        today = new Date()
+        Events.find {"start.local": $lte: today.toISOString()}, sort: "start.local": 1
+            
 
 Template.events.helpers
     options: ->
