@@ -1,13 +1,13 @@
-{ request } = require "meteor/froatsnook:request"
+# { request } = require "meteor/froatsnook:request"
 
 Docs.allow
     insert: (userId, doc) -> doc.author_id is userId
     update: (userId, doc) -> doc.author_id is userId or Roles.userIsInRole(userId, 'admin')
     remove: (userId, doc) -> doc.author_id is userId or Roles.userIsInRole(userId, 'admin')
 
-Meteor.startup ->
-    reCAPTCHA.config privatekey: Meteor.settings.recaptcha_private
-    return
+# Meteor.startup ->
+#     reCAPTCHA.config privatekey: Meteor.settings.recaptcha_private
+#     return
 
 #SERVER
 Cloudinary.config
@@ -80,23 +80,23 @@ Meteor.publish 'tags', (selected_tags, filter)->
 
 
 Meteor.methods 
-    formSubmissionMethod: (formData, captchaData) ->
-        check(arguments, [Match.Any])
-        verifyCaptchaResponse = reCAPTCHA.verifyCaptcha(@connection.clientAddress, captchaData)
-        if !verifyCaptchaResponse.success
-            console.log 'reCAPTCHA check failed!', verifyCaptchaResponse
-            throw new (Meteor.Error)(422, 'reCAPTCHA Failed: ' + verifyCaptchaResponse.error)
-        else
-            console.log 'reCAPTCHA verification passed!'
-        #do stuff with your formData
-        true
+    # formSubmissionMethod: (formData, captchaData) ->
+    #     check(arguments, [Match.Any])
+    #     verifyCaptchaResponse = reCAPTCHA.verifyCaptcha(@connection.clientAddress, captchaData)
+    #     if !verifyCaptchaResponse.success
+    #         console.log 'reCAPTCHA check failed!', verifyCaptchaResponse
+    #         throw new (Meteor.Error)(422, 'reCAPTCHA Failed: ' + verifyCaptchaResponse.error)
+    #     else
+    #         console.log 'reCAPTCHA verification passed!'
+    #     #do stuff with your formData
+    #     true
         
-    download_image: (image_url) ->
-        #https://atmospherejs.com/froatsnook/request
-        result = request.getSync(image_url, encoding: null)
-        console.log 'server typeof', typeof result
-        image = 'data:image/png;base64,' + new Buffer(result.body).toString('base64')
-        return result
+    # download_image: (image_url) ->
+    #     #https://atmospherejs.com/froatsnook/request
+    #     result = request.getSync(image_url, encoding: null)
+    #     console.log 'server typeof', typeof result
+    #     image = 'data:image/png;base64,' + new Buffer(result.body).toString('base64')
+    #     return result
 
 
 

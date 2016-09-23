@@ -1,7 +1,7 @@
-#about_slider(style='width: 800px; height: 100px;')
+#about_slider(style='width: 1000px; height: 300px;')
     .ls-slide(data-ls='slidedelay: 2000;')
-        img.ls-bg(src="{{c.url 'about_collage' width=800 height=100 crop='fill' }}", alt='Slide background')
-        .ls-l.overlay-text.slider-text(style="top: 30px;") 
+        img.ls-bg(src="{{c.url 'about_collage' width=1000 height=300 crop='fill' gravity='north'}}", alt='Slide background')
+        .ls-l.overlay-text.slider-text(style="top: 50%;") 
             | About Impact Hub Boulder
 .ui.container
     .ui.basic.padded.segment

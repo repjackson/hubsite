@@ -1,7 +1,7 @@
 template(name='featured_posts')
     .ui.attached.very.padded.basic.segment.container
         .ui.container
-            h1.ui.make-uppercase.header Featured Posts
+            h1.impact-header Featured Posts
             .ui.four.stackable.cards
                 each featured_posts
                     // +post
@@ -15,7 +15,7 @@ template(name='featured_post')
                 img.ui.image.featured_post_title(src="{{c.url image_id width=400 height=400 gravity='face' crop='fill'}}")
         .content
             .header
-                a.featured_post_title
+                a(href="/post/view/#{this._id}")
                     h3.ui.header #{title}
             .description
                 // .ui.header Post Topics:

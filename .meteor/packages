@@ -32,9 +32,7 @@ standard-minifiers@1.0.6
 dburles:collection-helpers
 momentjs:moment
 mizzao:autocomplete
-drewy:datetimepicker
 matb33:collection-hooks
-mizzao:user-status
 kevohagan:sweetalert
 splendido:accounts-meld
 service-configuration@1.0.10
@@ -46,7 +44,6 @@ froala:editor
 perak:codemirror
 email@1.1.17
 accounts-base@1.2.11
-altapp:recaptcha
 raix:handlebar-helpers
 lepozepo:cloudinary
 check@1.2.3
@@ -56,7 +53,6 @@ alanning:roles
 meteorhacks:fast-render
 accounts-google
 http
-froatsnook:request
 modules
 dburles:google-maps
 underscore

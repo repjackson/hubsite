@@ -7,9 +7,9 @@ template(name='admin_nav')
             a.item(href='/admin/user_management' class="{{isActivePath '/admin/user_management'}}")
                 i.users.icon
                 |User Management
-            // a.item(href='/admin/content_management' class="{{isActivePath '/admin/content_management'}}")
-            //     i.archive.icon
-            //     |Content Management
+            a.item(href='/admin/content_management' class="{{isActivePath '/admin/content_management'}}")
+                i.archive.icon
+                |Content Management
             a.item(href='/admin/newsletter' class="{{isActivePath '/admin/newsletter'}}")
                 i.archive.icon
                 |Newsletter

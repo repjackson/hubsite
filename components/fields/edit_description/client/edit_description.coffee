@@ -53,5 +53,5 @@ Template.edit_description.onRendered ->
                   'selectAll'
                   'html'
                 ]
-        ), 500
+        ), 5000
 

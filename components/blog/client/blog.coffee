@@ -1,13 +1,16 @@
-Template.posts.onCreated ->
+Template.blog.onCreated ->
     @autorun -> Meteor.subscribe('docs', selected_tags.array(), 'post')
-    selected_tags.clear()
+
+Template.blog.onRendered ->
+    $('#blog_slider').layerSlider
+        autoStart: true
 
 
-
-Template.posts.helpers
-    posts: -> Docs.find {},
-        sort:
-            publish_date: 1
+Template.blog.helpers
+    posts: -> 
+        Docs.find {},
+            sort:
+                publish_date: 1
             
 
 

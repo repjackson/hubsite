@@ -1,7 +1,7 @@
 
-FlowRouter.route '/posts', action: ->
+FlowRouter.route '/blog', action: ->
     BlazeLayout.render 'layout', 
-        main: 'posts'
+        main: 'blog'
 
 FlowRouter.route '/post/edit/:doc_id', action: (params) ->
     BlazeLayout.render 'layout',

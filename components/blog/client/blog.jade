@@ -1,12 +1,21 @@
-template(name='posts')
-    div
-        img.ui.centered.fluid.image(src='/banners/blog_banner.jpg', alt='')
-        h1.overlay-text.banner-text Impact Hub Boulder Blog
-    +cloud filter='post'
+template(name='blog')
+    #blog_slider(style='width: 1000px; height: 300px;')
+        .ls-slide(data-ls='slidedelay: 2000;')
+            img.ls-bg(src="{{c.url 'event_banner' width=1000 height=300 crop='fill' }}", alt='Slide background')
+            h1.ls-l.overlay-text.slider-text(style="top: 50%; text-size: 300%;") 
+                | Impact Hub Boulder Blog
     .ui.container.basic.segment
-        .ui.cards
-            each posts
-                +post
+        .ui.stackable.grid
+            .twelve.wide.column
+                h1.impact-header Recent Posts
+                .ui.cards
+                    each posts
+                        +post
+            .four.wide.column
+                // .ui.big.red.fluid.button.make-uppercase Host Your Event Here
+                +cloud filter='post'
+
+
 
 
 template(name='post')

@@ -44,7 +44,7 @@ template(name='top_nav')
 
 template(name='nav')
     .red-nav-bar
-        .ui.red.inverted.large.fluid.five.item.stackable.menu
+        .ui.red.inverted.large.fluid.six.item.stackable.menu
             .ui.container
                 a.item(href='/about' class="{{isActivePath '/about'}}")
                     // i.info.circle.icon
@@ -72,12 +72,9 @@ template(name='nav')
                 a.item(href='/join' class="{{isActivePath '/join'}}")
                     // i.add.user.icon
                     strong Join
-                // a.item(href='/posts' class="{{isActivePath '/posts'}}")
-                //     // i.file.text.outline.icon
-                //     strong Blog
+                a.item(href='/blog' class="{{isActivePath '/blog'}}")
+                    // i.file.text.outline.icon
+                    strong Blog
                 a.item(href='/rent' class="{{isActivePath '/rent'}}")
                     // i.edit.icon
                     strong Rent Our Space
-                // a.item(href='/wins' class="{{isActivePath '/wins'}}")
-                //     i.thumbs.up.icon
-                //     | Wins/Challenges
