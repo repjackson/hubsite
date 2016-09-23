@@ -1,11 +1,35 @@
 #layerslider(style='width:1000px; height: 300px;')
+    .ls-slide(data-ls='slidedelay: 4000;')
+        img.ls-bg(src="{{c.url 'color_coworking' width=1000 height=300 crop='fill' }}", alt='Slide background' height='100')
+        .ls-l.homeslider-header(style="top: 80%; height: 100px; left: 50%;" data-ls="rotateyin: 90; rotateyout: 90;")
+            h3.slider-caption-header Join Impact Hub Boulder Today
+            p.slider-caption-subheader Check out our membership options.
+        a.ls-link(href='/join')
+    .ls-slide(data-ls='slidedelay: 4000;')
+        img.ls-bg(src="{{c.url 'fancy_about_slide' width=1000 height=300 crop='fill' }}", alt='Slide background' height='100')
+        // .ls-l.homeslider-header(style="top: 80%; height: 100px; left: 50%;" data-ls="rotateyin: 90; rotateyout: 90;")
+        //     h3.slider-caption-header Join Impact Hub Boulder Today
+        //     p.slider-caption-subheader Check out our membership options.
+        a.ls-link(href='/about')
+    .ls-slide(data-ls='slidedelay: 4000;')
+        img.ls-bg(src="{{c.url 'fancy_coworking_slide' width=1000 height=300 crop='fill' }}", alt='Slide background' height='100')
+        // .ls-l.homeslider-header(style="top: 80%; height: 100px; left: 50%;" data-ls="rotateyin: 90; rotateyout: 90;")
+        //     h3.slider-caption-header Join Impact Hub Boulder Today
+        //     p.slider-caption-subheader Check out our membership options.
+        a.ls-link(href='/rent')
+    .ls-slide(data-ls='slidedelay: 4000;')
+        img.ls-bg(src="{{c.url 'slider_map' width=1000 height=300 crop='fill' }}", alt='Slide background' height='100')
+        .ls-l.homeslider-header(style="top: 80%; height: 100px; left: 50%; width: 50%;" data-ls="rotateyin: 90; rotateyout: 90;")
+            h3.slider-caption-header Positive Impact on a Global Scale
+            p.slider-caption-subheader Impact Hub is a rapidly expanding, diverse global network of over 13,000+ members in 81 open hubs.
+        a.ls-link(href='http://www.impacthub.net/where-are-impact-hubs/' target='_blank')
     .ls-slide(data-ls='slidedelay: 4000; transition3d: all;')
         img.ls-bg(src="{{c.url 'academy_banner' width=1199  height=300 crop='crop' gravity='north'}}", alt='Slide background')
         img.ls-tn(src="{{c.url 'academy_banner' width=200 height=100 crop='fill'}}", alt='Slide thumbnail')
         .ls-l.homeslider-header(style="top: 80%; height: 100px; left: 50%;" data-ls="rotateyin: 90; rotateyout: 90;")
             // i.university.icon
-            h3.slider-caption-header Academy
-            p.slider-caption-subheader Learn more about our exciting new direction.
+            h3.slider-caption-header Impact HUB Academy
+            p.slider-caption-subheader Learn more about our exciting new endeavor.
         a.ls-link(href='/academy')
     .ls-slide(data-ls='slidedelay: 4000; transition3d: all;')
         img.ls-bg(src="{{c.url 'slider/Events_m4brwk' width=1000 height=300 crop='fill' gravity='north'}}", alt='Slide background')
