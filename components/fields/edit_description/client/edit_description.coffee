@@ -1,12 +1,17 @@
-# Template.edit_description.events
-#     "blur #description": (e) ->
-#         doc_id = FlowRouter.getParam('doc_id')
-#         description = $('#description').val()
+Template.edit_description.events
+    'click #save_description': (e,t)->
+        html = t.$('div.froala-reactive-meteorized-override').froalaEditor('html.get', true)
+        doc_id = FlowRouter.getParam('doc_id')
 
-#         Docs.update doc_id,
-#             description: description
+        Docs.update doc_id,
+            $set: description: html
 
-
+# Template.edit_description.onRendered ->
+#     tmpl = this
+#     html = tmpl.$('div.froala-reactive-meteorized').froalaEditor('html.get', true)
+#     console.log @
+#     console.log html
+#     return
 
 # Template.edit_description.onRendered ->
 #     Meteor.setTimeout (->
@@ -64,16 +69,17 @@ Template.edit_description.helpers
             _value: self.current_doc.description
             _keepMarkers: true
             _className: 'froala-reactive-meteorized-override'
-            toolbarInline: true
+            toolbarInline: false
             initOnClick: false
             tabSpaces: false
+            height: 300
             '_onsave.before': (e, editor) ->
                 # Get edited HTML from Froala-Editor
                 newHTML = editor.html.get(true)
                 # Do something to update the edited value provided by the Froala-Editor plugin, if it has changed:
                 if !_.isEqual(newHTML, self.current_doc.description)
                     console.log 'onSave HTML is :' + newHTML
-                    myCollection.update { _id: self.current_doc._id }, $set: description: newHTML
+                    Docs.update { _id: self.current_doc._id }, $set: description: newHTML
                 false
                 # Stop Froala Editor from POSTing to the Save URL
         }
