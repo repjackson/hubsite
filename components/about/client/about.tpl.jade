@@ -1,8 +1,8 @@
-#about_slider(style='width: 1000px; height: 300px;')
-    .ls-slide(data-ls='slidedelay: 2000;')
-        img.ls-bg(src="{{c.url 'about_collage' width=1000 height=300 crop='fill' gravity='north'}}", alt='Slide background')
-        .ls-l.overlay-text.slider-text(style="top: 50%;") 
-            | About Impact Hub Boulder
+.ui.container
+    img.ui.fluid.image(src="{{c.url 'about_collage'}}", alt='Slide background')
+    h1.ui.center.aligned.header    
+        | About Impact Hub Boulder
+    // a(href='#international') Test link
 .ui.container
     .ui.basic.padded.segment
         p.large-text
@@ -11,7 +11,7 @@
             |  community and co-working space, Impact Hub Boulder provides a productive workspace, effective programming, and a collaborative network to accelerate our members’ efforts towards creating positive impact in the world. Become a member, enjoy our 10,000+ square foot co-working space, connect with our professional and welcoming community of members, attend an event, and enjoy many other benefits.
     .ui.hidden.divider
     .ui.basic.padded.segment
-        h2.impact-header About the International Impact Hub Network
+        h2#international.impact-header About the International Impact Hub Network
         p.large-text
             |Impact Hub Boulder is a proud member of the growing 
             a(href='http://www.impacthub.net/') 
@@ -179,9 +179,9 @@
             .extra.content
                 a(href='https://www.linkedin.com/in/gregberry' target="_blank")
                     i.linkedin.icon
-    .ui.hidden.section.divider
-    h2.impact-header Partners and Sponsors
-    img.ui.fluid.image(src='http://impacthubboulder.com/wp-content/uploads/2016/03/sponsors_for_main_page_new_20160319.jpg', alt='Partners and sponsors of Impact Hub Boulder')
-    .ui.hidden.section.divider
-    h2.impact-header Impact Hub Boulder Office Holders
-    img.ui.fluid.image(src='http://impacthubboulder.com/wp-content/uploads/2016/03/offices_for_main_page.jpg', alt='Partners and sponsors of Impact Hub Boulder')
+    // .ui.hidden.section.divider
+    // h2.impact-header Partners and Sponsors
+    // img.ui.fluid.image(src='http://impacthubboulder.com/wp-content/uploads/2016/03/sponsors_for_main_page_new_20160319.jpg', alt='Partners and sponsors of Impact Hub Boulder')
+    // .ui.hidden.section.divider
+    // h2.impact-header Impact Hub Boulder Office Holders
+    // img.ui.fluid.image(src='http://impacthubboulder.com/wp-content/uploads/2016/03/offices_for_main_page.jpg', alt='Partners and sponsors of Impact Hub Boulder')

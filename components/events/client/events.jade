@@ -1,26 +1,26 @@
 template(name='events')
-    #event_slider(style='width: 1000px; height: 300px;')
-        .ls-slide(data-ls='slidedelay: 2000;')
-            img.ls-bg(src="{{c.url 'event_banner' width=1000 height=300 crop='fill' }}", alt='Slide background')
-            h1.ls-l.overlay-text.slider-text(style="top: 50%; text-size: 300%;") 
-                | Events at Impact Hub Boulder
     .ui.container
-        .ui.hidden.divider
-        if isInRole 'admin'
-            .ui.labeled.input
-                .ui.basic.label 
-                    i.red.configure.icon
-                    |Add Eventbrite Event by Id
-                input#add_event(type='text')
-        .ui.hidden.divider
-        .ui.stackable.grid
-            .twelve.wide.column
-                +featured_events
-                +upcoming_events
-                +past_events
-            .four.wide.column
-                .ui.big.red.fluid.button.make-uppercase Host Your Event Here
-                +event_cloud
+        #event_slider(style='width: 1000px; height: 300px;')
+            .ls-slide(data-ls='slidedelay: 2000;')
+                img.ls-bg(src="{{c.url 'vinetta' width=1000 height=300 crop='fill' gravity='north' effect='improve'}}", alt='Slide background')
+                h1.ls-l.overlay-text.slider-text(style="top: 50%; text-size: 300%;") 
+                    | Events at Impact Hub Boulder
+        .ui.basic.segment
+            if isInRole 'admin'
+                .ui.labeled.input
+                    .ui.basic.label 
+                        i.red.configure.icon
+                        |Add Eventbrite Event by Id
+                    input#add_event(type='text')
+                .ui.hidden.divider
+            .ui.stackable.grid
+                .twelve.wide.column
+                    +featured_events
+                    +upcoming_events
+                    +past_events
+                .four.wide.column
+                    .ui.big.red.fluid.button.make-uppercase Host Your Event Here
+                    +event_cloud
 
 
 template(name='upcoming_events')

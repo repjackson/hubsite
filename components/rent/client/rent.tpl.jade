@@ -1,9 +1,9 @@
-#rent_slider(style='width: 1000px; height: 300px;')
-    .ls-slide(data-ls='slidedelay: 4000;')
-        img.ls-bg(src="{{c.url 'color_coworking' width=1000 height=300 crop='fill' }}", alt='Slide background' height='100')
-        .ls-l.overlay-text.slider-text(style="top: 50%;") 
-            | Rent A Conference Room or Event Space
-.ui.basic.segment.container
+.ui.container
+    #rent_slider(style='width: 1000px; height: 300px;')
+        .ls-slide(data-ls='slidedelay: 4000;')
+            img.ls-bg(src="{{c.url 'coworking' effect='improve' width=1000 height=300 crop='fill' }}", alt='Slide background' height='100')
+            .ls-l.overlay-text.slider-text(style="top: 50%;") 
+                | Rent A Conference Room or Event Space
     .ui.basic.segment
         .large-text
             p Impact Hub Boulder offers a number of options for event rentals from large social gatherings (~200 people), to amphitheater style speaker series (up to roughly ~125 people), to medium and small workshop settings. 
@@ -22,7 +22,7 @@
     .ui.centered.four.cards
         .ui.card
             .image
-                img(src="{{c.url 'venue' height=500 crop='scale'}}")
+                img(src="{{c.url 'venue' height=195 width=300  crop='fill'}}")
                 // a(href="{{c.url 'venue'}}")
             .content
                 .header Venue
@@ -35,7 +35,7 @@
                         | 3,000 Square Feet
         .ui.card
             .image
-                img(src="{{c.url 'middle_conference_room'}}")
+                img(src="{{c.url 'middle_conference_room' height=200 crop='fit'}}")
                 // a(href="{{c.url 'middle_conference_room'}}")
             .content
                 .header Middle Conference Room
@@ -66,7 +66,7 @@
                     //         |Work Members
         .ui.card
             .image
-                img(src="{{c.url 'se_conference_room'}}")
+                img(src="{{c.url 'se_conference_room' height=200 crop='fit'}}")
                 // a(href="{{c.url 'se_conference_room'}}")
             .content
                 .header Southeast Conference Room
@@ -97,7 +97,7 @@
                     //         |Work Members
         .ui.card
             .image
-                img(src="{{c.url 'board_room'}}")
+                img(src="{{c.url 'board_room' height=200 crop='fit'}}")
                 // a(href="{{c.url 'board_room'}}")
             .content
                 .header Boardroom
@@ -127,55 +127,55 @@
                         //     .label
                         //         |Work Members
 
-.ui.padded.basic.segment.container
-    // table.ui.fixed.basic.definition.celled.table
-    //     thead
-    //         tr.center.aligned.row
-    //             th.bottom.aligned 
-    //             th.bottom.aligned 
-    //                 h3 Non-Members
-    //             th.bottom.aligned 
-    //                 h3 Connect Members
-    //             th.bottom.aligned 
-    //                 h3 Work Members
-    //     tbody
-    //         tr.center.aligned
-    //             td.right.aligned Board Room
-    //             td 
-    //                 h4 $100/hour
-    //             td 
-    //                 h4 $30/hour
-    //             td 
-    //                 h4 $20/hour
-    //         tr.center.aligned
-    //             td.right.aligned Southeast
-    //             td 
-    //                 h4 $50/hour
-    //             td 
-    //                 h4 $20/hour
-    //             td 
-    //                 h4 $10/hour
-    //         tr.center.aligned
-    //             td.right.aligned Middle
-    //             td 
-    //                 h4 $50/hour
-    //             td 
-    //                 h4 $10/hour
-    //             td 
-    //                 h4 $5/hour
+    .ui.padded.basic.segment.container
+        // table.ui.fixed.basic.definition.celled.table
+        //     thead
+        //         tr.center.aligned.row
+        //             th.bottom.aligned 
+        //             th.bottom.aligned 
+        //                 h3 Non-Members
+        //             th.bottom.aligned 
+        //                 h3 Connect Members
+        //             th.bottom.aligned 
+        //                 h3 Work Members
+        //     tbody
+        //         tr.center.aligned
+        //             td.right.aligned Board Room
+        //             td 
+        //                 h4 $100/hour
+        //             td 
+        //                 h4 $30/hour
+        //             td 
+        //                 h4 $20/hour
+        //         tr.center.aligned
+        //             td.right.aligned Southeast
+        //             td 
+        //                 h4 $50/hour
+        //             td 
+        //                 h4 $20/hour
+        //             td 
+        //                 h4 $10/hour
+        //         tr.center.aligned
+        //             td.right.aligned Middle
+        //             td 
+        //                 h4 $50/hour
+        //             td 
+        //                 h4 $10/hour
+        //             td 
+        //                 h4 $5/hour
+        
+        p.large-text  Payment must be received at the time you make your reservation. Cancellations made within 7 days of your reservation will not be refunded.
     
-    p.large-text  Payment must be received at the time you make your reservation. Cancellations made within 7 days of your reservation will not be refunded.
-
-    // .formstack_embed
-    //     script(src='https://us.bookingbug.com/widget/all.js?id=usw1528057&c1=transparent&c2=F5F5F5&c3=DDDDDD&c4=ADADAD&c5=FFFFFF&c6=087f94&c7=274361&c8=EBEBEB&c9=88C66F&f1=&style=medium&icons=&is_rounded=1&width=570&height=570', type='text/javascript')
-    // h2 Host Your Event At Impact Hub Boulder
-    // | Impact Hub Boulder's event space is in high demand and reservations should be made 45 days in advance. Please complete the brief form below to connect with our events manager for an initial quote and to determine date availability. 
-    // .formstack_embed
-    //     script(type='text/javascript', src='http://hubboulder.formstack.com/forms/js.php/event_reservations')
-    //     noscript
-    //         a(href='http://hubboulder.formstack.com/forms/event_reservations', title='Online Form') Online Form - Reserve Event Space at Impact Hub Boulder
-    .ui.centered.grid
-        .six.wide.column
-            a.impact-button-dark(href='https://www.bookingbug.com/home/116291-Impact-Hub-Boulder' target='_window') 
-                h2 Reserve
-
+        // .formstack_embed
+        //     script(src='https://us.bookingbug.com/widget/all.js?id=usw1528057&c1=transparent&c2=F5F5F5&c3=DDDDDD&c4=ADADAD&c5=FFFFFF&c6=087f94&c7=274361&c8=EBEBEB&c9=88C66F&f1=&style=medium&icons=&is_rounded=1&width=570&height=570', type='text/javascript')
+        // h2 Host Your Event At Impact Hub Boulder
+        // | Impact Hub Boulder's event space is in high demand and reservations should be made 45 days in advance. Please complete the brief form below to connect with our events manager for an initial quote and to determine date availability. 
+        // .formstack_embed
+        //     script(type='text/javascript', src='http://hubboulder.formstack.com/forms/js.php/event_reservations')
+        //     noscript
+        //         a(href='http://hubboulder.formstack.com/forms/event_reservations', title='Online Form') Online Form - Reserve Event Space at Impact Hub Boulder
+        .ui.centered.grid
+            .six.wide.column
+                a.impact-button-dark(href='https://www.bookingbug.com/home/116291-Impact-Hub-Boulder' target='_window') 
+                    h2 Reserve
+    

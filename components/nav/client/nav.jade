@@ -43,38 +43,24 @@ template(name='top_nav')
 
 
 template(name='nav')
-    .red-nav-bar
-        .ui.red.inverted.large.fluid.six.item.stackable.menu
-            .ui.container
+    .ui.container
+        .red-nav-bar
+            .ui.red.inverted.large.six.item.stackable.menu
                 a.item(href='/about' class="{{isActivePath '/about'}}")
-                    // i.info.circle.icon
-                    // strong.make-uppercase About
                     strong About
                 // a.item(href='/people' class="{{isActivePath '/people'}}")
-                //     // i.users.icon
-                //     // strong.make-uppercase People
                 //     strong Members
                 a.item(href='/events' class="{{isActivePath '/events'}}")
-                    // i.calendar.icon
-                    // strong.make-uppercase Events
                     strong Events
                 // a.item(href='/organizations' class="{{isActivePath '/organizations'}}")
-                //     // i.building.icon
-                //     // strong.make-uppercase In-House
                 //     strong In-House
                 a.item(href='/academy' class="{{isActivePath '/academy'}}")
-                    // i.university.icon
-                    // strong.make-uppercase Programs
                     strong Programs
                 // a.item(href='/media' class="{{isActivePath '/media'}}")
-                    i.photo.icon
-                //     strong.make-uppercase Media
                 a.item(href='/join' class="{{isActivePath '/join'}}")
-                    // i.add.user.icon
                     strong Join
-                a.item(href='/blog' class="{{isActivePath '/blog'}}")
-                    // i.file.text.outline.icon
-                    strong Blog
+                if isInRole 'admin'
+                    a.item(href='/blog' class="{{isActivePath '/blog'}}")
+                        strong Blog
                 a.item(href='/rent' class="{{isActivePath '/rent'}}")
-                    // i.edit.icon
                     strong Rent Our Space

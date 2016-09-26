@@ -56,3 +56,4 @@ modules
 dburles:google-maps
 underscore
 froala:editor-reactive
+tomwasd:flow-router-autoscroll

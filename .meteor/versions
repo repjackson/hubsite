@@ -141,6 +141,7 @@ templating@1.2.15
 templating-compiler@1.2.15
 templating-runtime@1.2.15
 templating-tools@1.0.5
+tomwasd:flow-router-autoscroll@0.0.2
 tracker@1.1.0
 twitter@1.1.12
 u2622:persistent-session@0.4.4

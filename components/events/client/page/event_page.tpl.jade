@@ -1,91 +1,92 @@
 with event
-    // +back_button
-    .header-wrapper
-        img.ui.centered.fluid.image(src=big_image_url)
-        // if image_id
-        //     img.ui.centered.image(src="{{c.url image_id width=800 height=400 crop='fill'}}")
-        // else
-        //     img.ui.centered.image(src="/img/about_mashup_one.jpg")
-        .event-header
-            h1 #{name.text}
-            // h3 #{day} from #{start_time} to #{end_time}
-            // .overlay-text-subheader
-            h2
-                |#{day} 
-                .sub.header #{start_time} to #{end_time}
-    .ui.container.basic.segment
-        .ui.divided.grid
-            .eleven.wide.column
-                // h1.ui.header #{title}
-                .description
-                    // |Event Tags:
-                    |!{description.html}
-                // .ui.divider
-                // each tags
-                //     .ui.basic.label #{this}
-                h3.impact-header Organizer Information
-                with organizer
-                    h2.ui.header 
-                        .ui.tiny.image
-                            img(src=logo.url)
-                        |#{name}
-                    |!{description.html}
-                    a.ui.icon.basic.button(href="https://www.facebook.com/#{facebook}" target="_blank")
-                        i.facebook.link.icon
-                    a.ui.icon.basic.button(href="https://twitter.com/#{twitter}" target="_blank")
-                        i.twitter.link.icon
-                    a.ui.basic.button(href=url target='_blank') 
-                        i.external.icon
-                        |Eventbrite Profile
-                // .ui.divider
-                // a.ui.basic.button(href="/events")
-                //     i.arrow.left.icon
-                //     |Events
-            .five.wide.column
-                a.ui.basic.fluid.black.big.button(href=url target='_window')
-                    i.ticket.icon
-                    |Register on Eventbrite
-                h3.ui.dividing.header.make-uppercase When
-                .ui.basic.segment
-                    h4
-                        if end_date
-                            div #{day} 
-                            div #{start_time} to #{end_time}
-                        else
-                            |#{day} at #{start_time}
-                h3.ui.dividing.header.make-uppercase Where
-                with venue
+    .ui.container
+        // +back_button
+        .header-wrapper
+            img.ui.centered.fluid.image(src=big_image_url)
+            // if image_id
+            //     img.ui.centered.image(src="{{c.url image_id width=800 height=400 crop='fill'}}")
+            // else
+            //     img.ui.centered.image(src="/img/about_mashup_one.jpg")
+            .event-header
+                h2 #{name.text}
+                // h3 #{day} from #{start_time} to #{end_time}
+                // .overlay-text-subheader
+                h3
+                    |#{day} 
+                    .sub.header #{start_time} to #{end_time}
+        .ui.basic.segment
+            .ui.divided.stackable.grid
+                .eleven.wide.column
+                    // h1.ui.header #{title}
+                    .description
+                        // |Event Tags:
+                        |!{description.html}
+                    // .ui.divider
+                    // each tags
+                    //     .ui.basic.label #{this}
+                    h3.impact-header Organizer Information
+                    with organizer
+                        h2.ui.header 
+                            .ui.tiny.image
+                                img(src=logo.url)
+                            |#{name}
+                        |!{description.html}
+                        a.ui.icon.basic.button(href="https://www.facebook.com/#{facebook}" target="_blank")
+                            i.facebook.link.icon
+                        a.ui.icon.basic.button(href="https://twitter.com/#{twitter}" target="_blank")
+                            i.twitter.link.icon
+                        a.ui.basic.button(href=url target='_blank') 
+                            i.external.icon
+                            |Eventbrite Profile
+                    // .ui.divider
+                    // a.ui.basic.button(href="/events")
+                    //     i.arrow.left.icon
+                    //     |Events
+                .five.wide.column
+                    a.ui.basic.fluid.black.big.button(href=url target='_window')
+                        i.ticket.icon
+                        |Register on Eventbrite
+                    h3.ui.dividing.header.make-uppercase When
                     .ui.basic.segment
-                        a(href="http://maps.google.com/?q=#{name}" target='_blank')
-                            h4.ui.center.aligned.header
-                                div #{name}
-                                div #{address.localized_address_display}
-                        +map 
-                h3.ui.dividing.header.make-uppercase How
-                .ui.basic.segment
-                    each ticket_classes
-                        .ui.basic.label #{name} #{cost.display}
-                h3.ui.dividing.header.make-uppercase Links
-                a(href=event_calendar_link)
-                    | Add to my calendar
-                if isInRole 'admin'
-                    h3.ui.dividing.header.make-uppercase 
-                        i.red.configure.icon
-                        |Admin
-                    #delete.ui.black.basic.button 
-                        i.delete.red.icon
-                        |Delete
-                    if featured
-                        #make_unfeatured.ui.green.button
-                            i.toggle.on.icon
-                            |Make Unfeatured
-                    else
-                        #make_featured.ui.black.basic.button
-                            i.toggle.off.green.icon
-                            |Make Featured
-                    #reload.ui.basic.black.button 
-                        i.refresh.icon
-                        |Reload
-                    h3.ui.header Event Tags
-                    each tags
-                        .ui.basic.label #{this}
+                        h4
+                            if end_date
+                                div #{day} 
+                                div #{start_time} to #{end_time}
+                            else
+                                |#{day} at #{start_time}
+                    h3.ui.dividing.header.make-uppercase Where
+                    with venue
+                        .ui.basic.segment
+                            a(href="http://maps.google.com/?q=#{name}" target='_blank')
+                                h4.ui.center.aligned.header
+                                    div #{name}
+                                    div #{address.localized_address_display}
+                            +map 
+                    h3.ui.dividing.header.make-uppercase How
+                    .ui.basic.segment
+                        each ticket_classes
+                            .ui.basic.label #{name} #{cost.display}
+                    // h3.ui.dividing.header.make-uppercase Links
+                    // a(href=event_calendar_link)
+                    //     | Add to my calendar
+                    if isInRole 'admin'
+                        h3.ui.dividing.header.make-uppercase 
+                            i.red.configure.icon
+                            |Admin
+                        #delete.ui.black.basic.button 
+                            i.delete.red.icon
+                            |Delete
+                        if featured
+                            #make_unfeatured.ui.green.button
+                                i.toggle.on.icon
+                                |Make Unfeatured
+                        else
+                            #make_featured.ui.black.basic.button
+                                i.toggle.off.green.icon
+                                |Make Featured
+                        #reload.ui.basic.black.button 
+                            i.refresh.icon
+                            |Reload
+                        h3.ui.header Event Tags
+                        each tags
+                            .ui.basic.label #{this}

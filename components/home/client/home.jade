@@ -1,12 +1,13 @@
 template(name='home')
+    // .ui.container
     +slider
     +call_to_action
     .ui.container
         .ui.basic.segment
             +featured_events
-    +pingpong
+    // +pingpong
     // +rockstar_members
-    +featured_posts
+    // +featured_posts
 
 
 template(name='call_to_action')
@@ -28,8 +29,8 @@ template(name='call_to_action')
                         | Become A Member
                     a.impact-button-light(href='/events')
                         | Attend an Event
-                    a.impact-button-light(href='#subscribe')
-                        | Subscribe
+                    // a.impact-button-light(href='#subscribe')
+                    //     | Subscribe
 
 
 template(name='pingpong')
