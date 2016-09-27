@@ -12,9 +12,9 @@ Template.new_event_page.helpers
 
     can_edit: -> Meteor.userId()
 
-    day: -> moment(@start_date.local).format("dddd, MMMM Do");
-    # start_time: -> moment(@start.local).format("h:mm a")
-    # end_time: -> moment(@end.local).format("h:mm a")
+    day: -> moment(@start_date).format("dddd, MMMM Do");
+    start_time_formatted: -> moment(@start_time).format("h:mm a")
+    end_time_formatted: -> moment(@end_time).format("h:mm a")
 
 
     # event_calendar_link: ->

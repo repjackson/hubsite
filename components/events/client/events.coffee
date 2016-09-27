@@ -48,9 +48,9 @@ Template.events.helpers
 Template.event_card.helpers
     event_tag_class: -> if @valueOf() in selected_event_tags.array() then 'red' else 'basic'
 
-    # day: -> moment(@start.local).format("dddd, MMMM Do");
-    # start_time: -> moment(@start.local).format("h:mm a")
-    # end_time: -> moment(@end.local).format("h:mm a")
+    day: -> moment(@start_date).format("dddd, MMMM Do");
+    start_time_formatted: -> moment(@start_time).format("h:mm a")
+    end_time_formatted: -> moment(@end_time).format("h:mm a")
 
     snippet: -> @description.substr(0, 200).concat('...')
         

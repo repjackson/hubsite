@@ -2,17 +2,21 @@ with event
     .ui.container.segment
         .ui.form
             +edit_title
-            +edit_image
+            .ui.segment
+                +edit_image
+                if eventbrite_image
+                    .ui.header Eventbrite Image (custom image will replace this)
+                    img.ui.medium.image(src=eventbrite_image)
             .fields
                 .field
-                    label Start Date
+                    label Start Date (current is #{start_date})
                     input#start_date(type='date' value=start_date)
                 .field
                     label Start Time
                     input#start_time(type='time' value=start_time)
             .fields
                 .field
-                    label End Date
+                    label End Date (current is #{end_date})
                     input#end_date(type='date' value=end_date)
                 .field
                     label End Time
