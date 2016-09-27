@@ -9,7 +9,6 @@ Meteor.publish 'featured_events', ->
 
 
 # Meteor.publish 'upcoming_events', (selected_event_tags)->
-#     check(arguments, [Match.Any])
 
 #     self = @
 #     match = {}
@@ -26,8 +25,7 @@ Meteor.publish 'featured_events', ->
 #         #     start_date: 1
 
 Meteor.publish 'selected_events', (selected_event_tags)->
-    check(arguments, [Match.Any])
-
+    
     self = @
     match = {}
     if selected_event_tags.length > 0 then match.tags = $all: selected_event_tags
@@ -39,7 +37,6 @@ Meteor.publish 'selected_events', (selected_event_tags)->
 
 
 # Meteor.publish 'past_events', (selected_event_tags)->
-#     check(arguments, [Match.Any])
 
 #     self = @
 #     match = {}
@@ -54,7 +51,6 @@ Meteor.publish 'selected_events', (selected_event_tags)->
 
 
 Meteor.publish 'event_tags', (selected_event_tags)->
-    check(arguments, [Match.Any])
     self = @
     match = {}
     if selected_event_tags.length > 0 then match.tags = $all: selected_event_tags

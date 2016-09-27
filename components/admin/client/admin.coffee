@@ -58,8 +58,3 @@ Template.content_management.events
             type: 'organization'
         FlowRouter.go "/organization/edit/#{id}"
 
-    'click #add_post': ->
-        id = Docs.insert 
-            type: 'post'
-        FlowRouter.go "/post/edit/#{id}"
-

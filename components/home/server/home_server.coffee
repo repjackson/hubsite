@@ -15,13 +15,3 @@ Meteor.publish 'rockstar_members', ->
     #         date: 1
 
 
-Meteor.publish 'featured_posts', ->
-    Docs.find
-        type: 'post'
-        featured: true
-        
-        
-Meteor.publish 'slides', ->
-    Docs.find
-        type: 'slide'
-        

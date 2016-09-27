@@ -9,7 +9,6 @@ Meteor.publish 'my_profile', ->
 
 
 Meteor.publish 'user_profile', (id)->
-    check(arguments, [Match.Any])
     Meteor.users.find id,
         fields:
             tags: 1

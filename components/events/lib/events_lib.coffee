@@ -4,12 +4,10 @@
 
 Meteor.methods
     join_event: (id)->
-        check(arguments, [Match.Any])
         Docs.update id, 
             $addToSet: attendee_ids: Meteor.userId()    
             
     leave_event: (id)->
-        check(arguments, [Match.Any])
         Docs.update id, 
             $pull: attendee_ids: Meteor.userId()
             

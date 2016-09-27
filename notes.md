@@ -17,10 +17,6 @@ events
     manually change photo
     editing description
 
-academy
-    donate button
-    'support'
-
 
 put nav and event photo in container    
     

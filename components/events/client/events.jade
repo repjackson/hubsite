@@ -19,8 +19,9 @@ template(name='events')
                     +upcoming_events
                     +past_events
                 .four.wide.column
-                    .ui.big.red.fluid.button.make-uppercase Host Your Event Here
+                    a.impact-button-dark(href='/rent') Host Your Event Here
                     +event_cloud
+                    +google_calendar
 
 
 template(name='upcoming_events')

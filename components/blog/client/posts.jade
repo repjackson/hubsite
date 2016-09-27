@@ -1,10 +1,16 @@
-template(name='blog')
+template(name='posts')
     .ui.container
         #blog_slider(style='width: 1000px; height: 200px;')
             .ls-slide(data-ls='slidedelay: 2000;')
                 img.ls-bg(src="{{c.url 'group' width=1000 height=200 crop='fill' gravity='face' effect='improve'}}", alt='Slide background')
                 h1.ls-l.overlay-text.slider-text(style="top: 50%; text-size: 300%;") 
-                    | Impact Hub Boulder Blog
+                    | Our Stories
+        if isInRole 'admin'
+            #add_post.ui.compact.basic.button
+                i.large.icons
+                    i.sticky.note.outline.icon
+                    i.green.plus.corner.icon
+                |Add Post
         .ui.hidden.divider
         .ui.stackable.divided.grid
             .twelve.wide.column
@@ -13,7 +19,6 @@ template(name='blog')
                     each posts
                         +post
             .four.wide.column
-                // .ui.big.red.fluid.button.make-uppercase Host Your Event Here
                 +cloud filter='post'
     
 

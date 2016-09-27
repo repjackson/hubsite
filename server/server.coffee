@@ -19,7 +19,6 @@ Cloudinary.config
 
 
 Meteor.publish 'usernames', ->
-    check(arguments, [Match.Any])
     Meteor.users.find {},
         fields:
             username: 1
@@ -28,7 +27,6 @@ Meteor.publish 'usernames', ->
 
 
 Meteor.publish 'docs', (selected_tags, filter)->
-    check(arguments, [Match.Any])
 
     self = @
     match = {}
@@ -39,12 +37,10 @@ Meteor.publish 'docs', (selected_tags, filter)->
         limit: 10
 
 Meteor.publish 'doc', (id)->
-    check(arguments, [Match.Any])
     Docs.find id
 
 
 Meteor.publish 'featured_docs', (filter)->
-    check(arguments, [Match.Any])
     match = {}
     match.featured = true
     match.type = filter
@@ -53,7 +49,6 @@ Meteor.publish 'featured_docs', (filter)->
 
 
 Meteor.publish 'tags', (selected_tags, filter)->
-    check(arguments, [Match.Any])
     self = @
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
@@ -81,7 +76,6 @@ Meteor.publish 'tags', (selected_tags, filter)->
 
 Meteor.methods 
     # formSubmissionMethod: (formData, captchaData) ->
-    #     check(arguments, [Match.Any])
     #     verifyCaptchaResponse = reCAPTCHA.verifyCaptcha(@connection.clientAddress, captchaData)
     #     if !verifyCaptchaResponse.success
     #         console.log 'reCAPTCHA check failed!', verifyCaptchaResponse

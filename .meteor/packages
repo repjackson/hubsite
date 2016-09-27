@@ -45,11 +45,9 @@ email@1.1.17
 accounts-base@1.2.11
 raix:handlebar-helpers
 lepozepo:cloudinary
-check@1.2.3
 ejson@1.0.12
 shell-server@0.2.1
 alanning:roles
-meteorhacks:fast-render
 accounts-google
 http
 modules
@@ -57,3 +55,4 @@ dburles:google-maps
 underscore
 froala:editor-reactive
 tomwasd:flow-router-autoscroll
+okgrow:analytics

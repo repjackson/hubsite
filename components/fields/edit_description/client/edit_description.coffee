@@ -6,59 +6,6 @@ Template.edit_description.events
         Docs.update doc_id,
             $set: description: html
 
-# Template.edit_description.onRendered ->
-#     tmpl = this
-#     html = tmpl.$('div.froala-reactive-meteorized').froalaEditor('html.get', true)
-#     console.log @
-#     console.log html
-#     return
-
-# Template.edit_description.onRendered ->
-#     Meteor.setTimeout (->
-#         $('#description').froalaEditor
-#             heightMin: 200
-#             # toolbarInline: true
-#             # toolbarButtonsMD: ['bold', 'italic', 'fontSize', 'undo', 'redo', '|', 'insertImage', 'insertVideo','insertFile']
-#             # toolbarButtonsSM: ['bold', 'italic', 'fontSize', 'undo', 'redo', '|', 'insertImage', 'insertVideo','insertFile']
-#             # toolbarButtonsXS: ['bold', 'italic', 'fontSize', 'undo', 'redo', '|', 'insertImage', 'insertVideo','insertFile']
-#             toolbarButtons: 
-#                 [
-#                   'fullscreen'
-#                   'bold'
-#                   'italic'
-#                   'underline'
-#                   'strikeThrough'
-#                   'subscript'
-#                   'superscript'
-#                 #   'fontFamily'
-#                 #   'fontSize'
-#                   '|'
-#                   'color'
-#                   'emoticons'
-#                 #   'inlineStyle'
-#                 #   'paragraphStyle'
-#                   '|'
-#                   'paragraphFormat'
-#                   'align'
-#                   'formatOL'
-#                   'formatUL'
-#                   'outdent'
-#                   'indent'
-#                   'quote'
-#                   'insertHR'
-#                   '-'
-#                   'insertLink'
-#                   'insertImage'
-#                   'insertVideo'
-#                   'insertFile'
-#                   'insertTable'
-#                   'undo'
-#                   'redo'
-#                   'clearFormatting'
-#                   'selectAll'
-#                   'html'
-#                 ]
-#         ), 5000
 
 
 Template.edit_description.helpers
