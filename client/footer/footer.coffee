@@ -24,7 +24,7 @@ Template.footer.events
             name: name
             email: email
             message: message
-            reason: reas
+            reason: reason
         # console.dir form_data
         #get the captcha data
         # captchaData = grecaptcha.getResponse()

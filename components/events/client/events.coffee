@@ -6,14 +6,21 @@ Template.events.onRendered ->
 
     
 Template.events.events
-    'keydown #add_event': (e,t)->
+    'keydown #import_eventbrite': (e,t)->
         e.preventDefault
         if e.which is 13
-            event_id = t.find('#add_event').value.trim()
+            event_id = t.find('#import_eventbrite').value.trim()
             if event_id.length > 0
                 # console.log 'attemping to add event with id ', event_id
-                Meteor.call 'add_event', event_id, (err,res)->
-                    t.find('#add_event').value = ''
+                Meteor.call 'import_eventbrite', event_id, (err,res)->
+                    t.find('#import_eventbrite').value = ''
+
+    'click #add_event': ->
+        id = Docs.insert 
+            type: 'event'
+        FlowRouter.go "/event/edit/#{id}"
+
+
 
 
 Template.events.onCreated -> @autorun -> Meteor.subscribe('selected_events', selected_event_tags.array())

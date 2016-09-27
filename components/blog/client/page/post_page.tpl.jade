@@ -1,21 +1,24 @@
 with post
     .ui.container.segment
         .content
-            a.ui.top.left.attached.basic.button(href="/posts")
-                i.arrow.left.icon
-                |Blog
+            // a.ui.top.left.attached.basic.button(href="/posts")
+            //     i.arrow.left.icon
+            //     |Blog
             if image_id
                 div
-                    img.ui.centered.large.image(src="{{c.url image_id width=600 height=600 crop='fill'}}")
+                    img.ui.centered.image(src="{{c.url image_id}}")
                     .overlay-text 
                         h1 #{title}
             else
                 h1 #{title}
+            if publish_date
+                h4.ui.header Published #{publish_when}
             .ui.basic.segment
-                each tags
-                    .ui.basic.label #{this}
-            .ui.basic.padded.segment
                 |!{description}
+            if tags
+                .ui.basic.segment
+                    each tags
+                        .ui.basic.label #{this}
         .extra.content
             if isInRole 'admin'
                 .edit_post.ui.primary.basic.button

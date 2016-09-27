@@ -43,6 +43,7 @@ ddp-rate-limiter@1.0.5
 ddp-server@1.2.10
 deps@1.0.12
 diff-sequence@1.0.6
+drewy:datetimepicker@1.0.3
 ecmascript@0.5.8
 ecmascript-runtime@0.3.14
 ejson@1.0.12

@@ -65,6 +65,9 @@ Meteor.publish 'tags', (selected_tags, filter)->
         { $project: _id: 0, name: '$_id', count: 1 }
         ]
 
+    console.log 'filter: ', filter
+    console.log 'cloud: ', cloud
+
     cloud.forEach (tag, i) ->
         self.added 'tags', Random.id(),
             name: tag.name

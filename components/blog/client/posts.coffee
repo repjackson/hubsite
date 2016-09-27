@@ -13,7 +13,8 @@ Template.posts.helpers
     posts: -> 
         Docs.find {},
             sort:
-                publish_date: 1
+                publish_date: -1
+            limit: 5
             
 Template.posts.events
     'click #add_post': ->

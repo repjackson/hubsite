@@ -25,7 +25,7 @@ Template.edit_description.helpers
                 newHTML = editor.html.get(true)
                 # Do something to update the edited value provided by the Froala-Editor plugin, if it has changed:
                 if !_.isEqual(newHTML, self.current_doc.description)
-                    console.log 'onSave HTML is :' + newHTML
+                    # console.log 'onSave HTML is :' + newHTML
                     Docs.update { _id: self.current_doc._id }, $set: description: newHTML
                 false
                 # Stop Froala Editor from POSTing to the Save URL

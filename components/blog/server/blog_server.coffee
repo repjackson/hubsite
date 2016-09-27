@@ -12,13 +12,15 @@ Meteor.publish 'selected_posts', (selected_post_tags)->
     Docs.find match,
         limit: 10
         sort: 
-            publish_date: 1
+            publish_date: -1
 
 
 Meteor.publish 'post_tags', (selected_post_tags)->
     self = @
     match = {}
     if selected_post_tags.length > 0 then match.tags = $all: selected_post_tags
+    match.type = 'post'
+
 
     cloud = Docs.aggregate [
         { $match: match }

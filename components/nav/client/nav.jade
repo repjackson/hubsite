@@ -59,8 +59,7 @@ template(name='nav')
                 // a.item(href='/media' class="{{isActivePath '/media'}}")
                 a.item(href='/join' class="{{isActivePath '/join'}}")
                     strong Join
-                if isInRole 'admin'
-                    a.item(href='/posts' class="{{isActivePath '/posts'}}")
-                        strong Blog
+                a.item(href='/posts' class="{{isActivePath '/posts'}}")
+                    strong Blog
                 a.item(href='/rent' class="{{isActivePath '/rent'}}")
                     strong Rent Our Space

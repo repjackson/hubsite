@@ -5,12 +5,6 @@ template(name='posts')
                 img.ls-bg(src="{{c.url 'group' width=1000 height=200 crop='fill' gravity='face' effect='improve'}}", alt='Slide background')
                 h1.ls-l.overlay-text.slider-text(style="top: 50%; text-size: 300%;") 
                     | Our Stories
-        if isInRole 'admin'
-            #add_post.ui.compact.basic.button
-                i.large.icons
-                    i.sticky.note.outline.icon
-                    i.green.plus.corner.icon
-                |Add Post
         .ui.hidden.divider
         .ui.stackable.divided.grid
             .twelve.wide.column
@@ -19,16 +13,23 @@ template(name='posts')
                     each posts
                         +post
             .four.wide.column
-                +cloud filter='post'
-    
-
+                +post_cloud
+                if isInRole 'admin'
+                    h2.impact-header 
+                        i.red.configure.icon
+                        |Admin
+                    #add_post.ui.compact.basic.button
+                        i.large.icons
+                            i.sticky.note.outline.icon
+                            i.green.plus.corner.icon
+                        |Add Post
 
 
 template(name='post')
     .ui.fluid.card
-        a(href="/post/view/#{_id}")
-            .image
-                img.ui.image(src="{{c.url image_id width=1500 height=200 gravity='face' crop='fill'}}")
+        .image
+            a(href="/post/view/#{_id}")
+                img.ui.image(src="{{c.url image_id width=1500 height=500 gravity='face' crop='fill'}}")
         .content
             .header
                 a(href="/post/view/#{_id}")
