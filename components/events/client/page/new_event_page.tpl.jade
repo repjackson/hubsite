@@ -1,0 +1,41 @@
+with event
+    .ui.container
+        .header-wrapper
+            if image_id
+                img.ui.centered.image(src="{{c.url image_id }}")
+            else if eventbrite_image
+                img.ui.centered.image(src=eventbrite_image)
+            .event-header
+                h2 #{title}
+                h3
+                    .sub.header #{start_date} to #{end_date} 
+                    .sub.header #{start_time} to #{end_time}
+        .ui.basic.segment
+            .ui.divided.stackable.grid
+                .eleven.wide.column
+                    h1.ui.header #{title}
+                    .description
+                        |!{description}
+                .five.wide.column
+                    h3.ui.dividing.header.make-uppercase When
+                    .ui.basic.segment
+                        h3
+                            .sub.header #{start_date} to #{end_date} 
+                            .sub.header #{start_time} to #{end_time}
+                    h3.ui.dividing.header.make-uppercase Where
+                    .ui.basic.segment
+                        a(href="http://maps.google.com/?q=#{location}" target='_blank')
+                            h4.ui.center.aligned.header
+                                div #{location}
+                        // +map 
+                    // h3.ui.dividing.header.make-uppercase Links
+                    // a(href=event_calendar_link)
+                    //     | Add to my calendar
+                    h3.ui.header Event Tags
+                    each tags
+                        .ui.basic.label #{this}
+                    if isInRole 'admin'
+                        h3.ui.dividing.header.make-uppercase 
+                            i.red.configure.icon
+                            |Admin
+                        a.ui.basic.button(href="/event/edit/#{this._id}") Edit Event

@@ -5,9 +5,9 @@ Template.post_cloud.onCreated ->
 
 Template.post_cloud.helpers
     post_tags: ->
-        # event_count = Events.find().count()
-        # if 0 < event_count < 3 then tags.find { count: $lt: event_count } else tags.find()
-        Tags.find()
+        post_count = Docs.find().count()
+        if 0 < post_count < 3 then Tags.find { count: $lt: post_count } else Tags.find()
+        # Tags.find()
 
 
     tag_cloud_class: ->

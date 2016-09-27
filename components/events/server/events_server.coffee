@@ -4,8 +4,11 @@ Events.allow
     remove: (userId, doc) -> doc.author_id is userId or Roles.userIsInRole(userId, 'admin')
 
 Meteor.publish 'featured_events', ->
-    Events.find {featured: true}, sort: "start.local": -1
-        
+    Docs.find  {       
+        featured: true
+        type: 'event'
+        }, 
+        sort: start_date: -1
 
 
 # Meteor.publish 'upcoming_events', (selected_event_tags)->
@@ -30,10 +33,12 @@ Meteor.publish 'selected_events', (selected_event_tags)->
     match = {}
     if selected_event_tags.length > 0 then match.tags = $all: selected_event_tags
     
-    Events.find match
-        # limit: 10
-        # sort: 
-        #     start_date: 1
+    Docs.find {
+        # featured: true
+        type: 'event'
+        }, 
+        sort: start_date: -1
+        
 
 
 # Meteor.publish 'past_events', (selected_event_tags)->
@@ -54,8 +59,9 @@ Meteor.publish 'event_tags', (selected_event_tags)->
     self = @
     match = {}
     if selected_event_tags.length > 0 then match.tags = $all: selected_event_tags
+    match.type = 'event'
 
-    cloud = Events.aggregate [
+    cloud = Docs.aggregate [
         { $match: match }
         { $project: "tags": 1 }
         { $unwind: "$tags" }
@@ -81,7 +87,7 @@ Meteor.publish 'event', (event_id)->
 
     
 Meteor.methods
-    add_event: (event_id)->
+    import_eventbrite: (event_id)->
         HTTP.get "https://www.eventbriteapi.com/v3/events/#{event_id}", {
                 params:
                     token: 'QLL5EULOADTSJDS74HH7'
@@ -92,7 +98,7 @@ Meteor.methods
                     console.error err
                 else
                     event = res.data
-                    existing_event = Events.findOne { id: event.id} 
+                    existing_event = Docs.findOne { id: event.id} 
                     if existing_event
                         console.log 'found duplicate', event.id
                         return
@@ -138,5 +144,17 @@ Meteor.methods
                         unique_tags = _.uniq trimmed_tags
                         event.tags = unique_tags 
                         
-                        new_event_id = Events.insert event
+                        new_event_doc = {}
+                        new_event_doc.title = event.name.text
+                        new_event_doc.description = event.description.html
+                        new_event_doc.location = event.venue.name
+                        new_event_doc.start_date = event.start.local
+                        new_event_doc.end_date = event.end.local
+                        new_event_doc.type = 'event'
+                        new_event_doc.eventbrite_image = event.big_image_url
+                        new_event_doc.tags = event.tags
+                        
+                        new_event_id = Docs.insert new_event_doc
+                        
+                        console.log 'new_event_id', new_event_id
                         return new_event_id

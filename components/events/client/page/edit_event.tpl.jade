@@ -3,16 +3,25 @@ with event
         .ui.form
             +edit_title
             +edit_image
-            .field
-                label Start Date/Time
-                input#start_date(type='text' value=start_date)
-            .field
-                label End Date/Time
-                input#end_date(type='text' value=end_date)
+            .fields
+                .field
+                    label Start Date
+                    input#start_date(type='date' value=start_date)
+                .field
+                    label Start Time
+                    input#start_time(type='time' value=start_time)
+            .fields
+                .field
+                    label End Date
+                    input#end_date(type='date' value=end_date)
+                .field
+                    label End Time
+                    input#end_time(type='time' value=end_time)
             +edit_location
             +edit_description
             +edit_tags
             +edit_featured
-            if tags
+            +publish_button
+            if title
                 #save_event.ui.large.green.button Save
             +delete_button

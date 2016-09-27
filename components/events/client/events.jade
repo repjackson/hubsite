@@ -1,28 +1,34 @@
 template(name='events')
     .ui.container
-        #event_slider(style='width: 1000px; height: 300px;')
+        #event_slider(style='width: 1500px; height: 500px;')
             .ls-slide(data-ls='slidedelay: 2000;')
-                img.ls-bg(src="{{c.url 'vinetta' width=1000 height=300 crop='fill' gravity='north' effect='improve'}}", alt='Slide background')
+                img.ls-bg(src="{{c.url 'vinetta' width=1500 height=500 crop='fill' gravity='north' effect='art:primavera'}}", alt='Slide background')
                 h1.ls-l.overlay-text.slider-text(style="top: 50%; text-size: 300%;") 
                     | Events at Impact Hub Boulder
         .ui.basic.segment
-            if isInRole 'admin'
-                .ui.labeled.input
-                    .ui.basic.label 
-                        i.red.configure.icon
-                        |Add Eventbrite Event by Id
-                    input#import_eventbrite(type='text')
-                #add_event.ui.basic.button Add Event
-                .ui.hidden.divider
             .ui.stackable.grid
                 .twelve.wide.column
                     +featured_events
                     +upcoming_events
-                    +past_events
+                    // +past_events
                 .four.wide.column
-                    a.impact-button-dark(href='/rent') Host Your Event Here
+                    a.impact-button-dark(href='/rent') Host Your Event
                     +event_cloud
                     +google_calendar
+                    if isInRole 'admin'
+                        h2.impact-header 
+                            i.red.configure.icon
+                            |Admin
+                        .ui.header Add Eventbrite Event by Id
+                        .ui.input
+                            input#import_eventbrite(type='text')
+                        .ui.divider
+                        #add_event.ui.basic.button 
+                            i.large.icons
+                                i.calendar.icon
+                                i.green.plus.corner.icon
+                            | Manually Add Event
+
 
 
 template(name='upcoming_events')
@@ -45,28 +51,24 @@ template(name='event_card')
     .ui.card
         .image
             a(href="/event/view/#{_id}")
-                img.ui.image(src=logo.url)            
-                // if image_id
-                //     img.ui.image(src="{{c.url image_id height=175 width=300 crop='fill'}}")            
-                // else
-                //     img.ui.image(src="{{c.url 'ih_logo_placeholder_pdwzf8' height=175 width=300 crop='fill'}}")            
-                //     // img.ui.large.image(src="/img/ih_logo_placeholder.png")
+            if image_id
+                img.ui.centered.image(src="{{c.url image_id }}")
+            else if eventbrite_image
+                img.ui.centered.image(src=eventbrite_image)
         .content
             // .header
             h3.ui.red.header.make-uppercase 
-                a(href="/event/view/#{_id}") #{name.text}
+                a(href="/event/view/#{_id}") #{title}
             .meta
-                strong #{day} 
+                strong #{start_date} to #{end_date} 
             .meta
                 strong #{start_time} to #{end_time}
             // .meta
             //     |Organized by #{organizer.name}
             // .meta
             //     |At #{venue.name}
-            .ui.hidden.fitted.divider
-            |#{snippet}
-        //     +favorite
-        //     if isInRole 'admin'
-        //         .edit_event.ui.right.floated.primary.basic.button
-        //             i.pencil.icon
-        //             |Edit Event
+            // .ui.hidden.fitted.divider
+            // |!{snippet}
+            +favorite
+            if isInRole 'admin'
+                a.ui.basic.button(href="/event/edit/#{this._id}") Edit Event

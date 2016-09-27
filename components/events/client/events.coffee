@@ -30,12 +30,12 @@ Template.events.onCreated -> @autorun -> Meteor.subscribe('selected_events', sel
 Template.upcoming_events.helpers
     upcoming_events: -> 
         today = new Date()
-        Events.find {"start.local": $gte: today.toISOString()}, sort: "start.local": 1
-
+        # Docs.find {start_date: $gte: today.toISOString()}, sort: start_date: 1
+        Docs.find { type:'event'}
 Template.past_events.helpers
     past_events: -> 
         today = new Date()
-        Events.find {"start.local": $lte: today.toISOString()}, sort: "start.local": 1
+        Docs.find {start_date: $lte: today.toISOString()}, sort: start_date: 1
             
 
 Template.events.helpers
@@ -48,11 +48,11 @@ Template.events.helpers
 Template.event_card.helpers
     event_tag_class: -> if @valueOf() in selected_event_tags.array() then 'red' else 'basic'
 
-    day: -> moment(@start.local).format("dddd, MMMM Do");
-    start_time: -> moment(@start.local).format("h:mm a")
-    end_time: -> moment(@end.local).format("h:mm a")
+    # day: -> moment(@start.local).format("dddd, MMMM Do");
+    # start_time: -> moment(@start.local).format("h:mm a")
+    # end_time: -> moment(@end.local).format("h:mm a")
 
-    snippet: -> @description.text.substr(0, 200).concat('...')
+    snippet: -> @description.substr(0, 200).concat('...')
         
 
 Template.event_card.events

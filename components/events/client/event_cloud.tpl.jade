@@ -12,5 +12,6 @@ if selected_event_tags
         a.ui.red.compact.big.button.unselect_tag
             strong #{this}
 each event_tags
-    .ui.compact.basic.large.button.select_tag(class=tag_cloud_class) #{this.name}
+    // .ui.compact.basic.large.button.select_tag(class=tag_cloud_class) #{this.name}
+    .ui.compact.basic.button.select_tag #{this.name}
         // small #{this.count}

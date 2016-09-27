@@ -26,5 +26,6 @@ FlowRouter.route '/event/edit/:doc_id', action: (params) ->
 
 FlowRouter.route '/event/view/:doc_id', action: (params) ->
     BlazeLayout.render 'layout',
-        main: 'event_page'
+        # main: 'event_page'
+        main: 'new_event_page'
 
