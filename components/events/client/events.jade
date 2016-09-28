@@ -19,10 +19,9 @@ template(name='events')
                         h2.impact-header 
                             i.red.configure.icon
                             |Admin
-                        .ui.header Add Eventbrite Event by Id
                         .ui.input
-                            input#import_eventbrite(type='text')
-                        .ui.divider
+                            input#import_eventbrite(type='text' placeholder='Add by Eventbrite Id')
+                        .ui.horizontal.divider or
                         #add_event.ui.basic.button 
                             i.large.icons
                                 i.calendar.icon
@@ -62,7 +61,7 @@ template(name='event_card')
             .meta
                 strong #{day} 
             .meta
-                strong #{start_time_formatted} to #{end_time_formatted}
+                strong #{start_time} to #{end_time}
             // .meta
             //     |Organized by #{organizer.name}
             // .meta

@@ -1,4 +1,6 @@
-Template.join.helpers
+Template.join.events
+    'click #launch_modal': ->
+        $('.ui.modal').modal('show')
 
 Template.join.onRendered ->
     $('#join_slider').layerSlider

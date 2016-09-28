@@ -12,9 +12,9 @@ Template.new_event_page.helpers
 
     can_edit: -> Meteor.userId()
 
-    day: -> moment(@start_date).format("dddd, MMMM Do");
-    start_time_formatted: -> moment(@start_time).format("h:mm a")
-    end_time_formatted: -> moment(@end_time).format("h:mm a")
+    day: -> moment(@start_datetime).format("dddd, MMMM Do");
+    start_time: -> moment(@start_datetime).format("h:mm a")
+    end_time: -> moment(@end_datetime).format("h:mm a")
 
 
     # event_calendar_link: ->
@@ -38,21 +38,21 @@ Template.new_event_page.events
         FlowRouter.go "/event/edit/#{@_id}"
 
 
-    'click #reload': ->
-        swal {
-            title: 'Reload event?'
-            text: 'This will delete and redownload event from Eventbrite.'
-            type: 'warning'
-            animation: false
-            showCancelButton: true
-            closeOnConfirm: true
-            cancelButtonText: 'No'
-            confirmButtonText: 'Yes'
-            confirmButtonColor: '#da5347'
-        }, ->
-            event = Events.findOne FlowRouter.getParam('doc_id')
-            doc_id = event.id
-            Events.remove event._id, ->
-                Meteor.call 'add_event', doc_id, (err, id)->
-                    console.log 'new event id', id
-                    FlowRouter.go "/event/view/#{id}" 
+    # 'click #reload': ->
+    #     swal {
+    #         title: 'Reload event?'
+    #         text: 'This will delete and redownload event from Eventbrite.'
+    #         type: 'warning'
+    #         animation: false
+    #         showCancelButton: true
+    #         closeOnConfirm: true
+    #         cancelButtonText: 'No'
+    #         confirmButtonText: 'Yes'
+    #         confirmButtonColor: '#da5347'
+    #     }, ->
+    #         event = Events.findOne FlowRouter.getParam('doc_id')
+    #         doc_id = event.id
+    #         Events.remove event._id, ->
+    #             Meteor.call 'add_event', doc_id, (err, id)->
+    #                 console.log 'new event id', id
+    #                 FlowRouter.go "/event/view/#{id}" 

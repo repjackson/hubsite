@@ -1,18 +1,19 @@
 template(name='admin_nav')
-    .ui.menu
-        .ui.container
-            a.item(href="/admin/submissions" class="{{isActivePath '/admin/submissions'}}")
-                i.comment.outline.icon
-                |Contact Form Submissions
-            a.item(href='/admin/user_management' class="{{isActivePath '/admin/user_management'}}")
-                i.users.icon
-                |User Management
-            a.item(href='/admin/content_management' class="{{isActivePath '/admin/content_management'}}")
-                i.archive.icon
-                |Content Management
-            a.item(href='/admin/newsletter' class="{{isActivePath '/admin/newsletter'}}")
-                i.archive.icon
-                |Newsletter
+    .ui.container
+        .ui.basic.padded.segment
+            .ui.compact.four.item.menu
+                a.item(href="/admin/submissions" class="{{isActivePath '/admin/submissions'}}")
+                    i.comment.outline.icon
+                    |Contact Form Submissions
+                a.item(href='/admin/user_management' class="{{isActivePath '/admin/user_management'}}")
+                    i.users.icon
+                    |User Management
+                a.item(href='/admin/content_management' class="{{isActivePath '/admin/content_management'}}")
+                    i.archive.icon
+                    |Content Management
+                a.item(href='/admin/newsletter' class="{{isActivePath '/admin/newsletter'}}")
+                    i.archive.icon
+                    |Newsletter
 
 
 
@@ -35,7 +36,7 @@ template(name='user_management')
     //     i.plus.icon
     //     |Add New User
     .ui.container
-        table.ui.very.basic.table
+        table.ui.table
             thead
                 tr
                     th Email
@@ -65,6 +66,6 @@ template(name='user_management')
                             .email_user.ui.compact.basic.disabled.button
                                 i.mail.icon
                                 |Email
-                            .email_user.ui.compact.basic.button 
+                            .email_user.ui.compact.basic.disabled.button 
                                 i.send.icon
                                 |Direct Message

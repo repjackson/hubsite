@@ -31,6 +31,10 @@ template(name='call_to_action')
                         | Attend an Event
                     // a.impact-button-light(href='#subscribe')
                     //     | Subscribe
+                    .ui.hidden.divider
+                    a(href='/member_discount')
+                        img.ui.centered.image(src="{{c.url 'member_discount_cropped' width=200 crop='fill'}}")
+
 
 
 template(name='pingpong')

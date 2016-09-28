@@ -6,13 +6,13 @@ Template.featured_events.onCreated ->
 
 Template.featured_events.helpers
     featured_events: -> 
-        Events.find {featured: true}, sort: "start.local": 1
+        Docs.find {featured: true}, sort: start_datetime: -1
         
         
 Template.featured_event.helpers
-    day: -> moment(@start_date).format("dddd, MMMM Do")
-    start_time: -> moment(@start_date).format("h:mm a")
-    end_time: -> moment(@end_date).format("h:mm a")
+    day: -> moment(@start_datetime).format("dddd, MMMM Do")
+    start_time: -> moment(@start_datetime).format("h:mm a")
+    end_time: -> moment(@end_datetime).format("h:mm a")
 
 
 Template.featured_events.events

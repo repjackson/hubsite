@@ -4,13 +4,24 @@
             img.ls-bg(src="{{c.url 'coworking' effect='improve' width=1000 height=300 crop='fill' }}", alt='Slide background' height='100')
             .ls-l.overlay-text.slider-text(style="top: 50%;") 
                 | Join Impact Hub Boulder Today: Membership Options
-    .ui.basic.segment
-        .ui.basic.padded.segment
-            .large-text
-                |Choose the 
-                span(style='color: #003366;') Community
-                |  or 
-                span(style='color: #800000;') Coworking
-                |  membership that best fits your needs from the below options. Memberships are monthly (renew automatically) and can be scaled up and down as your needs evolve. 
-                |  Discounts are available for non-profits (15%), students (15%), B-Corps (10%), and companies with 2+ memberships (10% off combined billing).
-        +memberships
+    .ui.basic.padded.segment
+        .ui.two.column.stackable.grid
+            .ten.wide.column
+                .large-text
+                    |Choose the 
+                    span(style='color: #003366;') Community
+                    |  or 
+                    span(style='color: #800000;') Coworking
+                    |  membership that best fits your needs from the below options. Memberships are monthly (renew automatically) and can be scaled up and down as your needs evolve. 
+                .ui.hidden.divider
+                .large-text
+                    |  Discounts are available for non-profits (15%), students (15%), B-Corps (10%), and companies with 2+ memberships (10% off combined billing).
+            .six.wide.column
+                a#launch_modal(href='#')
+                    img.ui.centered.image(src="{{c.url 'member_discount_cropped' width=250 crop='fill'}}")
+    +memberships
+
+
+.ui.small.modal
+    .image.content
+        img.ui.centered.image(src="{{c.url 'member_discount' width=400 crop='fill'}}")

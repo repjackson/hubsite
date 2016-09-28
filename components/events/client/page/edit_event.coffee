@@ -13,20 +13,13 @@ Template.edit_event.helpers
         
 Template.edit_event.events
     'click #save_event': ->
-        title = $('#title').val()
-        location = $('#location').val()
-        start_date = $('#start_date').val()
-        end_date = $('#end_date').val()
-        end_time = $('#end_time').val()
-        start_time = $('#start_time').val()
+        start_datetime = $('#start_datetime').val()
+        end_datetime = $('#end_datetime').val()
+        
         Docs.update FlowRouter.getParam('doc_id'),
             $set:
-                title: title
-                start_date: start_date
-                end_date: end_date
-                start_time: start_time
-                end_time: end_time
-                location: location
+                start_datetime: start_datetime
+                end_datetime: end_datetime
                 # tagCount: @tags.length
         # selected_tags.clear()
         # for tag in @tags

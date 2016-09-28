@@ -20,7 +20,6 @@ Meteor.users.allow
 
 
 Meteor.publish 'people_tags', (selected_people_tags, published_mode, checkedin_mode)->
-    check(arguments, [Match.Any])
     self = @
     match = {}
     if selected_people_tags.length > 0 then match.tags = $all: selected_people_tags
@@ -50,7 +49,6 @@ Meteor.publish 'people_tags', (selected_people_tags, published_mode, checkedin_m
 
 # Meteor.publish 'people', (selected_people_tags=[], published_mode, checkedin_mode)->
 Meteor.publish 'people', (selected_people_tags=[], published_mode)->
-    check(arguments, [Match.Any])
     self = @
     match = {}
     if selected_people_tags.length > 0 then match.tags = $all: selected_people_tags
@@ -68,7 +66,6 @@ Meteor.publish 'people', (selected_people_tags=[], published_mode)->
             
             
 Meteor.publish 'people_list', (doc_id)->
-    check(arguments, [Match.Any])
     ids = Docs.findOne(doc_id).participant_ids
     if ids
         Meteor.users.find
