@@ -24,6 +24,7 @@ Template.events.events
 
 
 Template.events.onCreated -> @autorun -> Meteor.subscribe('selected_events', selected_event_tags.array())
+Template.admin_events.onCreated -> @autorun -> Meteor.subscribe('all_events')
 # Template.upcoming_events.onCreated -> @autorun -> Meteor.subscribe('upcoming_events', selected_event_tags.array())
 # Template.past_events.onCreated -> @autorun -> Meteor.subscribe('past_events', selected_event_tags.array())
 
@@ -37,6 +38,12 @@ Template.upcoming_events.helpers
             }, 
             sort: start_datetime: 1
 
+Template.admin_events.helpers
+    admin_events: -> 
+        Docs.find { 
+            start_datetime: $exists: false
+            }
+            
 Template.past_events.helpers
     past_events: -> 
         today = new Date()

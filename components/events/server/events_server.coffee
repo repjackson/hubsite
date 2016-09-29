@@ -27,13 +27,10 @@ Meteor.publish 'selected_events', (selected_event_tags)->
     self = @
     match = {}
     if selected_event_tags.length > 0 then match.tags = $all: selected_event_tags
+    match.type = 'event'
     
-    Docs.find {
-        # featured: true
-        type: 'event'
-        }, 
-        sort: start_date: -1
-        
+    
+    Docs.find match
 
 
 # Meteor.publish 'past_events', (selected_event_tags)->
@@ -48,7 +45,8 @@ Meteor.publish 'selected_events', (selected_event_tags)->
 #         #     start_date: 1
 
 
-
+Meteor.publish 'all_events', ->
+    Docs.find type: 'event'
 
 Meteor.publish 'event_tags', (selected_event_tags)->
     self = @

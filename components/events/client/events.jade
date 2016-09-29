@@ -11,6 +11,8 @@ template(name='events')
                     // +featured_events
                     +upcoming_events
                     +past_events
+                    if isInRole 'admin'
+                        +admin_events
                 .four.wide.column
                     a.impact-button-dark(href='/rent') Host Your Event
                     +event_cloud
@@ -34,6 +36,14 @@ template(name='upcoming_events')
     h2.impact-header Upcoming Events
     .ui.centered.stackable.three.cards
         each upcoming_events
+            +event_card
+
+template(name='admin_events')
+    h2.impact-header 
+        i.red.configure.icon
+        |Admin Events
+    .ui.centered.stackable.three.cards
+        each admin_events
             +event_card
 
 

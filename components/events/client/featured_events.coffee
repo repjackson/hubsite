@@ -6,7 +6,10 @@ Template.featured_events.onCreated ->
 
 Template.featured_events.helpers
     featured_events: -> 
-        Docs.find {featured: true}, 
+        Docs.find {
+            featured: true
+            type: 'event'
+        }, 
             sort: start_datetime: 1
             limit: 3
         
