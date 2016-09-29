@@ -17,11 +17,12 @@
                 .large-text
                     |  Discounts are available for non-profits (15%), students (15%), B-Corps (10%), and companies with 2+ memberships (10% off combined billing).
             .six.wide.column
-                a#launch_modal(href='#')
+                // a#launch_modal(href='#')
+                a(href='/member_discount')
                     img.ui.centered.image(src="{{c.url 'member_discount_cropped' width=250 crop='fill'}}")
     +memberships
 
 
 .ui.small.modal
     .image.content
-        img.ui.centered.image(src="{{c.url 'member_discount' width=400 crop='fill'}}")
+        img.ui.centered.image(src="{{c.url 'member_discount' width=500 crop='fill'}}")

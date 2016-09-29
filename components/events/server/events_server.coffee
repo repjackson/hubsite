@@ -1,8 +1,3 @@
-Events.allow
-    insert: (userId, doc) -> doc.author_id is userId
-    update: (userId, doc) -> doc.author_id is userId or Roles.userIsInRole(userId, 'admin')
-    remove: (userId, doc) -> doc.author_id is userId or Roles.userIsInRole(userId, 'admin')
-
 Meteor.publish 'featured_events', ->
     Docs.find  {       
         featured: true
@@ -82,10 +77,6 @@ Meteor.publish 'event_tags', (selected_event_tags)->
 
 
 
-Meteor.publish 'event', (event_id)->
-    Events.find event_id
-
-    
 Meteor.methods
     import_eventbrite: (event_id)->
         HTTP.get "https://www.eventbriteapi.com/v3/events/#{event_id}", {

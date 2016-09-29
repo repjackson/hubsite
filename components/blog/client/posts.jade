@@ -29,7 +29,7 @@ template(name='post')
     .ui.fluid.card
         .ui.centered.image
             a(href="/post/view/#{_id}")
-                img(src="{{c.url image_id  gravity='face' }}")
+                img(src="{{c.url image_id  height=300 crop='fill' gravity='face' }}")
         .content
             .header
                 a(href="/post/view/#{_id}")

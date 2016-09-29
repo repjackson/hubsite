@@ -7,7 +7,7 @@ template(name='home')
             +featured_events
     // +pingpong
     // +rockstar_members
-    // +featured_posts
+    +featured_posts
 
 
 template(name='call_to_action')
@@ -16,7 +16,7 @@ template(name='call_to_action')
             .ui.stackable.container.grid
                 .ten.wide.column
                     // h1.ui.header COME FOR COWORKING, STAY FOR COMMUNITY
-                    div(style="font-size: large")
+                    .large-text
                         p
                             |Impact Hub Boulder is a member-based coworking space and event venue for entrepreneurs creating positive impact in the world.
                         p
@@ -33,7 +33,7 @@ template(name='call_to_action')
                     //     | Subscribe
                     .ui.hidden.divider
                     a(href='/member_discount')
-                        img.ui.centered.image(src="{{c.url 'member_discount_cropped' width=200 crop='fill'}}")
+                        img.ui.centered.image(src="{{c.url 'member_discount_cropped' width=250 crop='fill'}}")
 
 
 

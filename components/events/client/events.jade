@@ -10,7 +10,7 @@ template(name='events')
                 .twelve.wide.column
                     // +featured_events
                     +upcoming_events
-                    // +past_events
+                    +past_events
                 .four.wide.column
                     a.impact-button-dark(href='/rent') Host Your Event
                     +event_cloud
@@ -19,7 +19,7 @@ template(name='events')
                         h2.impact-header 
                             i.red.configure.icon
                             |Admin
-                        .ui.input
+                        .ui.fluid.input
                             input#import_eventbrite(type='text' placeholder='Add by Eventbrite Id')
                         .ui.horizontal.divider or
                         #add_event.ui.basic.button 
@@ -50,10 +50,10 @@ template(name='event_card')
     .ui.card
         .image
             a(href="/event/view/#{_id}")
-            if image_id
-                img.ui.centered.image(src="{{c.url image_id }}")
-            else if eventbrite_image
-                img.ui.centered.image(src=eventbrite_image)
+                if image_id
+                    img.ui.centered.image(src="{{c.url image_id }}")
+                else if eventbrite_image
+                    img.ui.centered.image(src=eventbrite_image)
         .content
             // .header
             h3.ui.red.header.make-uppercase 

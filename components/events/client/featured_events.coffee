@@ -6,8 +6,9 @@ Template.featured_events.onCreated ->
 
 Template.featured_events.helpers
     featured_events: -> 
-        Docs.find {featured: true}, sort: start_datetime: -1
-        
+        Docs.find {featured: true}, 
+            sort: start_datetime: 1
+            limit: 3
         
 Template.featured_event.helpers
     day: -> moment(@start_datetime).format("dddd, MMMM Do")

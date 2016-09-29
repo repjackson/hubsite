@@ -3,7 +3,7 @@
 Template.events.onRendered ->
     $('#event_slider').layerSlider
         autoStart: true
-
+ 
     
 Template.events.events
     'keydown #import_eventbrite': (e,t)->
@@ -31,11 +31,21 @@ Template.upcoming_events.helpers
     upcoming_events: -> 
         today = new Date()
         # Docs.find {start_date: $gte: today.toISOString()}, sort: start_date: 1
-        Docs.find { type:'event'}
+        Docs.find { 
+            type:'event'
+            start_datetime: $gte: today.toISOString()
+            }, 
+            sort: start_datetime: 1
+
 Template.past_events.helpers
     past_events: -> 
         today = new Date()
-        Docs.find {start_date: $lte: today.toISOString()}, sort: start_date: 1
+        # Docs.find {start_date: $lte: today.toISOString()}, sort: start_date: 1
+        Docs.find { 
+            type:'event'
+            start_datetime: $lte: today.toISOString()
+            }, 
+            sort: start_datetime: 1
             
 
 Template.events.helpers
