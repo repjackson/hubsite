@@ -17,6 +17,14 @@ with event
                     .description
                         |!{description}
                 .five.wide.column
+                    if url
+                        a.ui.basic.fluid.black.big.button(href=url target='_window')
+                            i.ticket.icon
+                            |Register on Eventbrite
+                    else if isInRole 'admin'
+                        // #pull_url.ui.basic.button Pull Eventbrite Url
+                        .ui.input
+                            input#add_event_url(type='text' placeholder='Add Event Url')
                     h3.impact-header When
                     h3
                         // .sub.header #{start_date} to #{end_date} 

@@ -37,6 +37,8 @@ Template.new_event_page.events
     'click .edit_event': ->
         FlowRouter.go "/event/edit/#{@_id}"
 
+    'click #pull_url': ->
+        Meteor.call 'pull_url', @_id
 
     # 'click #reload': ->
     #     swal {
@@ -56,3 +58,9 @@ Template.new_event_page.events
     #             Meteor.call 'add_event', doc_id, (err, id)->
     #                 console.log 'new event id', id
     #                 FlowRouter.go "/event/view/#{id}" 
+    
+    'keydown #add_event_url': (e,t)->
+        if e.which is 13
+            url = $('#add_event_url').val()
+            Docs.update @_id,
+                $set: url: url

@@ -98,6 +98,7 @@ Meteor.methods
                                 token: 'QLL5EULOADTSJDS74HH7'
                         }
                         # console.log image_object
+                        console.dir event
                         new_image_url = image_object.data.url
                         event.big_image_url = new_image_url
                         val = event.start.local
@@ -133,17 +134,38 @@ Meteor.methods
                         unique_tags = _.uniq trimmed_tags
                         event.tags = unique_tags 
                         
-                        new_event_doc = {}
-                        new_event_doc.title = event.name.text
-                        new_event_doc.description = event.description.html
-                        new_event_doc.location = event.venue.name
-                        new_event_doc.start_date = event.start.local
-                        new_event_doc.end_date = event.end.local
-                        new_event_doc.type = 'event'
-                        new_event_doc.eventbrite_image = event.big_image_url
-                        new_event_doc.tags = event.tags
+                        new_event_doc =
+                            eventbrite_id: event.id
+                            title: event.name.text
+                            description: event.description.html
+                            location: event.venue.name
+                            start_date: event.start.local
+                            end_date: event.end.local
+                            type: 'event'
+                            eventbrite_image: event.big_image_url
+                            tags: event.tags
+                            published: false
+                            url: event.url
                         
                         new_event_id = Docs.insert new_event_doc
                         
                         console.log 'new_event_id', new_event_id
                         return new_event_id
+
+
+
+    pull_url: (event_id)->
+        HTTP.get "https://www.eventbriteapi.com/v3/events/#{event_id}", {
+                params:
+                    token: 'QLL5EULOADTSJDS74HH7'
+                    # expand: 'organizer,venue,logo,format,category,subcategory,ticket_classes,bookmark_info'
+            }, 
+            (err, res)->
+                if err
+                    console.error err
+                else
+                    event = res.data
+
+                    Docs.update event_id
+                        url: event.url
+
