@@ -78,6 +78,3 @@ template(name='event_card')
             //     |At #{venue.name}
             // .ui.hidden.fitted.divider
             // |!{snippet}
-            // +favorite
-            if isInRole 'admin'
-                a.ui.basic.button(href="/event/edit/#{this._id}") Edit Event

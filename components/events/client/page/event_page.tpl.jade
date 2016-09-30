@@ -1,93 +1,54 @@
 with event
     .ui.container
-        // +back_button
         .header-wrapper
-            img.ui.centered.fluid.image(src=big_image_url)
-            // if image_id
-            //     img.ui.centered.image(src="{{c.url image_id width=800 height=400 crop='fill'}}")
-            // else
-            //     img.ui.centered.image(src="/img/about_mashup_one.jpg")
-            .event-header
-                h2 #{name.text}
-                // h3 #{day} from #{start_time} to #{end_time}
-                // .overlay-text-subheader
-                h3
-                    |#{day} 
-                    .sub.header #{start_time} to #{end_time}
+            if image_id
+                img.ui.centered.image(src="{{c.url image_id }}")
+            else if eventbrite_image
+                img.ui.centered.image(src=eventbrite_image)
+            // .event-header
+            //     h2 #{title}
+            //     h3
+            //         .sub.header #{start_date} to #{end_date} 
+            //         .sub.header #{start_time} to #{end_time}
         .ui.basic.segment
             .ui.divided.stackable.grid
                 .eleven.wide.column
-                    // h1.ui.header #{title}
+                    h1.ui.header #{title}
                     .description
-                        // |Event Tags:
-                        |!{description.html}
-                    // .ui.divider
-                    // each tags
-                    //     .ui.basic.label #{this}
-                    h3.impact-header Organizer Information
-                    with organizer
-                        h2.ui.header 
-                            .ui.tiny.image
-                                img(src=logo.url)
-                            |#{name}
-                        |!{description.html}
-                        a.ui.icon.basic.button(href="https://www.facebook.com/#{facebook}" target="_blank")
-                            i.facebook.link.icon
-                        a.ui.icon.basic.button(href="https://twitter.com/#{twitter}" target="_blank")
-                            i.twitter.link.icon
-                        a.ui.basic.button(href=url target='_blank') 
-                            i.external.icon
-                            |Eventbrite Profile
-                    // .ui.divider
-                    // a.ui.basic.button(href="/events")
-                    //     i.arrow.left.icon
-                    //     |Events
+                        |!{description}
                 .five.wide.column
-                    a.ui.basic.fluid.black.big.button(href=url target='_window')
-                        i.ticket.icon
-                        |Register on Eventbrite
-                    h3.ui.dividing.header.make-uppercase When
-                    .ui.basic.segment
-                        h4
-                            if end_date
-                                div #{day} 
-                                div #{start_time} to #{end_time}
-                            else
-                                |#{day} at #{start_time}
-                    h3.ui.dividing.header.make-uppercase Where
-                    with venue
-                        .ui.basic.segment
-                            a(href="http://maps.google.com/?q=#{name}" target='_blank')
-                                h4.ui.center.aligned.header
-                                    div #{name}
-                                    div #{address.localized_address_display}
-                            +map 
-                    h3.ui.dividing.header.make-uppercase How
-                    .ui.basic.segment
-                        each ticket_classes
-                            .ui.basic.label #{name} #{cost.display}
+                    if url
+                        a.ui.basic.fluid.black.big.button(href=url target='_window')
+                            i.ticket.icon
+                            |Register on Eventbrite
+                    else if isInRole 'admin'
+                        // #pull_url.ui.basic.button Pull Eventbrite Url
+                        .ui.input
+                            input#add_event_url(type='text' placeholder='Add Event Url')
+                    h3.impact-header When
+                    h3
+                        // .sub.header #{start_date} to #{end_date} 
+                        .ui.sub.header #{day} 
+                        .ui.sub.header #{start_time} to #{end_time}
+                        if add_to_calendar_link
+                            a.ui.basic.button(href=add_to_calendar_link target='_blank')
+                                i.icons
+                                    i.calendar.icon
+                                    i.green.plus.corner.icon
+                                | Add to Google Calendar
+                    h3.impact-header Where
+                    a.ui.sub.header(href="http://maps.google.com/?q=#{location}" target='_blank') 
+                        |#{location}
+                        i.external.small.icon
+                        // +map 
                     // h3.ui.dividing.header.make-uppercase Links
                     // a(href=event_calendar_link)
                     //     | Add to my calendar
+                    h3.impact-header Event Tags
+                    each tags
+                        .ui.basic.label #{this}
                     if isInRole 'admin'
-                        h3.ui.dividing.header.make-uppercase 
+                        h3.impact-header 
                             i.red.configure.icon
                             |Admin
-                        #delete.ui.black.basic.button 
-                            i.delete.red.icon
-                            |Delete
-                        if featured
-                            #make_unfeatured.ui.green.button
-                                i.toggle.on.icon
-                                |Make Unfeatured
-                        else
-                            #make_featured.ui.black.basic.button
-                                i.toggle.off.green.icon
-                                |Make Featured
-                        #reload.ui.basic.black.button 
-                            i.refresh.icon
-                            |Reload
-                        h3.ui.header Event Tags
-                        each tags
-                            .ui.basic.label #{this}
                         a.ui.basic.button(href="/event/edit/#{this._id}") Edit Event
