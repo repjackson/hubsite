@@ -1,7 +1,7 @@
 .ui.container
     #join_slider(style='width: 1000px; height: 300px;')
         .ls-slide(data-ls='slidedelay: 4000;')
-            img.ls-bg(src="{{c.url 'coworking' effect='improve' width=1000 height=300 crop='fill' }}", alt='Slide background' height='100')
+            img.ls-bg(src="{{c.url 'first_slide2' effect='improve' width=1000 height=300 crop='fill' }}", alt='Slide background' height='100')
             .ls-l.overlay-text.slider-text(style="top: 50%;") 
                 | Join Impact Hub Boulder Today: Membership Options
     .ui.basic.padded.segment
@@ -19,10 +19,5 @@
             .six.wide.column
                 // a#launch_modal(href='#')
                 a(href='/member_discount')
-                    img.ui.centered.image(src="{{c.url 'member_discount_cropped' width=250 crop='fill'}}")
+                    img.ui.centered.image(src="{{c.url 'member_discount_cropped3' width=250 crop='fill'}}")
     +memberships
-
-
-.ui.small.modal
-    .image.content
-        img.ui.centered.image(src="{{c.url 'member_discount' width=500 crop='fill'}}")
