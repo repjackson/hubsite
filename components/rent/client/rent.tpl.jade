@@ -31,21 +31,18 @@
                 .extra.content
                     div 150 Seats
                     div 250 People
-                    span.right.floated
-                        | 3,000 Square Feet
+                    div 3,000 Square Feet
         .ui.card
             .image
-                img(src="{{c.url 'middle_conference_room' height=200 crop='fit'}}")
+                img(src="{{c.url 'middle_conference_room' height=200 crop='fill'}}")
                 // a(href="{{c.url 'middle_conference_room'}}")
             .content
                 .header Middle Conference Room
                 // .description
                 //     |Our most intimate meeting space, the Middle Conference Room offers a round table that can accommodate up to six people. The conference room features a large flat panel display (equipped w/ Apple TV) and glass walls.
                 .extra.content
-                    div 6 Seats
-                    div 8 People
-                    span.right.floated
-                        | 100 Square Feet
+                    div Fits 6 to 8 People Comfortably
+                    div 100 Square Feet
                     // .ui.mini.statistic
                     //     .value
                     //         i.dollar.icon
@@ -66,17 +63,15 @@
                     //         |Work Members
         .ui.card
             .image
-                img(src="{{c.url 'se_conference_room' height=200 crop='fit'}}")
+                img(src="{{c.url 'se_conference_room' height=200 crop='fill'}}")
                 // a(href="{{c.url 'se_conference_room'}}")
             .content
                 .header Southeast Conference Room
                 // .description
                 //     | The Southeast Conference Room can seat 8 comfortably around a table. The room features a large flat panel display (equipped w/ Apple TV), windows, and glass walls. A mobile white board is available upon request.
                 .extra.content
-                    div 8 Seats
-                    div 12 People
-                    span.right.floated
-                        | 200 Square Feet
+                    div Fits 8 to 12 People Comfortably
+                    div 200 Square Feet
                     // .ui.mini.statistic
                     //     .value
                     //         i.dollar.icon
@@ -97,17 +92,15 @@
                     //         |Work Members
         .ui.card
             .image
-                img(src="{{c.url 'board_room' height=200 crop='fit'}}")
+                img(src="{{c.url 'board_room' height=200 crop='fill'}}")
                 // a(href="{{c.url 'board_room'}}")
             .content
                 .header Boardroom
                 // .description
                 //     | Our largest-capacity conference room, the Board Room can seat 14 around a large table. The Board Room features a large flat panel display (equipped w/ Apple TV), glass walls and windows, and a credenza for supplies or food and beverages. A mobile white board is available upon request.
                 .extra.content
-                    div 12 Seats
-                    div 18 People
-                    span.right.floated
-                        | 400 Square Feet
+                    div Fits 12 to 18 People Comfortably
+                    div 400 Square Feet
                         // .ui.mini.statistic
                         //     .value
                         //         i.dollar.icon
@@ -166,16 +159,14 @@
         
         p.large-text  Payment must be received at the time you make your reservation. Cancellations made within 7 days of your reservation will not be refunded.
     
-        // .formstack_embed
-        //     script(src='https://us.bookingbug.com/widget/all.js?id=usw1528057&c1=transparent&c2=F5F5F5&c3=DDDDDD&c4=ADADAD&c5=FFFFFF&c6=087f94&c7=274361&c8=EBEBEB&c9=88C66F&f1=&style=medium&icons=&is_rounded=1&width=570&height=570', type='text/javascript')
-        // h2 Host Your Event At Impact Hub Boulder
-        // | Impact Hub Boulder's event space is in high demand and reservations should be made 45 days in advance. Please complete the brief form below to connect with our events manager for an initial quote and to determine date availability. 
-        // .formstack_embed
-        //     script(type='text/javascript', src='http://hubboulder.formstack.com/forms/js.php/event_reservations')
-        //     noscript
-        //         a(href='http://hubboulder.formstack.com/forms/event_reservations', title='Online Form') Online Form - Reserve Event Space at Impact Hub Boulder
         .ui.centered.grid
-            .six.wide.column
-                a.impact-button-dark(href='https://www.bookingbug.com/home/116291-Impact-Hub-Boulder' target='_window') 
-                    h2 Reserve
-    
+            .eight.wide.column
+                a.impact-button-dark(href='https://www.bookingbug.com/home/116291-Impact-Hub-Boulder' target='_blank') Reserve a Room
+        .ui.hidden.divider
+        .ui.hidden.divider
+        
+        h2.impact-header Host Your Event At Impact Hub Boulder
+        p.large-text Impact Hub Boulder's event space is in high demand and reservations should be made 45 days in advance. Please complete the brief form below to connect with our events manager for an initial quote and to determine date availability. 
+        .ui.centered.grid
+            .eight.wide.column
+                a.impact-button-dark(href='http://hubboulder.formstack.com/forms/event_reservations', target='_blank' title='Online Form') Reserve Event Space

@@ -18,37 +18,43 @@ with event
                         |!{description}
                 .five.wide.column
                     if url
-                        a.ui.basic.fluid.black.big.button(href=url target='_window')
+                        a.impact-button-dark(href=url target='_window')
                             i.ticket.icon
-                            |Register on Eventbrite
+                            | Register
                     else if isInRole 'admin'
                         // #pull_url.ui.basic.button Pull Eventbrite Url
                         .ui.input
                             input#add_event_url(type='text' placeholder='Add Event Url')
                     h3.impact-header When
-                    h3
-                        // .sub.header #{start_date} to #{end_date} 
-                        .ui.sub.header #{day} 
-                        .ui.sub.header #{start_time} to #{end_time}
+                    .ui.basic.segment
+                        h3
+                            // .sub.header #{start_date} to #{end_date} 
+                            .ui.sub.header #{day} 
+                            .ui.sub.header #{start_time} to #{end_time}
                         if add_to_calendar_link
-                            a.ui.basic.button(href=add_to_calendar_link target='_blank')
+                            a.impact-button-dark(href=add_to_calendar_link target='_blank')
                                 i.icons
                                     i.calendar.icon
                                     i.green.plus.corner.icon
                                 | Add to Google Calendar
                     h3.impact-header Where
-                    a.ui.sub.header(href="http://maps.google.com/?q=#{location}" target='_blank') 
-                        |#{location}
-                        i.external.small.icon
-                        // +map 
-                    // h3.ui.dividing.header.make-uppercase Links
-                    // a(href=event_calendar_link)
-                    //     | Add to my calendar
+                    .ui.basic.segment
+                        h3
+                            a.ui.sub.header(href="http://maps.google.com/?q=#{location}" target='_blank') 
+                                |#{location}
+                                i.external.small.icon
+                                // +map 
+                        // h3.ui.dividing.header.make-uppercase Links
+                        // a(href=event_calendar_link)
+                        //     | Add to my calendar
                     h3.impact-header Event Tags
-                    each tags
-                        .ui.basic.label #{this}
+                    .ui.basic.segment
+                        each tags
+                            .ui.basic.label #{this}
                     if isInRole 'admin'
                         h3.impact-header 
                             i.red.configure.icon
                             |Admin
-                        a.ui.basic.button(href="/event/edit/#{this._id}") Edit Event
+                        a.ui.basic.button(href="/event/edit/#{this._id}") 
+                            i.pencil.icon
+                            |Edit Event

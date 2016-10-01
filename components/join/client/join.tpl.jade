@@ -4,7 +4,8 @@
             img.ls-bg(src="{{c.url 'first_slide2' effect='improve' width=1000 height=300 crop='fill' }}", alt='Slide background' height='100')
             .ls-l.overlay-text.slider-text(style="top: 50%;") 
                 | Join Impact Hub Boulder Today: Membership Options
-    .ui.basic.padded.segment
+    h1.impact-header Individual Membership
+    .ui.basic.padded.segment.container
         .ui.two.column.stackable.grid
             .ten.wide.column
                 .large-text
@@ -20,4 +21,17 @@
                 // a#launch_modal(href='#')
                 a(href='/member_discount')
                     img.ui.centered.image(src="{{c.url 'member_discount_cropped3' width=250 crop='fill'}}")
-    +memberships
+        +memberships
+        .ui.hidden.divider
+    h1.impact-header Office Inquiry At Impact Hub Boulder
+    .ui.basic.padded.segment.container
+        p.large-text Impact Hub Boulder offers 18 private offices within its 10,000+ SF space.  Our offices range in size and configuration and can accommodate teams from 2 to 6+ people.  
+        p.large-text All offices come with hard-wired internet access, an ECO Pass for each full-time employee, mail service, cleaning service, utilities, 24/7 access, privacy and the security of a locked door, and more.
+        p.large-text Choose also from three conference rooms (by reservation) and 6 privacy booths (first come, first serve) for planned or impromptu meetings.
+
+        // p.large-text If you are interested in office space, please fill out the form below.
+        
+        .ui.centered.grid
+            .eight.wide.column
+                a.impact-button-dark(href='https://hubboulder.formstack.com/forms/apply_hub_membership__copy__copy', target='_blank' title='Online Form') 
+                    |Office Inquiry Form 
