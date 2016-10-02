@@ -31,6 +31,18 @@ Template.post.helpers
     can_edit: -> @author_id is Meteor.userId()
 
     publish_when: -> moment(@publish_date).fromNow()
+    
+    snippet: -> @description.substr(0, 200).concat('...')
+
+Template.post_item.helpers
+    post_tag_class: -> if @valueOf() in selected_post_tags.array() then 'red' else 'basic'
+
+    can_edit: -> @author_id is Meteor.userId()
+
+    publish_when: -> moment(@publish_date).fromNow()
+    
+    snippet: -> @description.substr(0, 200).concat('...')
+
 
 Template.post.events
     'click .post_tag': ->

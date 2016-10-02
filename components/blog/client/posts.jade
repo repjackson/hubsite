@@ -9,9 +9,10 @@ template(name='posts')
         .ui.stackable.divided.grid
             .twelve.wide.column
                 h1.impact-header Recent Posts
-                .ui.cards
+                // .ui.cards
+                .ui.relaxed.divided.items
                     each posts
-                        +post
+                        +post_item
             .four.wide.column
                 +post_cloud
                 if isInRole 'admin'
@@ -38,7 +39,8 @@ template(name='post')
                 .meta
                     | Published #{publish_when}
             .description
-                |!{description}
+                |#{snippet}
+                // |!{description}
         .content
             each tags
                 .ui.compact.button.post_tag(class=post_tag_class) #{this}
@@ -47,5 +49,21 @@ template(name='post')
                     i.pencil.icon
                     |Edit Post    
         .content
-            +favorite
-            // +shareit
+        //     // +favorite
+            +shareit
+            
+            
+template(name='post_item')
+    .item
+        a.image(href="/post/view/#{_id}")
+            img(src="{{c.url image_id  width=175 height=175 crop='fill' gravity='face' }}")
+        .content
+            a.header(href="/post/view/#{_id}") #{title}
+            .meta
+                | Published #{publish_when}
+            .description
+                p #{snippet}
+            .extra
+                each tags
+                    .ui.basic.comapct.label #{this}
+

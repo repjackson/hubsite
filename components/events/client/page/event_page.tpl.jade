@@ -49,4 +49,12 @@ with event
                             |Admin
                         a.ui.basic.button(href="/event/edit/#{this._id}") 
                             i.pencil.icon
-                            |Edit Event
+                            |Edit
+                        if published
+                            .ui.green.label Published
+                        else
+                            .ui.red.label Unpublished                        
+                        if featured
+                            .ui.green.label Featured
+                        else
+                            .ui.red.label Unfeatured

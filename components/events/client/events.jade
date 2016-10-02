@@ -10,6 +10,7 @@ template(name='events')
                 .twelve.wide.column
                     // +featured_events
                     +upcoming_events
+                    +reoccurring_events
                     +past_events
                     if isInRole 'admin'
                         +admin_events
@@ -30,6 +31,11 @@ template(name='events')
                                 i.green.plus.corner.icon
                             | Manually Add Event
 
+template(name='reoccurring_events')
+    h2.impact-header Reoccurring Events
+    .ui.centered.stackable.three.cards
+        each reoccurring_events
+            +event_card
 
 
 template(name='upcoming_events')
@@ -38,20 +44,20 @@ template(name='upcoming_events')
         each upcoming_events
             +event_card
 
+
+template(name='past_events')
+    h2.impact-header Past Events
+    .ui.centered.stackable.three.cards
+        each past_events
+            +event_card
+
+
 template(name='admin_events')
     h2.impact-header 
         i.red.configure.icon
         |Admin Events
     .ui.centered.stackable.three.cards
         each admin_events
-            +event_card
-
-
-
-template(name='past_events')
-    h2.impact-header Past Events
-    .ui.centered.stackable.three.cards
-        each past_events
             +event_card
 
 
@@ -72,9 +78,8 @@ template(name='event_card')
                 strong #{day} 
             .meta
                 strong #{start_time} to #{end_time}
-            // .meta
-            //     |Organized by #{organizer.name}
-            // .meta
-            //     |At #{venue.name}
-            // .ui.hidden.fitted.divider
-            // |!{snippet}
+        if isInRole 'admin'
+            if published
+                .ui.bottom.right.attached.basic.green.label Published
+            else
+                .ui.bottom.right.attached.basic.red.label Unpublished

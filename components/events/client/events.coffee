@@ -34,6 +34,7 @@ Template.upcoming_events.helpers
         # Docs.find {start_date: $gte: today.toISOString()}, sort: start_date: 1
         Docs.find { 
             type:'event'
+            reoccurring: $ne: true
             start_datetime: $gte: today.toISOString()
             }, 
             sort: start_datetime: 1
@@ -50,7 +51,19 @@ Template.past_events.helpers
         # Docs.find {start_date: $lte: today.toISOString()}, sort: start_date: 1
         Docs.find { 
             type:'event'
+            reoccurring: $ne: true
             start_datetime: $lte: today.toISOString()
+            }, 
+            sort: start_datetime: 1
+            
+Template.reoccurring_events.helpers
+    reoccurring_events: -> 
+        today = new Date()
+        # Docs.find {start_date: $lte: today.toISOString()}, sort: start_date: 1
+        Docs.find { 
+            type:'event'
+            reoccurring: true
+            # start_datetime: $gte: today.toISOString()
             }, 
             sort: start_datetime: 1
             
