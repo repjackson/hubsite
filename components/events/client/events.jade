@@ -67,9 +67,9 @@ template(name='event_card')
         .image
             a(href="/event/view/#{_id}")
                 if image_id
-                    img.ui.centered.image(src="{{c.url image_id }}")
+                    img.ui.fluid.image(src="{{c.url image_id height=400 width=800 crop='fill' gravity='north_west'}}")
                 else if eventbrite_image
-                    img.ui.centered.image(src=eventbrite_image)
+                    img.ui.fluid.image(src=eventbrite_image)
         .content
             // .header
             h3.ui.red.header.make-uppercase 
@@ -80,10 +80,10 @@ template(name='event_card')
                 strong #{start_time} to #{end_time}
         if isInRole 'admin'
             if published
-                .ui.bottom.right.attached.basic.green.label 
+                .ui.bottom.right.attached.basic.label 
                     i.red.configure.icon
                     |Published
             else
-                .ui.bottom.right.attached.basic.red.label 
+                .ui.bottom.right.attached.basic.label 
                     i.red.configure.icon
                     |Unpublished

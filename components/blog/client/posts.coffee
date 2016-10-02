@@ -27,14 +27,12 @@ Template.post.helpers
 
     can_edit: -> @author_id is Meteor.userId()
 
-    publish_when: -> moment(@publish_date).fromNow()
     
 Template.post_item.helpers
     tag_class: -> if @valueOf() in selected_tags.array() then 'red' else 'basic'
 
     can_edit: -> @author_id is Meteor.userId()
 
-    publish_when: -> moment(@publish_date).fromNow()
     
 
 

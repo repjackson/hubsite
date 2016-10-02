@@ -2,9 +2,9 @@ template(name='admin_nav')
     .ui.container
         .ui.basic.padded.segment
             .ui.compact.four.item.stackable.menu
-                a.item(href="/admin/submissions" class="{{isActivePath '/admin/submissions'}}")
-                    i.comment.outline.icon
-                    |Contact Form Submissions
+                // a.item(href="/admin/submissions" class="{{isActivePath '/admin/submissions'}}")
+                //     i.comment.outline.icon
+                //     |Contact Form Submissions
                 a.item(href='/admin/user_management' class="{{isActivePath '/admin/user_management'}}")
                     i.users.icon
                     |User Management
@@ -27,6 +27,7 @@ template(name='content_management')
                     i.building.icon
                     i.green.plus.corner.icon
                 |Add Organization
+        +cloud filter=null
 
         
         

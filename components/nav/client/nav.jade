@@ -41,8 +41,8 @@ template(name='top_nav')
                 a.ui.item(href='/sign-up') 
                     i.add.user.icon
                     |Register
-    a.header-logo(href='/' class="{{isActivePath '/'}}")
-        img(src='/img/Impact_Hub_Boulder_logo.png')
+    a(href='/' class="{{isActivePath '/'}}")
+        img.header-logo(src="{{c.url 'ih_logo'}}")
 
 
 template(name='nav')

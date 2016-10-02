@@ -16,7 +16,7 @@ template(name='featured_post')
         .content
             .header
                 a(href="/post/view/#{this._id}")
-                    h3.ui.header #{title}
+                    h3.ui.red.header.make-uppercase #{title}
             .description
                 // .ui.header Post Topics:
-                |Published on #{publish_date}
+                |#{publish_when}
