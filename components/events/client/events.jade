@@ -15,7 +15,7 @@ template(name='events')
                         +admin_events
                 .four.wide.column
                     a.impact-button-dark(href='/rent') Host Your Event
-                    +event_cloud
+                    +cloud filter='event'
                     +google_calendar
                     if isInRole 'admin'
                         h2.impact-header 

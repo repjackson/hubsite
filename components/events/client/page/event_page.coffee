@@ -6,10 +6,6 @@ Template.event_page.onCreated ->
 Template.event_page.helpers
     event: -> Docs.findOne FlowRouter.getParam('doc_id')
 
-    event_tag_class: -> if @valueOf() in selected_tags.array() then 'red' else 'basic'
-
-    attending: -> if @attendee_ids and Meteor.userId() in @attendee_ids then true else false
-
     can_edit: -> Meteor.userId()
 
     day: -> moment(@start_datetime).format("dddd, MMMM Do");
@@ -37,8 +33,6 @@ Template.event_page.events
     'click .edit_event': ->
         FlowRouter.go "/event/edit/#{@_id}"
 
-    'click #pull_url': ->
-        Meteor.call 'pull_url', @_id
 
     # 'click #reload': ->
     #     swal {
@@ -59,8 +53,3 @@ Template.event_page.events
     #                 console.log 'new event id', id
     #                 FlowRouter.go "/event/view/#{id}" 
     
-    'keydown #add_event_url': (e,t)->
-        if e.which is 13
-            url = $('#add_event_url').val()
-            Docs.update @_id,
-                $set: url: url

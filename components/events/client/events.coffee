@@ -23,10 +23,10 @@ Template.events.events
 
 
 
-Template.events.onCreated -> @autorun -> Meteor.subscribe('selected_events', selected_event_tags.array())
-Template.admin_events.onCreated -> @autorun -> Meteor.subscribe('all_events')
-# Template.upcoming_events.onCreated -> @autorun -> Meteor.subscribe('upcoming_events', selected_event_tags.array())
-# Template.past_events.onCreated -> @autorun -> Meteor.subscribe('past_events', selected_event_tags.array())
+Template.events.onCreated -> @autorun -> Meteor.subscribe('selected_events', selected_tags.array())
+# Template.admin_events.onCreated -> @autorun -> Meteor.subscribe('all_events')
+# Template.upcoming_events.onCreated -> @autorun -> Meteor.subscribe('upcoming_events', selected_tags.array())
+# Template.past_events.onCreated -> @autorun -> Meteor.subscribe('past_events', selected_tags.array())
 
 Template.upcoming_events.helpers
     upcoming_events: -> 
@@ -63,7 +63,7 @@ Template.events.helpers
 
 
 Template.event_card.helpers
-    event_tag_class: -> if @valueOf() in selected_event_tags.array() then 'red' else 'basic'
+    event_tag_class: -> if @valueOf() in selected_tags.array() then 'red' else 'basic'
 
     day: -> moment(@start_datetime).format("dddd, MMMM Do");
     start_time: -> moment(@start_datetime).format("h:mm a")
@@ -74,4 +74,4 @@ Template.event_card.helpers
 
 Template.event_card.events
     # 'click .event_tag': ->
-    #     if @valueOf() in selected_event_tags.array() then selected_event_tags.remove @valueOf() else selected_event_tags.push @valueOf()
+    #     if @valueOf() in selected_tags.array() then selected_tags.remove @valueOf() else selected_tags.push @valueOf()

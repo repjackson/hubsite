@@ -1,17 +1,3 @@
-@Events = new Meteor.Collection 'events'
-@Event_tags = new Meteor.Collection 'event_tags'
-
-
-Meteor.methods
-    join_event: (id)->
-        Docs.update id, 
-            $addToSet: attendee_ids: Meteor.userId()    
-            
-    leave_event: (id)->
-        Docs.update id, 
-            $pull: attendee_ids: Meteor.userId()
-            
-            
 # Events
 
 FlowRouter.route '/events', action: (params) ->

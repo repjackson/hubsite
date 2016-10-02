@@ -36,7 +36,6 @@ Template.cloud.helpers
         # console.log "selected_#{type}_tags"
         selected_tags.list()
 
-    can_add: -> Meteor.userId()
 
 Template.cloud.events
     'click .select_tag': -> selected_tags.push @name

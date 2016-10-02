@@ -12,12 +12,5 @@ rent page
 
 meet academy board members on about us page
 
-events
-    side links to add to calendar 
-    manually change photo
-    editing description
-
-
-put nav and event photo in container    
     
 $ DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy --settings settings.json www.collider.cloud
