@@ -37,13 +37,9 @@ template(name='contact_form')
 
 template(name='badges')
     +newsletter_sign_up
-    .ui.two.column.centered.grid
-        .ui.centered.row
-            .centered.eight.wide.column
-                .ui.compact.segment
-                    img.ui.tiny.bordered.image(src='/badges/entrepreneurial_by_nature.jpg')
-            .centered.eight.wide.column
-                img.ui.tiny.image(src='/badges/B-Corp.png')
+    .ui.compact.segment
+        img.ui.tiny.bordered.image(src='/badges/entrepreneurial_by_nature.jpg')
+    img.ui.tiny.image(src='/badges/B-Corp.png')
     a.ui.icon.big.white.inverted.button(href='https://www.facebook.com/ImpactHubBoulder' target="_blank")
         i.facebook.link.icon
     a.ui.icon.big.white.inverted.button(href='https://twitter.com/ImpactHubBldr' target="_blank")

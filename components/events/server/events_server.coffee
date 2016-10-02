@@ -28,7 +28,8 @@ Meteor.publish 'selected_events', (selected_event_tags)->
     match = {}
     if selected_event_tags.length > 0 then match.tags = $all: selected_event_tags
     match.type = 'event'
-    
+    if not @userId or not Roles.userIsInRole(@userId, ['admin'])
+        match.published = true
     
     Docs.find match
 
@@ -53,6 +54,11 @@ Meteor.publish 'event_tags', (selected_event_tags)->
     match = {}
     if selected_event_tags.length > 0 then match.tags = $all: selected_event_tags
     match.type = 'event'
+    
+    if not @userId or not Roles.userIsInRole(@userId, ['admin'])
+        match.published = true
+    
+
 
     cloud = Docs.aggregate [
         { $match: match }
@@ -154,18 +160,18 @@ Meteor.methods
 
 
 
-    pull_url: (event_id)->
-        HTTP.get "https://www.eventbriteapi.com/v3/events/#{event_id}", {
-                params:
-                    token: 'QLL5EULOADTSJDS74HH7'
-                    # expand: 'organizer,venue,logo,format,category,subcategory,ticket_classes,bookmark_info'
-            }, 
-            (err, res)->
-                if err
-                    console.error err
-                else
-                    event = res.data
+    # pull_url: (event_id)->
+    #     HTTP.get "https://www.eventbriteapi.com/v3/events/#{event_id}", {
+    #             params:
+    #                 token: 'QLL5EULOADTSJDS74HH7'
+    #                 # expand: 'organizer,venue,logo,format,category,subcategory,ticket_classes,bookmark_info'
+    #         }, 
+    #         (err, res)->
+    #             if err
+    #                 console.error err
+    #             else
+    #                 event = res.data
 
-                    Docs.update event_id
-                        url: event.url
+    #                 Docs.update event_id
+    #                     url: event.url
 

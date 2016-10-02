@@ -82,8 +82,6 @@ Template.event_card.helpers
     start_time: -> moment(@start_datetime).format("h:mm a")
     end_time: -> moment(@end_datetime).format("h:mm a")
 
-    snippet: -> @description.substr(0, 200).concat('...')
-        
 
 Template.event_card.events
     # 'click .event_tag': ->

@@ -11,7 +11,10 @@ Meteor.publish 'selected_posts', (selected_post_tags)->
     match = {}
     if selected_post_tags.length > 0 then match.tags = $all: selected_post_tags
     match.type = 'post'
+    if not @userId or not Roles.userIsInRole(@userId, ['admin'])
+        match.published = true
     
+
     Docs.find match,
         limit: 10
         sort: 
@@ -23,6 +26,9 @@ Meteor.publish 'post_tags', (selected_post_tags)->
     match = {}
     if selected_post_tags.length > 0 then match.tags = $all: selected_post_tags
     match.type = 'post'
+    if not @userId or not Roles.userIsInRole(@userId, ['admin'])
+        match.published = true
+    
 
 
     cloud = Docs.aggregate [

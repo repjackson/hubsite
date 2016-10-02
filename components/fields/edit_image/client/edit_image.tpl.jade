@@ -3,8 +3,7 @@
         label Image
         .ui.large.image
             img(src="{{c.url image_id}}")
-            a#remove_photo.ui.right.corner.link.white.label
-                i.remove.red.link.icon
+            a#remove_photo.ui.top.left.attached.link.basic.label Remove
     else
         label Upload Image
         input(type='file' name='upload_picture' accept='image/*')

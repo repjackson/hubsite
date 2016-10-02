@@ -23,9 +23,9 @@ template(name='events')
                             i.red.configure.icon
                             |Admin
                         .ui.fluid.input
-                            input#import_eventbrite(type='text' placeholder='Add by Eventbrite Id')
+                            input#import_eventbrite(type='text' placeholder='Import Eventbrite with Id')
                         .ui.horizontal.divider or
-                        #add_event.ui.basic.button 
+                        #add_event.ui.basic.fluid.button 
                             i.large.icons
                                 i.calendar.icon
                                 i.green.plus.corner.icon
@@ -80,6 +80,10 @@ template(name='event_card')
                 strong #{start_time} to #{end_time}
         if isInRole 'admin'
             if published
-                .ui.bottom.right.attached.basic.green.label Published
+                .ui.bottom.right.attached.basic.green.label 
+                    i.red.configure.icon
+                    |Published
             else
-                .ui.bottom.right.attached.basic.red.label Unpublished
+                .ui.bottom.right.attached.basic.red.label 
+                    i.red.configure.icon
+                    |Unpublished

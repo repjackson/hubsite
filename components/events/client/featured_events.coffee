@@ -8,10 +8,11 @@ Template.featured_events.helpers
     featured_events: -> 
         Docs.find {
             featured: true
+            published: true
             type: 'event'
         }, 
             sort: start_datetime: 1
-            limit: 3
+            limit: 4
         
 Template.featured_event.helpers
     day: -> moment(@start_datetime).format("dddd, MMMM Do")
