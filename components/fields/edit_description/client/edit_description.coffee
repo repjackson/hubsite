@@ -11,6 +11,17 @@ Template.edit_description.events
                 snippet: snippet
 
 
+    'click #upload_widget_opener': (e,t)->
+        cloudinary.openUploadWidget {
+            cloud_name: 'facet'
+            upload_preset: 'rodonu5a'
+        }, (error, result) ->
+            # console.log error, result
+            Docs.update FlowRouter.getParam('doc_id'),
+                $addToSet: image_array: $each: result
+
+
+
 
 Template.edit_description.helpers
     getFEContext: ->
