@@ -9,8 +9,6 @@ Template.post_page.helpers
     post: ->
         Docs.findOne FlowRouter.getParam('doc_id')
 
-    publish_when: -> moment(@publish_date).fromNow()
-
 
 Template.post_page.events
     'click .edit_post': ->

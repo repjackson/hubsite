@@ -8,7 +8,9 @@ Template.posts.onRendered ->
 
 Template.posts.helpers
     posts: -> 
-        Docs.find {},
+        Docs.find {
+            type: 'post'
+            },
             sort:
                 publish_date: -1
             limit: 5

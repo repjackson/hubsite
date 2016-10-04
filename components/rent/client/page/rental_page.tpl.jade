@@ -1,0 +1,29 @@
+with rental
+    .ui.text.container.basic.segment
+        a.ui.basic.button(href='/rent')
+            i.arrow.left.icon
+            |Rentals
+        .content
+            if image_id
+                div
+                    img.ui.centered.image(src="{{c.url image_id}}")
+                    .overlay-text 
+                        h1 #{title}
+            else
+                h1 #{title}
+            .ui.basic.segment
+                |!{description}
+            if tags
+                .ui.basic.segment
+                    each tags
+                        .ui.basic.label #{this}
+        if isInRole 'admin'
+            .ui.divider
+            i.large.red.configure.icon
+            .edit_rental.ui.basic.button
+                i.pencil.icon
+                |Edit
+            if published
+                .ui.green.label Published
+            else
+                .ui.red.label Unpublished                        

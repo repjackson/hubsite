@@ -33,10 +33,6 @@ FlowRouter.route '/academy', action: (params) ->
         nav: 'nav'
         main: 'academy'
 
-FlowRouter.route '/rent', action: (params) ->
-    BlazeLayout.render 'layout',
-        nav: 'nav'
-        main: 'rent'
 
 FlowRouter.route '/host-meeting', action: (params) ->
     BlazeLayout.render 'layout',

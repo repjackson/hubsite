@@ -19,6 +19,22 @@
     h2.impact-header Event Spaces
     // .ui.big.black.basic.button 
     //     .make-uppercase Try a Free Day
+    if isInRole 'admin'
+        #add_rental.ui.basic.button Add Rental
+        .ui.centered.four.stackable.cards
+            each rentals
+                .ui.card
+                    a(href="/rental/view/#{_id}")
+                        .image.launch-modal
+                            img.ui.fluid.image(src="{{c.url image_id height=195 width=300  crop='fill'}}")
+                    .content
+                        a.header(href="/rental/view/#{_id}") #{title}
+                        // .header.launch-modal #{title}
+                        // .description
+                        //     | If you’re looking to host a large event that will take more than just one of our spaces, we offer an option of renting the majority of our space. With the whole HUB at your disposal, you can have break-out groups, multiple, and concurrent sessions.
+                        .extra.content
+                            |{{nl2br snippet}}
+
     .ui.centered.four.stackable.cards
         .ui.card
             .image
@@ -121,41 +137,41 @@
                         //         |Work Members
 
     .ui.padded.basic.segment.container
-        // table.ui.fixed.basic.definition.celled.table
-        //     thead
-        //         tr.center.aligned.row
-        //             th.bottom.aligned 
-        //             th.bottom.aligned 
-        //                 h3 Non-Members
-        //             th.bottom.aligned 
-        //                 h3 Connect Members
-        //             th.bottom.aligned 
-        //                 h3 Work Members
-        //     tbody
-        //         tr.center.aligned
-        //             td.right.aligned Board Room
-        //             td 
-        //                 h4 $100/hour
-        //             td 
-        //                 h4 $30/hour
-        //             td 
-        //                 h4 $20/hour
-        //         tr.center.aligned
-        //             td.right.aligned Southeast
-        //             td 
-        //                 h4 $50/hour
-        //             td 
-        //                 h4 $20/hour
-        //             td 
-        //                 h4 $10/hour
-        //         tr.center.aligned
-        //             td.right.aligned Middle
-        //             td 
-        //                 h4 $50/hour
-        //             td 
-        //                 h4 $10/hour
-        //             td 
-        //                 h4 $5/hour
+        table.ui.fixed.basic.definition.celled.table
+            thead
+                tr.center.aligned.row
+                    th.bottom.aligned 
+                    th.bottom.aligned 
+                        h3 Non-Members
+                    th.bottom.aligned 
+                        h3 Connect Members
+                    th.bottom.aligned 
+                        h3 Work Members
+            tbody
+                tr.center.aligned
+                    td.right.aligned Board Room
+                    td 
+                        h4 $100/hour
+                    td 
+                        h4 $30/hour
+                    td 
+                        h4 $20/hour
+                tr.center.aligned
+                    td.right.aligned Southeast
+                    td 
+                        h4 $50/hour
+                    td 
+                        h4 $20/hour
+                    td 
+                        h4 $10/hour
+                tr.center.aligned
+                    td.right.aligned Middle
+                    td 
+                        h4 $50/hour
+                    td 
+                        h4 $10/hour
+                    td 
+                        h4 $5/hour
         
         p.large-text  Payment must be received at the time you make your reservation. Cancellations made within 7 days of your reservation will not be refunded.
     
@@ -170,3 +186,34 @@
         .ui.centered.grid
             .eight.wide.column
                 a.impact-button-dark(href='http://hubboulder.formstack.com/forms/event_reservations', target='_blank' title='Online Form') Reserve Event Space
+
+
+.ui.modal
+    .ui.text.container.basic.segment
+        a.ui.basic.button(href='/rentals')
+            i.arrow.left.icon
+            |Rentals
+        .content
+            if image_id
+                div
+                    img.ui.centered.image(src="{{c.url image_id}}")
+                    .overlay-text 
+                        h1 #{title}
+            else
+                h1 #{title}
+            .ui.basic.segment
+                |!{description}
+            if tags
+                .ui.basic.segment
+                    each tags
+                        .ui.basic.label #{this}
+        if isInRole 'admin'
+            .ui.divider
+            i.large.red.configure.icon
+            .edit_rental.ui.basic.button
+                i.pencil.icon
+                |Edit
+            if published
+                .ui.green.label Published
+            else
+                .ui.red.label Unpublished                        

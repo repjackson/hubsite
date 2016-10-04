@@ -2,13 +2,24 @@ Template.edit_description.events
     'click #save_description': (e,t)->
         html = t.$('div.froala-reactive-meteorized-override').froalaEditor('html.get', true)
         
-        snippet = $(html).text().substr(0, 300).concat('...')
+        
+        snippet = $('#snippet').val()
+        if snippet.length is 0
+            snippet = $(html).text().substr(0, 300).concat('...')
         doc_id = FlowRouter.getParam('doc_id')
 
         Docs.update doc_id,
             $set: 
                 description: html
                 snippet: snippet
+
+    'blur #snippet': (e,t)->
+        text = $('#snippet').val()
+        doc_id = FlowRouter.getParam('doc_id')
+
+        Docs.update doc_id,
+            $set: 
+                snippet: text
 
 
     'click #upload_widget_opener': (e,t)->
@@ -33,6 +44,7 @@ Template.edit_description.helpers
             _className: 'froala-reactive-meteorized-override'
             toolbarInline: false
             initOnClick: false
+            imageInsertButtons: ['imageBack', '|', 'imageByURL']
             tabSpaces: false
             height: 300
             '_onsave.before': (e, editor) ->

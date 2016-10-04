@@ -36,16 +36,16 @@ template(name='contact_form')
 
 
 template(name='badges')
-    +newsletter_sign_up
-    .ui.compact.segment
-        img.ui.tiny.bordered.image(src='/badges/entrepreneurial_by_nature.jpg')
-    img.ui.tiny.image(src='/badges/B-Corp.png')
+    // +newsletter_sign_up
+    +mailchimp
+    // .ui.compact.segment
+    //     img.ui.tiny.bordered.image(src='/badges/entrepreneurial_by_nature.jpg')
+    // img.ui.tiny.image(src='/badges/B-Corp.png')
+    .ui.inverted.divider
     a.ui.icon.big.white.inverted.button(href='https://www.facebook.com/ImpactHubBoulder' target="_blank")
         i.facebook.link.icon
     a.ui.icon.big.white.inverted.button(href='https://twitter.com/ImpactHubBldr' target="_blank")
         i.twitter.link.icon
-                // .ui.compact.segment
-    // .ui.hidden.divider
 
     
     
