@@ -1,18 +1,18 @@
 template(name='featured_posts')
-    .ui.attached.very.padded.basic.segment.container
-        .ui.container
-            h1.impact-header Featured Posts
-            .ui.four.stackable.cards
-                each featured_posts
-                    // +post
-                    +featured_post
+    // .ui.attached.very.padded.basic.segment.container
+    //     .ui.container
+    h1.impact-header Featured Posts
+    .ui.four.stackable.cards
+        each featured_posts
+            // +post
+            +featured_post
                 
                 
 template(name='featured_post')
     .ui.card
         .image
             a(href="/post/view/#{this._id}")
-                img.ui.image.featured_post_title(src="{{c.url image_id width=400 height=400 gravity='face' crop='fill'}}")
+                img.ui.fluid.image(src="{{c.url image_id height=400 width=800 gravity='face' crop='fill'}}")
         .content
             .header
                 a(href="/post/view/#{this._id}")

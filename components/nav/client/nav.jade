@@ -1,6 +1,8 @@
 template(name='top_nav')
     .ui.inverted.menu
         .right.menu
+            if is_dev
+                .red.item Development Mode
             // a.item(href='/services' class="{{isActivePath '/services'}}")
             //     i.laptop.icon
             //     | Services

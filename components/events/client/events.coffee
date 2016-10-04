@@ -14,6 +14,7 @@ Template.events.events
                 # console.log 'attemping to add event with id ', event_id
                 Meteor.call 'import_eventbrite', event_id, (err,res)->
                     t.find('#import_eventbrite').value = ''
+                    console.log res
 
     'click #add_event': ->
         id = Docs.insert 
@@ -35,6 +36,7 @@ Template.upcoming_events.helpers
         Docs.find { 
             type:'event'
             reoccurring: $ne: true
+            published: $ne: false
             start_datetime: $gte: today.toISOString()
             }, 
             sort: start_datetime: 1
@@ -42,7 +44,7 @@ Template.upcoming_events.helpers
 Template.admin_events.helpers
     admin_events: -> 
         Docs.find { 
-            start_datetime: $exists: false
+            published: false
             }
             
 Template.past_events.helpers
@@ -52,6 +54,7 @@ Template.past_events.helpers
         Docs.find { 
             type:'event'
             reoccurring: $ne: true
+            published: $ne: false
             start_datetime: $lte: today.toISOString()
             }, 
             sort: start_datetime: 1
@@ -63,6 +66,7 @@ Template.reoccurring_events.helpers
         Docs.find { 
             type:'event'
             reoccurring: true
+            published: $ne: false
             # start_datetime: $gte: today.toISOString()
             }, 
             sort: start_datetime: 1

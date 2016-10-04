@@ -6,7 +6,7 @@ with rental
         .content
             if image_id
                 div
-                    img.ui.centered.image(src="{{c.url image_id}}")
+                    img.ui.centered.image(src="{{c.url image_id effect='art:primavera'}}")
                     .overlay-text 
                         h1 #{title}
             else
@@ -27,3 +27,6 @@ with rental
                 .ui.green.label Published
             else
                 .ui.red.label Unpublished                        
+        .ui.centered.grid
+            .eight.wide.column
+                a.impact-button-dark(href='https://www.bookingbug.com/home/116291-Impact-Hub-Boulder' target='_blank') Reserve a Room

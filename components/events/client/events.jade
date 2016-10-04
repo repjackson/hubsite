@@ -55,7 +55,7 @@ template(name='past_events')
 template(name='admin_events')
     h2.impact-header 
         i.red.configure.icon
-        |Admin Events
+        |Unpublished Events
     .ui.centered.stackable.three.cards
         each admin_events
             +event_card
@@ -80,10 +80,10 @@ template(name='event_card')
                 strong #{start_time} to #{end_time}
         if isInRole 'admin'
             if published
-                .ui.bottom.right.attached.basic.label 
+                .ui.bottom.right.attached.basic.green.tiny.label 
                     i.red.configure.icon
-                    |Published
+                    |Pub
             else
-                .ui.bottom.right.attached.basic.label 
+                .ui.bottom.right.attached.basic.red.tiny.label 
                     i.red.configure.icon
-                    |Unpublished
+                    |Unpub

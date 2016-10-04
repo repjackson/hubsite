@@ -21,120 +21,120 @@
     //     .make-uppercase Try a Free Day
     if isInRole 'admin'
         #add_rental.ui.basic.button Add Rental
-        .ui.centered.four.stackable.cards
-            each rentals
-                .ui.card
-                    a(href="/rental/view/#{_id}")
-                        .image.launch-modal
-                            img.ui.fluid.image(src="{{c.url image_id height=195 width=300  crop='fill'}}")
-                    .content
-                        a.header(href="/rental/view/#{_id}") #{title}
-                        // .header.launch-modal #{title}
-                        // .description
-                        //     | If you’re looking to host a large event that will take more than just one of our spaces, we offer an option of renting the majority of our space. With the whole HUB at your disposal, you can have break-out groups, multiple, and concurrent sessions.
-                        .extra.content
-                            |{{nl2br snippet}}
-
     .ui.centered.four.stackable.cards
-        .ui.card
-            .image
-                img(src="{{c.url 'venue' height=195 width=300  crop='fill'}}")
-                // a(href="{{c.url 'venue'}}")
-            .content
-                .header Venue
-                // .description
-                //     | If you’re looking to host a large event that will take more than just one of our spaces, we offer an option of renting the majority of our space. With the whole HUB at your disposal, you can have break-out groups, multiple, and concurrent sessions.
-                .extra.content
-                    div 150 Seats
-                    div 250 People
-                    div 3,000 Square Feet
-        .ui.card
-            .image
-                img(src="{{c.url 'middle_conference_room' height=200 crop='fill'}}")
-                // a(href="{{c.url 'middle_conference_room'}}")
-            .content
-                .header Middle Conference Room
-                // .description
-                //     |Our most intimate meeting space, the Middle Conference Room offers a round table that can accommodate up to six people. The conference room features a large flat panel display (equipped w/ Apple TV) and glass walls.
-                .extra.content
-                    div Fits 6 to 8 People Comfortably
-                    div 100 Square Feet
-                    // .ui.mini.statistic
-                    //     .value
-                    //         i.dollar.icon
-                    //         | 50/ Hour
-                    //     .label
-                    //         |Non-Members
-                    // .ui.mini.statistic
-                    //     .value
-                    //         i.dollar.icon
-                    //         | 10/ Hour
-                    //     .label
-                    //         |Connect Members
-                    // .ui.mini.statistic
-                    //     .value
-                    //         i.dollar.icon
-                    //         | 5/ Hour
-                    //     .label
-                    //         |Work Members
-        .ui.card
-            .image
-                img(src="{{c.url 'se_conference_room' height=200 crop='fill'}}")
-                // a(href="{{c.url 'se_conference_room'}}")
-            .content
-                .header Southeast Conference Room
-                // .description
-                //     | The Southeast Conference Room can seat 8 comfortably around a table. The room features a large flat panel display (equipped w/ Apple TV), windows, and glass walls. A mobile white board is available upon request.
-                .extra.content
-                    div Fits 8 to 12 People Comfortably
-                    div 200 Square Feet
-                    // .ui.mini.statistic
-                    //     .value
-                    //         i.dollar.icon
-                    //         | 50/ Hour
-                    //     .label
-                    //         |Non-Members
-                    // .ui.mini.statistic
-                    //     .value
-                    //         i.dollar.icon
-                    //         | 20/ Hour
-                    //     .label
-                    //         |Connect Members
-                    // .ui.mini.statistic
-                    //     .value
-                    //         i.dollar.icon
-                    //         | 10/ Hour
-                    //     .label
-                    //         |Work Members
-        .ui.card
-            .image
-                img(src="{{c.url 'board_room' height=200 crop='fill'}}")
-                // a(href="{{c.url 'board_room'}}")
-            .content
-                .header Boardroom
-                // .description
-                //     | Our largest-capacity conference room, the Board Room can seat 14 around a large table. The Board Room features a large flat panel display (equipped w/ Apple TV), glass walls and windows, and a credenza for supplies or food and beverages. A mobile white board is available upon request.
-                .extra.content
-                    div Fits 12 to 18 People Comfortably
-                    div 400 Square Feet
-                        // .ui.mini.statistic
-                        //     .value
-                        //         i.dollar.icon
-                        //         | 100/ Hour
-                        //     .label
-                        //         |Non-Members
-                        // .ui.mini.statistic
-                        //     .value
-                        //         i.dollar.icon
-                        //         | 30/ Hour
-                        //     .label
-                        //         |Connect Members
-                        // .ui.mini.statistic
-                        //     .value
-                        //         i.dollar.icon
-                        //         | 20/ Hour
-                        //     .label
-                        //         |Work Members
+        each rentals
+            .ui.card
+                a(href="/rental/view/#{_id}")
+                    .image
+                        img.ui.fluid.image(src="{{c.url image_id height=195 width=300  crop='fill'}}")
+                .content
+                    a.header(href="/rental/view/#{_id}") #{title}
+                    // .header.launch-modal #{title}
+                    // .description
+                    //     | If you’re looking to host a large event that will take more than just one of our spaces, we offer an option of renting the majority of our space. With the whole HUB at your disposal, you can have break-out groups, multiple, and concurrent sessions.
+                    .extra.content
+                        |{{nl2br snippet}}
+
+    // .ui.centered.four.stackable.cards
+    //     .ui.card
+    //         .image
+    //             img(src="{{c.url 'venue' height=195 width=300  crop='fill'}}")
+    //             // a(href="{{c.url 'venue'}}")
+    //         .content
+    //             .header Venue
+    //             // .description
+    //             //     | If you’re looking to host a large event that will take more than just one of our spaces, we offer an option of renting the majority of our space. With the whole HUB at your disposal, you can have break-out groups, multiple, and concurrent sessions.
+    //             .extra.content
+    //                 div 150 Seats
+    //                 div 250 People
+    //                 div 3,000 Square Feet
+    //     .ui.card
+    //         .image
+    //             img(src="{{c.url 'middle_conference_room' height=200 crop='fill'}}")
+    //             // a(href="{{c.url 'middle_conference_room'}}")
+    //         .content
+    //             .header Middle Conference Room
+    //             // .description
+    //             //     |Our most intimate meeting space, the Middle Conference Room offers a round table that can accommodate up to six people. The conference room features a large flat panel display (equipped w/ Apple TV) and glass walls.
+    //             .extra.content
+    //                 div Fits 6 to 8 People Comfortably
+    //                 div 100 Square Feet
+    //                 // .ui.mini.statistic
+    //                 //     .value
+    //                 //         i.dollar.icon
+    //                 //         | 50/ Hour
+    //                 //     .label
+    //                 //         |Non-Members
+    //                 // .ui.mini.statistic
+    //                 //     .value
+    //                 //         i.dollar.icon
+    //                 //         | 10/ Hour
+    //                 //     .label
+    //                 //         |Connect Members
+    //                 // .ui.mini.statistic
+    //                 //     .value
+    //                 //         i.dollar.icon
+    //                 //         | 5/ Hour
+    //                 //     .label
+    //                 //         |Work Members
+    //     .ui.card
+    //         .image
+    //             img(src="{{c.url 'se_conference_room' height=200 crop='fill'}}")
+    //             // a(href="{{c.url 'se_conference_room'}}")
+    //         .content
+    //             .header Southeast Conference Room
+    //             // .description
+    //             //     | The Southeast Conference Room can seat 8 comfortably around a table. The room features a large flat panel display (equipped w/ Apple TV), windows, and glass walls. A mobile white board is available upon request.
+    //             .extra.content
+    //                 div Fits 8 to 12 People Comfortably
+    //                 div 200 Square Feet
+    //                 // .ui.mini.statistic
+    //                 //     .value
+    //                 //         i.dollar.icon
+    //                 //         | 50/ Hour
+    //                 //     .label
+    //                 //         |Non-Members
+    //                 // .ui.mini.statistic
+    //                 //     .value
+    //                 //         i.dollar.icon
+    //                 //         | 20/ Hour
+    //                 //     .label
+    //                 //         |Connect Members
+    //                 // .ui.mini.statistic
+    //                 //     .value
+    //                 //         i.dollar.icon
+    //                 //         | 10/ Hour
+    //                 //     .label
+    //                 //         |Work Members
+    //     .ui.card
+    //         .image
+    //             img(src="{{c.url 'board_room' height=200 crop='fill'}}")
+    //             // a(href="{{c.url 'board_room'}}")
+    //         .content
+    //             .header Boardroom
+    //             // .description
+    //             //     | Our largest-capacity conference room, the Board Room can seat 14 around a large table. The Board Room features a large flat panel display (equipped w/ Apple TV), glass walls and windows, and a credenza for supplies or food and beverages. A mobile white board is available upon request.
+    //             .extra.content
+    //                 div Fits 12 to 18 People Comfortably
+    //                 div 400 Square Feet
+    //                     // .ui.mini.statistic
+    //                     //     .value
+    //                     //         i.dollar.icon
+    //                     //         | 100/ Hour
+    //                     //     .label
+    //                     //         |Non-Members
+    //                     // .ui.mini.statistic
+    //                     //     .value
+    //                     //         i.dollar.icon
+    //                     //         | 30/ Hour
+    //                     //     .label
+    //                     //         |Connect Members
+    //                     // .ui.mini.statistic
+    //                     //     .value
+    //                     //         i.dollar.icon
+    //                     //         | 20/ Hour
+    //                     //     .label
+    //                     //         |Work Members
 
     .ui.padded.basic.segment.container
         table.ui.fixed.basic.definition.celled.table
@@ -186,34 +186,3 @@
         .ui.centered.grid
             .eight.wide.column
                 a.impact-button-dark(href='http://hubboulder.formstack.com/forms/event_reservations', target='_blank' title='Online Form') Reserve Event Space
-
-
-.ui.modal
-    .ui.text.container.basic.segment
-        a.ui.basic.button(href='/rentals')
-            i.arrow.left.icon
-            |Rentals
-        .content
-            if image_id
-                div
-                    img.ui.centered.image(src="{{c.url image_id}}")
-                    .overlay-text 
-                        h1 #{title}
-            else
-                h1 #{title}
-            .ui.basic.segment
-                |!{description}
-            if tags
-                .ui.basic.segment
-                    each tags
-                        .ui.basic.label #{this}
-        if isInRole 'admin'
-            .ui.divider
-            i.large.red.configure.icon
-            .edit_rental.ui.basic.button
-                i.pencil.icon
-                |Edit
-            if published
-                .ui.green.label Published
-            else
-                .ui.red.label Unpublished                        

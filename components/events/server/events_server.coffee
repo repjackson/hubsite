@@ -104,7 +104,7 @@ Meteor.methods
                                 token: 'QLL5EULOADTSJDS74HH7'
                         }
                         # console.log image_object
-                        console.dir event
+                        # console.dir event
                         new_image_url = image_object.data.url
                         event.big_image_url = new_image_url
                         val = event.start.local
@@ -145,8 +145,8 @@ Meteor.methods
                             title: event.name.text
                             description: event.description.html
                             location: event.venue.name
-                            start_date: event.start.local
-                            end_date: event.end.local
+                            start_datetime: event.start.local
+                            end_datetime: event.end.local
                             type: 'event'
                             eventbrite_image: event.big_image_url
                             tags: event.tags
@@ -157,7 +157,8 @@ Meteor.methods
                         
                         console.log 'new_event_id', new_event_id
                         return new_event_id
-
+                    console.log 'here?', new_event_id
+                    return new_event_id
 
 
     # pull_url: (event_id)->
