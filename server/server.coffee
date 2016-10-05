@@ -26,7 +26,7 @@ Meteor.publish 'usernames', ->
 
 
 
-Meteor.publish 'docs', (selected_tags, filter)->
+Meteor.publish 'docs', (selected_tags=[], filter)->
 
     self = @
     match = {}

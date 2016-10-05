@@ -4,28 +4,16 @@ FlowRouter.route '/admin', action: (params) ->
         sub_nav: 'admin_nav'
         main: 'admin'
         
-FlowRouter.route '/admin/submissions', action: (params) ->
+FlowRouter.route '/admin/users', action: (params) ->
     BlazeLayout.render 'layout',
         nav: 'nav'
         sub_nav: 'admin_nav'
-        main: 'submissions'
+        main: 'users'
         
-FlowRouter.route '/admin/user_management', action: (params) ->
+FlowRouter.route '/admin/content', action: (params) ->
     BlazeLayout.render 'layout',
         nav: 'nav'
         sub_nav: 'admin_nav'
-        main: 'user_management'
-        
-FlowRouter.route '/admin/content_management', action: (params) ->
-    BlazeLayout.render 'layout',
-        nav: 'nav'
-        sub_nav: 'admin_nav'
-        main: 'content_management'
-        
-FlowRouter.route '/admin/newsletter', action: (params) ->
-    BlazeLayout.render 'layout',
-        nav: 'nav'
-        sub_nav: 'admin_nav'
-        main: 'newsletter_sign_up_list'
+        main: 'content'
         
         

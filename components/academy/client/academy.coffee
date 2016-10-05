@@ -8,4 +8,7 @@ Template.academy.onRendered ->
 
 Template.academy.helpers
     academy_page: ->
-        Docs.findOne FlowRouter.getParam('doc_id')
+        Docs.findOne {
+            type: 'page'
+            name: 'academy'
+        }

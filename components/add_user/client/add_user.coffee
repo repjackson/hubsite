@@ -1,10 +1,10 @@
-# Template.user_management.onCreated ->
+# Template.users.onCreated ->
 #     self = @
 #     self.autorun ->
 #         self.subscribe 'hub_users'
 
 
-Template.user_management.helpers
+Template.users.helpers
     hub_users: -> 
         Meteor.users.find {}
 
