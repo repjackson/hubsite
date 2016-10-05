@@ -10,14 +10,17 @@ with event
             .fields
                 .field
                     label Start Date/Time
-                    input#start_datetime(type='datetime-local' value=start_datetime)
+                    .ui.left.icon.input
+                        i.calendar.icon
+                        input#start_datetime(type='datetime-local' value=start_datetime)
                 // .field
                 //     label Start Time
                 //     input#start_time(type='time' value=start_time)
-            .fields
                 .field
                     label End Date/Time
-                    input#end_datetime(type='datetime-local' value=end_datetime)
+                    .ui.left.icon.input
+                        i.calendar.icon
+                        input#end_datetime(type='datetime-local' value=end_datetime)
             +edit_location
             +edit_link
             +add_to_calendar_link

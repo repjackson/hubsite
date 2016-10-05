@@ -1,17 +1,16 @@
 Template.edit_description.events
-    'click #save_description': (e,t)->
-        html = t.$('div.froala-reactive-meteorized-override').froalaEditor('html.get', true)
+    # 'blur #save_description': (e,t)->
+    #     html = t.$('div.froala-reactive-meteorized-override').froalaEditor('html.get', true)
         
-        
-        snippet = $('#snippet').val()
-        if snippet.length is 0
-            snippet = $(html).text().substr(0, 300).concat('...')
-        doc_id = FlowRouter.getParam('doc_id')
+    #     snippet = $('#snippet').val()
+    #     if snippet.length is 0
+    #         snippet = $(html).text().substr(0, 300).concat('...')
+    #     doc_id = FlowRouter.getParam('doc_id')
 
-        Docs.update doc_id,
-            $set: 
-                description: html
-                snippet: snippet
+    #     Docs.update doc_id,
+    #         $set: 
+    #             description: html
+    #             snippet: snippet
 
     'blur #snippet': (e,t)->
         text = $('#snippet').val()

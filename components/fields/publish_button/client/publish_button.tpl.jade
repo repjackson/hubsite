@@ -1,7 +1,11 @@
 .field
     if published
-        #unpublish.ui.green.button
-            |Published
+        #unpublish.ui.basic.icon.button
+            i.toggle.on.icon
     else
-        #publish.ui.basic.button
-            |Unpublished
+        #publish.ui.basic.icon.button
+            i.toggle.off.icon
+    if published
+        .ui.green.basic.label Published
+    else
+        .ui.basic.label Not Published

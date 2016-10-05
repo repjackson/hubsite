@@ -32,6 +32,7 @@ Template.events.onCreated -> @autorun -> Meteor.subscribe('selected_events', sel
 Template.upcoming_events.helpers
     upcoming_events: -> 
         today = new Date()
+        today.setDate today.getDate() - 1
         # Docs.find {start_date: $gte: today.toISOString()}, sort: start_date: 1
         Docs.find { 
             type:'event'
@@ -50,6 +51,7 @@ Template.admin_events.helpers
 Template.past_events.helpers
     past_events: -> 
         today = new Date()
+        today.setDate today.getDate() - 1
         # Docs.find {start_date: $lte: today.toISOString()}, sort: start_date: 1
         Docs.find { 
             type:'event'

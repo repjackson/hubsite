@@ -1,14 +1,6 @@
 
-rental modals
-
 dynamic organization collage on about us 
 
-join page
-    add color to cells, make font of header and pricing bigger
-    
-rent page
-    remove round table 
-    
 
 meet academy board members on about us page
 
