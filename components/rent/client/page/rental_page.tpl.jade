@@ -13,10 +13,6 @@ with rental
                 h1 #{title}
             .ui.basic.segment
                 |!{description}
-            if tags
-                .ui.basic.segment
-                    each tags
-                        .ui.basic.label #{this}
         if isInRole 'admin'
             .ui.divider
             i.large.red.configure.icon
