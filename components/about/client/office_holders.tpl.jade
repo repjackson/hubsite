@@ -1,10 +1,10 @@
 h2.impact-header Impact Hub Boulder Office Holders
-.ui.four.cards
+.ui.four.centered.stackable.cards
     each office_holders
         .ui.card
             .image
                 a(href=link target='_blank')
-                    img.ui.fluid.image(src="{{c.url image_id height=400 width=800 gravity='face' crop='fill'}}")
+                    img.ui.fluid.image(src="{{c.url image_id height=400 width=800 crop='fill'}}")
             .content
                 .header
                     a(href=link target='_blank')

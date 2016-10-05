@@ -1,9 +1,17 @@
-.field
+.ui.segment
     if image_id
-        label Image
-        .ui.large.image
-            img(src="{{c.url image_id}}")
-            a#remove_photo.ui.top.left.attached.link.basic.label Remove
+        .field
+            label Image
+            .ui.large.image
+                img(src="{{c.url image_id width=500 crop='fit'}}")
+                a#remove_photo.ui.top.left.attached.link.basic.label Remove
+                .ui.bottom.right.attached.basic.label Image Id: #{image_id}
     else
-        label Upload Image
-        input(type='file' name='upload_picture' accept='image/*')
+        .two.fields
+            .field
+                label Upload Image
+                input(type='file' name='upload_picture' accept='image/*')
+            .field
+                label or Choose Cloudinary Image Id
+                input#input_image_id(type='text')
+        

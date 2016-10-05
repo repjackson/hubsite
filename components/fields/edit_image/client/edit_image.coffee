@@ -16,6 +16,17 @@ Template.edit_image.events
                     Docs.update doc_id, $set: image_id: res.public_id
                 return
 
+    'keydown #input_image_id': (e,t)->
+        if e.which is 13
+            doc_id = FlowRouter.getParam('doc_id')
+            image_id = $('#input_image_id').val().toLowerCase().trim()
+            if image_id.length > 0
+                Docs.update doc_id,
+                    $set: image_id: image_id
+                $('#input_image_id').val('')
+
+
+
     'click #remove_photo': ->
         swal {
             title: 'Remove Photo?'

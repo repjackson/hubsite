@@ -151,7 +151,7 @@ Meteor.methods
                             eventbrite_image: event.big_image_url
                             tags: event.tags
                             published: false
-                            url: event.url
+                            link: event.url
                         
                         new_event_id = Docs.insert new_event_doc
                         
