@@ -1,24 +1,23 @@
 with organization
     .ui.container
         .image
-            if image_id
-                img.ui.centered.image(src="{{c.url image_id width=800 height=600 crop='fill'}}")
-            else
-                img.ui.centered.image(src="/img/about_mashup_one.jpg")
-        .content
+            img.ui.centered.image(src="{{c.url image_id height=600 crop='fit'}}")
             .overlay-text 
                 h1 #{title}
         .ui.hidden.divider
-        .content
-            .header
-                h2.ui.header #{title}
-            .description
-                // .ui.header Post Topics:
+        .ui.divided.grid
+            .ten.wide.column
+                .meta
+                    a(href=link target='_blank') #{link}
+                .description
+                    |!{description}
+            .five.wide.column
                 each tags
                     .ui.basic.label #{this}
-                |!{description}
-        .extra.content
-            if isInRole 'admin'
+        if isInRole 'admin'
+            .extra.content
+                .ui.divider
+                i.large.red.configure.icon
                 .edit_organization.ui.primary.basic.button
                     i.pencil.icon
                     |Edit Organization    

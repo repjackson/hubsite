@@ -1,4 +1,5 @@
 .ui.segment
+    .ui.header Custom Image
     if image_id
         .field
             label Image
@@ -7,7 +8,7 @@
                 a#remove_photo.ui.top.left.attached.link.basic.label Remove
                 .ui.bottom.right.attached.basic.label Image Id: #{image_id}
     else
-        .two.fields
+        .fields
             .field
                 label Upload Image
                 input(type='file' name='upload_picture' accept='image/*')

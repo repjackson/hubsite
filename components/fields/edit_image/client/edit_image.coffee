@@ -41,7 +41,7 @@ Template.edit_image.events
             Meteor.call "c.delete_by_public_id", @image_id, (err,res) ->
                 if not err
                     # Do Stuff with res
-                    console.log res
+                    # console.log res
                     Docs.update FlowRouter.getParam('doc_id'), 
                         $unset: image_id: 1
 
