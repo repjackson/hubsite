@@ -26,15 +26,19 @@ Meteor.publish 'usernames', ->
 
 
 
-Meteor.publish 'docs', (selected_tags=[], filter)->
+Meteor.publish 'docs', (selected_tags=[], filter, limit)->
 
     self = @
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
     match.type = filter
 
-    Docs.find match,
-        limit: 10
+    if limit
+        Docs.find match,
+            limit: limit
+    else 
+        Docs.find match
+        
 
 Meteor.publish 'doc', (id)->
     Docs.find id

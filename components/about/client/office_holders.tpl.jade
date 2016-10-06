@@ -1,11 +1,11 @@
 h2.impact-header Impact Hub Boulder Office Holders
-.ui.four.centered.stackable.cards
+.ui.five.centered.stackable.cards
     each office_holders
         .ui.card
             .content
-                a(href="/organization/view/#{_id}")
-                    img.ui.fluid.image(src="{{c.url image_id height=400 crop='fit'}}")
-            .content
-                .header
-                    a(href="/organization/view/#{_id}")
-                        h3.ui.red.header.make-uppercase #{title}
+                // a(href="/organization/view/#{_id}")
+                img.ui.fluid.middle.aligned.large.image(src="{{c.url image_id height=100 crop='fit' fetch_format= 'auto' }}")
+            // .content
+            //     .header
+            //         a(href="/organization/view/#{_id}")
+            //             h3.ui.red.header.make-uppercase #{title}

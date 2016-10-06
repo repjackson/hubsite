@@ -19,8 +19,6 @@ Template.organization.helpers
 
     organization_messages: -> Messages.find organization_id: @_id
 
-    snippet: -> @description.substr(1, 100)
-
 Template.organization.events
     'click .organization_tag': ->
         if @valueOf() in selected_tags.array() then selected_tags.remove @valueOf() else selected_tags.push @valueOf()

@@ -2,17 +2,20 @@ template(name='organizations')
     div
         img.ui.centered.fluid.image(src='/banners/organization_banner.jpg', alt='')
         h1.overlay-text.banner-text Community at Impact Hub Boulder
-    +cloud filter='organization'
     .ui.container.basic.segment
-        .ui.divided.items
-            each organizations
-                +organization
+        .ui.stackable.divided.grid
+            .twelve.wide.column
+                .ui.divided.items
+                    each organizations
+                        +organization
+            .four.wide.column
+                +cloud filter='organization'
 
 
 template(name='organization')
     .ui.item
         .image
-            img.ui.medium.image(src="{{c.url image_id width=800 height=600 crop='fill'}}")
+            img.ui.medium.image(src="{{c.url image_id width=500 crop='fit'}}")
         .content
             .header
                 a(href="/organization/view/#{_id}")

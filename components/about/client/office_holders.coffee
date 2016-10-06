@@ -1,13 +1,13 @@
-Template.office_holders.onCreated ->
+Template.partners.onCreated ->
     self = @
     self.autorun ->
-        self.subscribe 'docs', null, 'organization'
+        self.subscribe 'partners'
 
-Template.office_holders.helpers
-    office_holders: ->
+Template.partners.helpers
+    partners: ->
         Docs.find {
             type: 'organization'
-            tags: $in: ['office holder']
+            tags: $in: ['partner']
         }
         
-Template.office_holders.events
+Template.partners.events
