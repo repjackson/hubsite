@@ -1,10 +1,9 @@
-h2.impact-header Impact Hub Boulder Partner Organizations
-.ui.five.centered.stackable.cards
+h2.impact-header Partner Organizations
+.ui.five.column.stackable.grid
     each partners
-        .ui.card
-            .content
-                a(href="/organization/view/#{_id}")
-                    img.ui.fluid.middle.aligned.large.image(src="{{c.url image_id height=100 crop='fit' fetch_format= 'auto'}}")
+        .column
+            img.ui.center.aligned.large.image(src="{{c.url image_id height=300 width=300 crop='pad' fetch_format= 'auto'}}")
+            // a(href="/organization/view/#{_id}")
             // .content
             //     .header
             //         a(href="/organization/view/#{_id}")
