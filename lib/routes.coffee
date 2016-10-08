@@ -1,6 +1,11 @@
 signInRequired = FlowRouter.group(triggersEnter: [ AccountsTemplates.ensureSignedIn ])
 
 
+
+FlowRouter.notFound =
+    action: ->
+        FlowRouter.go '/'
+
 FlowRouter.route '/', action: (params) ->
     BlazeLayout.render 'layout',
         nav: 'nav'
@@ -10,10 +15,6 @@ FlowRouter.route '/', action: (params) ->
 
 
 
-FlowRouter.route '/wins', action: (params) ->
-    BlazeLayout.render 'layout',
-        nav: 'nav'
-        main: 'wins_challenges'
 
 # FlowRouter.route '/editConversation/:docId', action: (params) ->
 #     BlazeLayout.render 'layout',

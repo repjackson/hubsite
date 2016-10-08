@@ -1,8 +1,9 @@
-@selected_tags = new ReactiveArray []
-
-
 Template.organizations.onCreated ->
     @autorun -> Meteor.subscribe('docs', selected_tags.array(), 'organization')
+ 
+Template.organizations.onRendered ->
+    $('#organization_slider').layerSlider
+        autoStart: true
     selected_tags.clear()
 
 

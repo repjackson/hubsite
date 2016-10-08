@@ -11,3 +11,10 @@ mongo --ssl --sslAllowInvalidCertificates aws-us-east-1-portal.21.dblayer.com:10
 
 
 change future slide to village lives
+
+
+redirect hot seats to join
+
+thank you page
+
+google forms addons with facebook pixel

@@ -22,3 +22,8 @@ Template.content.events
         id = Docs.insert 
             type: 'organization'
         FlowRouter.go "/organization/edit/#{id}"
+    
+    'click #add_page': ->
+        id = Docs.insert 
+            type: 'page'
+        FlowRouter.go "/page/edit/#{id}"
