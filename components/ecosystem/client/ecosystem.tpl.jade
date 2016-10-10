@@ -1,0 +1,15 @@
+.ui.container
+    #ecosystem_slider(style='width: 1000px; height: 200px;')
+        .ls-slide(data-ls='slidedelay: 2000;')
+            img.ls-bg(src="{{c.url 'organization_banner' width=1000 height=200 crop='fill' gravity='north' effect='art:primavera'}}", alt='Slide background')
+            h1.ls-l.overlay-text.slider-text(style="top: 50%; text-size: 300%;") 
+                | Impact Hub Boulder Ecosystem
+    .ui.basic.segment
+        .ui.stackable.divided.grid
+            .twelve.wide.column
+                #add_ecosystem_item.item.ui.basic.button Add Item
+                .ui.four.stackable.cards
+                    each ecosystem_item
+                        +card_view
+            .four.wide.column
+                +cloud filter='ecosystem'

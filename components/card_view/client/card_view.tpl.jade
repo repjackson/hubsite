@@ -1,0 +1,25 @@
+.ui.card
+    .image
+        a(href="/view/#{_id}")
+            img.ui.fluid.image(src="{{c.url image_id height=400 width=800 crop='fill' gravity='north_west'}}")
+    .content
+        h3.ui.red.header.make-uppercase 
+            a(href="/view/#{_id}") #{title}
+        if link
+            .meta
+                a(href=link target='_blank') #{link}
+    .extra.content
+        each tags
+            .ui.compact.basic.button(class=organization_tag_class) #{this}
+            // .ui.basic.label(class=organization_tag_class) #{this}
+    .extra.content
+        +favorite
+    if isInRole 'admin'
+        if published
+            .ui.bottom.right.attached.basic.green.tiny.label 
+                i.red.configure.icon
+                |Pub
+        else
+            .ui.bottom.right.attached.basic.red.tiny.label 
+                i.red.configure.icon
+                |Unpub

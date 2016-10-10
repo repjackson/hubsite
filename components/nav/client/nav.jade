@@ -3,14 +3,14 @@ template(name='top_nav')
         .right.menu
             if is_dev
                 .red.item Development Mode
-            a.item(href='/services' class="{{isActivePath '/services'}}")
-                i.laptop.icon
-                | Services
-            a.item(href='/conversations' class="{{isActivePath '/conversations'}}")
-                i.comments.outline.icon
-                | Conversations
             if currentUser
                 if isInRole 'admin'
+                    // a.item(href='/services' class="{{isActivePath '/services'}}")
+                    //     i.laptop.icon
+                    //     | Services
+                    // a.item(href='/conversations' class="{{isActivePath '/conversations'}}")
+                    //     i.comments.outline.icon
+                    //     | Conversations
                     // a#add_event.item
                     //     // i.icons
                     //         i.plus.corner.icon
@@ -19,11 +19,11 @@ template(name='top_nav')
                     a.item(href='/admin/' class="{{isActivePath '/admin/'}}")
                         i.configure.icon
                         | Admin
-                    a.item(href='/messages' class="{{isActivePath '/messages'}}")
-                        i.mail.icon
-                        | Messages
-                        if currentUser.unreadcount
-                            |(#{currentUser.unreadcount})
+                    // a.item(href='/messages' class="{{isActivePath '/messages'}}")
+                    //     i.mail.icon
+                    //     | Messages
+                    //     if currentUser.unreadcount
+                    //         |(#{currentUser.unreadcount})
                 a.item(href="/profile/edit" class="{{isActivePath '/profile/edit'}}")
                     if currentUser.profile.image_id
                         img.ui.avatar.image(src="{{c.url currentUser.profile.image_id width=50 height=50 gravity='face' crop='fill'}}")
@@ -50,42 +50,24 @@ template(name='top_nav')
 template(name='nav')
     .ui.container
         .red-nav-bar
-            if isInRole 'admin'
-                .ui.red.inverted.eight.item.stackable.menu
-                    a.item(href='/about' class="{{isActivePath '/about'}}")
-                        strong About
-                    a.item(href='/people' class="{{isActivePath '/people'}}")
-                        strong Members
-                    a.item(href='/events' class="{{isActivePath '/events'}}")
-                        strong Events
-                    a.item(href='/organizations' class="{{isActivePath '/organizations'}}")
-                        strong Ecosystem
-                    a.item(href='/academy' class="{{isActivePath '/academy'}}")
-                        strong Programs
-                    // a.item(href='/media' class="{{isActivePath '/media'}}")
-                    a.item(href='/posts' class="{{isActivePath '/posts'}}")
-                        strong Blog
-                    a.item(href='/join' class="{{isActivePath '/join'}}")
-                        strong Join
-                    a.item(href='/rent' class="{{isActivePath '/rent'}}")
-                        strong Rent Our Space
-                        
-            else
-                .ui.red.inverted.large.six.item.stackable.menu
-                    a.item(href='/about' class="{{isActivePath '/about'}}")
-                        strong About
-                    a.item(href='/people' class="{{isActivePath '/people'}}")
-                        strong Members
-                    a.item(href='/events' class="{{isActivePath '/events'}}")
-                        strong Events
-                    // a.item(href='/organizations' class="{{isActivePath '/organizations'}}")
-                    //     strong In-House
-                    a.item(href='/academy' class="{{isActivePath '/academy'}}")
-                        strong Programs
-                    // a.item(href='/media' class="{{isActivePath '/media'}}")
-                    a.item(href='/join' class="{{isActivePath '/join'}}")
-                        strong Join
-                    a.item(href='/posts' class="{{isActivePath '/posts'}}")
-                        strong Blog
-                    a.item(href='/rent' class="{{isActivePath '/rent'}}")
-                        strong Rent Our Space
+            .ui.red.inverted.eight.item.stackable.menu
+                a.item(href='/about' class="{{isActivePath '/about'}}")
+                    strong About
+                // a.item(href='/people' class="{{isActivePath '/people'}}")
+                //     strong Members
+                a.item(href='/events' class="{{isActivePath '/events'}}")
+                    strong Events
+                // a.item(href='/organizations' class="{{isActivePath '/organizations'}}")
+                //     strong Ecosystem
+                a.item(href='/ecosystem' class="{{isActivePath '/ecosystem'}}")
+                    strong Ecosystem
+                a.item(href='/academy' class="{{isActivePath '/academy'}}")
+                    strong Programs
+                // a.item(href='/media' class="{{isActivePath '/media'}}")
+                a.item(href='/posts' class="{{isActivePath '/posts'}}")
+                    strong Blog
+                a.item(href='/join' class="{{isActivePath '/join'}}")
+                    strong Join
+                a.item(href='/rent' class="{{isActivePath '/rent'}}")
+                    strong Rent Our Space
+                    
