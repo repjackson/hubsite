@@ -5,11 +5,13 @@
             h1.ls-l.overlay-text.slider-text(style="top: 50%; text-size: 300%;") 
                 | Impact Hub Boulder Ecosystem
     .ui.basic.segment
-        .ui.stackable.divided.grid
-            .twelve.wide.column
+            +eco_cloud
+            .ui.divider
+            if isInRole 'admin'
                 #add_ecosystem_item.item.ui.basic.button Add Item
-                .ui.three.stackable.cards
-                    each ecosystem_item
-                        +card_view
-            .four.wide.column
-                +eco_cloud
+            .ui.four.stackable.cards
+                each ecosystem_item
+                    +card_view
+        // .ui.stackable.divided.grid
+            // .four.wide.column
+            // .twelve.wide.column

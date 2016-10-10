@@ -1,4 +1,4 @@
-Meteor.publish 'ecosystem', (selected_tags=[], limit)->
+Meteor.publish 'ecosystem', (selected_tags, limit)->
 
     self = @
     match = {}

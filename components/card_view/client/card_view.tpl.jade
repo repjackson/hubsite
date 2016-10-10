@@ -1,7 +1,8 @@
 .ui.card
-    .content
+    .image
         a(href="/view/#{_id}")
-            img.ui.large.image(src="{{c.url image_id width=500 height=300 crop='fit'}}")
+            img.ui.fluid.image(src="{{c.url image_id height=400 width=800 background='white' crop='pad'}}")
+            // img.ui.medium.image(src="{{c.url image_id }}")
     .content
         h3.ui.red.header.make-uppercase 
             a(href="/view/#{_id}") #{title}
@@ -10,10 +11,10 @@
                 a(href=link target='_blank') #{link}
     .extra.content
         each eco_tags
-            .ui.compact.basic.small.button.eco_tag(class=eco_tag_class) #{this}
+            .ui.compact.basic.tiny.button.eco_tag(class=eco_tag_class) #{this}
             // .ui.basic.label(class=organization_tag_class) #{this}
-    .extra.content
-        +favorite
+    // .extra.content
+    //     +favorite
     if isInRole 'admin'
         if published
             .ui.bottom.right.attached.basic.green.tiny.label 

@@ -1,0 +1,8 @@
+with page
+    .ui.container.basic.segment
+        if isInRole 'admin'
+            #edit_page.ui.basic.button
+                i.red.configure.icon
+                |Edit Page
+        |!{description}
+    
