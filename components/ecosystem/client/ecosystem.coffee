@@ -1,10 +1,10 @@
 Template.ecosystem.onCreated ->
-    @autorun -> Meteor.subscribe('ecosystem', selected_tags.array())
+    @autorun -> Meteor.subscribe('ecosystem', selected_eco_tags.array())
  
 Template.ecosystem.onRendered ->
     $('#ecosystem_slider').layerSlider
         autoStart: true
-    selected_tags.clear()
+    selected_eco_tags.clear()
 
 
 Template.ecosystem.helpers
@@ -14,7 +14,7 @@ Template.ecosystem.helpers
 
 
 Template.ecosystem.helpers
-    ecosystem_tag_class: -> if @valueOf() in selected_tags.array() then 'red' else 'basic'
+    ecosystem_tag_class: -> if @valueOf() in selected_eco_tags.array() then 'red' else 'basic'
 
     attending: -> if @attendee_ids and Meteor.userId() in @attendee_ids then true else false
 
@@ -23,7 +23,7 @@ Template.ecosystem.helpers
 
 Template.ecosystem.events
     'click .ecosystem_tag': ->
-        if @valueOf() in selected_tags.array() then selected_tags.remove @valueOf() else selected_tags.push @valueOf()
+        if @valueOf() in selected_eco_tags.array() then selected_eco_tags.remove @valueOf() else selected_eco_tags.push @valueOf()
             
     'click .edit': ->
         FlowRouter.go "/edit/#{@_id}"

@@ -1,7 +1,7 @@
 .ui.card
-    .image
+    .content
         a(href="/view/#{_id}")
-            img.ui.fluid.image(src="{{c.url image_id height=400 width=800 crop='fill' gravity='north_west'}}")
+            img.ui.large.image(src="{{c.url image_id width=500 height=300 crop='fit'}}")
     .content
         h3.ui.red.header.make-uppercase 
             a(href="/view/#{_id}") #{title}
@@ -9,8 +9,8 @@
             .meta
                 a(href=link target='_blank') #{link}
     .extra.content
-        each tags
-            .ui.compact.basic.button(class=organization_tag_class) #{this}
+        each eco_tags
+            .ui.compact.basic.small.button.eco_tag(class=eco_tag_class) #{this}
             // .ui.basic.label(class=organization_tag_class) #{this}
     .extra.content
         +favorite
