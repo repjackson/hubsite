@@ -2,7 +2,7 @@ Meteor.publish 'eco_tags', (selected_tags)->
     self = @
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
-    match.tags = $in: ['ecosystem']
+    match.type = 'ecosystem'
 
     cloud = Docs.aggregate [
         { $match: match }
@@ -10,7 +10,6 @@ Meteor.publish 'eco_tags', (selected_tags)->
         { $unwind: "$tags" }
         { $group: _id: "$tags", count: $sum: 1 }
         { $match: _id: $nin: selected_tags }
-        { $match: _id: $ne: 'ecosystem' }
         { $sort: count: -1, _id: 1 }
         { $limit: 20 }
         { $project: _id: 0, name: '$_id', count: 1 }

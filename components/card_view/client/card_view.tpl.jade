@@ -16,11 +16,9 @@
     // .extra.content
     //     +favorite
     if isInRole 'admin'
-        if published
-            .ui.bottom.right.attached.basic.green.tiny.label 
-                i.red.configure.icon
-                |Pub
-        else
-            .ui.bottom.right.attached.basic.red.tiny.label 
-                i.red.configure.icon
-                |Unpub
+        .extra.content
+            i.red.configure.icon
+            unless published
+                .ui.basic.red.tiny.label 
+                    |Unpub
+            .ui.tiny.basic.label Type: #{type}

@@ -6,9 +6,11 @@ Template.featured_posts.onCreated ->
 
 Template.featured_posts.helpers
     featured_posts: -> Docs.find {
-        type: 'post'
-        featured: true
-        }, limit: 4
+            type: 'post'
+            featured: true
+        },
+            sort: publish_date: -1
+            limit: 4
             
             
 Template.featured_posts.events

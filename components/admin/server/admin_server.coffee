@@ -13,3 +13,14 @@ Meteor.publish 'hub_users', ->
     #         date_array: 1
     #         date: 1
 
+
+# Meteor.publish 'all_docs', (selected_tags=[])->
+Meteor.publish 'all_docs',->
+
+    self = @
+    match = {}
+    # if selected_tags.length > 0 then match.tags = $all: selected_tags
+
+    Docs.find match,
+        limit: 20
+        

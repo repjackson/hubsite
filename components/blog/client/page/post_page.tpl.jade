@@ -6,7 +6,7 @@ with post
             //     |Blog
             if image_id
                 div
-                    img.ui.centered.image(src="{{c.url image_id}}")
+                    img.ui.centered.image(src="{{c.url image_id height=500 width=800 background='white' crop='lpad'}}")
                     .overlay-text 
                         h1 #{title}
             else

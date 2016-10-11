@@ -8,9 +8,7 @@ Template.ecosystem.onRendered ->
 
 
 Template.ecosystem.helpers
-    ecosystem_item: -> Docs.find {
-        tags: $in: ['ecosystem']
-        }
+    ecosystem_items: -> Docs.find {}
 
 
 Template.ecosystem.helpers
@@ -28,7 +26,3 @@ Template.ecosystem.events
     'click .edit': ->
         FlowRouter.go "/edit/#{@_id}"
 
-    'click #add_ecosystem_item': ->
-        id = Docs.insert 
-            tags: ['ecosystem']
-        FlowRouter.go "/edit/#{id}"

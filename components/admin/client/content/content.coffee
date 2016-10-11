@@ -2,27 +2,15 @@
 Template.content.onCreated ->
     self = @
     self.autorun ->
-        self.subscribe 'hub_users'
+        self.subscribe 'all_docs'
 
 
 Template.content.helpers
-    hub_users: -> 
-        Meteor.users.find {}
-        
-    user_is_admin: -> 
-        # console.log @
-        Roles.userIsInRole(@_id, 'admin')
-
-
+    docs: -> Docs.find()
 
 
 
 Template.content.events
-    'click #add_organization': ->
-        id = Docs.insert 
-            type: 'organization'
-        FlowRouter.go "/organization/edit/#{id}"
-    
     'click #add_page': ->
         id = Docs.insert 
             type: 'page'

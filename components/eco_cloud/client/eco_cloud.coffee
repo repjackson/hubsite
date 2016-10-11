@@ -8,14 +8,14 @@ Template.eco_cloud.helpers
         doc_count = Docs.find().count()
         if 0 < doc_count < 3 then Tags.find { count: $lt: doc_count } else Tags.find()
 
-    # tag_cloud_class: ->
-    #     button_class = switch
-    #         when @index <= 10 then 'big'
-    #         when @index <= 20 then 'large'
-    #         when @index <= 30 then ''
-    #         when @index <= 40 then 'small'
-    #         when @index <= 50 then 'tiny'
-    #     return button_class
+    tag_cloud_class: ->
+        button_class = switch
+            # when @index <= 10 then 'big'
+            when @index <= 20 then 'large'
+            when @index <= 30 then ''
+            when @index <= 40 then 'small'
+            when @index <= 50 then 'tiny'
+        return button_class
 
     settings: -> {
         position: 'bottom'
@@ -63,3 +63,9 @@ Template.eco_cloud.events
         # console.log 'selected ', doc
         selected_eco_tags.push doc.name
         $('#search').val ''
+   
+    'click #add_ecosystem_item': ->
+        id = Docs.insert 
+            tags: ['ecosystem']
+            type: 'ecosystem'
+        FlowRouter.go "/edit/#{id}"
