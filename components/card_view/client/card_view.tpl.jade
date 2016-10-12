@@ -6,13 +6,12 @@
     .content
         h3.ui.red.header.make-uppercase 
             a(href="/view/#{_id}") #{title}
-        if link
-            .meta
-                a(href=link target='_blank') #{link}
-    .extra.content
+        // if link
+        //     .meta
+        //         a(href=link target='_blank') #{link}
         each eco_tags
-            .ui.compact.basic.tiny.button.eco_tag(class=eco_tag_class) #{this}
-            // .ui.basic.label(class=organization_tag_class) #{this}
+            .ui.compact.tiny.circular.button.eco_tag(class=eco_tag_class) #{this}
+    // .extra.content
     // .extra.content
     //     +favorite
     if isInRole 'admin'
@@ -22,3 +21,4 @@
                 .ui.basic.red.tiny.label 
                     |Unpub
             .ui.tiny.basic.label Type: #{type}
+        .extra.content

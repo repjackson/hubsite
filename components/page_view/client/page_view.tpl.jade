@@ -15,18 +15,17 @@ with item
                 h2.impact-header Tags
                 each ecosystem_tags
                     .ui.basic.label #{this}
-                h2.impact-header Actions
-                +favorite
-                h2.impact-header Status
-                if published
-                    .ui.basic.green.label Published
-                else
-                    .ui.basic.red.label Unpublished
-
-        if isInRole 'admin'
-            .extra.content
-                .ui.divider
-                i.large.red.configure.icon
-                .edit.ui.primary.basic.button
-                    i.pencil.icon
-                    |Edit    
+                // h2.impact-header Actions
+                // +favorite
+                if isInRole 'admin'
+                    h2.impact-header Status
+                    if published
+                        .ui.basic.green.label Published
+                    else
+                        .ui.basic.red.label Unpublished
+                    .extra.content
+                        .ui.divider
+                        i.large.red.configure.icon
+                        .edit.ui.primary.basic.button
+                            i.pencil.icon
+                            |Edit

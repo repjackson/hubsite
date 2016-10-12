@@ -6,7 +6,6 @@ Template.office_holders.onCreated ->
 Template.office_holders.helpers
     office_holders: ->
         Docs.find {
-            type: 'organization'
             tags: $in: ['office holder']
         }
         

@@ -6,7 +6,6 @@ Template.partners.onCreated ->
 Template.partners.helpers
     partners: ->
         Docs.find {
-            type: 'organization'
             tags: $in: ['partner']
         }
         

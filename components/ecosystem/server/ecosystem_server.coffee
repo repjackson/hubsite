@@ -9,4 +9,4 @@ Meteor.publish 'ecosystem', (selected_tags)->
     match.type = 'ecosystem'
  
     Docs.find match,
-        limit: 10
+        limit: 25
