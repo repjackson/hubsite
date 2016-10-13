@@ -67,6 +67,5 @@ Template.eco_cloud.events
    
     'click #add_ecosystem_item': ->
         id = Docs.insert 
-            tags: ['ecosystem']
             type: 'ecosystem'
         FlowRouter.go "/edit/#{id}"

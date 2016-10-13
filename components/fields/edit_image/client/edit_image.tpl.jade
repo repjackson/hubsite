@@ -1,5 +1,5 @@
 .ui.segment
-    .ui.header Custom Image
+    // .ui.header Custom Image
     if image_id
         .field
             label Image
@@ -12,7 +12,8 @@
             .field
                 label Upload Image
                 input(type='file' name='upload_picture' accept='image/*')
-            .field
-                label or Choose Cloudinary Image Id
-                input#input_image_id(type='text')
+            if isInRole 'admin'
+                .field
+                    label or Choose Cloudinary Image Id
+                    input#input_image_id(type='text')
         
