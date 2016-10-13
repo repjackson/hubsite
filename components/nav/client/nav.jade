@@ -50,24 +50,42 @@ template(name='top_nav')
 template(name='nav')
     .ui.container
         .red-nav-bar
-            .ui.red.inverted.eight.item.stackable.menu
-                a.item(href='/about' class="{{isActivePath '/about'}}")
-                    strong About
-                // a.item(href='/people' class="{{isActivePath '/people'}}")
-                //     strong Members
-                a.item(href='/events' class="{{isActivePath '/events'}}")
-                    strong Events
-                // a.item(href='/organizations' class="{{isActivePath '/organizations'}}")
-                //     strong Ecosystem
-                a.item(href='/ecosystem' class="{{isActivePath '/ecosystem'}}")
-                    strong Ecosystem
-                a.item(href='/academy' class="{{isActivePath '/academy'}}")
-                    strong Programs
-                // a.item(href='/media' class="{{isActivePath '/media'}}")
-                a.item(href='/posts' class="{{isActivePath '/posts'}}")
-                    strong Blog
-                a.item(href='/join' class="{{isActivePath '/join'}}")
-                    strong Join
-                a.item(href='/rent' class="{{isActivePath '/rent'}}")
-                    strong Rent Our Space
-                    
+            if isInRole 'admin'
+                .ui.red.inverted.eight.item.stackable.menu
+                    a.item(href='/about' class="{{isActivePath '/about'}}")
+                        strong About
+                    // a.item(href='/people' class="{{isActivePath '/people'}}")
+                    //     strong Members
+                    a.item(href='/events' class="{{isActivePath '/events'}}")
+                        strong Events
+                    // a.item(href='/organizations' class="{{isActivePath '/organizations'}}")
+                    //     strong Ecosystem
+                    a.item(href='/ecosystem' class="{{isActivePath '/ecosystem'}}")
+                        strong Ecosystem
+                    a.item(href='/academy' class="{{isActivePath '/academy'}}")
+                        strong Programs
+                    // a.item(href='/media' class="{{isActivePath '/media'}}")
+                    a.item(href='/posts' class="{{isActivePath '/posts'}}")
+                        strong Blog
+                    a.item(href='/join' class="{{isActivePath '/join'}}")
+                        strong Join
+                    a.item(href='/rent' class="{{isActivePath '/rent'}}")
+                        strong Rent Our Space
+            else
+                .ui.red.inverted.seven.item.stackable.menu
+                    a.item(href='/about' class="{{isActivePath '/about'}}")
+                        strong About
+                    // a.item(href='/people' class="{{isActivePath '/people'}}")
+                    //     strong Members
+                    a.item(href='/events' class="{{isActivePath '/events'}}")
+                        strong Events
+                    a.item(href='/academy' class="{{isActivePath '/academy'}}")
+                        strong Programs
+                    // a.item(href='/media' class="{{isActivePath '/media'}}")
+                    a.item(href='/posts' class="{{isActivePath '/posts'}}")
+                        strong Blog
+                    a.item(href='/join' class="{{isActivePath '/join'}}")
+                        strong Join
+                    a.item(href='/rent' class="{{isActivePath '/rent'}}")
+                        strong Rent Our Space
+                        
