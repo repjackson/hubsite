@@ -25,7 +25,7 @@ Meteor.publish 'people_tags', (selected_people_tags, published_mode, checkedin_m
     if selected_people_tags.length > 0 then match.tags = $all: selected_people_tags
     match.published = published_mode 
     match.checked_in = checkedin_mode 
-
+    match.roles = $in: ['member']
 
     cloud = Meteor.users.aggregate [
         { $match: match }
@@ -47,27 +47,44 @@ Meteor.publish 'people_tags', (selected_people_tags, published_mode, checkedin_m
     self.ready()
 
 
-# Meteor.publish 'people', (selected_people_tags=[], published_mode, checkedin_mode)->
-Meteor.publish 'people', (selected_people_tags=[], published_mode)->
+Meteor.publish 'people', (selected_people_tags=[])->
     self = @
     match = {}
     if selected_people_tags.length > 0 then match.tags = $all: selected_people_tags
-    match.published = published_mode 
     match._id = $ne: @userId
     # match.checked_in = checkedin_mode 
+    match.roles = $in: ['member']
+
 
     Meteor.users.find match,
         fields:
             tags: 1
             profile: 1
             username: 1
-            published: 1
             checked_in: 1
             
+# Meteor.publish 'people', (selected_people_tags=[], published_mode)->
+#     self = @
+#     match = {}
+#     if selected_people_tags.length > 0 then match.tags = $all: selected_people_tags
+#     match.published = published_mode 
+#     match._id = $ne: @userId
+#     # match.checked_in = checkedin_mode 
+#     match.roles = $in: ['member']
+
+
+#     Meteor.users.find match,
+#         fields:
+#             tags: 1
+#             profile: 1
+#             username: 1
+#             published: 1
+#             checked_in: 1
             
-Meteor.publish 'people_list', (doc_id)->
-    ids = Docs.findOne(doc_id).participant_ids
-    if ids
-        Meteor.users.find
-            _id: $in: ids
-    else return
+            
+# Meteor.publish 'people_list', (doc_id)->
+#     ids = Docs.findOne(doc_id).participant_ids
+#     if ids
+#         Meteor.users.find
+#             _id: $in: ids
+#     else return

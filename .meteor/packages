@@ -41,7 +41,6 @@ accounts-twitter@1.1.11
 accounts-facebook@1.0.10
 iandouglas:accounts-ui-semantic-ui
 perak:codemirror
-email@1.1.17_1
 accounts-base@1.2.11
 raix:handlebar-helpers
 lepozepo:cloudinary
@@ -50,10 +49,6 @@ shell-server@0.2.1
 alanning:roles
 accounts-google@1.0.10
 http@1.2.9_1
-modules@0.7.6_1
-dburles:google-maps
 underscore@1.0.9
 froala:editor-reactive
-tomwasd:flow-router-autoscroll
 okgrow:analytics
-joshowens:shareit

@@ -28,8 +28,5 @@ Template.people_cloud.events
     'click .unselect_people_tag': -> selected_people_tags.remove @valueOf()
     'click #clear_people_tags': -> selected_people_tags.clear()
     
-    'click #turn_off_published_mode': -> Session.set 'published_mode', false
-    'click #turn_on_published_mode': -> Session.set 'published_mode', true    
-    
     'click #turn_off_checkedin_mode': -> Session.set 'checkedin_mode', false
     'click #turn_on_checkedin_mode': -> Session.set 'checkedin_mode', true

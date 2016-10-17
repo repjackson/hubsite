@@ -15,14 +15,14 @@ Template.registerHelper 'publish_when', () -> moment(@publish_date).fromNow()
 Template.registerHelper 'is_dev', () -> Meteor.isDevelopment
 
 
-ShareIt.configure
-    sites:
-        'facebook': 'appId': null
-        'twitter': {}
-        'googleplus': {}
-        'pinterest': {}
-    classes: 'ui button'
-    iconOnly: false
-    applyColors: true
-    faSize: ''
-    faClass: ''
+# ShareIt.configure
+#     sites:
+#         'facebook': 'appId': null
+#         'twitter': {}
+#         'googleplus': {}
+#         'pinterest': {}
+#     classes: 'ui button'
+#     iconOnly: false
+#     applyColors: true
+#     faSize: ''
+#     faClass: ''

@@ -63,15 +63,15 @@ template(name='edit_profile')
                 .field
                     label Bio
                     textarea#bio(rows='5') #{bio}
-                .field
-                    if published
-                        #make_unpublished.ui.green.button
-                            i.toggle.on.icon
-                            |Published
-                    else
-                        #make_published.ui.basic.button
-                            i.toggle.off.icon
-                            |Unpublished
+                // .field
+                //     if published
+                //         #make_unpublished.ui.green.button
+                //             i.toggle.on.icon
+                //             |Published
+                //     else
+                //         #make_published.ui.basic.button
+                //             i.toggle.off.icon
+                //             |Unpublished
                 p Adding social accounts will create a service link in your profile and fill out any empty profile information.
                 .ui.eight.column.grid
                     .eight.wide.column

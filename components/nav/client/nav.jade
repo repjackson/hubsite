@@ -54,12 +54,10 @@ template(name='nav')
                 .ui.red.inverted.eight.item.stackable.menu
                     a.item(href='/about' class="{{isActivePath '/about'}}")
                         strong About
-                    // a.item(href='/people' class="{{isActivePath '/people'}}")
-                    //     strong Members
+                    a.item(href='/people' class="{{isActivePath '/people'}}")
+                        strong Members
                     a.item(href='/events' class="{{isActivePath '/events'}}")
                         strong Events
-                    // a.item(href='/organizations' class="{{isActivePath '/organizations'}}")
-                    //     strong Ecosystem
                     a.item(href='/ecosystem' class="{{isActivePath '/ecosystem'}}")
                         strong Ecosystem
                     a.item(href='/academy' class="{{isActivePath '/academy'}}")

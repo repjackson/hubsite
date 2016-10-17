@@ -1,13 +1,5 @@
 .ui.center.aligned.basic.segment
-    if isInRole 'admin'
-        if $.Session.get 'published_mode'
-            #turn_off_published_mode.ui.green.button
-                i.toggle.on.icon
-                |Viewing Only Published
-        else
-            #turn_on_published_mode.ui.basic.button
-                i.toggle.off.icon
-                |Viewing Only Unpublished
+    // if isInRole 'admin'
     // if $.Session.get 'checkedin_mode'
     //     #turn_off_checkedin_mode.ui.green.button
     //         i.toggle.on.icon
