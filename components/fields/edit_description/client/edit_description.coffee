@@ -2,23 +2,23 @@ Template.edit_description.events
     'blur .froala-container': (e,t)->
         html = t.$('div.froala-reactive-meteorized-override').froalaEditor('html.get', true)
         
-        snippet = $('#snippet').val()
-        if snippet.length is 0
-            snippet = $(html).text().substr(0, 300).concat('...')
+        # snippet = $('#snippet').val()
+        # if snippet.length is 0
+        #     snippet = $(html).text().substr(0, 300).concat('...')
         doc_id = FlowRouter.getParam('doc_id')
 
         Docs.update doc_id,
             $set: 
                 description: html
-                snippet: snippet
+                # snippet: snippet
 
-    'blur #snippet': (e,t)->
-        text = $('#snippet').val()
-        doc_id = FlowRouter.getParam('doc_id')
+    # 'blur #snippet': (e,t)->
+    #     text = $('#snippet').val()
+    #     doc_id = FlowRouter.getParam('doc_id')
 
-        Docs.update doc_id,
-            $set: 
-                snippet: text
+    #     Docs.update doc_id,
+    #         $set: 
+    #             snippet: text
 
 
     'click #upload_widget_opener': (e,t)->

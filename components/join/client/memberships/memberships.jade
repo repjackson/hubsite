@@ -1,5 +1,5 @@
 template(name='memberships')
-    table.ui.definition.selectable.table
+    table.ui.definition.selectable.fixed.table
         thead
             tr.center.aligned
                 th
@@ -12,7 +12,7 @@ template(name='memberships')
                 th 
                     h3 Full-Time
                 th 
-                    h3 Permanent Desk
+                    h3 Dedicated Desk
         tbody
             tr.center.aligned
                 td.right.aligned Price/Month
@@ -25,7 +25,7 @@ template(name='memberships')
                 td 
                     h4 $295/month
                 td 
-                    h4 $450/month            
+                    h4 $400/month            
             tr.center.aligned
                 td.right.aligned Access
                 td Events free (coworking at lower day rate)
@@ -70,30 +70,6 @@ template(name='memberships')
                 td 
                     i.green.check.big.icon 
             tr.center.aligned
-                td.right.aligned EcoPass Included
-                td 
-                    |-
-                td 
-                    |-
-                td 
-                    |-
-                td 
-                    |-
-                td 
-                    i.green.check.big.icon
-            tr.center.aligned
-                td.right.aligned Permanent Desk
-                td 
-                    |-
-                td 
-                    |-
-                td 
-                    |-
-                td 
-                    |-
-                td 
-                    i.green.check.big.icon
-            tr.center.aligned
                 td.right.aligned Locking File Cabinet
 
                 td 
@@ -112,7 +88,7 @@ template(name='memberships')
                 td -
                 td -
                 td -
-                td 6 month lease required
+                td -
             tr.center.aligned
                 td.right.aligned 
                 td 
@@ -123,7 +99,9 @@ template(name='memberships')
                     a.impact-button-dark(href='https://hubboulder.formstack.com/forms/ihb_membership_form') Join Now
                 td.center.aligned 
                     a.impact-button-dark(href='https://hubboulder.formstack.com/forms/ihb_membership_form') Join Now
-                td 
-                    a.impact-button-dark(href='/permanent-desk-application') Apply Now
+                td.center.aligned 
+                    a.impact-button-dark(href='https://hubboulder.formstack.com/forms/ihb_membership_form') Join Now
+                // td 
+                //     a.impact-button-dark(href='/permanent-desk-application') Apply Now
     // .ui.center.aligned.basic.segment.text.container
     //     a.impact-button-dark(href='https://hubboulder.formstack.com/forms/ihb_membership_form') Join Now

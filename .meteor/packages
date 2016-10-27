@@ -52,3 +52,4 @@ http@1.2.9_1
 underscore@1.0.9
 froala:editor-reactive
 okgrow:analytics
+tomwasd:flow-router-autoscroll
