@@ -4,12 +4,15 @@
             img.ls-bg(src="{{c.url 'organization_banner' width=1000 height=200 crop='fill' gravity='north' effect='art:primavera'}}", alt='Slide background')
             h1.ls-l.overlay-text.slider-text(style="top: 50%; text-size: 300%;") 
                 | Ecosystem
-    .ui.basic.segment
-            +eco_cloud
-            // .ui.divider
-            .ui.four.stackable.centered.cards
-                each ecosystem_items
-                    +card_view
-        // .ui.stackable.divided.grid
-            // .four.wide.column
-            // .twelve.wide.column
+    +office_holders
+    +partners
+
+    // .ui.basic.segment
+    //         +eco_cloud
+    //         // .ui.divider
+    //         .ui.four.stackable.centered.cards
+    //             each ecosystem_items
+    //                 +card_view
+    //     // .ui.stackable.divided.grid
+    //         // .four.wide.column
+    //         // .twelve.wide.column
