@@ -15,3 +15,19 @@ redirect hot seats to join
 thank you page
 
 google forms addons with facebook pixel
+
+
+
+
+/*******************************
+     User Global Variables
+*******************************/
+
+@red: #89131f;
+
+@primaryColor: @red;
+
+
+@linkColor           : #89131f;
+@linkUnderline       : none;
+@linkHoverColor      : lighten( @linkColor, 5);

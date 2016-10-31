@@ -64,4 +64,3 @@ FlowRouter.route '/member_discount', action: (params) ->
     BlazeLayout.render 'layout',
         nav: 'nav'
         main: 'member_discount'
-        

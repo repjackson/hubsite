@@ -4,6 +4,12 @@
             img.ls-bg(src="{{c.url 'organization_banner' width=1000 height=200 crop='fill' gravity='north' effect='art:primavera'}}", alt='Slide background')
             h1.ls-l.overlay-text.slider-text(style="top: 50%; text-size: 300%;") 
                 | Ecosystem
+    if isInRole 'admin'
+        .ui.basic.segment
+            #add_ecosystem_item.item.ui.basic.button 
+                i.red.configure.icon
+                |Add Item
+
     +office_holders
     +partners
 

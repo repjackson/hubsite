@@ -1,10 +1,11 @@
 h2.impact-header Partner Organizations
-.ui.five.column.stackable.centered.grid
+.ui.five.stackable.centered.cards
     each partners
-        .column
-            img.ui.center.aligned.large.image(src="{{c.url image_id height=200 width=300 crop='pad' fetch_format= 'auto'}}")
-            // a(href="/organization/view/#{_id}")
-            // .content
-            //     .header
-            //         a(href="/organization/view/#{_id}")
+        +card_view_minimal
+        // .column
+        //     a(href="/view/#{_id}")
+        //         img.ui.center.aligned.large.image(src="{{c.url image_id height=200 width=300 crop='pad' fetch_format= 'auto'}}")
+        //     // .content
+        //     //     .header
+        //     //         a(href="/organization/view/#{_id}")
             //             h3.ui.red.header.make-uppercase #{title}

@@ -13,7 +13,7 @@ Template.posts.helpers
             },
             sort:
                 publish_date: -1
-            limit: 5
+            limit: 10
             
 Template.posts.events
     'click #add_post': ->

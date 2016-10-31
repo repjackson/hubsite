@@ -26,3 +26,7 @@ Template.ecosystem.events
     'click .edit': ->
         FlowRouter.go "/edit/#{@_id}"
 
+    'click #add_ecosystem_item': ->
+        id = Docs.insert 
+            type: 'ecosystem'
+        FlowRouter.go "/edit/#{id}"
