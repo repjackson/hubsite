@@ -1,6 +1,6 @@
 
 Template.edit_profile.onCreated ->
-    @autorun -> Meteor.subscribe 'user_profile', FlowRouter.getParam('user_id')
+    @autorun -> Meteor.subscribe 'user_profile'
 
 
 
@@ -54,32 +54,40 @@ Template.edit_profile.helpers
 
 
 Template.edit_profile.events
-    'click #save_profile': ->
+    # 'click #save_profile': ->
+    #     name = $('#name').val()
+    #     profile_doc_id = Docs.findOne()
+    #     Docs.update profile_doc_id,
+    #         $set:
+    #             "profile.name": name
+    #             "profile.bio": bio
+    #             "profile.website": website
+    #             "profile.position": position
+    #             "profile.company": company
+    #     FlowRouter.go "/profile/view/#{Meteor.userId()}"
+
+    'blur #name': ->
         name = $('#name').val()
-        bio = $('#bio').val()
-        website = $('#website').val()
-        position = $('#position').val()
-        company = $('#company').val()
-        Meteor.users.update Meteor.userId(),
-            $set:
-                "profile.name": name
-                "profile.bio": bio
-                "profile.website": website
-                "profile.position": position
-                "profile.company": company
-        FlowRouter.go "/profile/view/#{Meteor.userId()}"
+        profile_doc_id = Docs.findOne()._id
+        Docs.update profile_doc_id,
+            $set: title: name
+            
+
+
 
     'keydown #add_tag': (e,t)->
         if e.which is 13
             tag = $('#add_tag').val().toLowerCase().trim()
             if tag.length > 0
-                Meteor.users.update Meteor.userId(),
+                profile_doc_id = Docs.findOne()._id
+                Docs.update profile_doc_id,
                     $addToSet: tags: tag
                 $('#add_tag').val('')
 
     'click .profile_tag': (e,t)->
         tag = @valueOf()
-        Meteor.users.update Meteor.userId(),
+        profile_doc_id = Docs.findOne()._id
+        Docs.update profile_doc_id,
             $pull: tags: tag
         $('#add_tag').val(tag)
 
@@ -96,7 +104,7 @@ Template.edit_profile.events
 
     "change input[type='file']": (e) ->
         files = e.currentTarget.files
-        # console.log files
+        console.log files
         Cloudinary.upload files[0],
             # folder:"secret" # optional parameters described in http://cloudinary.com/documentation/upload_images#remote_upload
             # type:"private" # optional: makes the image accessible only via a signed url. The signed url is available publicly for 1 hour.
@@ -106,8 +114,9 @@ Template.edit_profile.events
                 if err
                     console.error 'Error uploading', err
                 else
-                    Meteor.users.update Meteor.userId(), 
-                        $set: "profile.image_id": res.public_id
+                    profile_doc_id = Docs.findOne()._id
+                    Docs.update profile_doc_id,
+                        $set: "image_id": res.public_id
                 return
 
     'click #pick_google_image': ->
@@ -133,5 +142,6 @@ Template.edit_profile.events
 
 
     'click #remove_photo': ->
-        Meteor.users.update Meteor.userId(), 
-            $unset: "profile.image_id": 1
+        profile_doc_id = Docs.findOne()._id
+        Docs.update profile_doc_id,
+            $unset: "image_id": 1

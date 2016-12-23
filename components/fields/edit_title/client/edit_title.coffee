@@ -3,3 +3,5 @@ Template.edit_title.events
         title = $('#title').val()
         Docs.update FlowRouter.getParam('doc_id'),
             $set: title: title
+            
+            
