@@ -4,7 +4,7 @@
     
 Docs.before.insert (userId, doc)->
     doc.timestamp = Date.now()
-    doc.author_id = Meteor.userId()
+    doc.author_id = userId
     # doc.tag = []
     return
 

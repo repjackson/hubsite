@@ -19,15 +19,19 @@ Meteor.users.allow
 
 
 
-Meteor.publish 'people_tags', (selected_people_tags, published_mode, checkedin_mode)->
+# Meteor.publish 'people_tags', (selected_people_tags, published_mode, checkedin_mode)->
+Meteor.publish 'people_tags', (selected_people_tags)->
     self = @
     match = {}
     if selected_people_tags.length > 0 then match.tags = $all: selected_people_tags
-    match.published = published_mode 
-    match.checked_in = checkedin_mode 
-    match.roles = $in: ['member']
+    # match.published = published_mode 
+    # match.checked_in = checkedin_mode 
+    # match.roles = $in: ['member']
+    match.type = 'member_profile'
 
-    cloud = Meteor.users.aggregate [
+
+
+    cloud = Docs.aggregate [
         { $match: match }
         { $project: "tags": 1 }
         { $unwind: "$tags" }
@@ -47,21 +51,36 @@ Meteor.publish 'people_tags', (selected_people_tags, published_mode, checkedin_m
     self.ready()
 
 
-Meteor.publish 'people', (selected_people_tags=[])->
+# Meteor.publish 'people', (selected_people_tags=[])->
+#     self = @
+#     match = {}
+#     if selected_people_tags.length > 0 then match.tags = $all: selected_people_tags
+#     match._id = $ne: @userId
+#     # match.checked_in = checkedin_mode 
+#     match.roles = $in: ['member']
+
+
+#     Meteor.users.find match,
+#         fields:
+#             tags: 1
+#             profile: 1
+#             username: 1
+#             checked_in: 1
+            
+            
+Meteor.publish 'member_profiles', (selected_tags)->
+
     self = @
     match = {}
-    if selected_people_tags.length > 0 then match.tags = $all: selected_people_tags
-    match._id = $ne: @userId
-    # match.checked_in = checkedin_mode 
-    match.roles = $in: ['member']
-
-
-    Meteor.users.find match,
-        fields:
-            tags: 1
-            profile: 1
-            username: 1
-            checked_in: 1
+    if selected_tags.length > 0 then match.tags = $all: selected_tags
+    if not @userId or not Roles.userIsInRole(@userId, ['admin'])
+        match.published = true
+ 
+    match.type = 'member_profile'
+ 
+    Docs.find match,
+        limit: 25            
+            
             
 # Meteor.publish 'people', (selected_people_tags=[], published_mode)->
 #     self = @

@@ -1,4 +1,4 @@
-template(name='edit_profile')
+template(name='edit_profile_old')
     .ui.segment.text.container
         with person
             .ui.form

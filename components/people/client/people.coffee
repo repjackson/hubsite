@@ -1,9 +1,9 @@
 Template.people.onCreated ->
-    @autorun -> Meteor.subscribe('people', selected_people_tags.array(), Session.get('published_mode'), Session.get('checkedin_mode'))
-    @autorun -> Meteor.subscribe('people', selected_people_tags.array(), Session.get('published_mode'))
+    # @autorun -> Meteor.subscribe('people', selected_people_tags.array(), Session.get('published_mode'), Session.get('checkedin_mode'))
+    @autorun -> Meteor.subscribe('member_profile', selected_tags.array(), Session.get('published_mode'))
 
 Template.people.helpers
-    people: -> Meteor.users.find()
+    member_profiles: -> Docs.find()
 
 Template.people.onRendered ->
     $('#people_slider').layerSlider
@@ -14,14 +14,13 @@ Template.people.onRendered ->
     
 
 
-
-Template.person_card.helpers
+Template.profile_card.helpers
     tag_class: -> if @valueOf() in selected_people_tags.array() then 'red' else 'basic'
 
     matchedtags: -> _.intersection @tags, Meteor.user().tags
  
 
-Template.person_card.events
+Template.profile_card.events
     'click .doc_tag': ->
         if @valueOf() in selected_people_tags.array() then selected_people_tags.remove @valueOf() else selected_people_tags.push @valueOf()
 

@@ -5,20 +5,20 @@
 # but you can also edit it by hand.
 
 meteor-base@1.0.4             # Packages every Meteor app needs to have
-mongo@1.1.13                   # The database Meteor supports right now
+mongo@1.1.14                   # The database Meteor supports right now
 blaze-html-templates@1.0.4    # Compile .html files into Meteor Blaze views
-session@1.1.6                 # Client-side reactive dictionary for your app
-tracker@1.1.0                 # Meteor's client-side reactive programming library
+session@1.1.7                 # Client-side reactive dictionary for your app
+tracker@1.1.1                 # Meteor's client-side reactive programming library
 
 
-coffeescript@1.2.4_2
+coffeescript@1.11.1_4
 mquandalle:jade
 random@1.0.10
 manuel:reactivearray
 meteorhacks:aggregate
 babrahams:constellation
 mquandalle:stylus
-accounts-password@1.3.0
+accounts-password@1.3.3
 semantic:ui
 flemay:less-autoprefixer
 kadira:flow-router
@@ -35,21 +35,21 @@ mizzao:autocomplete
 matb33:collection-hooks
 kevohagan:sweetalert
 splendido:accounts-meld
-service-configuration@1.0.10
+service-configuration@1.0.11
 pauli:accounts-linkedin
-accounts-twitter@1.1.11
-accounts-facebook@1.0.10
+accounts-twitter@1.1.12
+accounts-facebook@1.0.11
 iandouglas:accounts-ui-semantic-ui
 perak:codemirror
-accounts-base@1.2.13
+accounts-base@1.2.14
 raix:handlebar-helpers
 lepozepo:cloudinary
-ejson@1.0.12
+ejson@1.0.13
 shell-server@0.2.1
 alanning:roles
-accounts-google@1.0.10
-http@1.2.9_1
-underscore@1.0.9
+accounts-google@1.0.11
+http@1.2.10
+underscore@1.0.10
 froala:editor-reactive
 okgrow:analytics
 tomwasd:flow-router-autoscroll

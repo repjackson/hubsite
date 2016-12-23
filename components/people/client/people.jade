@@ -7,11 +7,11 @@ template(name='people')
     +people_cloud
     .ui.container
         .ui.centered.four.stackable.cards
-            each people
-                +person_card
+            each member_profile
+                +profile_card
 
 
-template(name='person_card')
+template(name='profile_card')
     .ui.card
         a.image(href="/profile/view/#{_id}")
             img(src="{{c.url profile.image_id width=300 height=300 gravity='face' crop='fill'}}")
