@@ -1,4 +1,3 @@
-
 Template.content.onCreated ->
     self = @
     self.autorun ->
@@ -6,8 +5,14 @@ Template.content.onCreated ->
 
 
 Template.content.helpers
-    docs: -> Docs.find()
-
+    docs: -> 
+        my_profile = 
+            Docs.findOne 
+                type: 'member_profile'
+                author_id: Meteor.userId()
+        
+        Docs.find
+            _id: $ne: my_profile._id
 
 
 Template.content.events

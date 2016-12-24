@@ -29,12 +29,18 @@ Meteor.publish 'all_tags', (selected_tags)->
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
 
+    my_profile = 
+        Docs.findOne 
+            type: 'member_profile'
+            author_id: Meteor.userId()
+    
     cloud = Docs.aggregate [
         { $match: match }
         { $project: "tags": 1 }
         { $unwind: "$tags" }
         { $group: _id: "$tags", count: $sum: 1 }
         { $match: _id: $nin: selected_tags }
+        # { $match: _id: $nin: [my_profile._id] }
         { $sort: count: -1, _id: 1 }
         { $limit: 20 }
         { $project: _id: 0, name: '$_id', count: 1 }
