@@ -28,6 +28,7 @@ Meteor.publish 'people_tags', (selected_people_tags)->
     # match.checked_in = checkedin_mode 
     # match.roles = $in: ['member']
     match.type = 'member_profile'
+    match.author_id = $ne:@userId
 
 
 
@@ -73,10 +74,12 @@ Meteor.publish 'member_profiles', (selected_tags)->
     self = @
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
-    if not @userId or not Roles.userIsInRole(@userId, ['admin'])
-        match.published = true
- 
+    # if not @userId or not Roles.userIsInRole(@userId, ['admin'])
+    #     match.published = true
+    # match.author_id = $ne: @userId
     match.type = 'member_profile'
+ 
+    # console.log match 
  
     Docs.find match,
         limit: 25            

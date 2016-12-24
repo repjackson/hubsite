@@ -1,9 +1,12 @@
 Template.people.onCreated ->
     # @autorun -> Meteor.subscribe('people', selected_people_tags.array(), Session.get('published_mode'), Session.get('checkedin_mode'))
-    @autorun -> Meteor.subscribe('member_profile', selected_tags.array(), Session.get('published_mode'))
+    @autorun -> Meteor.subscribe('member_profiles', selected_people_tags.array())
 
 Template.people.helpers
-    member_profiles: -> Docs.find()
+    member_profiles: -> 
+        Docs.find
+            author_id: $ne: Meteor.userId()
+
 
 Template.people.onRendered ->
     $('#people_slider').layerSlider
