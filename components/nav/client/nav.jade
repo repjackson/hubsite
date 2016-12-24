@@ -35,14 +35,14 @@ template(name='top_nav')
                         | Profile
                 a#logout.ui.item(href='#') 
                     i.sign.out.icon
-                    |Sign Out
+                    |Leave
             else
                 a.ui.item(href='/sign-in') 
                     i.sign.in.icon
-                    |Sign In
-                a.ui.item(href='/sign-up') 
-                    i.add.user.icon
-                    |Register
+                    |Enter
+                // a.ui.item(href='/sign-up') 
+                //     i.add.user.icon
+                //     |Register
     a(href='/' class="{{isActivePath '/'}}")
         img.header-logo(src="{{c.url 'ih_logo'}}")
 
@@ -68,13 +68,13 @@ template(name='nav')
                     a.item(href='/join' class="{{isActivePath '/join'}}")
                         strong Join
                     a.item(href='/rent' class="{{isActivePath '/rent'}}")
-                        strong Rent Our Space
+                        strong Rent
             else
-                .ui.red.inverted.eight.item.stackable.menu
+                .ui.red.inverted.seven.item.stackable.menu
                     a.item(href='/about' class="{{isActivePath '/about'}}")
                         strong About
-                    a.item(href='/people' class="{{isActivePath '/people'}}")
-                        strong Members
+                    // a.item(href='/people' class="{{isActivePath '/people'}}")
+                    //     strong Members
                     a.item(href='/events' class="{{isActivePath '/events'}}")
                         strong Events
                     a.item(href='/academy' class="{{isActivePath '/academy'}}")

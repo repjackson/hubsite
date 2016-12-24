@@ -14,4 +14,11 @@ Template.content.events
     'click #add_page': ->
         id = Docs.insert 
             type: 'page'
+            tags: ['page']
         FlowRouter.go "/page/edit/#{id}"
+    
+    'click #add_slide': ->
+        id = Docs.insert 
+            type: 'slide'
+            tags: ['slide']
+        FlowRouter.go "/edit/#{id}"

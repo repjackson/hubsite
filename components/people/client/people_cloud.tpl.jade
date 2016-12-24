@@ -10,12 +10,12 @@
     //         |Viewing Only Checked Out
     .ui.hidden.divider
     if selected_people_tags
-        #clear_people_tags.ui.red.big.compact.icon.circular.button
+        #clear_people_tags.ui.red.big.compact.icon.button
             i.remove.icon
     if selected_people_tags
         each selected_people_tags
-            a.ui.red.big.compact.circular.button.unselect_people_tag
+            a.ui.red.big.compact.button.unselect_people_tag
                 strong #{this}
     each all_people_tags
-        .ui.compact.basic.circular.button.select_people_tag(class=tag_cloud_class) #{this.name}
+        .ui.compact.basic.button.select_people_tag(class=tag_cloud_class) #{this.name}
             // small #{this.count}

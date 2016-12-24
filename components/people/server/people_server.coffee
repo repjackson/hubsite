@@ -28,8 +28,7 @@ Meteor.publish 'people_tags', (selected_people_tags)->
     # match.checked_in = checkedin_mode 
     # match.roles = $in: ['member']
     match.type = 'member_profile'
-    match.author_id = $ne:@userId
-
+    match.author_id = $ne: @userId
 
 
     cloud = Docs.aggregate [
