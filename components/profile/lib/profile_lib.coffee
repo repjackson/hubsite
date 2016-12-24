@@ -3,8 +3,7 @@ FlowRouter.route '/profile/edit/', action: (params) ->
         # sub_nav: 'account_nav'
         main: 'edit_profile'
 
-FlowRouter.route '/profile/view/:doc_id?', action: (params) ->
-    if not params.doc_id then params.doc_id = Meteor.userId()
+FlowRouter.route '/profile/view/:doc_id', action: (params) ->
     BlazeLayout.render 'layout',
         main: 'view_profile'
 

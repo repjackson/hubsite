@@ -1,9 +1,15 @@
 Template.view_profile.onCreated ->
-    @autorun -> Meteor.subscribe('user_profile', FlowRouter.getParam('user_id'))
+    @autorun -> Meteor.subscribe('view_profile', FlowRouter.getParam('doc_id'))
+    console.log 'fired'
+    
 
 Template.view_profile.helpers
-    person: -> Meteor.users.findOne(FlowRouter.getParam('user_id'))
-
+    profile_doc: -> 
+        doc_id = FlowRouter.getParam('doc_id') 
+        
+        console.log doc_id
+        Docs.findOne doc_id
+    
     can_edit: -> FlowRouter.getParam('user_id') is Meteor.userId()
 
 

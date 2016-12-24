@@ -19,19 +19,27 @@
 
 
 Meteor.publish 'user_profile', ->
-    found_id = Docs.findOne 
+    Docs.find
         author_id: @userId
         type: 'member_profile'
+    
+Meteor.publish 'view_profile', (doc_id)->
+    Docs.find doc_id
+        # type: 'member_profile'
+    
+    # found_id = Docs.findOne 
+    #     author_id: @userId
+    #     type: 'member_profile'
         
     
-    if found_id
-        # console.log 'found_id:', found_id
-        return Docs.find found_id
-    else
-        profile_id = Meteor.call 'create_profile'
+    # if found_id
+    #     console.log 'found_id:', found_id
+    #     return Docs.find found_id
+    # else
+    #     profile_id = Meteor.call 'create_profile'
             
-        # console.log 'new profile id:', profile_id
-        return Docs.find profile_id
+    #     console.log 'new profile id:', profile_id
+    #     return Docs.find profile_id
         
         
 Meteor.methods

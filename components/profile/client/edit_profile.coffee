@@ -6,7 +6,16 @@ Template.edit_profile.onCreated ->
 
 Template.edit_profile.helpers
     # person: -> Meteor.users.findOne FlowRouter.getParam('user_id')
-    profile_doc: -> Docs.findOne()
+    profile_doc: -> 
+        profile_doc = Docs.findOne
+            type: 'member_profile'
+            author_id: Meteor.userId()
+        
+        # if profile_doc then console.log 'found profile doc', profile_doc
+        # else
+        #     console.log 'didnt find profile doc'
+            
+        return profile_doc
 
     # matchedUsersList:->
     #     users = Meteor.users.find({_id: $ne: Meteor.userId()}).fetch()
@@ -54,21 +63,29 @@ Template.edit_profile.helpers
 
 
 Template.edit_profile.events
-    # 'click #save_profile': ->
-    #     name = $('#name').val()
-    #     profile_doc_id = Docs.findOne()
-    #     Docs.update profile_doc_id,
-    #         $set:
-    #             "profile.name": name
-    #             "profile.bio": bio
-    #             "profile.website": website
-    #             "profile.position": position
-    #             "profile.company": company
-    #     FlowRouter.go "/profile/view/#{Meteor.userId()}"
+    'click #save_profile': ->
+        # name = $('#name').val()
+        profile_doc = 
+            Docs.findOne
+                type: 'member_profile'
+                author_id: Meteor.userId()
+
+        profile_doc_id = profile_doc._id
+
+        # Docs.update profile_doc_id,
+        #     $set:
+        #         title: name
+        FlowRouter.go "/profile/view/#{profile_doc_id}"
 
     'blur #name': ->
         name = $('#name').val()
-        profile_doc_id = Docs.findOne()._id
+        profile_doc = 
+            Docs.findOne
+                type: 'member_profile'
+                author_id: Meteor.userId()
+
+        profile_doc_id = profile_doc._id
+
         Docs.update profile_doc_id,
             $set: title: name
             
@@ -104,7 +121,6 @@ Template.edit_profile.events
 
     "change input[type='file']": (e) ->
         files = e.currentTarget.files
-        console.log files
         Cloudinary.upload files[0],
             # folder:"secret" # optional parameters described in http://cloudinary.com/documentation/upload_images#remote_upload
             # type:"private" # optional: makes the image accessible only via a signed url. The signed url is available publicly for 1 hour.
@@ -145,3 +161,7 @@ Template.edit_profile.events
         profile_doc_id = Docs.findOne()._id
         Docs.update profile_doc_id,
             $unset: "image_id": 1
+
+
+    'click #create_profile': ->
+        Meteor.call 'create_profile'
