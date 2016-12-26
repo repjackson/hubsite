@@ -1,8 +1,4 @@
-FlowRouter.route '/edit-slides', action: (params) ->
+FlowRouter.route '/slider2', action: (params) ->
     BlazeLayout.render 'layout',
-        main: 'edit_slides'
+        main: 'slider2'
 
-
-FlowRouter.route '/slide/edit/:doc_id', action: (params) ->
-    BlazeLayout.render 'layout',
-        main: 'edit_slide'

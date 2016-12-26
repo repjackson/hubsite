@@ -1,0 +1,10 @@
+#layerslider(style='width:1500px; height: 500px;')
+    each slides
+        .ls-slide(data-ls='slidedelay: 3000;')
+            img.ls-bg(src="{{c.url image_id effect='art:frost' width=1500 height=500 crop='fill' fetch_format='auto' }}", alt='Slide background' )
+            .ls-l.homeslider-header(style="top: 90%; height: 170px; left: 50%;" )
+                a(href=link)
+                    h3.slider-caption-header #{title}
+                    p.slider-caption-subheader #{snippet}
+
+
