@@ -11,6 +11,8 @@ Template.registerHelper 'can_edit', () ->  Meteor.userId() is @author_id or Role
 
 Template.registerHelper 'publish_when', () -> moment(@publish_date).fromNow()
 
+Template.registerHelper 'is_admin', () -> Roles.userIsInRole(Meteor.userId(), 'admin')
+
 
 Template.registerHelper 'is_dev', () -> Meteor.isDevelopment
 

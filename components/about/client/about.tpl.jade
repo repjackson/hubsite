@@ -42,8 +42,22 @@
                 .value 5
                 .label Regions
     .ui.hidden.section.divider
+    if is_admin
+        +team_members
     h2.impact-header Meet the Impact Hub Team
     .ui.stackable.centered.five.cards
+        each team_members
+            .ui.card
+                .image
+                    img(src=image_id)
+                .content
+                    .header #{title}
+                    .meta
+                        span.date #{position}
+                    .description #{snippet}
+                .extra.content
+                    a(href=linked_in target="_blank")
+                        i.linkedin.icon        
         .ui.card
             .image
                 img(src='/team/Emmett_Skiles.jpg')

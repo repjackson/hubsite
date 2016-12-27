@@ -1,0 +1,14 @@
+h2.impact-header Meet the Impact Hub Team
+.ui.stackable.centered.five.cards
+    each team_members
+        .ui.card
+            .image
+                img.ui.fluid.image(src="{{c.url image_id height=400 width=400 background='white' crop='pad'}}")
+            .content
+                .header #{title}
+                .meta
+                    span.date #{position}
+                .description #{snippet}
+            .extra.content
+                a(href=link target="_blank")
+                    i.linkedin.icon        

@@ -136,3 +136,6 @@ serviceAddedCallback = (user_id, service_name) ->
     return
 
 AccountsMeld.configure serviceAddedCallback: serviceAddedCallback
+
+
+

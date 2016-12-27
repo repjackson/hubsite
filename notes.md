@@ -26,3 +26,10 @@ mongo --ssl --sslAllowInvalidCertificates aws-us-east-1-portal.21.dblayer.com:10
 @linkColor           : #89131f;
 @linkUnderline       : none;
 @linkHoverColor      : lighten( @linkColor, 5);
+
+
+
+todo
+    admin dashboard
+    people cards
+    components!

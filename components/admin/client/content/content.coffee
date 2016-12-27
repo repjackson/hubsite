@@ -6,14 +6,15 @@ Template.content.onCreated ->
 
 Template.content.helpers
     docs: -> 
-        my_profile = 
-            Docs.findOne 
-                type: 'member_profile'
-                author_id: Meteor.userId()
+        # my_profile = 
+        #     Docs.findOne 
+        #         type: 'member_profile'
+        #         author_id: Meteor.userId()
         
-        Docs.find
-            _id: $ne: my_profile._id
+        # Docs.find
+        #     _id: $ne: my_profile._id
 
+        Docs.find()
 
 Template.content.events
     'click #add_page': ->
@@ -26,4 +27,8 @@ Template.content.events
         id = Docs.insert 
             type: 'slide'
             tags: ['slide']
+        FlowRouter.go "/edit/#{id}"
+    
+    'click #add_doc': ->
+        id = Docs.insert({})
         FlowRouter.go "/edit/#{id}"

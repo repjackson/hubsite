@@ -10,3 +10,8 @@ Meteor.publish 'partners', ->
         type: 'ecosystem'
         tags: $in: ['partner']
     }
+
+Meteor.publish 'team_members', ->
+        Docs.find
+            tags: $in: ['member_profile', 'team']
+            

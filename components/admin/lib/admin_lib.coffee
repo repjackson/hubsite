@@ -16,4 +16,10 @@ FlowRouter.route '/admin/content', action: (params) ->
         sub_nav: 'admin_nav'
         main: 'content'
         
+FlowRouter.route '/admin/account', action: (params) ->
+    BlazeLayout.render 'layout',
+        nav: 'nav'
+        sub_nav: 'admin_nav'
+        main: 'account'
+        
         

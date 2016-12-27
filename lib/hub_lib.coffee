@@ -33,3 +33,10 @@ Docs.helpers
 Meteor.methods
     delete_doc: (id)->
         Docs.remove id
+        
+        
+@Components = [
+    'blog'
+    'events'
+    'user_blurb'
+    ]

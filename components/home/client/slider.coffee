@@ -15,12 +15,16 @@ Template.slider2.onCreated ->
 
 
 Template.slider2.onRendered ->
-    $('#layerslider').layerSlider
-        autoStart: true
-        # firstLayer: 1
-        # skin: 'borderlesslight'
-        # skinsPath: '/static/layerslider/skins/'
-
+    if Template.instance()
+    # Meteor.setTimeout (->
+        $('#layerslider2').layerSlider
+            autoStart: true
+            # firstLayer: 1
+            # skin: 'borderlesslight'
+            # skinsPath: '/static/layerslider/skins/'
+        # ), 2000
+    
+        # console.log 'ready'
 
 
 Template.slider2.helpers

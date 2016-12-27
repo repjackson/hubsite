@@ -28,7 +28,6 @@ useraccounts:semantic-ui
 useraccounts:flow-routing
 zimme:active-route
 mobile-experience@1.0.4
-standard-minifiers@1.0.6
 dburles:collection-helpers
 momentjs:moment
 mizzao:autocomplete
