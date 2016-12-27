@@ -6,15 +6,15 @@ Template.content.onCreated ->
 
 Template.content.helpers
     docs: -> 
-        # my_profile = 
-        #     Docs.findOne 
-        #         type: 'member_profile'
-        #         author_id: Meteor.userId()
+        my_profile = 
+            Docs.findOne 
+                type: 'member_profile'
+                author_id: Meteor.userId()
         
-        # Docs.find
-        #     _id: $ne: my_profile._id
+        Docs.find
+            _id: $ne: my_profile._id
 
-        Docs.find()
+        # Docs.find()
 
 Template.content.events
     'click #add_page': ->

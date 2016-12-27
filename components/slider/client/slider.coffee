@@ -29,6 +29,8 @@ Template.slider2.onRendered ->
 
 Template.slider2.helpers
     slides: -> 
-        Docs.find
+        Docs.find {
             tags: $in: ['slide']
             type: 'slide'
+            },
+            sort: order: 1

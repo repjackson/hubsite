@@ -7,9 +7,10 @@ with item
             +edit_link
             +edit_description
             +edit_tags
+            +edit_order
             +publish_button
             if isInRole 'admin'
                 +edit_type
-            if title
+            if tags
                 #save.ui.large.green.button Save
             +delete_button

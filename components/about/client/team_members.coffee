@@ -6,6 +6,7 @@ Template.team_members.onCreated ->
 
 Template.team_members.helpers
     team_members: ->
-        Docs.find
+        Docs.find {
             tags: $all: ['person', 'team']
-            
+        },
+        sort: order: 1

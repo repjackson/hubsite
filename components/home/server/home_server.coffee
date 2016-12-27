@@ -14,8 +14,3 @@ Meteor.publish 'rockstar_members', ->
     #         date_array: 1
     #         date: 1
 
-
-Meteor.publish 'slides', ->
-    Docs.find 
-        tags: $in: ['slide']
-        type: 'slide'

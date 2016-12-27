@@ -4,7 +4,8 @@ Template.edit_description.events
         
         snippet = $('#snippet').val()
         if snippet.length is 0
-            snippet = $(html).text().substr(0, 300).concat('...')
+            # snippet = $(html).text().substr(0, 300).concat('...')
+            snippet = $(html).text().substr(0, 300)
         doc_id = FlowRouter.getParam('doc_id')
 
         Docs.update doc_id,
