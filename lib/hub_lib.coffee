@@ -5,6 +5,7 @@
 Docs.before.insert (userId, doc)->
     doc.timestamp = Date.now()
     doc.author_id = userId
+    doc.order = 100
     # doc.tag = []
     return
 

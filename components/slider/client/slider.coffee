@@ -15,14 +15,13 @@ Template.slider2.onCreated ->
 
 
 Template.slider2.onRendered ->
-    if Template.instance()
-    # Meteor.setTimeout (->
+    Meteor.setTimeout (->
         $('#layerslider2').layerSlider
             autoStart: true
             # firstLayer: 1
             # skin: 'borderlesslight'
             # skinsPath: '/static/layerslider/skins/'
-        # ), 2000
+        ), 2000
     
         # console.log 'ready'
 
@@ -31,6 +30,5 @@ Template.slider2.helpers
     slides: -> 
         Docs.find {
             tags: $in: ['slide']
-            type: 'slide'
             },
             sort: order: 1
