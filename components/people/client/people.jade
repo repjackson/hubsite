@@ -10,10 +10,9 @@ template(name='people')
             each member_profiles
                 +profile_card
 
-
 template(name='profile_card')
     .ui.card
-        a.image(href="/profile/view/#{_id}")
+        a.image(href="/view/#{_id}")
             img(src="{{c.url image_id width=300 height=300 gravity='face' crop='fill'}}")
             // if checked_in
             //     .ui.top.left.attached.green.label Checked In
@@ -21,7 +20,7 @@ template(name='profile_card')
             //     .ui.top.left.attached.red.label Checked Out
         .content
             .header
-                a(href="/profile/view/#{_id}") #{title}
+                a(href="/view/#{_id}") #{title}
         .content
             each tags
                 .ui.tiny.compact.button.person_tag(class=tag_class) #{this}

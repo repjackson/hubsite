@@ -1,22 +1,14 @@
 
-Template.slider.onRendered ->
-    $('#layerslider').layerSlider
-        autoStart: true
-        # firstLayer: 1
-        # skin: 'borderlesslight'
-        # skinsPath: '/static/layerslider/skins/'
-
-
-Template.slider2.onCreated ->
+Template.slider.onCreated ->
     self = @
     self.autorun ->
         self.subscribe 'slides'
 
 
 
-Template.slider2.onRendered ->
+Template.slider.onRendered ->
     Meteor.setTimeout (->
-        $('#layerslider2').layerSlider
+        $('#layerslider').layerSlider
             autoStart: true
             # firstLayer: 1
             # skin: 'borderlesslight'
@@ -26,7 +18,7 @@ Template.slider2.onRendered ->
         # console.log 'ready'
 
 
-Template.slider2.helpers
+Template.slider.helpers
     slides: -> 
         Docs.find {
             tags: $in: ['slide']

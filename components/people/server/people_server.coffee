@@ -27,9 +27,10 @@ Meteor.publish 'people_tags', (selected_people_tags)->
     # match.published = published_mode 
     # match.checked_in = checkedin_mode 
     # match.roles = $in: ['member']
-    match.type = 'member_profile'
-    match.author_id = $ne: @userId
-
+    
+    # match.type = 'member_profile'
+    # match.author_id = $ne: @userId
+    match.tags = $in: ['profile']
 
     cloud = Docs.aggregate [
         { $match: match }
@@ -68,16 +69,19 @@ Meteor.publish 'people_tags', (selected_people_tags)->
 #             checked_in: 1
             
             
-Meteor.publish 'member_profiles', (selected_tags)->
+Meteor.publish 'member_profiles', (selected_people_tags)->
 
     self = @
     match = {}
-    if selected_tags.length > 0 then match.tags = $all: selected_tags
+    
+    selected_people_tags.push 'profile'
+    match.tags = $all: selected_people_tags
     # if not @userId or not Roles.userIsInRole(@userId, ['admin'])
     #     match.published = true
     # match.author_id = $ne: @userId
-    match.type = 'member_profile'
- 
+    # match.type = 'member_profile'
+    # match.tags = $in: ['profile']
+
     # console.log match 
  
     Docs.find match,

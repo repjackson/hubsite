@@ -1,9 +1,8 @@
 with item
     .ui.container
         .image
-            img.ui.centered.image(src="{{c.url image_id height=400 width=800 background='white' crop='lpad'}}")
-            .overlay-text 
-                h1 #{title}
+            img.ui.centered.image(src="{{c.url image_id}}")
+            h1.ui.dividing.header #{title}
         .ui.hidden.divider
         .ui.divided.stackable.grid
             .ten.wide.column

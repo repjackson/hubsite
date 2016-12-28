@@ -1,4 +1,3 @@
-@selected_people_tags = new ReactiveArray []
 
 Template.people_cloud.onCreated ->
     # @autorun -> Meteor.subscribe('people_tags', selected_people_tags.array(), Session.get('published_mode'), Session.get('checkedin_mode'))
@@ -6,9 +5,10 @@ Template.people_cloud.onCreated ->
 
 Template.people_cloud.helpers
     all_people_tags: ->
-        # user_count = Meteor.users.find().count()
-        # if 0 < user_count < 3 then People_tags.find { count: $lt: user_count } else People_tags.find()
-        People_tags.find()
+        doc_count = Docs.find().count()
+        if 0 < doc_count < 3 then People_tags.find { count: $lt: doc_count } else People_tags.find({}, limit:20)
+
+        # People_tags.find()
 
     tag_cloud_class: ->
         button_class = switch
