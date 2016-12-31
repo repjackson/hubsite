@@ -1,0 +1,27 @@
+.item
+    .image
+        a(href="/view/#{_id}")
+            img.ui.large.image(src="{{c.url image_id height=400 width=400 }}")
+            // img.ui.medium.image(src="{{c.url image_id }}")
+    .content
+        a.ui.red.header.make-uppercase(href="/view/#{_id}") #{title}
+        .meta
+            if link
+                a(href=link target='_blank') #{link}
+            each eco_tags
+                .ui.compact.tiny.button.eco_tag(class=eco_tag_class) #{this}
+        .description #{snippet}
+        .extra
+            +favorite
+            +voting
+        if isInRole 'admin'
+            .extra
+                i.red.configure.icon
+                unless published
+                    .ui.basic.red.tiny.label 
+                        |Unpub
+                .ui.tiny.basic.label Type: #{type}
+                +edit_button
+                if order
+                    .ui.basic.label
+                        |Order: #{order}

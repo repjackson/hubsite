@@ -6,6 +6,10 @@ Docs.before.insert (userId, doc)->
     doc.timestamp = Date.now()
     doc.author_id = userId
     doc.order = 100
+    doc.points = 0
+    doc.up_voters = []
+    doc.down_voters = []
+
     # doc.tag = []
     return
 

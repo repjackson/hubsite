@@ -6,7 +6,7 @@ Meteor.publish 'ecosystem', (selected_tags)->
     if not @userId or not Roles.userIsInRole(@userId, ['admin'])
         match.published = true
  
-    match.type = 'ecosystem'
+    # match.type = 'ecosystem'
  
     Docs.find match,
-        limit: 25
+        limit: 5
