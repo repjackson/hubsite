@@ -1,12 +1,4 @@
 
-dynamic organization collage on about us 
-
-turning slides to content thoughts
-    image id
-    title
-    description
-
-
     
 DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy --settings settings.json www.collider.cloud
 
@@ -30,6 +22,6 @@ mongo --ssl --sslAllowInvalidCertificates aws-us-east-1-portal.21.dblayer.com:10
 
 
 todo
-    admin dashboard
-    people cards
-    components!
+    move members into ecosystem
+    add all ecosystem parts into rest
+    convert cards to items

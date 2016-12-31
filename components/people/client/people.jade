@@ -5,6 +5,7 @@ template(name='people')
             h1.ls-l.overlay-text.slider-text(style="top: 50%; text-size: 400%;") 
                 | Impact Hub Members
     +people_cloud
+    // +cloud
     .ui.container
         .ui.centered.four.stackable.cards
             each member_profiles
@@ -22,7 +23,7 @@ template(name='profile_card')
             .header
                 a(href="/view/#{_id}") #{title}
         .content
-            each tags
+            each card_tags
                 .ui.tiny.compact.button.person_tag(class=tag_class) #{this}
         // .extra.content
         //     if isInRole 'admin'

@@ -8,7 +8,11 @@
     //     #turn_on_checkedin_mode.ui.basic.button
     //         i.toggle.off.icon
     //         |Viewing Only Checked Out
-    .ui.hidden.divider
+    // .ui.hidden.divider
+    .ui.left.icon.input
+        i.search.icon
+        +inputAutocomplete settings=settings id="search" class="" autocomplete="off" placeholder='Search Tags'
+
     if selected_people_tags
         #clear_people_tags.ui.red.big.compact.icon.button
             i.remove.icon

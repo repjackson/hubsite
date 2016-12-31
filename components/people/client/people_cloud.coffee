@@ -6,7 +6,7 @@ Template.people_cloud.onCreated ->
 Template.people_cloud.helpers
     all_people_tags: ->
         doc_count = Docs.find().count()
-        if 0 < doc_count < 3 then People_tags.find { count: $lt: doc_count } else People_tags.find({}, limit:20)
+        if 0 < doc_count < 5 then People_tags.find { count: $lt: doc_count } else People_tags.find({}, limit:20)
 
         # People_tags.find()
 
@@ -24,6 +24,21 @@ Template.people_cloud.helpers
         # console.log "selected_#{type}_tags"
         selected_people_tags.list()
 
+    settings: -> {
+        position: 'bottom'
+        limit: 10
+        rules: [
+            {
+                collection: People_tags
+                field: 'name'
+                matchAll: true
+                template: Template.tag_result
+            }
+            ]
+    }
+
+
+
 Template.people_cloud.events
     'click .select_people_tag': -> selected_people_tags.push @name
     'click .unselect_people_tag': -> selected_people_tags.remove @valueOf()
@@ -31,3 +46,25 @@ Template.people_cloud.events
     
     'click #turn_off_checkedin_mode': -> Session.set 'checkedin_mode', false
     'click #turn_on_checkedin_mode': -> Session.set 'checkedin_mode', true
+    
+    'keyup #search': (e,t)->
+        e.preventDefault()
+        val = $('#search').val().toLowerCase().trim()
+        switch e.which
+            when 13 #enter
+                switch val
+                    when 'clear'
+                        selected_people_tags.clear()
+                        $('#search').val ''
+                    else
+                        unless val.length is 0
+                            selected_people_tags.push val.toString()
+                            $('#search').val ''
+            when 8
+                if val.length is 0
+                    selected_people_tags.pop()
+                    
+    'autocompleteselect #search': (event, template, doc) ->
+        # console.log 'selected ', doc
+        selected_people_tags.push doc.name
+        $('#search').val ''

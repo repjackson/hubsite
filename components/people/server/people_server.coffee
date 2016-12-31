@@ -85,7 +85,7 @@ Meteor.publish 'member_profiles', (selected_people_tags)->
     # console.log match 
  
     Docs.find match,
-        limit: 25            
+        limit: 10            
             
             
 # Meteor.publish 'people', (selected_people_tags=[], published_mode)->

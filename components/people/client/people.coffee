@@ -8,8 +8,17 @@ Template.people.onCreated ->
         
 Template.people.helpers
     member_profiles: -> 
+        
+        # member_profile = 
+        #     Docs.findOne
+        #         author_id: Meteor.userId()
+        #         type: 'member_profile'
+        
+        # console.log member_profile._id
+        
+        
         Docs.find()
-            # author_id: $ne: Meteor.userId()
+            # _id: $ne: member_profile_id
 
 
 Template.people.onRendered ->
@@ -26,6 +35,8 @@ Template.profile_card.helpers
 
     matchedtags: -> _.intersection @tags, Meteor.user().tags
  
+    card_tags: -> @tags[0..5]
+    
 
 Template.profile_card.events
     'click .person_tag': ->
