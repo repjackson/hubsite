@@ -1,15 +1,13 @@
 Template.voting.helpers
     vote_up_button_class: ->
-        if not Meteor.userId() then 'disabled basic'
-        # else if Meteor.user().points < 1 then 'disabled basic'
+        if not Meteor.userId() then 'disabled'
         else if Meteor.userId() in @up_voters then 'green'
-        else 'basic'
+        else 'outline'
 
     vote_down_button_class: ->
-        if not Meteor.userId() then 'disabled basic'
-        # else if Meteor.user().points < 1 then 'disabled basic'
+        if not Meteor.userId() then 'disabled'
         else if Meteor.userId() in @down_voters then 'red'
-        else 'basic'
+        else 'outline'
 
 
 Template.voting.events

@@ -62,7 +62,7 @@ Meteor.publish 'tags', (selected_tags, filter)->
         { $unwind: "$tags" }
         { $group: _id: "$tags", count: $sum: 1 }
         { $match: _id: $nin: selected_tags }
-        { $sort: count: -1, _id: 1 }
+        { $sort: points:-1, count: -1, _id: 1 }
         { $limit: 20 }
         { $project: _id: 0, name: '$_id', count: 1 }
         ]

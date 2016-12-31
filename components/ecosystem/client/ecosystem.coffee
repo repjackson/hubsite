@@ -7,7 +7,10 @@ Template.ecosystem.onRendered ->
 
 
 Template.ecosystem.helpers
-    items: -> Docs.find {}
+    items: -> 
+        Docs.find {},
+            sort: points: -1
+            
 
 
 Template.ecosystem.helpers
