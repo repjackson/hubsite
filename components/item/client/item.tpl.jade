@@ -8,8 +8,8 @@
         .meta
             if link
                 a(href=link target='_blank') #{link}
-            each eco_tags
-                .ui.compact.tiny.button.eco_tag(class=eco_tag_class) #{this}
+            each tags
+                .ui.label(class=tag_class) #{this}
         .description #{snippet}
         .extra
             +favorite

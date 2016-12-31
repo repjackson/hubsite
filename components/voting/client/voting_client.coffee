@@ -13,6 +13,11 @@ Template.voting.helpers
 
 
 Template.voting.events
-    'click .vote_up': -> Meteor.call 'vote_up', @_id
+    'click .vote_up': -> 
+        if Meteor.userId() then Meteor.call 'vote_up', @_id
+        else FlowRouter.go '/sign-in'
 
-    'click .vote_down': -> Meteor.call 'vote_down', @_id
+    'click .vote_down': -> 
+        if Meteor.userId() then Meteor.call 'vote_down', @_id
+        else FlowRouter.go '/sign-in'
+

@@ -53,7 +53,8 @@ Meteor.publish 'tags', (selected_tags, filter)->
     self = @
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
-    match.type = filter
+    if filter 
+        match.type = filter
 
     cloud = Docs.aggregate [
         { $match: match }

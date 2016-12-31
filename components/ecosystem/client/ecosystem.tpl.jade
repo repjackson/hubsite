@@ -5,14 +5,15 @@
             h1.ls-l.overlay-text.slider-text(style="top: 50%; text-size: 300%;") 
                 | Ecosystem
     if isInRole 'admin'
-        .ui.basic.segment
+        .ui.basic.compact.segment
             #add_ecosystem_item.item.ui.basic.button 
                 i.red.configure.icon
                 |Add Item
     +cloud
     each items
-        .ui.items
+        .ui.divided.items
             +item
+        .ui.divider
     // +office_holders
     // +partners
 

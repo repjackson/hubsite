@@ -8,7 +8,5 @@ Template.favorite.helpers
     
 Template.favorite.events
     'click .favorite_item': -> 
-        if Meteor.userId()
-            # console.log Template.parentData(0)
-            Meteor.call 'favorite', Template.parentData(0)
+        if Meteor.userId() then Meteor.call 'favorite', Template.parentData(0)
         else FlowRouter.go '/sign-in'
