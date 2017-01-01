@@ -6,7 +6,14 @@ Template.cloud.onCreated ->
 Template.cloud.helpers
     all_tags: ->
         doc_count = Docs.find().count()
-        if 0 < doc_count < 3 then Tags.find { count: $lt: doc_count } else Tags.find()
+        console.log doc_count
+        if 0 < doc_count < 3 
+            Tags.find { 
+                count: $lt: doc_count
+                },
+                limit: 5
+        else Tags.find({}, limit:5)
+        # Tags.find()
 
     tag_cloud_class: ->
         button_class = switch

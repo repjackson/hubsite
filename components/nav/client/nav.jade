@@ -35,11 +35,11 @@ template(name='top_nav')
                         | Profile
                 a#logout.ui.item(href='#') 
                     i.sign.out.icon
-                    |Leave
+                    |Log Out
             else
                 a.ui.item(href='/sign-in') 
                     i.sign.in.icon
-                    |Enter
+                    |Log In
                 // a.ui.item(href='/sign-up') 
                 //     i.add.user.icon
                 //     |Register
@@ -50,13 +50,13 @@ template(name='top_nav')
 template(name='nav')
     .ui.container
         .red-nav-bar
-            .ui.red.inverted.eight.item.stackable.menu
+            .ui.red.inverted.seven.item.stackable.menu
                 a.item(href='/about' class="{{isActivePath '/about'}}")
                     strong About
                 a.item(href='/events' class="{{isActivePath '/events'}}")
                     strong Events
-                // a.item(href='/academy' class="{{isActivePath '/academy'}}")
-                //     strong Programs
+                a.item(href='/academy' class="{{isActivePath '/academy'}}")
+                    strong Programs
                 a.item(href='/ecosystem' class="{{isActivePath '/ecosystem'}}")
                     strong Ecosystem
                 a.item(href='/posts' class="{{isActivePath '/posts'}}")

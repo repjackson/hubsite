@@ -2,7 +2,7 @@ Template.nav.onCreated ->
     self = @
     self.autorun ->
         self.subscribe 'me'
-        self.subscribe 'user_profile'
+        # self.subscribe 'user_profile'
 
 
 Template.nav.helpers
