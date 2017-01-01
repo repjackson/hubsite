@@ -22,6 +22,3 @@ mongo --ssl --sslAllowInvalidCertificates aws-us-east-1-portal.21.dblayer.com:10
 
 
 todo
-    move members into ecosystem
-    add all ecosystem parts into rest
-    convert cards to items

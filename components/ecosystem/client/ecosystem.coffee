@@ -8,8 +8,8 @@ Template.ecosystem.onRendered ->
 
 Template.ecosystem.helpers
     items: -> 
-        Docs.find {},
-            sort: points: -1
+        Docs.find {}
+            # sort: points: -1
             
 
 
