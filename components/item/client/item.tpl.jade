@@ -5,9 +5,8 @@
             // img.ui.medium.image(src="{{c.url image_id }}")
     .content
         a.ui.red.header.make-uppercase(href="/view/#{_id}") #{title}
-        .meta
             each tags
-                .ui.tiny.compact.button.doc_tag(class=tag_class) #{this}
+                .ui.label(class=tag_class) #{this}
         .meta
             if link
                 a(href=link target='_blank') #{link}

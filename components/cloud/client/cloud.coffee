@@ -6,13 +6,13 @@ Template.cloud.onCreated ->
 Template.cloud.helpers
     all_tags: ->
         doc_count = Docs.find().count()
-        console.log doc_count
+        # console.log doc_count
         if 0 < doc_count < 3 
             Tags.find { 
                 count: $lt: doc_count
                 },
-                limit: 5
-        else Tags.find({}, limit:5)
+                limit: 7
+        else Tags.find({}, limit:7)
         # Tags.find()
 
     tag_cloud_class: ->

@@ -50,11 +50,14 @@ template(name='top_nav')
 template(name='nav')
     .ui.container
         .red-nav-bar
-            .ui.red.inverted.seven.item.stackable.menu
+            .ui.red.inverted.eight.item.stackable.menu
                 a.item(href='/about' class="{{isActivePath '/about'}}")
                     strong About
                 a.item(href='/events' class="{{isActivePath '/events'}}")
                     strong Events
+                if isInRole 'admin'
+                    a.item(href='/members' class="{{isActivePath '/members'}}")
+                        strong Members
                 a.item(href='/academy' class="{{isActivePath '/academy'}}")
                     strong Programs
                 a.item(href='/ecosystem' class="{{isActivePath '/ecosystem'}}")

@@ -1,0 +1,41 @@
+template(name='members')
+    #people_slider(style='width: 998px; height: 200px;')
+        .ls-slide(data-ls='slidedelay: 2000;')
+            img.ls-bg(src="{{c.url 'people' width=998 height=200 crop='crop' gravity='north'}}", alt='Slide background')
+            h1.ls-l.overlay-text.slider-text(style="top: 50%; text-size: 400%;") 
+                | Impact Hub Members
+    +members_cloud
+    // +cloud
+    .ui.container
+        .ui.centered.four.stackable.cards
+            each member_profiles
+                +member_card
+
+template(name='member_card')
+    .ui.card
+        a.image(href="/view/#{_id}")
+            img(src="{{c.url image_id width=300 height=300 gravity='face' crop='fill'}}")
+        .content
+            .header
+                a(href="/view/#{_id}") #{profile.name}
+        .content
+            each card_tags
+                .ui.tiny.compact.button.person_tag(class=tag_class) #{this}
+        .extra.content
+            if checked_in
+                .ui.bottom.right.attached.green.label Checked In
+            else
+                .ui.bottom.right.attached.red.label Checked Out
+            if isInRole 'admin'
+                if checked_in
+                    #check_out.ui.basic.button
+                        i.red.remove.icon
+                        |Check Out
+                else
+                    #check_in.ui.basic.button
+                        i.green.check.icon
+                        |Check In
+        .extra.content
+            a(href="/profile/view/#{_id}")
+                | More
+                i.right.arrow.icon

@@ -2,8 +2,8 @@ Meteor.publish 'ecosystem', (selected_tags)->
 
     self = @
     match = {}
-    # if selected_tags.length > 0 then match.tags = $all: selected_tags
-    match.tags = $all: selected_tags
+    if selected_tags.length > 0 then match.tags = $all: selected_tags
+    # match.tags = $all: selected_tags
     if not @userId or not Roles.userIsInRole(@userId, ['admin'])
         match.published = true
  
@@ -20,4 +20,4 @@ Meteor.publish 'ecosystem', (selected_tags)->
     # console.log match
  
     Docs.find match,
-        limit: 5
+        limit: 10

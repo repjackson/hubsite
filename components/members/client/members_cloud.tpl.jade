@@ -1,0 +1,25 @@
+.ui.center.aligned.basic.segment
+    // if isInRole 'admin'
+    // if $.Session.get 'checkedin_mode'
+    //     #turn_off_checkedin_mode.ui.green.button
+    //         i.toggle.on.icon
+    //         |Viewing Only Checked In
+    // else
+    //     #turn_on_checkedin_mode.ui.basic.button
+    //         i.toggle.off.icon
+    //         |Viewing Only Checked Out
+    // .ui.hidden.divider
+    .ui.left.icon.input
+        i.search.icon
+        +inputAutocomplete settings=settings id="search" class="" autocomplete="off" placeholder='Search Tags'
+
+    if selected_people_tags
+        #clear_people_tags.ui.red.big.compact.icon.button
+            i.remove.icon
+    if selected_people_tags
+        each selected_people_tags
+            a.ui.red.big.compact.button.unselect_people_tag
+                strong #{this}
+    each all_people_tags
+        .ui.compact.basic.button.select_people_tag(class=tag_cloud_class) #{this.name}
+            // small #{this.count}

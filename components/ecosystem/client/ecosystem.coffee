@@ -19,15 +19,16 @@ Template.ecosystem.helpers
             
         
         doc_count = Docs.find().count()
-        if doc_count is 1
-            Docs.find({}
+        console.log doc_count
+        # if doc_count is 1
+        #     Docs.find({}
                 # _id: $nin: [profile_doc_id]
-            )
-        # Docs.find {},
-        #     sort: 
-        #         timestamp: -1
-        #         points: -1
-        #     limit: 1
+            # )
+        Docs.find {},
+            sort: 
+                timestamp: -1
+                points: -1
+            limit: 10
             
 
 

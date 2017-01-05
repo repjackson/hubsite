@@ -22,3 +22,5 @@ mongo --ssl --sslAllowInvalidCertificates aws-us-east-1-portal.21.dblayer.com:10
 
 
 todo
+    x in the selection box to show remove tag selection
+    show cards
