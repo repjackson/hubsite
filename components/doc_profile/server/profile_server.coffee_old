@@ -19,12 +19,12 @@
 
 
 Meteor.publish 'user_profile', ->
-    Meteor.users.find @userId
-
-
+    Docs.find
+        author_id: @userId
+        type: 'member_profile'
     
-Meteor.publish 'view_profile', (user_id)->
-    Meteor.users.find user_id
+Meteor.publish 'view_profile', (doc_id)->
+    Docs.find doc_id
         # type: 'member_profile'
     
     # found_id = Docs.findOne 
@@ -43,3 +43,18 @@ Meteor.publish 'view_profile', (user_id)->
         
         
 Meteor.methods
+    'create_profile': (author_id)->
+        created_profile_id = Docs.insert
+            type: 'member_profile'
+            
+        # console.log 'created profile id', created_profile_id
+        
+        Docs.update created_profile_id,
+            $set:
+                author_id: Meteor.userId()
+            
+        updated_profile_doc = Docs.findOne created_profile_id
+        
+        # console.log 'updated profile doc', updated_profile_doc
+        
+        return created_profile_id

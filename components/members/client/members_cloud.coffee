@@ -1,14 +1,14 @@
 
 Template.members_cloud.onCreated ->
-    # @autorun -> Meteor.subscribe('people_tags', selected_member_tags.array(), Session.get('published_mode'), Session.get('checkedin_mode'))
-    @autorun -> Meteor.subscribe('people_tags', selected_member_tags.array())
+    # @autorun -> Meteor.subscribe('member_tags', selected_member_tags.array(), Session.get('published_mode'), Session.get('checkedin_mode'))
+    @autorun -> Meteor.subscribe('member_tags', selected_member_tags.array())
 
 Template.members_cloud.helpers
-    all_people_tags: ->
-        doc_count = Docs.find().count()
-        if 0 < doc_count < 5 then Member_tags.find { count: $lt: doc_count } else Member_tags.find({}, limit:20)
+    all_member_tags: ->
+        # doc_count = Docs.find().count()
+        # if 0 < doc_count < 5 then Member_tags.find { count: $lt: doc_count } else Member_tags.find({}, limit:20)
 
-        # Member_tags.find()
+        Member_tags.find()
 
     tag_cloud_class: ->
         button_class = switch
@@ -40,9 +40,9 @@ Template.members_cloud.helpers
 
 
 Template.members_cloud.events
-    'click .select_people_tag': -> selected_member_tags.push @name
-    'click .unselect_people_tag': -> selected_member_tags.remove @valueOf()
-    'click #clear_people_tags': -> selected_member_tags.clear()
+    'click .select_member_tag': -> selected_member_tags.push @name
+    'click .unselect_member_tag': -> selected_member_tags.remove @valueOf()
+    'click #clear_member_tags': -> selected_member_tags.clear()
     
     'click #turn_off_checkedin_mode': -> Session.set 'checkedin_mode', false
     'click #turn_on_checkedin_mode': -> Session.set 'checkedin_mode', true

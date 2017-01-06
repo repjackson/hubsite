@@ -64,26 +64,47 @@ Template.edit_profile.helpers
 
 Template.edit_profile.events
     'click #save_profile': ->
-        FlowRouter.go "/profile/view/#{Meteor.userId()}"
+        # name = $('#name').val()
+        profile_doc = 
+            Docs.findOne
+                type: 'member_profile'
+                author_id: Meteor.userId()
+
+        profile_doc_id = profile_doc._id
+
+        # Docs.update profile_doc_id,
+        #     $set:
+        #         title: name
+        FlowRouter.go "/profile/view/#{profile_doc_id}"
 
     'blur #name': ->
         name = $('#name').val()
+        profile_doc = 
+            Docs.findOne
+                type: 'member_profile'
+                author_id: Meteor.userId()
 
-        Meteor.users.update Meteor.userId(),
-            $set: name: name
+        profile_doc_id = profile_doc._id
+
+        Docs.update profile_doc_id,
+            $set: title: name
             
+
+
 
     'keydown #add_tag': (e,t)->
         if e.which is 13
             tag = $('#add_tag').val().toLowerCase().trim()
             if tag.length > 0
-                Meteor.users.update Meteor.userId(),
+                profile_doc_id = Docs.findOne()._id
+                Docs.update profile_doc_id,
                     $addToSet: tags: tag
                 $('#add_tag').val('')
 
     'click .profile_tag': (e,t)->
         tag = @valueOf()
-        Meteor.users.update Meteor.userId(),
+        profile_doc_id = Docs.findOne()._id
+        Docs.update profile_doc_id,
             $pull: tags: tag
         $('#add_tag').val(tag)
 
@@ -109,7 +130,8 @@ Template.edit_profile.events
                 if err
                     console.error 'Error uploading', err
                 else
-                    Meteor.users.update Meteor.userId(),
+                    profile_doc_id = Docs.findOne()._id
+                    Docs.update profile_doc_id,
                         $set: "image_id": res.public_id
                 return
 
@@ -136,5 +158,10 @@ Template.edit_profile.events
 
 
     'click #remove_photo': ->
-        Meteor.users.update Meteor.userId(),
+        profile_doc_id = Docs.findOne()._id
+        Docs.update profile_doc_id,
             $unset: "image_id": 1
+
+
+    'click #create_profile': ->
+        Meteor.call 'create_profile'

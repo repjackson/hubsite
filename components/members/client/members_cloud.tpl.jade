@@ -13,13 +13,13 @@
         i.search.icon
         +inputAutocomplete settings=settings id="search" class="" autocomplete="off" placeholder='Search Tags'
 
-    if selected_people_tags
-        #clear_people_tags.ui.red.big.compact.icon.button
+    if selected_member_tags
+        #clear_member_tags.ui.red.big.compact.icon.button
             i.remove.icon
-    if selected_people_tags
-        each selected_people_tags
-            a.ui.red.big.compact.button.unselect_people_tag
+    if selected_member_tags
+        each selected_member_tags
+            a.ui.red.big.compact.button.unselect_member_tag
                 strong #{this}
-    each all_people_tags
-        .ui.compact.basic.button.select_people_tag(class=tag_cloud_class) #{this.name}
+    each all_member_tags
+        .ui.compact.basic.button.select_member_tag(class=tag_cloud_class) #{this.name}
             // small #{this.count}

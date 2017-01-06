@@ -1,9 +1,10 @@
 template(name='members')
-    #people_slider(style='width: 998px; height: 200px;')
-        .ls-slide(data-ls='slidedelay: 2000;')
-            img.ls-bg(src="{{c.url 'people' width=998 height=200 crop='crop' gravity='north'}}", alt='Slide background')
-            h1.ls-l.overlay-text.slider-text(style="top: 50%; text-size: 400%;") 
-                | Impact Hub Members
+    // #people_slider(style='width: 998px; height: 200px;')
+    //     .ls-slide(data-ls='slidedelay: 2000;')
+    //         img.ls-bg(src="{{c.url 'group' width=998 height=200 crop='crop' gravity='north'}}", alt='Slide background')
+    //         h1.ls-l.overlay-text.slider-text(style="top: 50%; text-size: 400%;") 
+    //             | Impact Hub Members
+    h1.ui.center.aligned.header Impact Hub Members
     +members_cloud
     // +cloud
     .ui.container
@@ -17,7 +18,7 @@ template(name='member_card')
             img(src="{{c.url image_id width=300 height=300 gravity='face' crop='fill'}}")
         .content
             .header
-                a(href="/view/#{_id}") #{profile.name}
+                a(href="/view/#{_id}") #{name}
         .content
             each card_tags
                 .ui.tiny.compact.button.person_tag(class=tag_class) #{this}

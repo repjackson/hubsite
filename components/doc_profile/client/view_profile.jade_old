@@ -1,7 +1,7 @@
 template(name='view_profile')
     .ui.text.container.segment
         .ui.center.aligned.header View Profile
-        with member
+        with profile_doc
             // if published
             //     .ui.top.right.attached.green.label Published
             // else
@@ -9,7 +9,7 @@ template(name='view_profile')
             // +back_button
             img.ui.centered.big.circular.image(src="{{c.url image_id width=800 height=600 gravity='face' crop='fill'}}")
             h2.ui.header
-                |#{name}
+                |#{title}
             if linkedin
                 a.ui.circular.large.blue.icon.button(href=linkedin target='_blank')
                     i.linkedin.icon

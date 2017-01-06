@@ -1,0 +1,56 @@
+template(name='edit_profile')
+    .ui.segment.text.container
+        h3.ui.center.aligned.header My Profile 
+        unless profile_doc
+            #create_profile.ui.green.button Create Profile
+        else profile_doc
+            with profile_doc
+                .ui.form
+                    .field
+                        if image_id
+                            label Image
+                            .ui.centered.image
+                                img.ui.medium.image(src="{{c.url image_id width=400 height=400 gravity='face' crop='fill'}}")
+                                a#remove_photo.ui.right.corner.link.label
+                                    i.remove.red.link.icon
+                        else
+                            label Upload Image
+                            input(type='file' name='upload_picture' accept='image/*')
+                    // .field
+                    //     if profile.google_image
+                    //         label Google Image
+                    //         img.ui.small.image(src=profile.google_image)
+                    //         #pick_google_image.ui.basic.button Make this Profile Image
+                    .field
+                        label Name
+                        .ui.left.icon.input
+                            i.user.icon
+                            input#name(type='text' value=title)
+                    .field
+                        label Tags
+                        each tags
+                            .ui.basic.button.person_tag
+                                i.minus.icon
+                                |#{this}
+                        .ui.left.icon.input
+                            i.add.icon
+                            input#add_tag(type='text' placeholder='Press enter after each tag' maxlength='50')
+                    // .field
+                    //     if published
+                    //         #make_unpublished.ui.green.button
+                    //             i.toggle.on.icon
+                    //             |Published
+                    //     else
+                    //         #make_published.ui.basic.button
+                    //             i.toggle.off.icon
+                    //             |Unpublished
+                    // p Adding social accounts will create a service link in your profile and fill out any empty profile information.
+                    // .ui.eight.column.grid
+                    //     .eight.wide.column
+                    //         .ui.padded.basic.segment
+                    //             +atForm
+                    .field
+                        .ui.center.aligned.basic.segment
+                            #save_profile.ui.center.aligned.green.big.button 
+                                // i.check.icon
+                                |Save

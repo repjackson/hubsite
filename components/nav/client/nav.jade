@@ -26,11 +26,11 @@ template(name='top_nav')
                     //         |(#{currentUser.unreadcount})
                 a.item(href="/profile/edit" class="{{isActivePath '/profile/edit'}}")
                     if profile_doc.image_id
-                        img.ui.avatar.image(src="{{c.url profile_doc.image_id width=50 height=50 gravity='face' crop='fill'}}")
+                        img.ui.avatar.image(src="{{c.url currentUser.image_id width=50 height=50 gravity='face' crop='fill'}}")
                     else
                         i.user.icon
-                    if profile_doc.title
-                        | #{profile_doc.title}
+                    if currentUser.name
+                        | #{currentUser.name}
                     else
                         | Profile
                 a#logout.ui.item(href='#') 
